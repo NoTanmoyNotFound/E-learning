@@ -7,6 +7,7 @@ const Home = () => {
       <p>This is for testing</p>
       <p>Keno korooooo</p>
       <p>POK POK</p>
+      <p>lllllllllll saklin</p>
     </div>
   )
 }
