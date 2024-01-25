@@ -5,6 +5,7 @@ const Home = () => {
     <div>
       <h1>This is home page </h1>
       <p>This is for testing</p>
+      <p>Keno korooooo</p>
     </div>
   )
 }
