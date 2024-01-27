@@ -1,20 +1,20 @@
-import Home from "./components/Home";
-
+import "./App.css";
+import Header from "./components/Header/Header";
+import Body from "./components/Body/Body";
+import Company from "./components/CollabCompany/Company";
+import Bestcourses from "./components/BestCourses/Bestcourses";
 
 function App() {
   return (
-    <>
-  <h1 className="text-3xl font-bold underline bg-red-600  ">
-    Hello world!
-
-    Lets start guys
-
-    
-  </h1>
-  <Home/>
-  </>
-  
-
+    <div className="App">
+      <div>
+        <div className="white-gradient" />
+        <Header />
+        <Body />
+      </div>
+      <Company />
+      <Bestcourses />
+    </div>
   );
 }
 
