@@ -1,0 +1,86 @@
+[
+    {
+        "name":"Data Structure",
+        "price":"3000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r1.png"
+    },
+    {
+        "name":"Cyber Security",
+        "price":"9000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r2.png"
+    },
+    {
+        "name":"Computer Networking",
+        "price":"7000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r3.png"
+    },
+    {
+        "name":"DBMS",
+        "price":"3000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r1.png"
+    },
+    {
+        "name":"React JS",
+        "price":"3000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r1.png"
+    },
+    {
+        "name":"Fullstack Development",
+        "price":"3000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r1.png"
+    },
+    {
+        "name":"MongoDB",
+        "price":"9000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r2.png"
+    },
+    {
+        "name":"PHP",
+        "price":"7000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r3.png"
+    },
+    {
+        "name":"Data Science",
+        "price":"3000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r1.png"
+    },
+    {
+        "name":"Python Full Course",
+        "price":"3000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r1.png"
+    },
+    {
+        "name":"Java Development",
+        "price":"3000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r1.png"
+    },
+    {
+        "name":"Operation",
+        "price":"7000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r3.png"
+    },
+    {
+        "name":"Operating System",
+        "price":"7000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r3.png"
+    },
+    {
+        "name":"Data Analytics",
+        "price":"7000/-",
+        "details":"ggdgdttdgdgdttddggddtdggdgt",
+        "img":"./r3.png"
+    }
+]

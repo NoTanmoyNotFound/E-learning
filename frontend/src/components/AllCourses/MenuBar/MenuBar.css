@@ -1,0 +1,29 @@
+.horizontal-menu-container {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    background: linear-gradient(#C3C4FC, #BBC4FB, #B1C4FC, #AAC3FC);
+    border: 2px solid rgb(214, 214, 252);
+    box-shadow: 0 4px 7px rgba(225, 190, 254, 0.884);
+  }
+  
+  .menu-scroll {
+    display: flex;
+    padding: 10px;
+    background-color: #AAC3FC;
+  }
+  
+  .menu-item {
+    padding: 10px;
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.785);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 200ms ease-in;
+  }
+  
+  .menu-item:hover {
+    border-radius: 50px;
+    background-color: aliceblue;
+    scale: 0.8;
+  }
