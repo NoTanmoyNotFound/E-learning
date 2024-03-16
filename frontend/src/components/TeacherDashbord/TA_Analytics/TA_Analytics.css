@@ -1,0 +1,20 @@
+
+
+.TA_container:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.TA_container:hover .TA_Shoping {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.TA_container:hover h2 {
+  color: #111010; /* Change the color as needed */
+}
+
+.TA_container:hover p {
+  color: #ffffff; /* Change the color as needed */
+}
