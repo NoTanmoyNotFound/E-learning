@@ -1,0 +1,133 @@
+body{
+    overflow-x: hidden;
+}
+.body-wrapper {
+    padding-bottom: 2rem;
+    background-color: white;
+    z-index: 1;
+}
+
+.body-container {
+    justify-content: space-around;
+    align-items: flex-end;
+    background: linear-gradient(#C3C4FC, #BBC4FB, #B1C4FC, #AAC3FC);
+}
+
+/* left side */
+.body-left {
+    gap: 3rem;
+}
+
+.body-title {
+    position: relative;
+    z-index: 1;
+}
+
+.body-title>h1 {
+    color: white;
+    font-weight: 600;
+    font-size: 3.8rem;
+    line-height: 4rem;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.103);
+    text-shadow: 2px 3px 7px rgb(82, 33, 161);
+}
+
+.search-bar {
+    background-color: rgb(214, 212, 248);
+    border-radius: 5px;
+    /* border: 5px solid rgb(255, 255, 255); */
+    padding: 1rem 1rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border-radius: 12px;
+    box-shadow:
+    3.7px 3.7px 4.8px rgba(0, 0, 0, 0.133),
+    10.3px 10.3px 22.7px rgba(0, 0, 0, 0.197)
+    /* 100px 100px 80px rgba(0, 0, 0, 0.33) */
+  ;
+}
+
+.stats {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.body-description{
+    color: rgb(43, 18, 66);
+    font-weight: 500;
+}
+
+
+.start > .sptext{
+    color: rgb(43, 18, 66);
+}
+
+.start >.sptext>.plusIcon{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.066);
+    text-shadow: 1px 1px 3px rgb(57, 52, 128);
+}
+
+
+
+
+
+
+/* right side  */
+.body-right .image-container {
+    width: 26rem;
+    height: 30rem;
+    overflow: hidden;
+    border-radius: 15rem 15rem 0 7rem;
+    border: 8px solid rgb(255, 255, 255);
+    box-shadow: 7px 3px 19px -2px rgb(99, 72, 218);
+    background-image: url("../../../../public/19362653.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -7rem;
+}
+
+.image-container>img {
+    width: 100%;
+    height: 100%;
+}
+
+/* .start{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(88, 85, 85);
+    font-weight: 700;
+    font-size: 1.3rem;
+} */
+
+/* Responsiveness ------------------------------------------------------ */
+
+@media (max-width:640px){
+    .body-container{
+        margin-top: 2rem;
+    }
+    .body-title>h1{
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+    .image-container{
+        width: 95%;
+        height: 25rem;
+    }
+    .stats{
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .body-right{
+        width: 100%;
+    }
+    .stats>:nth-child(1){
+        font-size: 1.5rem;
+    }
+    .stats>:nth-child(2){
+        font-size: 0.8rem;
+    }
+    .body-right .image-container{
+        background-position: -12rem;
+    }
+}
