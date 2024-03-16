@@ -1,0 +1,153 @@
+.Jhead-container{
+    background-color: #7a7adb;
+    background-image: linear-gradient(45deg, #241928 ,#2d2d4f  );
+
+    color: white;
+    padding: 10px;
+    
+}
+
+
+.Jhero{
+    display: flex;
+    flex-wrap: wrap;
+    /* height: 500px; */
+    background: url(./assets/heroBg.png);
+    background-blend-mode:darken;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    align-items: center;
+    justify-content: center;
+    /* justify-content: space-between; */
+    gap: 20%;
+
+    
+}
+.baxo1{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* padding-bottom: 50px; */
+}
+.baxo1 h1{
+    font-size: 60px;
+}
+.baxo1 h4{
+    font-size: 18px;
+}
+
+.nd-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px ;
+} 
+/* .nd-head{
+    
+    flex-direction: row;
+} */
+
+.nd-head h1{
+    font-size: 55px;
+}
+.nd-head h3{
+    font-size: 40px;
+
+}
+.nd-body {
+    display: flex;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
+.pixx {
+    flex: 1;
+    text-align: center;
+    margin: 60px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    
+}
+.pixx p{
+    font-size: 20px;
+}
+
+.rd-container{
+    padding: 40px;
+    display: flex;
+    background-image: radial-gradient(circle at 29% 55%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 4%,transparent 4%, transparent 44%,transparent 44%, transparent 100%),radial-gradient(circle at 85% 89%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 51%,transparent 51%, transparent 52%,transparent 52%, transparent 100%),radial-gradient(circle at 6% 90%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 53%,transparent 53%, transparent 64%,transparent 64%, transparent 100%),radial-gradient(circle at 35% 75%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 6%,transparent 6%, transparent 98%,transparent 98%, transparent 100%),radial-gradient(circle at 56% 75%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 16%,transparent 16%, transparent 23%,transparent 23%, transparent 100%),radial-gradient(circle at 42% 0%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 3%,transparent 3%, transparent 26%,transparent 26%, transparent 100%),radial-gradient(circle at 29% 28%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 51%,transparent 51%, transparent 75%,transparent 75%, transparent 100%),radial-gradient(circle at 77% 21%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 35%,transparent 35%, transparent 55%,transparent 55%, transparent 100%),radial-gradient(circle at 65% 91%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 46%,transparent 46%, transparent 76%,transparent 76%, transparent 100%),linear-gradient(45deg, rgb(83, 91, 235),rgb(76, 11, 174));
+}
+
+
+.accordian{
+    max-width: 70%;
+    list-style: none;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+}
+.box-shadow{
+    box-shadow: 6px 6px 10px 1px rgba(0, 0, 0, 0.15),
+        -6px -6px 10px -1px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+#label{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+#label::before{
+    content: '+';
+    margin-right: 10px;
+    font-size: 24px;
+    /* font-weight: 600; */
+    }
+
+.content{
+    list-style-type: disc;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    /* padding-bottom: 2rem; */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    /* transition: max-height 0.5s ease, padding 0.5s ease; */
+}
+ input[type=radio]{
+    display: none;
+ }
+
+
+input[type=radio]:checked +label +.content {
+    max-height: 400px; 
+    
+}
+.accordian input[type="radio"]:checked + #label::before {
+    content: '-';
+}
+
+@media only screen and (max-width: 768px) {
+    .rd-container{
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        
+    }
+    .nd-body{
+        flex-direction: column;
+    }
+    .accordian{
+        margin: 0;
+        max-width: 90%;
+    }
+}
