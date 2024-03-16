@@ -96,11 +96,11 @@ const Join = () => {
 
       <div className="form-container">
         <div className='form-control1'>
-          <img src={TForm}  />
+          <img src={TForm} />
         </div>
 
 
-        <div className="form-control">
+        <div className="form-control mt-5">
           <form action="your-server-endpoint">
             <h2>Send Your Details</h2>
             <div className="inputBox">
@@ -111,32 +111,40 @@ const Join = () => {
               <input type="text" required="required" />
               <span>Email</span>
             </div>
-            <div className="inputBox">
-              <input type="text" required="required" />
-              <span>Id Proof</span>
-            </div>
+
             <div className="inputBox">
               <input type="text" required="required" />
               <span>Phone No.</span>
             </div>
-            <div className="inputBox">
-              <input type="text" required="required" />
-              <span>Updated Resume</span>
-            </div>
-            <div className="inputBox">
+
+
+            <div className="inputBox ">
               <input type="text" required="required" />
               <span>Current Organization</span>
             </div>
-
             <div className="inputBox">
-              <button type="submit">send</button>
+              <input type="file" id="idProofInput" accept=".pdf" style={{ display: "none" }} onChange={(e) => handleFileSelect(e, 'idProof')} />
+              <span>ID Proof (PDF only)</span>
+              <br />
+              <label htmlFor="idProofInput" className="fileButton">Select File</label>
             </div>
+            <div className="inputBox ">
+              <input type="file" id="resumeInput" accept=".pdf,.jpg,.png" style={{ display: "none" }} onChange={(e) => handleFileSelect(e, 'resume')} />
+              <span>Resume Upload (PDF, JPG, PNG)</span>
+              <br />
+              <label htmlFor="resumeInput" className="fileButton">Select File</label>
+            </div>
+
+            <div className="inputBox flex justify-end">
+              <button type="submit" className="fileButton">Send</button>
+            </div>
+
           </form>
         </div>
       </div>
 
 
-      {/* <Footer/> */}
+      <Footer />
     </div>
   )
 }

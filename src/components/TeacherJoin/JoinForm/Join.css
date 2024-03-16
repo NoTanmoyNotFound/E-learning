@@ -229,6 +229,8 @@ form-control{
     position: relative;
     width: 100%;
     margin-top: 10px;
+    /* display: flex;
+    align-items: center; */
 }
 .inputBox input,textarea{
     width: 100%;
@@ -247,7 +249,7 @@ form-control{
     font-size: 16px;
     margin: 10px 0;
     pointer-events: none;
-    /* transition: 0.5s; */
+    transition: 0.5s;
     color: #666;
 }
 .form-control .inputBox input:focus ~ span,
@@ -322,3 +324,48 @@ form-control{
         height: auto; /* Ensure image aspect ratio is maintained */
     }
 }
+
+.form-control{
+    height: fit-content;
+    padding: 15px;
+    margin: 15px;
+}
+.inputBox {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.fileButton {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.fileButton:hover {
+    background-color: #0056b3;
+}
+
+/* Disable animations for ID Proof and Resume Upload */
+.inputBox input[type="file"] {
+    transition: none;
+}
+
+.fileButton {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fileButton:hover {
+    background-color: #0056b3;
+}
+
+
