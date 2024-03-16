@@ -19,6 +19,8 @@ import EditInfo from './components/Profile/ProfileEdit/EditInfo';
 import EditSocial from './components/Profile/ProfileEdit/EditSocial';
 import EditPassword from './components/Profile/ProfileEdit/EditPassword';
 import Join from './components/TeacherJoin/JoinForm/Join';
+import TeacherAdminMain from './components/TeacherDashbord/TeacherAdminMain';
+
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
@@ -55,6 +57,8 @@ function App() {
         </Route>
 
         <Route path='/Join' element={<Join/>}/>
+        <Route path='/techerDashbord'element={<TeacherAdminMain />}/>
+      
 
       </Routes>
     </BrowserRouter>

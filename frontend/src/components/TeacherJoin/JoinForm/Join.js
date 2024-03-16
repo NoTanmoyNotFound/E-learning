@@ -10,6 +10,9 @@ import TForm from './assets/TForm.jpg'
 import Footer from '../../Home/Footer/Footer'
 
 const Join = () => {
+  const handleFileSelect = () => {
+    console.log("hello");
+  }
   return (
 
     <div>
