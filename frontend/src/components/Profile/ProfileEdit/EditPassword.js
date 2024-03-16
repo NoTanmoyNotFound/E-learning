@@ -18,6 +18,14 @@ const EditPassword = () => {
                     <label className="form-label">Repeat new password</label>
                     <input type="password" className="form-control" />
                 </div>
+                <div className="form-group flex items-center justify-center p-2 mb-0">
+                            <button
+                                type='submit'
+                                className='SubmitButton border border-black w-24 pt-3 pb-3 bg-blue-600 text-white rounded-md'
+                            > Submit
+                            </button>
+
+                        </div>
             </div>
 
         </div>

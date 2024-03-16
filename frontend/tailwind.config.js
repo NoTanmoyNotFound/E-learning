@@ -7,7 +7,15 @@ module.exports = {
     extend: {},
     fontFamily: {
      'Nunito' : ['Nunito', 'sans-serif'] 
-    }
+    },
+    textColor: [
+      "responsive",
+      "dark",
+      "group-hover",
+      "focus-within",
+      "hover",
+      "focus",
+  ],
   },
   plugins: [],
 }

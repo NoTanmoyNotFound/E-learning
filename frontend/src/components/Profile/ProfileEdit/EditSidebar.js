@@ -9,7 +9,7 @@ const EditSidebar = () => {
                 <h4 className="font-weight-bold py-3 mb-4 mt-4 ml-3">
                     Account settings
                 </h4>
-                <div className="card overflow-hidden">
+                <div className="carde overflow-hidden rounded-[20px]">
                     <div className="row no-gutters row-bordered row-border-light">
                         <div className="col-md-3 pt-0">
                             <div className="list-group list-group-flush account-settings-links">

@@ -6,14 +6,22 @@ import S_header from '../../SuperAdmin/S_header/S_header'
 import S_sidebar from '../../SuperAdmin/S_sidebar/S_sidebar'
 import profile from "./assets/profile.png"
 
+import {useNavigate} from "react-router-dom" 
+
 
 const ProfileView = () => {
+
+    const navigate = useNavigate();
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
     const [profilePic, setProfilePic] = useState(profile);
 
     const OpenSidebar = () => {
         setOpenSidebarToggle(!openSidebarToggle);
     };
+
+    const goEdit = () =>{
+        navigate("/EditProfile")
+    }
 
     const handleFileChange = (event) => {
         const files = event.target.files;
@@ -38,7 +46,7 @@ const ProfileView = () => {
             <S_sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} profilePic={profilePic} />
             {/* <S_home /> */}
 
-            <main className="mainn-container mt-0 px-8 max-w-[1200px] bg-gradient-to-r from-cyan-100 to-blue-100">
+            <main className="mainn-container mt-0 px-8 max-w-11/12 bg-gradient-to-r from-cyan-100 to-blue-100">
                 <div className="info bg-white p-[20px] rounded-[40px]">
                     <div className="userBox  mb-[25px] rounded-[25px] flex bg-gradient-to-r from-cyan-100 to-blue-100 pt-1 pr-1 pb-1 pl-2">
                         <div className="user w-52 pr-3 pl-3">
@@ -49,7 +57,7 @@ const ProfileView = () => {
                             </div>
                             <h3 className="name text-xl text-white font-Nunito font-bold" >Tanmoy Das</h3>
                             <p className="role">Student</p>
-                            <a href="update.html" className="gokgok-btn w-48 bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium  ">update profile</a>
+                            <button  onClick={goEdit} className="gokgok-btn w-48 bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium ">update profile</button>
                         </div>
                         <div className="user1">
                             <p id="bio" className=' font-Nunito'>Hello Guys i'm under the water here is too much raining UwU</p>
@@ -74,7 +82,7 @@ const ProfileView = () => {
                                     <p>saved playlist</p>
                                 </div>
                             </div>
-                            <a href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</a>
+                            <button href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</button>
                         </div>
                         <div className="boxyy rounded-2xl ">
                             <div className="flex text-left mb-3">
@@ -84,7 +92,7 @@ const ProfileView = () => {
                                     <p>videos liked</p>
                                 </div>
                             </div>
-                            <a href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2 font-medium">view liked</a>
+                            <button href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2 font-medium">view liked</button>
                         </div>
                         <div className="boxyy rounded-2xl">
                             <div className="flex">
@@ -94,7 +102,7 @@ const ProfileView = () => {
                                     <p>videos comments</p>
                                 </div>
                             </div>
-                            <a href="#" className="gokgok-btn  bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium">view comments</a>
+                            <button href="#" className="gokgok-btn  bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium">view comments</button>
                         </div>
                     </div>
                 </div>
