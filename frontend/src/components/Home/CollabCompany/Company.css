@@ -17,3 +17,19 @@
     border: 3px solid rgba(222, 195, 250, 0.416);
     border-radius: 10px;
 }
+
+
+.c-wrapper {
+    overflow: hidden;
+  }
+  
+  .c-container {
+    display: flex;
+    transition: transform 0.5s ease; /* Add a smooth transition effect */
+  }
+  
+  .companyImages {
+    width: 200px; /* Set a fixed width for each image */
+    display: inline-block; /* Ensure images are displayed inline */
+  }
+  

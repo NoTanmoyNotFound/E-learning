@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8000",
-  
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "bootstrap": "^5.3.3",
     "framer-motion": "^11.0.3",
     "gatsby": "^5.13.3",
     "react": "^18.2.0",
@@ -22,6 +22,7 @@
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "recharts": "^2.12.1",
+    "styled-components": "^6.1.8",
     "swiper": "^11.0.5",
     "web-vitals": "^2.1.4"
   },
