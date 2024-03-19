@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Sidebar  */
 #sidebar {
     grid-area: sidebar;
@@ -85,4 +86,93 @@
     margin-left: 1rem;
     font-weight: 400;
 
+=======
+/* Sidebar  */
+#sidebar {
+    grid-area: sidebar;
+    height: 100%;
+    overflow-y: auto;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    background: #ebebeb;
+  }
+  
+  .sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px 0px 30px;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar-title > span {
+    display: none;
+  }
+  
+  .sidebar-brand {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .sidebar-list {
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .sidebar-list-item {
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .sidebar-list-item:hover {
+    background-color: rgba(195, 190, 190, 0.785);
+    cursor: pointer;
+  }
+  
+  .sidebar-list-item > a {
+    text-decoration: none;
+    color: #3e3e41;
+    display: flex;
+  }
+  
+  .sidebar-responsive {
+    display: inline !important;
+    position: absolute;
+    z-index: 12 !important;
+    background: #ebebeb;
+    color: black;
+    font-weight: 500;
+  }
+  
+  /* End Sidebar  */
+  
+
+  .profile{
+    text-align: center;
+ }
+ .profile .image{
+    height:4rem;
+    width: 4rem;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    margin-left: 3.2rem;
+ }
+ .profile .name{
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+ }
+ .profile .role{
+    font-size: 1rem;
+    margin-left: 1rem;
+    font-weight: 400;
+
+>>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
  }

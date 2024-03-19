@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .App {
     margin: 0;
     padding: 0;
@@ -8,4 +9,16 @@
     filter: blur(20px);
     pointer-events: none;
     user-select: none;
+=======
+.App {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Remove or adjust this line */
+}
+
+.App#blur.active{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+>>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
 }

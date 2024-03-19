@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .f-container{
     justify-content: space-between;
 }
@@ -85,4 +86,93 @@
         align-items: center !important;
         text-align: center;
     }
+=======
+.f-container{
+    justify-content: space-between;
+}
+
+.f-left{
+    gap: 1rem;
+}
+
+.f-menu{
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+}
+
+.f-menu:hover{
+    cursor: pointer;
+}
+
+.f-icon{
+    gap: 1.5rem;
+    font-weight: 500;
+}
+
+.f-icon>a{
+    font-size: 1.3rem;
+    transition: all 100ms ease-in;
+}
+
+.f-icon>a:hover{
+    scale: 1.5;
+    color: rgb(71, 26, 163);
+}
+
+.f-right{
+    position: relative;
+    top: 1.8rem;
+}
+
+.f-right>span{
+    cursor: pointer;
+}
+
+.f-right>span:hover{
+    color: rgb(71, 26, 163);
+}
+
+.f-right>span>i:hover{
+    color: rgb(71, 26, 163);
+}
+.f-right>.search-bar{
+    gap: 1rem;
+    margin-top: 0.5rem;
+    height: 4rem;
+    border-radius: 1.5rem;
+}
+
+.f-right>.search-bar>input{
+    border-radius: 2rem;
+    outline: none;
+    text-align: center;
+    color: rgb(31, 31, 117);
+    font-weight: 500;
+    height: 2rem;
+}
+
+.f-right>.search-bar>button{
+    border-radius: 1.5rem;
+    height: 2.2rem;
+}
+
+.secondaryText{
+    transition: all 100ms ease-in;
+}
+.secondaryText:hover{
+    color: rgb(71, 26, 163);
+    cursor: pointer;
+}
+
+@media (max-width:768px) {
+    .f-container{
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .f-container>div{
+        align-items: center !important;
+        text-align: center;
+    }
+>>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
 }

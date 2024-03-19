@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .pushable{
     transition: all 300ms ease-in;
 }
@@ -41,4 +42,32 @@
         margin-top: 4%;
         margin-bottom: 5%;
     }
+=======
+.pushable{
+    transition: all 300ms ease-in;
+}
+.pushable:hover{
+    scale: 0.9;
+}
+.descrip-course{
+    line-height: 16px;
+    border: 3px solid white;
+    background-color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    box-shadow: 0 0 10px black;
+    border-radius: 10px;
+    transition: all 300ms ease-in;
+}
+.descc{
+    font-size: 0.9rem;
+    margin-top: -4%;
+    margin-bottom: 5%;
+}
+
+@media (max-width:732px) {
+    .descrip-course{
+        margin-top: 4%;
+        margin-bottom: 5%;
+    }
+>>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
 }
