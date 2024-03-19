@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header/Header';
 import Body from './Body/Body';
 import Company from './CollabCompany/Company';
@@ -12,7 +12,22 @@ import './Home.css';
 const Home = () => {
     const [isToggle, setIsToggle] = useState(false);
 
-    const toggleValue = ()=>{
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            const blurElement = document.getElementById('blur');
+            if (blurElement && !blurElement.contains(event.target)) {
+                setIsToggle(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+
+    const toggleValue = () => {
         setIsToggle(!isToggle);
     }
 
@@ -20,7 +35,7 @@ const Home = () => {
         <div className={isToggle ? "active App" : "App"} id='blur'>
             <div>
                 <div className="white-gradient" />
-                <Header onButtonClick={toggleValue}/>
+                <Header onButtonClick={toggleValue} />
                 <Body />
             </div>
             <Company />

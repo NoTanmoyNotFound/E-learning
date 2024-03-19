@@ -1,12 +1,15 @@
 import React, { useState ,useEffect} from 'react';
 import './Header.css'
 import { BiMenuAltRight } from 'react-icons/bi';
+import Button from 'react-bootstrap/Button';
 
 // for outside menu hiden ------------->
 import OutsideClickHandler from 'react-outside-click-handler/build/OutsideClickHandler';
+import Login from '../../Auth/Login';
 
 const Header = ({onButtonClick}) => {
     const [menuOpened, setMenuOpened] = useState(false);
+    const [modalShow, setModalShow] = React.useState(false);
 
     const getMenuStyles = () => {
         if (document.documentElement.clientWidth <= 800) {
@@ -16,6 +19,18 @@ const Header = ({onButtonClick}) => {
         }
         return {};
     }
+
+    const modelButton = () => {
+        setModalShow(true)
+        onButtonClick && onButtonClick();
+    }
+
+
+
+
+
+
+
 
     // useEffect(() => {
     //     // Add event listener to handle body scroll when the menu is open
@@ -47,9 +62,15 @@ const Header = ({onButtonClick}) => {
                             <a href="">Contact Us</a>
                             <a href="superadmin">Super Admin</a>
 
-                            <button className='button bg-slate-500' onClick={onButtonClick}>
-                                <a href="">Login</a>
-                            </button>
+                         
+                            <Button variant="primary" onClick={modelButton}>
+                                Login
+                            </Button>
+
+                            <Login 
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            />
                         </div>
                     </OutsideClickHandler>
 
