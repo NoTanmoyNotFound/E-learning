@@ -8,6 +8,7 @@ import SingleBlog from './components/BlogsMain/Blogs/Singleblog/SingleBlog';
 import CategorySelection from './components/BlogsMain/Blogs/CategorySelection/CategorySelection';
 import SuperCourseDash from './components/SuperAdmin/SuperCourse/SuperCourseDashboard/SuperCourseDash';
 import S_TeacherVE from './components/SuperAdmin/S_TeacherViewEdit/S_TeacherVE';
+import Test from './components/TestPage/Test';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/CategorySelection' element={<CategorySelection />} />
         <Route path='/SuperCourseDash' element={<SuperCourseDash />} />
         <Route path='/superTeachers' element={<S_TeacherVE />} />
+        <Route path='/test' element={<Test />} />
       </Routes>
     </BrowserRouter>
   );

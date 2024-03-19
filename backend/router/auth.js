@@ -11,6 +11,7 @@ require('../db/conn');
 // import models ------------------------------->
 const CourseUpload = require('../model/courseUpload');
 const titleUpload = require('../model/titleUpload');
+const testModel = require('../model/testModel');
 
 
 
@@ -32,14 +33,36 @@ router.get('/', (req, res) => {
 
 
 //routing for Course Upload by teacher page(from)----------------------------------------------->
-router.post('/uploadd', (req, res) => {
-    try {
-        const { title, description, duration, teachername, teacheremail } = req.body;
+// router.post('/uploadd', (req, res) => {
+//     try {
+//         const { title, description, duration, teachername, teacheremail } = req.body;
 
-        if (!title || !description || !duration || !teachername || !teacheremail) {
+//         if (!title || !description || !duration || !teachername || !teacheremail) {
+//             return res.status(500).json({ error: "Please fill all fields" });
+//         } else {
+//             const newCourse = new CourseUpload({ title, description, duration, teachername, teacheremail });
+
+//             newCourse.save().then(() => {
+//                 res.status(201).json({ message: 'Course Is Uploaded' });
+//             }).catch((err) => {
+//                 res.status(500).json({ error: "Not Uploaded", err });
+//             });
+//         }
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ error: "Internal Server Error" });
+//     }
+// });
+
+//routing for Course Upload by teacher page(from)----------------------------------------------->
+router.post('/testModel', (req, res) => {
+    try {
+        const { title, desc } = req.body;
+
+        if (!title || !desc) {
             return res.status(500).json({ error: "Please fill all fields" });
         } else {
-            const newCourse = new CourseUpload({ title, description, duration, teachername, teacheremail });
+            const newCourse = new testModel({ title, desc });
 
             newCourse.save().then(() => {
                 res.status(201).json({ message: 'Course Is Uploaded' });
