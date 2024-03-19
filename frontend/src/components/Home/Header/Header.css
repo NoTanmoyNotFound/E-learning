@@ -1,64 +1,3 @@
-<<<<<<< HEAD
-
-.h-wrapper {
-    color: rgb(255, 255, 255);
-    background: linear-gradient(#d6d7fc, #bfc6fa);
-    z-index: 99;
-}
-
-.h-container {
-    justify-content: space-between;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: rgb(40, 26, 100);
-    font-weight: 500;
-}
-
-.h-container>img {
-    width: 15%;
-    height: 60%;
-
-}
-
-.h-menu {
-    gap: 2rem;
-    transition: all 300ms ease-in;
-}
-
-.h-menu>*:hover {
-    cursor: pointer;
-    text-shadow: 1px 2px 17px rgb(111, 94, 174);
-}
-
-
-
-/* menu bar nav  with Responsiveness 'Saklin'---------------- */
-.menu-icon {
-    display: none;
-}
-
-@media (max-width:768px) {
-    .menu-icon {
-        display: block;
-    }
-
-    .h-menu {
-        z-index: 99;
-        color: black;
-        position: absolute;
-        top: 3rem;
-        right: 4rem;
-        background-color: white;
-        flex-direction: column;
-        font-weight: 500;
-        gap: 2rem;
-        padding: 3rem;
-        border-radius: 10px;
-        align-items: flex-start;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-        transition: all 300ms ease-in;
-    }
-=======
 .h-wrapper {
     color: rgb(255, 255, 255);
     background: linear-gradient(#d6d7fc,#bfc6fa);
@@ -116,5 +55,4 @@
         box-shadow: 0px 4px 4px rgba(0,0,0,0.05);
         transition: all 300ms ease-in;
     }
->>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
 }

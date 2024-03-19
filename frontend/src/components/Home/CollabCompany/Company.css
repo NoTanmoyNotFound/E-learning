@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .c-container{
     justify-content: space-around;
     gap: 1rem;
@@ -17,24 +16,4 @@
     22.3px 22.3px 22.7px rgba(0, 0, 0, 0.197);
     border: 3px solid rgba(222, 195, 250, 0.416);
     border-radius: 10px;
-=======
-.c-container{
-    justify-content: space-around;
-    gap: 1rem;
-}
-
-.c-container>img{
-    width: 9rem;
-    box-shadow: .7px 6.7px 8.8px rgba(0, 0, 0, 0.133),
-    10.3px 10.3px 2.7px rgba(0, 0, 0, 0.197);
-    transition: all 150ms ease-in;
-}
-
-.c-container>img:hover{
-    scale: 1.1;
-    box-shadow: .7px 6.7px 8.8px rgba(0, 0, 0, 0.133),
-    22.3px 22.3px 22.7px rgba(0, 0, 0, 0.197);
-    border: 3px solid rgba(222, 195, 250, 0.416);
-    border-radius: 10px;
->>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
 }
