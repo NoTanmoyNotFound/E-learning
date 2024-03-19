@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .inner-container{
     gap: 1.5rem;
     background: #7041df;
@@ -54,4 +55,62 @@
     text-decoration: none;
     scale: 1.1;
   }
+=======
+.inner-container{
+    gap: 1.5rem;
+    background: #7041df;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 6px solid #645dde;
+    text-align: center;
+}
+
+.inner-container .primaryText{
+    color: white;
+    font-weight: 600;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.196);
+    text-shadow: 1px 1px 3px black;
+    cursor: pointer;
+}
+
+.inner-container .secondaryText{
+    color: rgba(255, 255, 255, 0.913);
+    font-weight: 500;
+}
+
+.inner-container .secondaryText:hover{
+    color: white;
+}
+
+/* .inner-container .button{
+    border: 4px solid rgb(255, 255, 255);
+    box-shadow: -2px 2px 3px 2px rgb(155, 84, 254);
+    border-radius: 12px;
+    
+} */
+
+         
+.btn-grad {
+    background-image: linear-gradient(to right, #4568DC 0%, #B06AB3  51%, #4568DC  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    border: 5px solid rgba(255, 255, 255, 0.788);
+    border-radius: 20px;
+    display: block;
+    box-shadow: 3px 7px 19px rgba(0, 0, 0, 0.443);
+    font-weight: 500;
+  }
+
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+    scale: 1.1;
+  }
+>>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
  

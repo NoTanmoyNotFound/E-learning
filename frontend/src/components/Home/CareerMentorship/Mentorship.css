@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 .m-container .image-container{
     width: 26rem;
     height: 30rem;
@@ -130,3 +132,137 @@
     
 }
 
+=======
+.m-container .image-container{
+    width: 26rem;
+    height: 30rem;
+    overflow: hidden;
+    border-radius: 10rem 3rem 12rem /8rem;
+    border: 8px solid rgb(255, 255, 255);
+    box-shadow: 7px 3px 19px -2px rgb(99, 72, 218);
+    background-image: url("../../../../public/5037367.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 2rem;
+}
+
+.m-container{
+    justify-content: space-around;
+}
+
+.m-container>div{
+    flex: 1;
+}
+
+.m-right{
+    gap: 0.5rem;
+    width: auto;
+}
+
+.accordion{
+    margin-top: 2rem;
+    border: none;
+}
+
+.accordionItem{
+    background: white;
+    border: 0.8px solid rgba(128,128,128,0.143);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.accordionItem.expanded{
+    margin-top: 2rem;
+    border-radius: 6px;
+}
+
+.accordionButton{
+    background: white;
+    padding: 1rem;
+    width: 100%;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.icon{
+    padding: 10px;
+    background: #eeeeff;
+    border-radius: 5px;
+}
+
+.icon svg{
+    fill: rgb(112, 112, 255);
+}
+
+.accordionButton .primaryText{
+    font-size: 1.1rem;
+}
+
+
+@media (max-width: 1079px){
+    .m-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .accordion{
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px){
+
+    .accordionButton .primaryText{
+        font-size: 0.8rem;
+    }
+    .m-right .secondaryText{
+        width: 90%;
+    }
+    .accordion{
+        width: 90%;
+    }
+    .m-container .image-container{
+        margin-left: -1rem;
+    }
+    
+}
+
+@media (max-width: 575px){
+
+    .accordionButton .primaryText{
+        font-size: 0.8rem;
+    }
+    .m-right .secondaryText{
+        width: 75%;
+    }
+    .accordion{
+        width: 70%;
+    }
+    .m-container .image-container{
+        margin-left: -15rem;
+        width: auto;
+    }
+    
+}
+
+@media (max-width: 439px){
+
+    .accordionButton .primaryText{
+        font-size: 0.8rem;
+    }
+    .m-right .secondaryText{
+        width: 55%;
+    }
+    .accordion{
+        width: 50%;
+    }
+    .m-container .image-container{
+        margin-left: -15rem;
+        /* background-position: -5rem; */
+        height: 25rem;
+    }
+    
+}
+
+>>>>>>> 38aee47d5fbd111cbc171fd84c2c9d21da9a756e
