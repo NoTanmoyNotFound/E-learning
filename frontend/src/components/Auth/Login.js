@@ -10,9 +10,10 @@ function Login(props) {
     aria-labelledby="contained-modal-title-vcenter"
     centered
   >
-    <Modal.Header closeButton>
+    <Modal.Header  className=' bg-blue-700'>
+    <closeButton className=" font-black" />
       <Modal.Title id="contained-modal-title-vcenter">
-        Modal heading
+      
       </Modal.Title>
     </Modal.Header>
     <Modal.Body>
@@ -24,7 +25,7 @@ function Login(props) {
       </p>
     </Modal.Body>
     <Modal.Footer>
-      <Button onClick={props.onHide}>Close</Button>
+      <Button className=' bg-red-600' onClick={props.onHide}>Close</Button>
     </Modal.Footer>
   </Modal>
 

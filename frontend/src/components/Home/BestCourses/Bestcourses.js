@@ -19,7 +19,7 @@ const Bestcourses = () => {
             <Swiper {...sliderSettings}>
                 {data.map((card, i) => (
                     <SwiperSlide key={i}>
-                        <div className="flexColStart b-card">
+                        <div className="flexColStart b-card ">
                             <img src={card.img} alt="#" />
                             <span className="secondaryText b-price">
                                 <span style={{ color: 'orange' }}>Rs: </span>

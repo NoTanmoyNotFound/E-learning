@@ -79,7 +79,7 @@ const TA_Analytics = () => {
         <div className=" mt-10 flex justify-center ">
           <h2 className="">Data Chart </h2>
           <LineChart
-            width={700}
+            width={1000}
             height={500}
             data={data}
             margin={{

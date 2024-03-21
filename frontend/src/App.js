@@ -20,6 +20,10 @@ import EditSocial from './components/Profile/ProfileEdit/EditSocial';
 import EditPassword from './components/Profile/ProfileEdit/EditPassword';
 import Join from './components/TeacherJoin/JoinForm/Join';
 import TeacherAdminMain from './components/TeacherDashbord/TeacherAdminMain';
+import TA_Analytics from './components/TeacherDashbord/TA_Analytics/TA_Analytics';
+import TA_Feedback from './components/TeacherDashbord/TA_Feedback/TA_Feedback';
+import MyCourses from './components/TeacherDashbord/TA_MyCourses/MyCourses';
+import TA_Payment from './components/TeacherDashbord/TA_Payment/TA_Payment';
 
 
 function App() {
@@ -58,7 +62,10 @@ function App() {
 
         <Route path='/Join' element={<Join/>}/>
         <Route path='/techerDashbord'element={<TeacherAdminMain />}/>
-      
+        <Route path='/TeacherAnalytics' element={<TA_Analytics /> } />
+        <Route path='/TeacherPayment' element={<TA_Payment/>} />
+        <Route path='/TeacherFeedback' element={<TA_Feedback />} />
+        <Route path='/TeacherCourse' element={<MyCourses />} />     
 
       </Routes>
     </BrowserRouter>

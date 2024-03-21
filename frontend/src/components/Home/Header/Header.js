@@ -63,9 +63,7 @@ const Header = ({onButtonClick}) => {
                             <a href="superadmin">Super Admin</a>
 
                          
-                            <Button variant="primary" onClick={modelButton}>
-                                Login
-                            </Button>
+                            <button onClick={modelButton} > Login </button>
 
                             <Login 
                             show={modalShow}

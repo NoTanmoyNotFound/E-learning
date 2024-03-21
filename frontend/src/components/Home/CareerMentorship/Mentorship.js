@@ -21,7 +21,7 @@ const Mentorship = () => {
                     </div>
                 </div>
 
-                {/* right side 'Saklin'--------------------- */}
+                {/* right side'--------------------- */}
                 <div className="flexColStart m-right">
 
 
