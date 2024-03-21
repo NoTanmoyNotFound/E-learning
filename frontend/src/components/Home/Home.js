@@ -12,7 +12,7 @@ import './Home.css';
 const Home = () => {
     const [isToggle, setIsToggle] = useState(false);
 
-    useEffect(() => {
+
         const handleClickOutside = (event) => {
             const blurElement = document.getElementById('blur');
             if (blurElement && !blurElement.contains(event.target)) {
@@ -20,12 +20,6 @@ const Home = () => {
             }
         };
 
-        document.addEventListener('click', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, []);
 
     const toggleValue = () => {
         setIsToggle(!isToggle);

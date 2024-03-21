@@ -3,6 +3,7 @@ import "./TA_Sidebar.css";
 import { FaUserCircle } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
 import { BsGraphUp } from "react-icons/bs";
+
 import { BsBookHalf } from "react-icons/bs";
 import {
   BsCart3,
@@ -14,6 +15,7 @@ import {
   BsMenuButtonWideFill,
   BsFillGearFill,
 } from "react-icons/bs";
+import MyCourses from "../TA_MyCourses/MyCourses";
 
 const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
   return (
@@ -38,24 +40,22 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
             <BsGraphUp className="iconn" /> Analytics
           </a>
         </li>
-
         <li className="TAsidebar-list-item">
-          <a href="/superTeachers">
-            <FaUserCircle className="iconn" />
-            Profile
-          </a>
-        </li>
-
-        <li className="TAsidebar-list-item ">
-          <a href="/superStudents">
-            <PiStudentBold className="iconn " /> Students
-          </a>
-        </li>
-
-        <li className="TAsidebar-list-item">
-          <a href="/superCourseTitle">
+          <a href="/TeacherCourse">
             <BsBookHalf className="iconn" />
-            My Courses
+            All Courses
+          </a>
+        </li>
+        <li className="TAsidebar-list-item">
+          <a href="/TeacherPayment">
+            <BsBookHalf className="iconn" />
+            Payments
+          </a>
+        </li>
+        <li className="TAsidebar-list-item">
+          <a href="/TeacherFeedback">
+            <BsBookHalf className="iconn" />
+            Feedback
           </a>
         </li>
       </ul>

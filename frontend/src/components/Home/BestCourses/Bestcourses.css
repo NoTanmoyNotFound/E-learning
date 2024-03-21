@@ -84,4 +84,10 @@
     .b-button{
         position: initial;
     }
+    .b-card>img{
+        max-width: 31rem;
+    }
+
+
+
 }
