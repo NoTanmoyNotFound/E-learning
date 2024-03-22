@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const mongoose=require("mongoose");
 const express=require("express");
+const colors = require('colors');
 
 const app = express();
 
@@ -26,8 +27,8 @@ app.use(require('./router/auth'));
 
 
 app.listen(8000, () => {
-    console.log('Server is running on port 8000');
+    console.log('Server is running on port 8000'.bgCyan.white);
 }).on('error', (err) => {
-    console.error('Error starting the server', err);
+    console.error('Error starting the server'.bgRed.white, err);
 });
 
