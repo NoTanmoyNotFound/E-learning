@@ -1,14 +1,13 @@
 {
   "name": "majorproject",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm start",
     "API": "cd API && npm start",
-    "dev": "concurrently \"npm run frontend\" \"npm run backend\" \"npm run API\""
+    "dev": "concurrently \"npm run frontend\"  \"npm run API\" \"npm run backend\" "
   },
   "keywords": [],
   "author": "",
@@ -16,5 +15,14 @@
   "dependencies": {
     "concurrently": "^8.2.2",
     "mongoose": "^8.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoTanmoyNotFound/E-learning.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NoTanmoyNotFound/E-learning/issues"
+  },
+  "homepage": "https://github.com/NoTanmoyNotFound/E-learning#readme",
+  "description": ""
 }

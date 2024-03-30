@@ -27,7 +27,13 @@
     cursor: pointer;
     text-shadow: 1px 2px 17px rgb(111, 94, 174);
 }
-
+.opbut{
+    background-color: rgb(12, 78, 220);
+    color: rgb(255, 255, 255);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+}
 
 
 /* menu bar nav  with Responsiveness 'Saklin'---------------- */

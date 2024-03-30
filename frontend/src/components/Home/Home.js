@@ -13,20 +13,13 @@ const Home = () => {
     const [isToggle, setIsToggle] = useState(false);
 
 
-        const handleClickOutside = (event) => {
-            const blurElement = document.getElementById('blur');
-            if (blurElement && !blurElement.contains(event.target)) {
-                setIsToggle(false);
-            }
-        };
-
 
     const toggleValue = () => {
         setIsToggle(!isToggle);
     }
 
     return (
-        <div className={isToggle ? "active App" : "App"} id='blur'>
+        <div className="App" >
             <div>
                 <div className="white-gradient" />
                 <Header onButtonClick={toggleValue} />
