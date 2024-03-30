@@ -24,6 +24,9 @@ import TA_Analytics from './components/TeacherDashbord/TA_Analytics/TA_Analytics
 import TA_Feedback from './components/TeacherDashbord/TA_Feedback/TA_Feedback';
 import MyCourses from './components/TeacherDashbord/TA_MyCourses/MyCourses';
 import TA_Payment from './components/TeacherDashbord/TA_Payment/TA_Payment';
+import Signin from './page/Signin';
+import Signup from './page/Signup';
+import PrivateRouer from './page/PrivateRouer';
 
 
 function App() {
@@ -45,7 +48,10 @@ function App() {
         <Route path='/blogs/:id' element={<SingleBlog />} />
         <Route path='/CategorySelection' element={<CategorySelection />} />
         <Route path='/SuperCourseDash' element={<SuperCourseDash />} />
+
+        <Route element = {<PrivateRouer />}>
         <Route path='/Profile' element={<ProfileView />} />
+        </Route>
 
 
         <Route path='/EditProfile' element={<EditSidebar/>} >
@@ -65,8 +71,9 @@ function App() {
         <Route path='/TeacherAnalytics' element={<TA_Analytics /> } />
         <Route path='/TeacherPayment' element={<TA_Payment/>} />
         <Route path='/TeacherFeedback' element={<TA_Feedback />} />
-        <Route path='/TeacherCourse' element={<MyCourses />} />     
-
+        <Route path='/TeacherCourse' element={<MyCourses />} />   
+        <Route path='/signin' element={<Signin/>} />
+        <Route path='/signup' element = {<Signup/>} />
       </Routes>
     </BrowserRouter>
   );
