@@ -1,42 +1,43 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-    name: {
+
+const teacherJoinSchema = new mongoose.Schema({
+    fullname: {
         type : String,
         required : true
-    },
-    username : {
-        type : String,
-        required : true,
-        unique : true
     },
     email : {
         type : String,
         required : true,
         unique : true
     },
-    role : {
+    phone : {
         type : String,
-        default : 'user'
+        required : true,
     },
-    password: {
+    organization : {
+        type : String,
+        
+    },
+    idProof : {
         type : String,
         required : true,
         
     },
-    collage : {
+    resume : {
         type : String,
+        required : true,
         default : 'none'
     },
-    profilePicture : {
+    video : {
         type : String,
-        default : 'https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg'
+        required : true,
+        default : 'none'
     }
-
 
 
 }, {timestamps : true});
 
-const User = mongoose.model('User', userSchema);
+const TeacherJoin = mongoose.model('TeacherJoin', teacherJoinSchema);   
 
-export default User;
+export default TeacherJoin;

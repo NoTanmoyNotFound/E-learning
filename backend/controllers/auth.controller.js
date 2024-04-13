@@ -2,10 +2,24 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../ulte/error.js";
 import jwt from "jsonwebtoken";
-
+import validator from 'email-validator';
 
 export const signup = async (req, res, next) => {
     const { name, username, email, password } = req.body;
+
+    // const isValid = validator.validate(email);
+  
+    // if(!isValid){
+    //     return next(errorHandler(400, "Invalid Email"));    
+        
+    // }
+    const validUser = await User.findOne({ email });
+
+    if (validUser) {
+        return next(errorHandler(404, "User already exists"));
+    }
+
+
     const hashedPassword = await bcryptjs.hash(password, 10);
     const newUser = new User({ name, username, email, password: hashedPassword });
 
@@ -95,16 +109,6 @@ export const google = async (req, res, next) => {
             res.cookie('access_token', token, { httpOnly: true, expires: expirationDate }).status(200).json(rest);
         }
 
-
-
-
-
-
-
-    
-
-
-
     }
     catch(err){
         next(err)
@@ -113,7 +117,16 @@ export const google = async (req, res, next) => {
 }
 
 export const signout = async (req, res, next) => {
-    res.clearCookie('access_token').status(200).json('Signout success!');
+    console.log("ok");
+
+    try {
+        res.clearCookie('access_token').status(200).json('Signout success!');
+        
+    } catch (error) {
+        console.log(error);
+        console.log("this ");
+        
+    }
 
 
 }

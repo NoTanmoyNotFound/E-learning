@@ -9,7 +9,28 @@ import { IoBookSharp } from "react-icons/io5";
 import { BsPersonCircle, BsJustify } from 'react-icons/bs';
 import { AiOutlineClose } from "react-icons/ai";
 
+import { useNavigate, Link, Navigate } from "react-router-dom";
+
+import { useDispatch } from 'react-redux';
+import { signOut } from '../../../redux/user/userSlice';
+
+
+
+
 const S_header = ({ OpenSidebar }) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const handleSignOut = async () => {
+        try {
+          await fetch('http://localhost:8000/api/auth/signout');
+          dispatch(signOut());
+          <Navigate to="/"/>
+          navigate("/");
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    
     return (
         <header className='header'>
             <div className='mennu-icon'>
@@ -27,7 +48,9 @@ const S_header = ({ OpenSidebar }) => {
 
                 <a href="/"><IoHome className='iconn' /></a>
                 <a href="allCourses"><IoBookSharp className='iconn' /></a>
-                <a href="logout"><HiOutlineLogout className='iconn' /></a>
+                <Link onClick={handleSignOut}><HiOutlineLogout className='iconn' /></Link>
+                <Link><BsPersonCircle onClick={handleSignOut} className='iconn' /></Link>
+                
             </div>
         </header>
     )
