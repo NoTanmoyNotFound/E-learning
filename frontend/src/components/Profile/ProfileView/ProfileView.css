@@ -88,7 +88,7 @@
  padding : 0 auto;
  border-radius: 25px;
  border: 1px solid rgba(0, 0, 0, 0.318);
- background: linear-gradient(45deg, #a16bfe, #deb0df);
+ background: linear-gradient(45deg, #a16bfe, #deb0df) !important;
 }
 .social  {
  margin-top: 1rem;

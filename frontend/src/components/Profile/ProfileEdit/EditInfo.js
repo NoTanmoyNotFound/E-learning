@@ -64,11 +64,13 @@ function EditInfo() {
 
                     </div>
                     <div className="form-group flex items-center justify-center p-2 mb-0">
-                        <button
-                            type='submit'
-                            className='SubmitButton border border-black w-24 pt-3 pb-3 bg-blue-600 text-white rounded-md'
-                        > Submit
-                        </button>
+                    <button
+                                type='submit'
+                                className='SubmitButton border border-black w-24 pt-3 pb-3 bg-blue-600 text-white rounded-md' style={{ backgroundColor: "#26B4FF", transition: "background-color 0.3s" }}
+                                onMouseOver={(e) => { e.target.style.backgroundColor = "#FFFFFF"; }}
+                                onMouseOut={(e) => { e.target.style.backgroundColor = "#26B4FF"; }}
+                            > Submit
+                            </button>
 
                     </div>
 

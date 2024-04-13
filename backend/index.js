@@ -20,14 +20,25 @@ mongoose.connect(process.env.MONGO_URI).then(() =>{
 
 // rest object
 const app = express();
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace with the origin you want to allow, or use a function for dynamic origin determination
+    credentials: true, // Allow cookies and other credentials to be sent
+  };
+
+
 app.use(express.json());
-app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
+app.use(cookieParser())
+
+
+
+
 
 // listen
 app.listen(8000, () =>{
-    console.log("Server is running on port 5000");
+    console.log("Server is running on port 8000");
 })
+
 
 
 // routes

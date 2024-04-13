@@ -5,15 +5,15 @@ import teampic from './assets/teamwork.svg';
 import { useNavigate, Link } from 'react-router-dom';
 import { RiEyeCloseLine } from "react-icons/ri";
 import { HiOutlineEye } from "react-icons/hi";
-import { useDispatch,useSelector } from "react-redux";
-import { signinStart, signinSuccess, signinFailure} from "../redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { signinStart, signinSuccess, signinFailure } from "../redux/user/userSlice";
 import OAuth from './OAuth';
 
 function Signin() {
     const navigate = useNavigate();
     const [passwoed, setPassword] = useState(false)
     const [inputdata, setInputdata] = useState({})
-    const {loading, error} = useSelector((state )=> state.user) ;
+    const { loading, error } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
@@ -30,14 +30,14 @@ function Signin() {
 
         try {
             const { email, password } = inputdata;
-            console.log("ok");
-            if (email === "") {
+            if (!email) {
                 dispatch(signinFailure("Enter your Email"));
+                console.log("Enter your Email");
                 return;
             } else if (!email.includes("@")) {
                 dispatch(signinFailure("Enter valid Email"));
                 return;
-            } else if (password === "") {
+            } else if (!password) {
                 dispatch(signinFailure("Enter Password"));
                 return;
             } else if (password.length < 8) {
@@ -47,7 +47,7 @@ function Signin() {
 
             else {
                 dispatch(signinStart());
-           
+
                 const response = await fetch('http://localhost:8000/api/auth/signin', {
                     method: 'POST',
                     headers: {
@@ -68,7 +68,7 @@ function Signin() {
         } catch (error) {
             dispatch(signinFailure(error));
             console.log("Error:", error)
-            
+
 
         }
     }
@@ -112,12 +112,14 @@ function Signin() {
 
                         </div>
                         <button onClick={handelSubmit} className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2"> Sign In</button>
-                    
+
                         <OAuth />
                     </form>
-                    {error && <p className=" mb-3 text-red-500 mt-8" style={{color:"red"}}>{error}</p>}
-                    
-                
+                    {error && typeof error === 'string' && (
+                        <p className="mb-3 text-red-500 mt-8" style={{ color: "red" }}>{error}</p>
+                    )}
+
+
                     <div className="text-dull-white border-t border-white-light pt-4 space-y-4 text-sm ">
                         <p>Don't have an account?
                             <Link to={"/signup"}>
@@ -129,7 +131,7 @@ function Signin() {
                     </div>
                 </div>
             </div>
-           
+
         </div>
 
     )

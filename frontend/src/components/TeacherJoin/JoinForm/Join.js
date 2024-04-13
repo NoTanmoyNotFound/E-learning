@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Header from '../../Home/Header/Header'
 import './Join.css'
 import HeroChar from './assets/heroChar.png'
@@ -8,11 +8,163 @@ import Tearn from './assets/Tearn.png'
 import TTeacher from './assets/TTeacher.png'
 import TForm from './assets/TForm.jpg'
 import Footer from '../../Home/Footer/Footer'
-
+import { getDownloadURL, ref, getStorage, uploadBytesResumable } from "firebase/storage";
+import { app } from '../../../firebase' 
 const Join = () => {
-  const handleFileSelect = () => {
-    console.log("hello");
+
+  const fileRef = useRef(null);
+  const [video, setVideo] = useState(undefined);
+  const [idProof, setIdProof] = useState(undefined);
+  const [resume, setResume] = useState(undefined);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [formData, setFormData] = useState({
+  });
+
+  const [success , setSuccess] = useState(false);
+
+  useEffect(() => {
+      if (video) {
+          handleVideoUpload(video);
+      }
+
+  }, [video]);
+
+useEffect(() => {
+    if (resume) {
+      handleResumeUpload(resume);
+    }
+
+}, [resume]);
+
+useEffect(() => {
+  if (idProof) {
+    handleidUpload(idProof);
   }
+
+}, [idProof]);
+
+  const handleVideoUpload = async (video) => {
+      const storage = getStorage(app);
+      const fileName = new Date().getTime() + video.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, video);
+      uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setUploadProgress(Math.round(progress));
+          },
+          (error) => {
+              
+          },
+          () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                setFormData({ ...formData, video: downloadURL })
+              });
+          }
+      );
+  };
+
+// id proff uploading
+const handleidUpload = async (idProof) => {
+  const storage = getStorage(app);
+  const fileName = new Date().getTime() + idProof.name;
+  const storageRef = ref(storage, fileName);
+  const uploadTask = uploadBytesResumable(storageRef, idProof);
+  uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        console.log("ok");
+      },
+      (error) => {
+          
+      },
+      () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setFormData({ ...formData, idProof: downloadURL })
+          });
+      }
+  );
+};
+
+
+const handleResumeUpload = async (resume) => {
+  const storage = getStorage(app);
+  const fileName = new Date().getTime() + resume.name;
+  const storageRef = ref(storage, fileName);
+  const uploadTask = uploadBytesResumable(storageRef, resume);
+
+  uploadTask.on(
+    'state_changed',
+    (snapshot) => {
+    
+    },
+    (error) => {
+      console.error("Error uploading resume:", error);
+    },
+    () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        setFormData({ ...formData, resume: downloadURL });
+      }).catch((error) => {
+        console.error("Error getting resume download URL:", error);
+      });
+    }
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+    try {
+     
+      const res = await fetch("http://localhost:8000/api/teacher/teacherReq", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data);
+        return;
+      }
+
+      if(data.success === true){
+
+
+      setSuccess(true);
+      setFormData({});
+      setUploadProgress(0);
+      setVideo(undefined);
+      setIdProof(undefined);
+      setResume(undefined);
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+
+
   return (
 
     <div>
@@ -104,43 +256,61 @@ const Join = () => {
 
 
         <div className="form-control mt-5">
-          <form action="your-server-endpoint">
+          <form action='' onSubmit={handleSubmit}>
             <h2>Send Your Details</h2>
             <div className="inputBox">
-              <input type="text" required="required" />
+              <input type="text" required="required" name='fullname' onChange={handleChange} />
               <span>Full Name</span>
             </div>
             <div className="inputBox">
-              <input type="text" required="required" />
+              <input type="text" required="required" name='email' onChange={handleChange} />
               <span>Email</span>
             </div>
 
             <div className="inputBox">
-              <input type="text" required="required" />
+              <input type="text" required="required" name='phone' onChange={handleChange} />
               <span>Phone No.</span>
             </div>
 
 
             <div className="inputBox ">
-              <input type="text" required="required" />
+              <input type="text" required="required" name='organization' onChange={handleChange} />
               <span>Current Organization</span>
             </div>
             <div className="inputBox">
-              <input type="file" id="idProofInput" accept=".pdf" style={{ display: "none" }} onChange={(e) => handleFileSelect(e, 'idProof')} />
+              <input type="file" id="idProofInput" accept=".pdf" style={{ display: "none" }} name='idProof'  onChange={(e) => setIdProof(e.target.files[0])} />
               <span>ID Proof (PDF only)</span>
               <br />
               <label htmlFor="idProofInput" className="fileButton">Select File</label>
             </div>
             <div className="inputBox ">
-              <input type="file" id="resumeInput" accept=".pdf,.jpg,.png" style={{ display: "none" }} onChange={(e) => handleFileSelect(e, 'resume')} />
+              <input type="file" id="resumeInput" accept=".pdf,.jpg,.png" style={{ display: "none" }} name='resume'  onChange={(e) => setResume(e.target.files[0])}  />
               <span>Resume Upload (PDF, JPG, PNG)</span>
               <br />
               <label htmlFor="resumeInput" className="fileButton">Select File</label>
             </div>
+            <div className="inputBox ">
+
+              <input
+                type="file"
+                accept="video/*"
+                onChange={(e) => setVideo(e.target.files[0])}
+                ref={fileRef}
+                id='videoUplode'
+                
+              />
+              <br />
+              <label htmlFor="videoUplode" className="fileButton">Select File</label>
+              {uploadProgress > 0 && <p className=' text-2xl text-green-300'>Upload Progress: {uploadProgress}%</p>}
+            </div>
 
             <div className="inputBox flex justify-end">
-              <button type="submit" className="fileButton">Send</button>
+              <button type="submit" className="fileButton" disabled={uploadProgress !== 100}>Send</button>
             </div>
+
+            {success && (<div className="success-message" style={{ color: 'green' }}>Form submitted successfully!</div>)}
+
+
 
           </form>
         </div>

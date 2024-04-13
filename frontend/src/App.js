@@ -27,6 +27,7 @@ import TA_Payment from './components/TeacherDashbord/TA_Payment/TA_Payment';
 import Signin from './page/Signin';
 import Signup from './page/Signup';
 import PrivateRouer from './page/PrivateRouer';
+import SuperPrivateRoute from './page/SuperPrivateRoute';
 
 
 function App() {
@@ -40,8 +41,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/allCourses' element={<AllCourses />} />
-        <Route path='/superadmin' element={<SuperMain />} />
-        <Route path='/dashBoard' element={<SuperMain />} />
+       
         <Route path='/uploadd' element={<UploadCource />} />
         <Route path='/superCourseTitle' element={<SuperCourse />} />
         <Route path='/Homeblogs' element={<Homeblogs />} />
@@ -74,6 +74,17 @@ function App() {
         <Route path='/TeacherCourse' element={<MyCourses />} />   
         <Route path='/signin' element={<Signin/>} />
         <Route path='/signup' element = {<Signup/>} />
+
+
+
+
+
+
+
+
+        <Route element= {<SuperPrivateRoute/>}>
+        <Route path='/superadmin' element={<SuperMain />} />
+         </Route>
       </Routes>
     </BrowserRouter>
   );

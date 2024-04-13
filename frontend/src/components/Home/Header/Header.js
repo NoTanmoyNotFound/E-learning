@@ -49,7 +49,11 @@ const Header = ({ onButtonClick }) => {
                             <a href="">Career Support</a>
                             <a href="Homeblogs">Blogs</a>
                             <a href="">Contact Us</a>
-                            <a href="superadmin">Super Admin</a>
+                            <Link to="/superadmin">
+                                {currentUser.role === 'super_admin' ? (
+                                    <a href="">Super Admin</a>
+                                ): null}
+                            </Link>
 
                             <Link to="/Profile">
                                 {currentUser ? (

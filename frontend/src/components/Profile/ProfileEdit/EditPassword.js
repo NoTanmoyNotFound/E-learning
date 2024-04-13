@@ -38,9 +38,11 @@ const EditPassword = () => {
                     <input type="password" name='confirmpassword' className="form-control" onChange={handleChange} />
                 </div>
                 <div className="form-group flex items-center justify-center p-2 mb-0">
-                            <button
+                <button
                                 type='submit'
-                                className='SubmitButton border border-black w-24 pt-3 pb-3 bg-blue-600 text-white rounded-md'
+                                className='SubmitButton border border-black w-24 pt-3 pb-3 bg-blue-600 text-white rounded-md' style={{ backgroundColor: "#26B4FF", transition: "background-color 0.3s" }}
+                                onMouseOver={(e) => { e.target.style.backgroundColor = "#FFFFFF"; }}
+                                onMouseOut={(e) => { e.target.style.backgroundColor = "#26B4FF"; }}
                             > Submit
                             </button>
 

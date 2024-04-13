@@ -4,12 +4,16 @@ import '../../SuperAdmin/SuperAdmin.css'
 import './ProfileView.css'
 import S_header from '../../SuperAdmin/S_header/S_header'
 import S_sidebar from '../../SuperAdmin/S_sidebar/S_sidebar'
-import profile from "./assets/profile.png"
+import profile from "./assets/profile.png";
+import { useDispatch } from 'react-redux';
+import { signOut } from '../../../redux/user/userSlice';
 
 import {useNavigate} from "react-router-dom" 
 
 
 const ProfileView = () => {
+
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -40,15 +44,18 @@ const ProfileView = () => {
 
 
 
+
+
+
     return (
         <div className='grid-container'>
             <S_header OpenSidebar={OpenSidebar} />
             <S_sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} profilePic={profilePic} />
             {/* <S_home /> */}
 
-            <main className="mainn-container mt-0 px-8 max-w-11/12 bg-gradient-to-r from-cyan-100 to-blue-100">
+            <main className="mainn-container mt-0 px-8 max-w-11/12" style={{backgroundImage : "linear-gradient(to right, #a5f3eb, #a5c8f3) opacity(0.6)"}}>
                 <div className="info bg-white p-[20px] rounded-[40px]">
-                    <div className="userBox  mb-[25px] rounded-[25px] flex bg-gradient-to-r from-cyan-100 to-blue-100 pt-1 pr-1 pb-1 pl-2">
+                    <div className="userBox  mb-[25px] rounded-[25px] flex bg-gradient-to-r from-cyan-100 to-blue-100 pt-1 pr-1 pb-1 pl-2" >
                         <div className="user w-52 pr-3 pl-3">
                             <img src={profilePic} height={100} width={100} id="pfp" className='mb-2 object-cover rounded-full bg-white' />
                             <div className="round">
