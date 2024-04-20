@@ -50,6 +50,7 @@ function Signin() {
 
                 const response = await fetch('http://localhost:8000/api/auth/signin', {
                     method: 'POST',
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -60,6 +61,7 @@ function Signin() {
                     dispatch(signinFailure(data.message));
                     return;
                 }
+                console.log(data);
                 dispatch(signinSuccess(data));
 
                 navigate('/');

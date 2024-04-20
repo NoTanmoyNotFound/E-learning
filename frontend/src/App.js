@@ -28,6 +28,7 @@ import Signin from './page/Signin';
 import Signup from './page/Signup';
 import PrivateRouer from './page/PrivateRouer';
 import SuperPrivateRoute from './page/SuperPrivateRoute';
+import ForgotPassword from './page/ForgotPassword';
 
 
 function App() {
@@ -67,14 +68,14 @@ function App() {
         </Route>
 
         <Route path='/Join' element={<Join/>}/>
-        <Route path='/techerDashbord'element={<TeacherAdminMain />}/>
+        <Route path='/techerDashbord' element={<TeacherAdminMain />}/>
         <Route path='/TeacherAnalytics' element={<TA_Analytics /> } />
         <Route path='/TeacherPayment' element={<TA_Payment/>} />
         <Route path='/TeacherFeedback' element={<TA_Feedback />} />
         <Route path='/TeacherCourse' element={<MyCourses />} />   
         <Route path='/signin' element={<Signin/>} />
         <Route path='/signup' element = {<Signup/>} />
-
+        <Route path='/forgotPassword' element={<ForgotPassword/>} />
 
 
 

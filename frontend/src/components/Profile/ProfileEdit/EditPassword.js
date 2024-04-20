@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import React from 'react'
 import './ProfileEdit.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const EditPassword = () => {
+    const dispatch = useDispatch();
+    const {currentUser} = useSelector((state) => state.user);
+    console.log(currentUser);
     const [inputdata, setInputdata] = useState({
-
-      
-        oldpassword: "",
-        newpassword: "",
-        confirmpassword: "",
+        id : currentUser._id,
     });
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -17,11 +17,37 @@ const EditPassword = () => {
           setInputdata({ ...inputdata, [name]: value });
         }
         console.log(inputdata);
-
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            if (inputdata.password !== inputdata.confirmpassword) {
+              console.log("Passwords do not match");
+              return;
+          }
+            try {
+                console.log("ok");
+                const res = await fetch(`/api/user/updateInfo`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  
+                  },
+                  body: JSON.stringify(inputdata),
+                });
+                console.log("ok");
+                const data = await res.json();
+                if (data.success === false) {
+                    console.log(data);
+                  return;
+                }
+                console.log(data);
+              } catch (error) {
+                console.log(error);                
+              }
+        }
 
     return (
         <div className='pt-2 pl-4 pr-4 pb-4'>
-        <form>
+        <form action="" onSubmit={handleSubmit}>
 
 
             <div className="card-body pb-2">
@@ -31,7 +57,7 @@ const EditPassword = () => {
                 </div>
                 <div className="form-group">
                     <label className="form-label">New password</label>
-                    <input type="password" name='newpassword' className="form-control" onChange={handleChange} />
+                    <input type="password" name='password' className="form-control" onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label className="form-label">Repeat new password</label>

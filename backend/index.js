@@ -25,10 +25,12 @@ const corsOptions = {
     credentials: true, // Allow cookies and other credentials to be sent
   };
 
-
-app.use(express.json());
-app.use(cors(corsOptions));
 app.use(cookieParser())
+app.use(express.json());
+app.use(cors({credentials:true, origin:true, exposedHeaders: ["set-cookie"]}));
+
+console.log();
+
 
 
 

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import './ProfileEdit.css';
-
+import { useSelector, useDispatch} from 'react-redux';
+import {updateUserStart, updateUserSuccess, updateUserFailure} from '../../../redux/user/userSlice';
 
 
 function EditInfo() {
+    const {currentUser} = useSelector((state) => state.user);
+    const dispatch = useDispatch();
     
 
     const [inputdata, setInputdata] = useState({
-
-      
-        bio: "",
-        bdate: "",
+        userid: currentUser._id,
         country: "india",
-        contact : ""
+        
     });
     
 
@@ -26,13 +26,37 @@ function EditInfo() {
     console.log(inputdata);
 
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            dispatch(updateUserStart());
+            const res = await fetch(`/api/user/updateInfo`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(inputdata),
+            });
+            const data = await res.json();
+            if (data.success === false) {
+                dispatch(updateUserFailure(data.message));
+                return;
+            }
+            dispatch(updateUserSuccess(data));
+        } catch (error) {
+            console.log(error);
+            dispatch(updateUserFailure(error));
+        }
+    }
+
+
 
     return (
         <div>
 
-
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="p-4">
+                
                     <div className="Bio">
                         <label className="form-label">Bio</label>
                         <textarea name='bio' className="form-control" rows="5" onChange={handleChange}></textarea>
@@ -40,7 +64,7 @@ function EditInfo() {
 
                     <div className="form-group">
                         <label className="form-label">Birthday</label>
-                        <input type="date" name='bdate' className="form-control" defaultValue=""  onChange={handleChange} />
+                        <input type="date" name='birth' className="form-control" defaultValue=""  onChange={handleChange} />
                     </div>
 
 
@@ -59,7 +83,7 @@ function EditInfo() {
                         <h6 className="mb-4">Contacts</h6>
                         <div className="form-group">
                             <label className="form-label">Phone</label>
-                            <input type="text" name='contact' className="form-control" defaultValue=""  onChange={handleChange} />
+                            <input type="text" name='phone' className="form-control" defaultValue=""  onChange={handleChange} />
                         </div>
 
                     </div>
@@ -73,6 +97,8 @@ function EditInfo() {
                             </button>
 
                     </div>
+
+                    
 
 
 
