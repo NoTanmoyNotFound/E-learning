@@ -103,6 +103,7 @@ const MyCourses = () => {
       </div>
       <button
         onClick={handleDone}
+        style={{background:'#7734eb'}}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         Done

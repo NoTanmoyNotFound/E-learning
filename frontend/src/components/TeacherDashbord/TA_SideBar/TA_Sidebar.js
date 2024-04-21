@@ -2,7 +2,7 @@ import React from "react";
 import "./TA_Sidebar.css";
 import { FaUserCircle } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsGraphUp } from "react-icons/bs";
 
 import { BsBookHalf } from "react-icons/bs";
@@ -37,24 +37,24 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
 
       <ul className="TAsidebar-list">
         <li className="TAsidebar-list-item">
-          <Link href="/TeacherAdminMain">
+          <Link to="/TeacherAdminMain">
             <BsGraphUp className="iconn" /> Analytics
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link href="/TeacherCourse">
+          <Link to="/TeacherCourse">
             <BsBookHalf className="iconn" />
             All Courses
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link href="/TeacherPayment">
+          <Link to="/TeacherPayment">
             <BsBookHalf className="iconn" />
             Payments
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link href="/TeacherFeedback">
+          <Link to="/TeacherFeedback">
             <BsBookHalf className="iconn" />
             Feedback
           </Link>
