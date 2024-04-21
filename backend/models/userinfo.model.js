@@ -3,7 +3,7 @@ import User from "./user.model.js";
 
 const userInfoSchema = new mongoose.Schema({
     userid: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'User'
     },
     collage: {

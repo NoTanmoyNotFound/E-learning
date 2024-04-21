@@ -41,13 +41,9 @@ export const updateUser = async (req, res, next) =>{
 export const updateUserInfo = async (req, res, next) =>{
     const {userid} = req.body;
     try{
-        const currentUser = await UserInfo.findOne({userid });
-        
-        if (!currentUser) {
-            const userInfo = new UserInfo(req.body);
-            await userInfo.save();
-            res.status(200).json(userInfo);
-        }else{
+        const currentUser = await UserInfo.findOne({ userid: userid });
+        console.log(currentUser)
+
         const userInfo = await UserInfo.findByIdAndUpdate(
             currentUser._id,
             {
@@ -59,10 +55,11 @@ export const updateUserInfo = async (req, res, next) =>{
                     phone: req.body.phone,
                     gender: req.body.gender,
                     language: req.body.language, 
-                    twiter: req.body.twiter ,
+                    twiter: req.body.twitter ,
                     instagram: req.body.instagram, 
                     facebook: req.body.facebook ,
                     linkedin: req.body.linkedin , 
+                    github: req.body.github ,
                     courses: req.body.course ,  
                 }
             },
@@ -71,8 +68,6 @@ export const updateUserInfo = async (req, res, next) =>{
            
 
             res.status(200).json(userInfo);
-
-        }
 
     }catch (error){
         next(error)
@@ -103,6 +98,32 @@ export const deleteUser = async (req, res, next) =>{
 
 
 }
+
+
+export const userInfo = async (req, res, next) =>{
+    try{
+        const user = await UserInfo.findOne({ userid: req.params.id });
+        console.log(user);
+        res.status(200).json(user);
+    }catch (error){
+        next(error)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const updatePassword = async (req, res, next) => {
     const { id, oldpassword, password } = req.body;

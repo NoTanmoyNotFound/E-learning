@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './ProfileEdit.css';
 import { useSelector, useDispatch} from 'react-redux';
-import {updateUserStart, updateUserSuccess, updateUserFailure} from '../../../redux/user/userSlice';
+import { userInfoStart, userInfoSuccess, userInfoFailure } from "../../../redux/user/localSlice";
 
 
 function EditInfo() {
-    const {currentUser} = useSelector((state) => state.user);
+    const { currentUser } = useSelector((state) => state.user);
     const dispatch = useDispatch();
     
 
@@ -29,7 +29,7 @@ function EditInfo() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            dispatch(updateUserStart());
+            dispatch(userInfoStart());
             const res = await fetch(`/api/user/updateInfo`, {
                 method: 'POST',
                 headers: {
@@ -39,13 +39,13 @@ function EditInfo() {
             });
             const data = await res.json();
             if (data.success === false) {
-                dispatch(updateUserFailure(data.message));
+                dispatch(userInfoFailure(data.message));
                 return;
             }
-            dispatch(updateUserSuccess(data));
+            dispatch(userInfoSuccess(data));
         } catch (error) {
             console.log(error);
-            dispatch(updateUserFailure(error));
+            dispatch(userInfoFailure(error));
         }
     }
 

@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import UserOtp from "../models/userotp.model.js";
+import UserInfo from "../models/userinfo.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../ulte/error.js";
 import jwt from "jsonwebtoken";
@@ -28,6 +29,7 @@ export const signup = async (req, res, next) => {
     const { name, username, email, password } = req.body;
 
     const isValid = validator.validate(email);
+    console.log(isValid);
   
     if(!isValid){
         return next(errorHandler(400, "Invalid Email"));    
@@ -37,6 +39,10 @@ export const signup = async (req, res, next) => {
 
     if (validUser) {
         return next(errorHandler(404, "User already exists"));
+    }
+    const validId = await User.findOne({ username });
+    if (validId) {
+        return next(errorHandler(404, "Change Username, User already exists"));
     }
 
 
@@ -71,9 +77,20 @@ export const signin = async (req, res, next) => {
             return next(errorHandler(404, "Wrong password"));
         }
 
+        if (validUser.role === "user") {
+            const userInfo = await UserInfo.findOne({ userid: validUser._id });
+
+            if(!userInfo){
+                const newUser = new UserInfo({ userid: validUser._id });
+                await newUser.save();
+            }
+        }
+
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
         const { password: hashedPassword, ...rest } = validUser._doc;
         console.log(token , rest);
+
+
 
 
 
@@ -81,6 +98,7 @@ export const signin = async (req, res, next) => {
         var expirationDate = new Date();
         expirationDate.setTime(expirationDate.getTime() + (fiveDaysInSeconds * 1000));
         var expires = "expires=" + expirationDate.toUTCString();
+
 
         
 

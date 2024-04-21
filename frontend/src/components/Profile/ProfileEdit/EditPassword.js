@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 const EditPassword = () => {
     const dispatch = useDispatch();
     const {currentUser} = useSelector((state) => state.user);
-    console.log(currentUser);
     const [inputdata, setInputdata] = useState({
         id : currentUser._id,
     });
+    const [comedata, setComedata] = useState(null);
     const handleChange = (e) => {
         const {name, value} = e.target;
           
@@ -25,7 +25,7 @@ const EditPassword = () => {
           }
             try {
                 console.log("ok");
-                const res = await fetch(`/api/user/updateInfo`, {
+                const res = await fetch(`/api/user/updatePass`, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -33,15 +33,16 @@ const EditPassword = () => {
                   },
                   body: JSON.stringify(inputdata),
                 });
-                console.log("ok");
+                
                 const data = await res.json();
                 if (data.success === false) {
                     console.log(data);
+                    setComedata(data.message);
                   return;
                 }
-                console.log(data);
+                setComedata(data.message);
               } catch (error) {
-                console.log(error);                
+                setComedata(error);               
               }
         }
 
@@ -63,7 +64,9 @@ const EditPassword = () => {
                     <label className="form-label">Repeat new password</label>
                     <input type="password" name='confirmpassword' className="form-control" onChange={handleChange} />
                 </div>
+                <p className=' font-bold'>{comedata}</p>
                 <div className="form-group flex items-center justify-center p-2 mb-0">
+              
                 <button
                                 type='submit'
                                 className='SubmitButton border border-black w-24 pt-3 pb-3 bg-blue-600 text-white rounded-md' style={{ backgroundColor: "#26B4FF", transition: "background-color 0.3s" }}

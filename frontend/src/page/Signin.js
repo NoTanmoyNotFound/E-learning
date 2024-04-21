@@ -13,7 +13,7 @@ function Signin() {
     const navigate = useNavigate();
     const [passwoed, setPassword] = useState(false)
     const [inputdata, setInputdata] = useState({})
-    const { loading, error } = useSelector((state) => state.user);
+    const {  error } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
@@ -22,8 +22,7 @@ function Signin() {
     }
 
 
-    //submit
-    console.log(inputdata);
+    
 
     const handelSubmit = async (e) => {
         e.preventDefault();
