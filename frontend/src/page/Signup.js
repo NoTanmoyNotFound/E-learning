@@ -3,8 +3,8 @@ import fig from './assets/edited.png'
 import { useNavigate, Link } from 'react-router-dom';
 import { RiEyeCloseLine } from "react-icons/ri";
 import { HiOutlineEye } from "react-icons/hi";
-import { RiAdminLine } from "react-icons/ri";
-import { ToastContainer, toast } from 'react-toastify';
+// import { RiAdminLine } from "react-icons/ri";
+// import { ToastContainer, toast } from 'react-toastify';
 import OAuth from './OAuth';
 function Signup() {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ function Signup() {
         const data = await response.json();
         setLoading(false)
         if (data.success === false) {
-          setError(data);
+          setError(data.message);
           return;
         }
         
@@ -157,7 +157,7 @@ function Signup() {
             <button disabled={loading} onClick={handelSubmit} className="bg-gradient-to-r from-rose-500 to-amber-200 w-80 font-semibold rounded-full py-2">{loading ? "Loading..." : " Sign Up "}</button>
           <OAuth />
           </form>
-          <p className='text-red-500 mt-3 ' style={{color: "red"}}>{error && "Something went wrong"}</p>
+          <p className='text-red-500 mt-3 ' style={{color: "red"}}>{error}</p>
           <div className="text-dull-white border-t border-white-light pt-4 space-y-4 text-sm">
             <p>Already have an account?
               <Link to="/signin">
@@ -165,7 +165,6 @@ function Signup() {
           </div>
         </div>
       </div>
-      <ToastContainer />
       
     </div>
 

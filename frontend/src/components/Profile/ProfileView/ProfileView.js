@@ -1,29 +1,60 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import '../../SuperAdmin/SuperAdmin.css'
 import './ProfileView.css'
 import S_header from '../../SuperAdmin/S_header/S_header'
 import S_sidebar from '../../SuperAdmin/S_sidebar/S_sidebar'
 import profile from "./assets/profile.png";
-import { useDispatch } from 'react-redux';
 import { signOut } from '../../../redux/user/userSlice';
+import instagram from "./assets/instagram.png";
+import twitter from "./assets/twitter.png";
+import linkedin from "./assets/LinkedIn.png";
+import github from "./assets/Github.png";
+import { Link } from 'react-router-dom'
 
-import {useNavigate} from "react-router-dom" 
+import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { userInfoStart, userInfoSuccess, userInfoFailure } from "../../../redux/user/localSlice";
 
 
 const ProfileView = () => {
+    useEffect(() => {
+        async function fetchUserInfo() {
+            dispatch(userInfoStart());
+            try {
+                const response = await fetch(`/api/user/updateInfo/${currentUser._id}`);
+                const data = await response.json();
+                console.log(data);
+                if (data.success === false) {
+                    dispatch(userInfoFailure(data.message));
+                } else {
+                    dispatch(userInfoSuccess(data));
+                }
+            } catch (error) {
+                dispatch(userInfoFailure(error.message));
+            }
+        }
 
+        fetchUserInfo();
+    }, []);
+
+
+    const fileRef = useRef(null);
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
     const [profilePic, setProfilePic] = useState(profile);
 
+    const { currentUserInfo } = useSelector((state) => state.local);
+    const { currentUser } = useSelector((state) => state.user);
+    console.log(currentUser);
+    console.log(currentUserInfo);
     const OpenSidebar = () => {
         setOpenSidebarToggle(!openSidebarToggle);
     };
 
-    const goEdit = () =>{
+    const goEdit = () => {
         navigate("/EditProfile")
     }
 
@@ -53,30 +84,65 @@ const ProfileView = () => {
             <S_sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} profilePic={profilePic} />
             {/* <S_home /> */}
 
-            <main className="mainn-container mt-0 px-8 max-w-11/12" style={{backgroundImage : "linear-gradient(to right, #a5f3eb, #a5c8f3) opacity(0.6)"}}>
+            <main className="mainn-container mt-0 px-8 max-w-11/12" style={{ backgroundImage: "linear-gradient(to right, #a5f3eb, #a5c8f3) opacity(0.6)" }}>
                 <div className="info bg-white p-[20px] rounded-[40px]">
                     <div className="userBox  mb-[25px] rounded-[25px] flex bg-gradient-to-r from-cyan-100 to-blue-100 pt-1 pr-1 pb-1 pl-2" >
                         <div className="user w-52 pr-3 pl-3">
-                            <img src={profilePic} height={100} width={100} id="pfp" className='mb-2 object-cover rounded-full bg-white' />
-                            <div className="round">
+                            <img src={currentUser.profilePicture} height={100} width={100} id="pfp" className='mb-2 object-cover rounded-full bg-white' />
+                            {/* <div className="round">
                                 <input type="file" id="input-file" accept="image/jpeg, image/png, image/jpg" onChange={handleFileChange} />
                                 <label htmlFor="input-file" id="ok"> <i className="fa fa-camera" style={{ transform: 'scale(1.3)' }} /></label>
-                            </div>
-                            <h3 className="name text-xl text-white font-Nunito font-bold" >Tanmoy Das</h3>
+                            </div> */}
+                            <h3 className="name text-xl text-white font-Nunito font-bold" >{currentUser.name}</h3>
                             <p className="role">Student</p>
-                            <button  onClick={goEdit} className="gokgok-btn w-48 bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium ">update profile</button>
+                            <button onClick={goEdit} className="gokgok-btn w-48 bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium ">update profile</button>
                         </div>
                         <div className="user1">
-                            <p id="bio" className=' font-Nunito'>Hello Guys i'm under the water here is too much raining UwU</p>
+                            <p id="bio" className=' font-Nunito'>{currentUserInfo ? currentUserInfo.bio === "none" ? "Updaet your profile" : currentUserInfo.bio : "updaet your profile"}</p>
                             <p className="h">Languaged Used</p>
-                            <p id="language">C++</p>
+                            <p id="language">{currentUserInfo ? currentUserInfo.language === "none" ? "updaet your profile" : currentUserInfo.language : "updaet your profile"}</p>
                             <p className="h">Institute</p>
-                            <p id="institute">Kingston School of Management and Science</p>
+                            <p id="institute">{currentUserInfo ? currentUserInfo.collage === "none" ? "updaet your profile" : currentUserInfo.collage : "updaet your profile"}</p>
                             <h6 className="social text-base text-white font-semibold mt-1">Follow me on Social Media :</h6>
                             <div className="imgs flex gap-2 ">
-                                <img src="instagram.png" alt />
-                                <img src="Github.png" alt />
-                                <img src="twitter.png" alt />
+                                {currentUserInfo ? (
+                                    <>
+                                        {currentUserInfo.instagram === "none" &&
+                                            currentUserInfo.github === "none" &&
+                                            currentUserInfo.facebook === "none" &&
+                                            currentUserInfo.linkedin === "none" ? (
+                                            <span>Update your profile</span>
+                                        ) : (
+                                            <>
+                                                {currentUserInfo.instagram !== "none" && (
+                                                    <Link target="_blank" to={currentUserInfo.instagram}>
+                                                        <img src={instagram} alt="Instagram" />
+                                                    </Link>
+                                                )}
+                                                {currentUserInfo.github !== "none" && (
+                                                    <Link target="_blank" to={currentUserInfo.github}>
+                                                        <img src={github} alt="GitHub" />
+                                                    </Link>
+                                                )}
+                                                {currentUserInfo.facebook !== "none" && (
+                                                    <Link target="_blank" to={currentUserInfo.facebook}>
+                                                        <img src={facebook} alt="Facebook" />
+                                                    </Link>
+                                                )}
+                                                {currentUserInfo.linkedin !== "none" && (
+                                                    <Link target="_blank" to={currentUserInfo.linkedin}>
+                                                        <img src={linkedin} alt="LinkedIn" />
+                                                    </Link>
+                                                )}
+                                            </>
+                                        )}
+                                    </>
+                                ) : (
+                                    ""
+                                )}
+
+
+
                             </div>
                         </div>
                     </div>
@@ -122,3 +188,21 @@ const ProfileView = () => {
 }
 
 export default ProfileView;
+
+
+export const UserInfo = async () => {
+    const dispatch = useDispatch();
+    const { currentUser } = useSelector((state) => state.user);
+    console.log(currentUser);
+
+    dispatch(userInfoStart());
+    const response = await fetch(`/api/user/updateInfo/${currentUser._id}`);
+    const data = await response.json();
+    if (data.success === false) {
+        dispatch(userInfoFailure(data.message));
+        return;
+    }
+    dispatch(userInfoSuccess(data));
+    return response.json();
+
+}

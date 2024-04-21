@@ -1,14 +1,15 @@
 import { useState } from "react";
 import Home from "./components/Home/Home";
 import AllCourses from "./components/AllCourses/AllCourses";
-import SuperMain from "./components/SuperAdmin/SuperMain";
-import UploadCource from "./components/UploadCource/UploadCource";
-import SuperCourse from "./components/SuperAdmin/SuperCourse/SuperCourseTitleUpload/SuperCourse";
-import Homeblogs from "./components/BlogsMain/Blogs/Homeblogs";
-import SingleBlog from "./components/BlogsMain/Blogs/Singleblog/SingleBlog";
-import CategorySelection from "./components/BlogsMain/Blogs/CategorySelection/CategorySelection";
-import SuperCourseDash from "./components/SuperAdmin/SuperCourse/SuperCourseDashboard/SuperCourseDash";
-import ProfileView from "./components/Profile/ProfileView/ProfileView";
+import SuperMain from './components/SuperAdmin/SuperMain';
+import UploadCource from './components/UploadCource/UploadCource';
+import SuperCourse from './components/SuperAdmin/SuperCourse/SuperCourseTitleUpload/SuperCourse';
+import Homeblogs from './components/BlogsMain/Blogs/Homeblogs';
+import SingleBlog from './components/BlogsMain/Blogs/Singleblog/SingleBlog';
+import CategorySelection from './components/BlogsMain/Blogs/CategorySelection/CategorySelection';
+import SuperCourseDash from './components/SuperAdmin/SuperCourse/SuperCourseDashboard/SuperCourseDash';
+import ProfileView from './components/Profile/ProfileView/ProfileView';
+
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import ProfileEdit from './components/Profile/ProfileEdit/ProfileEdit';
@@ -47,8 +48,8 @@ function App() {
         <Route path="/CategorySelection" element={<CategorySelection />} />
         <Route path="/SuperCourseDash" element={<SuperCourseDash />} />
 
-        <Route element={<PrivateRouer />}>
-          <Route path="/Profile" element={<ProfileView />} />
+        <Route element = {<PrivateRouer />}>
+        <Route path='/Profile' element={<ProfileView />} />
         </Route>
 
         <Route path="/EditProfile" element={<EditSidebar />}>
@@ -58,14 +59,21 @@ function App() {
           <Route path="EditPassword" element={<EditPassword />} />
         </Route>
 
-        <Route path="/Join" element={<Join />} />
-        <Route path="/teacherDashboard" element={<TeacherAdminMain />} />
-        <Route path="/teacherAnalytics" element={<TA_Analytics />} />
-        <Route path="/teacherPayment" element={<TA_Payment />} />
-        <Route path="/teacherFeedback" element={<TA_Feedback />} />
-        <Route path="/teacherCourse" element={<MyCourses />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path='/Join' element={<Join/>}/>
+        <Route path='/techerDashbord'element={<TeacherAdminMain />}/>
+        <Route path='/TeacherAnalytics' element={<TA_Analytics /> } />
+        <Route path='/TeacherPayment' element={<TA_Payment/>} />
+        <Route path='/TeacherFeedback' element={<TA_Feedback />} />
+        <Route path='/TeacherCourse' element={<MyCourses />} />   
+        <Route path='/signin' element={<Signin/>} />
+        <Route path='/signup' element = {<Signup/>} />
+
+
+
+
+
+
+
 
         <Route element={<SuperPrivateRoute />}>
           <Route path="/superadmin" element={<SuperMain />} />

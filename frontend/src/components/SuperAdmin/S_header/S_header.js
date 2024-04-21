@@ -13,6 +13,7 @@ import { useNavigate, Link, Navigate } from "react-router-dom";
 
 import { useDispatch } from 'react-redux';
 import { signOut } from '../../../redux/user/userSlice';
+import {InfosignOut} from '../../../redux/user/localSlice'
 
 
 
@@ -24,6 +25,7 @@ const S_header = ({ OpenSidebar }) => {
         try {
           await fetch('http://localhost:8000/api/auth/signout');
           dispatch(signOut());
+          dispatch(InfosignOut());
           <Navigate to="/"/>
           navigate("/");
         } catch (error) {

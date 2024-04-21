@@ -13,7 +13,7 @@ function Signin() {
     const navigate = useNavigate();
     const [passwoed, setPassword] = useState(false)
     const [inputdata, setInputdata] = useState({})
-    const { loading, error } = useSelector((state) => state.user);
+    const {  error } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
@@ -22,8 +22,7 @@ function Signin() {
     }
 
 
-    //submit
-    console.log(inputdata);
+    
 
     const handelSubmit = async (e) => {
         e.preventDefault();
@@ -50,6 +49,7 @@ function Signin() {
 
                 const response = await fetch('http://localhost:8000/api/auth/signin', {
                     method: 'POST',
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -60,6 +60,7 @@ function Signin() {
                     dispatch(signinFailure(data.message));
                     return;
                 }
+                console.log(data);
                 dispatch(signinSuccess(data));
 
                 navigate('/');

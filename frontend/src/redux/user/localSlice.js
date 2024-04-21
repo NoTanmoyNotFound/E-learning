@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initSilice = {
-    nowuser : null,
+    currentUserInfo : null,
     loading : false,
     error : false
 }
@@ -11,25 +11,25 @@ const localSlice = createSlice({
     name : "local",
     initialState : initSilice,
     reducers : {
-        signinStart : (state) => {
+        userInfoStart : (state) => {
             state.loading = true;
         },
-        signinSuccess : (state, action) => {
+        userInfoSuccess : (state, action) => {
             state.loading = false;
-            state.nowuser = action.payload;
+            state.currentUserInfo = action.payload;
             state.error = false;
         },
-        signinFailure : (state, action) => {
+        userInfoFailure : (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
-        signout : (state) => {
-            state.nowuser = null;
+        InfosignOut : (state) => {
+            state.currentUserInfo = null;
             state.loading = false;
             state.error = false;
         }
     }
 })      
 
-export const {signinStart, signinSuccess, signinFailure, signout} = localSlice.actions;
+export const {userInfoStart, userInfoSuccess, userInfoFailure, InfosignOut} = localSlice.actions;
 export default localSlice.reducer
