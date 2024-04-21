@@ -44,33 +44,33 @@ const TA_Analytics = () => {
     <>
       <div className="flex flex-col">
         <div className="flex flex-row  gap-8 mx-4">
-          <div className="TA_container h-36 w-96 flex flex-2 flex-row mt-3 bg-green-300 rounded-md shadow-md p-4 cursor-pointer ">
+          <div style={{backgroundColor: "#34D399"}} className="TA_container h-36 w-96 flex flex-2 flex-row mt-3 bg-green-300 rounded-md shadow-md p-4 cursor-pointer ">
             <div className="TA_Shoping">
               <IoPeopleCircleSharp size={50} className="text-black-500" />
             </div>
             <div className="sales ml-7">
               <h2 className="text-zinc-600 text-xl">Number of Enrollments</h2>
-              <p className="mt-2 text-2xl">400</p>
+              <p style={{ marginTop: "0.5rem", fontSize: "1.5rem", color: "#333" }}>400</p>
             </div>
           </div>
 
-          <div className="TA_container h-36 w-96 flex flex-2 flex-row mt-3 bg-orange-300 rounded-md shadow-md p-4 ">
+          <div style={{backgroundColor: "#FFA500"}} className="TA_container h-36 w-96 flex flex-2 flex-row mt-3  rounded-md shadow-md p-4 ">
             <div className="TA_Shoping">
               <ImBooks size={50} className="text-blue-900" />
             </div>
             <div className="sales ml-7 cursor-pointer">
               <h2 className="text-zinc-600 text-xl">Number Of Courses</h2>
-              <p className="mt-2 text-2xl">20</p>
+              <p style={{ marginTop: "0.5rem", fontSize: "1.5rem", color: "#333" }}>20</p>
             </div>
           </div>
 
-          <div className="TA_container h-36 w-96 flex flex-2 flex-row mt-3 bg-red-300 rounded-md shadow-md p-4 cursor-pointer ">
+          <div style={{backgroundColor: "#7734eb"}} className="TA_container h-36 w-96 flex flex-2 flex-row mt-3 rounded-md shadow-md p-4 cursor-pointer ">
             <div className="TA_Shoping">
               <FaShoppingCart size={50} className="text-stone-950" />
             </div>
             <div className="sales ml-7">
               <h2 className="text-zinc-600 text-xl">Total Sales</h2>
-              <p className="mt-2 text-2xl">700</p>
+              <p style={{ marginTop: "0.5rem", fontSize: "1.5rem", color: "#333" }}>700</p>
             </div>
           </div>
         </div>

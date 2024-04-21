@@ -2,7 +2,7 @@ import React from "react";
 import "./TA_Sidebar.css";
 import { FaUserCircle } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsGraphUp } from "react-icons/bs";
 
 import { BsBookHalf } from "react-icons/bs";
