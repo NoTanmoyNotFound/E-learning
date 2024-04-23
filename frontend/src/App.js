@@ -28,6 +28,9 @@ import Signin from "./page/Signin";
 import Signup from "./page/Signup";
 import PrivateRouer from "./page/PrivateRouer";
 import SuperPrivateRoute from "./page/SuperPrivateRoute";
+import Signinprotact from "./page/Signinprotact";
+import Careersuport from "./page/Careersuport";
+import Formcareer from "./page/Formcareer";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -64,10 +67,16 @@ function App() {
         <Route path='/TeacherAnalytics' element={<TA_Analytics /> } />
         <Route path='/TeacherPayment' element={<TA_Payment/>} />
         <Route path='/TeacherFeedback' element={<TA_Feedback />} />
-        <Route path='/TeacherCourse' element={<MyCourses />} />   
+        <Route path='/TeacherCourse' element={<MyCourses />} /> 
+
+        <Route element={<Signinprotact/>}>  
         <Route path='/signin' element={<Signin/>} />
         <Route path='/signup' element = {<Signup/>} />
+        </Route>
 
+        <Route path="/careersuport" element={<Careersuport />} />
+        <Route path="/careerform" element={<Formcareer />} />
+ 
 
 
 

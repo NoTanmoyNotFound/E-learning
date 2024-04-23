@@ -2,14 +2,10 @@ import React from 'react'
 import { useSelector } from "react-redux";
 
 import { Outlet, Navigate } from "react-router-dom";
-
-
-function SuperPrivateRoute() {
+function Signinprotact() {
 
     const { currentUser, loading, error } = useSelector((state) => state.user);
-    console.log(currentUser);
-    return currentUser.role === 'super_admin' ? <Outlet /> :  <Navigate to="/" />;
-
+  return currentUser === null ? <Outlet /> :  <Navigate to="/" />;
 }
 
-export default SuperPrivateRoute
+export default Signinprotact

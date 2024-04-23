@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import UserInfo from "../models/userinfo.model.js"; 
+import CareerSuport from "../models/careerSuport.model.js";
 import bcryptjs from "bcryptjs";    
 import { errorHandler } from "../ulte/error.js";
 
@@ -42,7 +43,7 @@ export const updateUserInfo = async (req, res, next) =>{
     const {userid} = req.body;
     try{
         const currentUser = await UserInfo.findOne({ userid: userid });
-        console.log(currentUser)
+        // console.log(currentUser)
 
         const userInfo = await UserInfo.findByIdAndUpdate(
             currentUser._id,
@@ -147,3 +148,38 @@ export const updatePassword = async (req, res, next) => {
         return next(errorHandler(404, "Somthig is Worng"));
     }
 };
+
+
+
+
+
+
+// career 
+
+
+export const career = async (req, res, next) => {
+    const { name, email, countryCode,number,experience,interested} = req.body;  
+    try {
+        const exsitUser = await CareerSuport.findOne({ email: email });
+        if (exsitUser) {
+            return next(errorHandler(400, "User already exist"));
+        }
+
+        const newCareer = new CareerSuport({
+            name,
+            email,
+            countryCode,
+            number,
+            experience,
+            interested,
+        });
+        await newCareer.save();
+        res.status(201).json({ success: true, massage: "Request is Send" });       
+
+    }catch(error){
+        next(error)
+    }
+
+
+
+}
