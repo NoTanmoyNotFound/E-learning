@@ -189,20 +189,3 @@ const ProfileView = () => {
 
 export default ProfileView;
 
-
-export const UserInfo = async () => {
-    const dispatch = useDispatch();
-    const { currentUser } = useSelector((state) => state.user);
-    console.log(currentUser);
-
-    dispatch(userInfoStart());
-    const response = await fetch(`/api/user/updateInfo/${currentUser._id}`);
-    const data = await response.json();
-    if (data.success === false) {
-        dispatch(userInfoFailure(data.message));
-        return;
-    }
-    dispatch(userInfoSuccess(data));
-    return response.json();
-
-}
