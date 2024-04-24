@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import UserInfo from "../models/userinfo.model.js"; 
+import Contact from "../models/contact.modal.js";
 import CareerSuport from "../models/careerSuport.model.js";
 import bcryptjs from "bcryptjs";    
 import { errorHandler } from "../ulte/error.js";
@@ -183,3 +184,28 @@ export const career = async (req, res, next) => {
 
 
 }
+
+// contact
+
+export const contact = async (req, res, next) => {
+    const { name, email, message} = req.body;  
+    try {
+        const exsitUser = await Contact.findOne({ email: email });
+        if (exsitUser) {
+            return next(errorHandler(400, "User already exist"));
+        }   
+
+
+        const newContact = new Contact({
+            name,
+            email,
+            message,
+        });
+        await newContact.save();
+        res.status(201).json({ success: true, massage: "Request is Send" });    
+
+
+    }catch(error){  
+        next(error)
+    }
+} 

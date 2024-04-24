@@ -8,7 +8,7 @@ function SuperPrivateRoute() {
 
     const { currentUser, loading, error } = useSelector((state) => state.user);
     console.log(currentUser);
-    return currentUser.role === 'super_admin' ? <Outlet /> :  <Navigate to="/" />;
+    return currentUser && currentUser.role === 'super_admin' ? <Outlet /> :  <Navigate to="/" />;
 
 }
 
