@@ -10,6 +10,7 @@ import instagram from "./assets/instagram.png";
 import twitter from "./assets/twitter.png";
 import linkedin from "./assets/LinkedIn.png";
 import github from "./assets/Github.png";
+import facebook from "./assets/facebook.png";
 import { Link } from 'react-router-dom'
 
 import { useNavigate } from "react-router-dom"
