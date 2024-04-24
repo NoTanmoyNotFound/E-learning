@@ -37,7 +37,7 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <a href="/superadmin/request">
                         <BsListCheck className='iconn' /> Requests
                     </a>
                 </li>

@@ -124,6 +124,17 @@ export const google = async (req, res, next) => {
         const validuser = await User.findOne({ email})
 
             if (validuser) {
+
+                if (validuser.role === "user") {
+                    const userInfo = await UserInfo.findOne({ userid: validuser._id });
+        
+                    if(!userInfo){
+                        const newUser = new UserInfo({ userid: validuser._id });
+                        await newUser.save();
+                    }
+                }
+
+
             const token = jwt.sign({ id: validuser._id }, process.env.JWT_SECRET);
             const { password: hashedPassword, ...rest } = validuser._doc;
 
@@ -144,6 +155,18 @@ export const google = async (req, res, next) => {
          
            const sta = await newUser.save();
            console.log(sta);
+
+           if (validuser.role === "user") {
+            const userInfo = await UserInfo.findOne({ userid: newUser._id });
+
+            if(!userInfo){
+                const newUser = new UserInfo({ userid: newUser._id });
+                await newUser.save();
+            }
+        }
+
+
+           
             const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
             const { password: hashedPassword2, ...rest } = newUser._doc;
 
