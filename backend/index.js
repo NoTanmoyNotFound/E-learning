@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser'
 import authRouter from './routers/auth.router.js'
 import userRouter from './routers/user.router.js'
 import teacherRouter from './routers/teacher.router.js'
+import superRouter from './routers/super.router.js'
 import cors from 'cors'
 
 
@@ -47,6 +48,7 @@ app.listen(8000, () =>{
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);   
 app.use('/api/teacher', teacherRouter);
+app.use('/api/super', superRouter);
 
 
 

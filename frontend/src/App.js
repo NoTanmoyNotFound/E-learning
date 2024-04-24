@@ -31,6 +31,8 @@ import SuperPrivateRoute from "./page/SuperPrivateRoute";
 import Signinprotact from "./page/Signinprotact";
 import Careersuport from "./page/Careersuport";
 import Formcareer from "./page/Formcareer";
+import S_home from "./components/SuperAdmin/S_home/S_home";
+import TeacherRequest from "./components/SuperAdmin/Request/TeacherRequest";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -85,7 +87,10 @@ function App() {
 
 
         <Route element={<SuperPrivateRoute />}>
-          <Route path="/superadmin" element={<SuperMain />} />
+          <Route path="/superadmin" element={<SuperMain />} >
+          <Route index element={<S_home />} />
+          <Route path="request" element={<TeacherRequest />} />
+           </Route>
         </Route>
       </Routes>
     </BrowserRouter>
