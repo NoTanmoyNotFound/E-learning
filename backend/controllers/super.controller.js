@@ -18,4 +18,15 @@ export const teacherRequest = async (req, res, next) => {
     }
 }
 
-export default teacherRequest;
+
+
+export const teacherDelete = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = await TeacherJoin.findByIdAndDelete(id);
+        res.status(200).json({ success: true, data: data });
+    } catch (error) {
+        console.error("Error deleting data:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}

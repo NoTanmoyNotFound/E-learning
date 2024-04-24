@@ -5,12 +5,14 @@ import { MdOutlineSmartDisplay } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaWindowClose } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 function TeacherRequest() {
 
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
+    const [success, setSuccess] = useState(false);
 
- 
+
 
     useEffect(() => {
         async function fetchUserInfo() {
@@ -23,7 +25,7 @@ function TeacherRequest() {
                     console.log(responsedata);
                 } else {
                     setData(responsedata.data);
-                
+
                     console.log(responsedata);
                 }
             } catch (error) {
@@ -37,6 +39,28 @@ function TeacherRequest() {
     console.log(Array.isArray(data));
 
 
+
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/super/teacherDelete/${id}`, {
+                method: 'DELETE',
+            });
+            const data = await response.json(); 
+            if (data.success === false) {
+                console.log(data);
+                return;
+            }   
+
+            if(data.success === true){
+
+                setSuccess(data.data);
+            }   
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
 
@@ -66,10 +90,10 @@ function TeacherRequest() {
             <div>
                 <div className='flex justify-end mt-5 mb-3'>
                     <form>
-                        
+
                         <div className="relative">
                             <div className="absolute top-1 left-1 bg-white-mediam rounded-full p-2  flex items-center justify-center text-blue-300">
-                            <i class="fa-solid fa-magnifying-glass" />
+                                <i class="fa-solid fa-magnifying-glass" />
                             </div>
                             <input type="text" placeholder='Enter Candidate Name' onChange={(e) => setSearch(e.target.value)} className='w-80 bg-white-light py-2 px-12 rounded-full border border-[#000] focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-[#bdbcbc] focus:drop-shadow-lg' />
                         </div>
@@ -105,68 +129,50 @@ function TeacherRequest() {
                                     Accept
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                   Delete
+                                    Delete
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                        {data &&data.map((item, index) => (
-                            <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {item.fullname}
-                                </th>
-                                <td className="px-6 py-4">
-                                    {item.email}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {item.phone}
-                                </td>
-                                <td classname="px-6 py-4 text-xl">
-                                    {item.idProof ? <HiMiniIdentification /> : "not found"}
-                                </td>
-                                <td className="px-6 py-4 text-xl">
-                                    {item.resume ? <IoDocumentAttachSharp /> : "not found"}
-                                </td>
-                                <td className="px-6 py-4 text-xl">
-                                    {item.video && item.video !== 'none' ? <MdOutlineSmartDisplay /> : "not found"}
-                                </td>
-                                <td className="px-6 py-4 text-xl flex gap-4" >
-                                   <FaCheckCircle color='green'/> <FaWindowClose color='red' />
-                                </td>
-                                <td className="px-6 py-4">
-                                   <ImCross color='red'/>
-                                </td>
-                            </tr>
+                            {data && data.filter((item) => {
+                                return search.toLowerCase() === ''
+                                    ? item
+                                    : item.fullname.toLowerCase().includes(search);
+                            }).map((item, index) => (
+                                <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {item.fullname}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {item.email}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {item.phone}
+                                    </td>
+                                    <td classname="px-6 py-4 text-xl">
+                                        {item.idProof ? <Link to={item.idProof} target='_blank'> <HiMiniIdentification /> </Link> : "not found"}
+                                    </td>
+                                    <td className="px-6 py-4 text-xl">
+                                        {item.resume ? <Link to={item.resume} target='_blank'> <IoDocumentAttachSharp /> </Link> : "not found"}
+                                    </td>
+                                    <td className="px-6 py-4 text-xl">
+                                        {item.video && item.video !== 'none' ? <Link to={item.video} target='_blank'> <MdOutlineSmartDisplay /> </Link> : "not found"}
+                                    </td>
+                                    <td className="px-6 py-4 text-xl flex gap-4" >
+                                        <FaCheckCircle color='green' /> <FaWindowClose color='red' />
+                                    </td>
+                                    <td className="px-6 py-4">
 
 
-                        ))}
+                                        <ImCross color='red' onClick={() => handleDelete(item._id)} />
+                                    </td>
+                                </tr>
+
+
+                            ))}
                         </tbody>
                     </table>
                 </div>
-
-
-
-
-1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>
