@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import '../../SuperAdmin/SuperAdmin.css'
 import './ProfileView.css'
 import S_header from '../../SuperAdmin/S_header/S_header'
-import S_sidebar from '../../SuperAdmin/S_sidebar/S_sidebar'
+// import S_sidebar from '../../SuperAdmin/S_sidebar/S_sidebar'
+import P_sidebar from './P_sidebar'
 import profile from "./assets/profile.png";
 import { signOut } from '../../../redux/user/userSlice';
 import instagram from "./assets/instagram.png";
@@ -82,7 +83,7 @@ const ProfileView = () => {
     return (
         <div className='grid-container'>
             <S_header OpenSidebar={OpenSidebar} />
-            <S_sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} profilePic={profilePic} />
+            <P_sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} profilePic={profilePic} />
             {/* <S_home /> */}
 
             <main className="mainn-container mt-0 px-8 max-w-11/12" style={{ backgroundImage: "linear-gradient(to right, #a5f3eb, #a5c8f3) opacity(0.6)" }}>

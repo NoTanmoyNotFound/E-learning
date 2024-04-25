@@ -58,7 +58,7 @@
     font-weight: 300;
     color: #fff;
 }
-.container{
+.containerc1{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -165,13 +165,13 @@
     .contact{
         padding: 50px;
     }
-    .container{
+    .containerc1{
         flex-direction: column;
     }
-    .container .contactInfo{
+    .containerc1 .contactInfo{
         margin-bottom: 40px;
     }
-    .container .contactInfo,.contactForm{
+    .containerc1 .contactInfo,.contactForm{
         width: 100%;
     }
 }

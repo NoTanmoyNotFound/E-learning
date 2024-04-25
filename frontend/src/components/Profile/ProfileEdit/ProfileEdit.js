@@ -167,10 +167,7 @@ return (
                             <label className="form-label">E-mail</label>
                             <input type="text" name='email' className="form-control mb-1" defaultValue="" onChange={handleChange}/>
                         </div>
-                        <div className="form-group">
-                            <label className="form-label">Company</label>
-                            <input type="text" name='company' className="form-control" defaultValue="" onChange={handleChange} />
-                        </div>
+                        
                         <div className="form-group flex items-center justify-center p-2 mb-0">
                             <button
                                 type='submit'

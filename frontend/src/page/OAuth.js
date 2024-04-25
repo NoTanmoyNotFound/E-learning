@@ -2,10 +2,10 @@ import React from 'react'
 import { GoogleAuthProvider, signInWithPopup , getAuth } from 'firebase/auth'
 import { app } from '../firebase';
 import { useDispatch } from 'react-redux';
-import { signinSuccess } from '../redux/user/userSlice';
+// import { signinSuccess } from '../redux/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
-
+import { signinStart, signinSuccess, signinFailure } from "../redux/user/userSlice";
 function OAuth() {
       const dispatch = useDispatch();
       const navigate = useNavigate();
@@ -15,6 +15,7 @@ function OAuth() {
     
         try {
           const provider = new GoogleAuthProvider();
+          dispatch(signinStart());
 
     
           const auth = getAuth(app);
@@ -33,10 +34,13 @@ function OAuth() {
 
            
           })
-
-    
           const data = await res.json();
-          dispatch(signinSuccess(data)) 
+          if (data.success === false) {
+            dispatch(signinFailure(data.message));
+            return;
+          }
+          console.log(data);
+          dispatch(signinSuccess(data));
     
           navigate('/');
     
