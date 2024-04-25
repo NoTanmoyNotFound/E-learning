@@ -48,10 +48,10 @@ const S_header = ({ OpenSidebar }) => {
                 <AiOutlineClose className='iconn' onClick={OpenSidebar} />
             </div> */}
 
-                <a href="/"><IoHome className='iconn' /></a>
-                <a href="allCourses"><IoBookSharp className='iconn' /></a>
+                <Link to="/"><IoHome className='iconn' /></Link>
+                {/* <Link to="allCourses"><IoBookSharp className='iconn' /></Link> */}
                 <Link onClick={handleSignOut}><HiOutlineLogout className='iconn' /></Link>
-                <Link><BsPersonCircle onClick={handleSignOut} className='iconn' /></Link>
+                {/* <Link><BsPersonCircle onClick={handleSignOut} className='iconn' /></Link> */}
                 
             </div>
         </header>

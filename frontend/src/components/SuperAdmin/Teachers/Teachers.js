@@ -6,7 +6,9 @@ import { ImCross } from "react-icons/im";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaWindowClose } from "react-icons/fa";
 import { Link } from 'react-router-dom'
-function TeacherRequest() {
+
+
+function Teachers() {
 
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
@@ -17,7 +19,7 @@ function TeacherRequest() {
     useEffect(() => {
         async function fetchUserInfo() {
             try {
-                const response = await fetch('http://localhost:8000/api/super/teacherRequest');
+                const response = await fetch('http://localhost:8000/api/super/AcceptedTeachersData');
                 const responsedata = await response.json();
                 console.log(Array.isArray(response));
                 console.log(responsedata);
@@ -43,19 +45,19 @@ function TeacherRequest() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/super/teacherDelete/${id}`, {
+            const response = await fetch(`http://localhost:8000/api/super/AcceptedTeacherDelete/${id}`, {
                 method: 'DELETE',
             });
-            const data = await response.json(); 
+            const data = await response.json();
             if (data.success === false) {
                 console.log(data);
                 return;
-            }   
+            }
 
-            if(data.success === true){
+            if (data.success === true) {
 
                 setSuccess(data.data);
-            }   
+            }
 
         } catch (error) {
             console.log(error);
@@ -85,7 +87,7 @@ function TeacherRequest() {
     return (
         <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7'>
             <div className='text-5xl font-bold text-center'>
-                <h1>Teacher's Request</h1>
+                <h1>Teacher's Details</h1>
             </div>
             <div>
                 <div className='flex justify-end mt-5 mb-3'>
@@ -108,7 +110,7 @@ function TeacherRequest() {
                         <thead class="text-xs text-gray-700 uppercase bg-[#ead0d0] dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Candidate name
+                                    Teacher's name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Email
@@ -121,12 +123,6 @@ function TeacherRequest() {
                                 </th>
                                 <th scope="col" class="px-4 py-3">
                                     Resume
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Video
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Accept
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Delete
@@ -155,12 +151,6 @@ function TeacherRequest() {
                                     <td className="px-6 py-4 text-xl">
                                         {item.resume ? <Link to={item.resume} target='_blank'> <IoDocumentAttachSharp /> </Link> : "not found"}
                                     </td>
-                                    <td className="px-6 py-4 text-xl">
-                                        {item.video && item.video !== 'none' ? <Link to={item.video} target='_blank'> <MdOutlineSmartDisplay /> </Link> : "not found"}
-                                    </td>
-                                    <td className="px-6 py-4 text-xl flex gap-4" >
-                                        <FaCheckCircle color='green' /> <FaWindowClose color='red' />
-                                    </td>
                                     <td className="px-6 py-4">
 
 
@@ -180,4 +170,4 @@ function TeacherRequest() {
     )
 }
 
-export default TeacherRequest
+export default Teachers;

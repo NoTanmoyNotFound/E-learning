@@ -1,14 +1,18 @@
 import { useState } from "react";
 import Home from "./components/Home/Home";
-import AllCourses from "./components/AllCourses/AllCourses";
 import SuperMain from './components/SuperAdmin/SuperMain';
-import UploadCource from './components/UploadCource/UploadCource';
-import SuperCourse from './components/SuperAdmin/SuperCourse/SuperCourseTitleUpload/SuperCourse';
 import Homeblogs from './components/BlogsMain/Blogs/Homeblogs';
 import SingleBlog from './components/BlogsMain/Blogs/Singleblog/SingleBlog';
 import CategorySelection from './components/BlogsMain/Blogs/CategorySelection/CategorySelection';
-import SuperCourseDash from './components/SuperAdmin/SuperCourse/SuperCourseDashboard/SuperCourseDash';
 import ProfileView from './components/Profile/ProfileView/ProfileView';
+
+
+
+//course routes start
+import AllCourses from "./components/AllCourses/AllCourses";
+import SingleCourseDetails from "./components/AllCourses/SingleCourseDetails/SingleCourseDetails";
+//course routes end
+
 
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -31,9 +35,19 @@ import SuperPrivateRoute from "./page/SuperPrivateRoute";
 import Signinprotact from "./page/Signinprotact";
 import Careersuport from "./page/Careersuport";
 import Formcareer from "./page/Formcareer";
+import Contact from "./components/ContactUs/Contact";
+
+
+//super-admin-routes start
 import S_home from "./components/SuperAdmin/S_home/S_home";
 import TeacherRequest from "./components/SuperAdmin/Request/TeacherRequest";
-import Contact from "./components/ContactUs/Contact";
+import Student from "./components/SuperAdmin/Student/Student";
+import Category from "./components/SuperAdmin/Category/Category";
+import Teachers from "./components/SuperAdmin/Teachers/Teachers";
+//super-admin-routes end
+
+
+
 import ForgotPassword from "./page/ForgotPassword";
 
 function App() {
@@ -47,16 +61,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
+        <Route path="/course-details" element={<SingleCourseDetails />} />
 
-        <Route path="/uploadd" element={<UploadCource />} />
-        <Route path="/superCourseTitle" element={<SuperCourse />} />
+
         <Route path="/Homeblogs" element={<Homeblogs />} />
         <Route path="/blogs/:id" element={<SingleBlog />} />
         <Route path="/CategorySelection" element={<CategorySelection />} />
-        <Route path="/SuperCourseDash" element={<SuperCourseDash />} />
 
-        <Route element = {<PrivateRouer />}>
-        <Route path='/Profile' element={<ProfileView />} />
+        <Route element={<PrivateRouer />}>
+          <Route path='/Profile' element={<ProfileView />} />
         </Route>
 
         <Route path="/EditProfile" element={<EditSidebar />}>
@@ -66,24 +79,25 @@ function App() {
           <Route path="EditPassword" element={<EditPassword />} />
         </Route>
 
-        <Route path='/Join' element={<Join/>}/>
-        <Route path='/techerDashbord'element={<TeacherAdminMain />}/>
-        <Route path='/TeacherAnalytics' element={<TA_Analytics /> } />
-        <Route path='/TeacherPayment' element={<TA_Payment/>} />
+        <Route path='/Join' element={<Join />} />
+        <Route path='/techerDashbord' element={<TeacherAdminMain />} />
+        <Route path='/TeacherAnalytics' element={<TA_Analytics />} />
+        <Route path='/TeacherPayment' element={<TA_Payment />} />
         <Route path='/TeacherFeedback' element={<TA_Feedback />} />
+        <Route path='/TeacherCourse' element={<MyCourses />} />
         <Route path='/TeacherCourse' element={<MyCourses />} /> 
 
         <Route path='/ForgotPassword' element={<ForgotPassword />} />
 
-        <Route element={<Signinprotact/>}>  
-        <Route path='/signin' element={<Signin/>} />
-        <Route path='/signup' element = {<Signup/>} />
+        <Route element={<Signinprotact />}>
+          <Route path='/signin' element={<Signin />} />
+          <Route path='/signup' element={<Signup />} />
         </Route>
 
         <Route path="/careersuport" element={<Careersuport />} />
         <Route path="/careerform" element={<Formcareer />} />
-        <Route path="/Contact" element={<Contact />}/>
- 
+        <Route path="/Contact" element={<Contact />} />
+
 
 
 
@@ -93,9 +107,12 @@ function App() {
 
         <Route element={<SuperPrivateRoute />}>
           <Route path="/superadmin" element={<SuperMain />} >
-          <Route index element={<S_home />} />
-          <Route path="request" element={<TeacherRequest />} />
-           </Route>
+            <Route index element={<S_home />} />
+            <Route path="request" element={<TeacherRequest />} />
+            <Route path="students-details" element={<Student />} />
+            <Route path="category-details" element={<Category />} />
+            <Route path="teachers-details" element={<Teachers />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
