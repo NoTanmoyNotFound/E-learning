@@ -14,7 +14,7 @@ function Contact() {
                 deleniti ullam est velit fugiat, minima quo.
               </p>
             </div>
-            <div className="container">
+            <div className="containerc1">
               <div className="contactInfo">
                 <div className="box">
                   <div className="icon">
