@@ -8,9 +8,11 @@ import Contact from './ContactUs/Contact';
 import GetStarted from './GetStarted/GetStarted';
 import Footer from './Footer/Footer';
 import './Home.css';
+import {useSelector} from 'react-redux'
 
 const Home = () => {
     const [isToggle, setIsToggle] = useState(false);
+    const { currentUser } = useSelector((state) => state.user)
 
 
 

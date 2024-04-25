@@ -13,7 +13,7 @@ const Header = ({ onButtonClick }) => {
     const [menuOpened, setMenuOpened] = useState(false);
     const navigate = useNavigate();
     const { currentUser } = useSelector((state) => state.user)
-
+    console.log(currentUser);
 
     const getMenuStyles = () => {
         if (document.documentElement.clientWidth <= 800) {
