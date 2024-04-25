@@ -59,7 +59,7 @@
 
  
   .cardd:nth-child(3) {
-    background-color: #2e7d32;
+    background-color: #30a068;
     font-weight: 500;
     font-size: 1.5rem;
     box-shadow: 0px 0px 14px rgb(210, 204, 204);
@@ -70,7 +70,7 @@
   }
   
   .cardd:nth-child(4) {
-    background-color: #d50000;
+    background-color: #ff7e7e;
     font-weight: 500;
     font-size: 1.5rem;
     box-shadow: 0px 0px 14px rgb(210, 204, 204);
@@ -93,6 +93,14 @@
   
   .cardd-inner > .cardd_icon {
     font-size: 35px;
+  }
+  .cardd-inner h3{
+    font-weight: 700;
+  }
+  .cardd h1{
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 2px black;
   }
   
   /* End Main  */

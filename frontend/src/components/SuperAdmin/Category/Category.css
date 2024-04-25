@@ -1,0 +1,27 @@
+.btn-primary{
+    background: rgb(39, 39, 180) !important;
+}
+.btn-secondary{
+    background: #858484 !important;
+}
+.btn-success{
+    background: rgb(17, 145, 85) !important;
+}
+.heading-title-add{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+.category-add-form{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 5px;
+}
+.inp-cat{
+    margin: 0;
+    margin-bottom: 20px;
+}
+.main-cat-top{
+    gap: 10px;
+}

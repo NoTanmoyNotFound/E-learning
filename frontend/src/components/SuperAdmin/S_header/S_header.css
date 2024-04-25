@@ -10,6 +10,11 @@
   }
   .header-right{
     margin-left: auto;
+    display: flex;
+    gap: 15px;
+  }
+  .header-right a svg{
+    font-size: 25px !important;
   }
   
   .mennu-icon {
