@@ -6,16 +6,19 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { useDispatch, useSelector } from 'react-redux';
+
 import { BsGrid1X2Fill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from 'react-icons/bs';
 
 const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
+    const { currentUser } = useSelector((state) => state.user);
     return (
         <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
             <div className='sidebar-title'>
                 <div className="profile">
-                    <img src={profilePic} className="image" id="pfp" alt="Profile" />
-                    <h3 className="name">Tanmoy Das</h3>
-                    <p className="role">Super Admin</p>
+                    <img src={currentUser.profilePicture} className="image" id="pfp" alt="Profile" />
+                    <h3 className="name">{currentUser.name}</h3>
+                    <p className="role">Student</p>
                 </div>
                 <span id='closeIcon' className='iconn close_iconn' onClick={OpenSidebar} style={{marginTop:"-6rem", color:"black"}}><i className="fa-solid fa-angle-left"></i></span>
             </div>

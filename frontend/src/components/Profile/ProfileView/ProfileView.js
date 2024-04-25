@@ -100,11 +100,11 @@ const ProfileView = () => {
                             <button onClick={goEdit} className="gokgok-btn w-48 bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium ">update profile</button>
                         </div>
                         <div className="user1">
-                            <p id="bio" className=' font-Nunito'>{currentUserInfo ? currentUserInfo.bio === "none" ? "Updaet your profile" : currentUserInfo.bio : "updaet your profile"}</p>
+                            <p id="bio" className=' font-Nunito'>{currentUserInfo ? currentUserInfo.bio === "none" ? "Update your profile" : currentUserInfo.bio : "updaet your profile"}</p>
                             <p className="h">Languaged Used</p>
-                            <p id="language">{currentUserInfo ? currentUserInfo.language === "none" ? "updaet your profile" : currentUserInfo.language : "updaet your profile"}</p>
+                            <p id="language">{currentUserInfo ? currentUserInfo.language === "none" ? "Update your profile" : currentUserInfo.language : "updaet your profile"}</p>
                             <p className="h">Institute</p>
-                            <p id="institute">{currentUserInfo ? currentUserInfo.collage === "none" ? "updaet your profile" : currentUserInfo.collage : "updaet your profile"}</p>
+                            <p id="institute">{currentUserInfo ? currentUserInfo.collage === "none" ? "Update your profile" : currentUserInfo.collage : "updaet your profile"}</p>
                             <h6 className="social text-base text-white font-semibold mt-1">Follow me on Social Media :</h6>
                             <div className="imgs flex gap-2 ">
                                 {currentUserInfo ? (
