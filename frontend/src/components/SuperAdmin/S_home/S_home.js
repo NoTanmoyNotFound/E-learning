@@ -41,12 +41,12 @@ const S_home = () => {
                 </div>
                 <div className='cardd'>
                     <div className='cardd-inner'>
-                        <h3>COURSES</h3>
-                        <a href="/superCourseTitle"><BsFillGrid3X3GapFill className='cardd_icon' /></a>
+                        <h3>Categories</h3>
+                        <a href="/superadmin/category-details"><BsFillGrid3X3GapFill className='cardd_icon' /></a>
                     </div>
 
                     {/* Dynamic count */}
-                    <h1>{courseCount}</h1>
+                    <h1>30</h1>
                 </div>
                 <div className='cardd'>
                     <div className='cardd-inner'>

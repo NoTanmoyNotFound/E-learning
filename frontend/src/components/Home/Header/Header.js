@@ -50,7 +50,7 @@ const Header = ({ onButtonClick }) => {
                             <a href="allCourses">Courses</a>
                             <Link to="/careersuport">Career Support</Link>
                             <a href="Homeblogs">Blogs</a>
-                            <a href="">Contact Us</a>
+                            <Link to="/Contact">Contact Us</Link>
                             {/* <Link to="/superadmin">
                                 {currentUser && currentUser.role === 'super_admin' ? (
                                     <a href="">Super Admin</a>

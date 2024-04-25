@@ -1,0 +1,144 @@
+.banner-inner-course {
+    /* background: #7ca7fd; */
+    margin-top: 10px;
+    /* height: 300px; */
+    padding: 2% 5%;
+    display: flex;
+    gap: 10px;
+}
+
+.banner-inner-course h1 {
+    font-size: 2.1rem;
+}
+
+.desc-c {
+    margin-top: 15px;
+}
+
+.secondaryTextt {
+    font-size: 1.4rem;
+    color: rgb(109, 105, 105);
+}
+
+.testimonials_rating {
+    .no_of_students p {
+        font-size: 20px;
+        color: #ff6a00c4;
+    }
+
+    .ratings_course {
+        font-size: 20px;
+        color: #ff6a00;
+    }
+}
+
+
+.banner-inner-course .right_single {
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    box-shadow: 0 7px 14px black;
+    padding: 15px;
+
+    .mid_single {
+        .mid-p {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding-bottom: 10px;
+
+            .price-mid {
+                font-weight: 600;
+            }
+        }
+
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.right_single_inner {
+    padding-bottom: 20px;
+}
+
+.img_course {
+    width: 350px;
+    border-radius: 10px;
+}
+
+.mid_single_button {
+    margin-top: 10px;
+}
+
+.mid-star {
+    color: #ffd000;
+    font-weight: 600;
+}
+
+.bottom_single h3 p {
+    font-size: 13px !important;
+}
+
+
+
+.single_course_main {
+    padding: 2% 5%;
+
+    .single_inner {
+        box-shadow: 0 7px 14px black;
+        padding: 2%;
+        border-radius: 10px;
+    }
+
+    .ticks_single {
+        margin-top: 20px;
+
+        .ul {
+            display: flex;
+            gap: 5%;
+            justify-content: space-between;
+            margin-left: 3%;
+
+            li {
+                padding-bottom: 25px;
+            }
+        }
+    }
+}
+
+.cmmmm{
+    padding: 2% 5%;
+    margin-top: 5%;
+}
+.comments_single {
+    padding: 2% 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 300px;
+    overflow-x: auto;
+}
+
+.single-comment{
+    margin-bottom: 10%;
+}
+
+.comm_inner{
+    display: flex;
+    gap: 5px;
+    justify-content: start;
+    align-items: center;
+}
+
+.comm_inner img {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+}
+.comm_inner p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.quote p{
+    margin-top: 10px;
+    font-size: 12px;
+}
