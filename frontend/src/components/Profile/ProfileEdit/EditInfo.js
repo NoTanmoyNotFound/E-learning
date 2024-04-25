@@ -61,6 +61,14 @@ function EditInfo() {
                         <label className="form-label">Bio</label>
                         <textarea name='bio' className="form-control" rows="5" onChange={handleChange}></textarea>
                     </div>
+                    <div className="form-group">
+                            <label className="form-label">Coding Languages</label>
+                            <input type="text" name='language' className="form-control" defaultValue="" onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                            <label className="form-label">Company</label>
+                            <input type="text" name='company' className="form-control" defaultValue="" onChange={handleChange} />
+                    </div>
 
                     <div className="form-group">
                         <label className="form-label">Birthday</label>
@@ -80,9 +88,9 @@ function EditInfo() {
                     </div>
 
                     <div className="card-body pb-2">
-                        <h6 className="mb-4">Contacts</h6>
+                        {/* <h6 className="mb-4">Contacts</h6> */}
                         <div className="form-group">
-                            <label className="form-label">Phone</label>
+                            <label className="form-label">Phone No.</label>
                             <input type="text" name='phone' className="form-control" defaultValue=""  onChange={handleChange} />
                         </div>
 
