@@ -9,12 +9,12 @@ const Cards = () => {
     const [titles, setTitles] = useState([]);
 
     useEffect(() => {
-        // Fetch titles when the component mounts
+
         fetch('/titles')
             .then(response => response.json())
             .then(data => setTitles(data.titles))
             .catch(error => console.error('Error fetching titles:', error));
-    }, []); // The empty dependency array ensures this effect runs once when the component mounts
+    }, []);
 
 
     return (
@@ -34,7 +34,158 @@ const Cards = () => {
             </div>
 
 
-            <div className='main-container'></div>
+            <div className='main-container'>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                        <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+                <div className="b-card course-card">
+                    <div className="course_img">
+                        <img className='course_card_img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="#" />
+
+                    </div>
+                    <p className="secondaryText b-price">
+                        <span style={{ color: 'orange' }}>Rs: </span>
+                        <span>900</span>
+                    </p>
+                    <div className="bootom_card">
+                        <p className='primaryText'>Python</p>
+                        <p className='secondaryText'>Wow best course</p>
+                    </div>
+                    <button className='button'>Enroll Now</button>
+                </div>
+            </div>
 
         </>
     );

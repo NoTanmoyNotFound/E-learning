@@ -1,6 +1,7 @@
 import React from 'react';
 import './S_sidebar.css';
 import { PiStudentBold } from "react-icons/pi";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { BsGrid1X2Fill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from 'react-icons/bs';
 
 const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
@@ -12,45 +13,41 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
                     <h3 className="name">Saklin Mustak</h3>
                     <p className="role">Super Admin</p>
                 </div>
-                <span id='closeIcon' className='iconn close_iconn' onClick={OpenSidebar} style={{marginTop:"-6rem", color:"black"}}><i className="fa-solid fa-angle-left"></i></span>
+                <span id='closeIcon' className='iconn close_iconn' onClick={OpenSidebar} style={{ marginTop: "-6rem", color: "black" }}><i className="fa-solid fa-angle-left"></i></span>
             </div>
 
             <ul className='sidebar-list'>
+
                 <li className='sidebar-list-item'>
-                    <a href="/superadmin">
+                    <Link to="/superadmin">
                         <BsGrid1X2Fill className='iconn' /> Dashboard
-                    </a>
+                    </Link>
                 </li>
+
                 <li className='sidebar-list-item'>
-                    <a href="/superStudents">
+                    <Link to="/superadmin/category-details">
+                        <BsFillGrid3X3GapFill className='iconn' /> Categories
+                    </Link>
+                </li>
+
+                <li className='sidebar-list-item'>
+                    <Link to="/superadmin/students-details">
                         <PiStudentBold className='iconn' /> Students
-                    </a>
+                    </Link>
                 </li>
+
                 <li className='sidebar-list-item'>
-                    <a href="/SuperCourseDash">
-                        <BsFillGrid3X3GapFill className='iconn' /> Courses
-                    </a>
-                </li>
-                <li className='sidebar-list-item'>
-                    <a href="/superTeachers">
+                    <Link to="/superadmin/teachers-details">
                         <BsPeopleFill className='iconn' /> Teachers
-                    </a>
+                    </Link>
                 </li>
+
                 <li className='sidebar-list-item'>
-                    <a href="/superadmin/request">
+                    <Link to="/superadmin/request">
                         <BsListCheck className='iconn' /> Requests
-                    </a>
+                    </Link>
                 </li>
-                <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsMenuButtonWideFill className='iconn' /> Reports
-                    </a>
-                </li>
-                <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsFillGearFill className='iconn' /> Setting
-                    </a>
-                </li>
+                
             </ul>
         </aside>
     );
