@@ -33,6 +33,7 @@ import Careersuport from "./page/Careersuport";
 import Formcareer from "./page/Formcareer";
 import S_home from "./components/SuperAdmin/S_home/S_home";
 import TeacherRequest from "./components/SuperAdmin/Request/TeacherRequest";
+import Contact from "./components/ContactUs/Contact";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -78,6 +79,7 @@ function App() {
 
         <Route path="/careersuport" element={<Careersuport />} />
         <Route path="/careerform" element={<Formcareer />} />
+        <Route path="/Contact" element={<Contact />}/>
  
 
 
