@@ -7,6 +7,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { MdDelete } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import { BsGrid1X2Fill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from 'react-icons/bs';
 
@@ -35,29 +36,24 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/SuperCourseDash">
-                        <FaChalkboardTeacher  className='iconn' /> Join as a Teacher
-                    </a>
-                </li>
-                <li className='sidebar-list-item'>
-                    <a href="/superTeachers">
-                        <BsPeopleFill className='iconn' /> Teachers
-                    </a>
-                </li>
-                <li className='sidebar-list-item'>
-                    <a href="/superadmin/request">
+                    <Link to="/EditProfile/EditPassword">
                         <RiLockPasswordLine className='iconn' /> Change Password
-                    </a>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <Link to="/ForgotPassword">
                         <RiLockPasswordFill className='iconn' /> Reset Password
-                    </a>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <Link to="/EditProfile">
                         <BsFillGearFill className='iconn' /> Settings
-                    </a>
+                    </Link>
+                </li>
+                <li className='sidebar-list-item'>
+                    <Link to="/join">
+                        <FaChalkboardTeacher  className='iconn' /> Join as a Teacher
+                    </Link>
                 </li>
                 <li className='sidebar-list-item '>
                     <a href="">

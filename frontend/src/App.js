@@ -48,6 +48,8 @@ import Teachers from "./components/SuperAdmin/Teachers/Teachers";
 
 
 
+import ForgotPassword from "./page/ForgotPassword";
+
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
 
@@ -83,6 +85,9 @@ function App() {
         <Route path='/TeacherPayment' element={<TA_Payment />} />
         <Route path='/TeacherFeedback' element={<TA_Feedback />} />
         <Route path='/TeacherCourse' element={<MyCourses />} />
+        <Route path='/TeacherCourse' element={<MyCourses />} /> 
+
+        <Route path='/ForgotPassword' element={<ForgotPassword />} />
 
         <Route element={<Signinprotact />}>
           <Route path='/signin' element={<Signin />} />
