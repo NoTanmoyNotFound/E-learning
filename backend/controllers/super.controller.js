@@ -1,11 +1,13 @@
 import TeacherJoin from "../models/teacherJoin.model.js"
 import Category from '../models/categoryUpload.model.js';
+import Teacher from "../models/teacher.model.js";
 
 
 
 
 
 //for teachers request in super admin start
+
 export const teacherRequest = async (req, res, next) => {
     try {
 
@@ -29,6 +31,39 @@ export const teacherDelete = async (req, res, next) => {
         res.status(200).json({ success: true, data: data });
     } catch (error) {
         console.error("Error deleting data:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+
+
+export const acceptTeacherRequest = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const teacher = await TeacherJoin.findById(id);
+        if (!teacher) {
+            return res.status(404).json({ success: false, error: "Teacher not found" });
+        }
+
+        
+        const newTeacher = new Teacher({
+            fullname: teacher.fullname,
+            email: teacher.email,
+            phone: teacher.phone,
+            organization: teacher.organization,
+            idProof: teacher.idProof,
+            resume: teacher.resume,
+            video: teacher.video
+        });
+
+        await newTeacher.save();
+
+        
+        await TeacherJoin.findByIdAndDelete(id);
+
+        res.status(200).json({ success: true, data: newTeacher });
+    } catch (error) {
+        console.error("Error accepting teacher request:", error);
         res.status(500).json({ success: false, error: "Internal server error" });
     }
 }
@@ -99,3 +134,38 @@ export const categoryDelete = async (req, res, next) => {
 
 
 //for categories in super admin end
+
+
+
+
+
+//for teachers details in super admin start
+
+export const showAllAcceptedTeachers = async (req, res, next)=>{
+    try {
+
+        const data = await Teacher.find();
+        console.log(Array.isArray(data));
+
+        res.status(200).json({ success: true, data: data });
+    } catch (error) {
+
+        console.error("Error fetching data:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+
+
+export const deleteAcceptedTecher = async (req, res, next)=>{
+    try {
+        const id = req.params.id;
+        const data = await Teacher.findByIdAndDelete(id);
+        res.status(200).json({ success: true, data: data });
+    } catch (error) {
+        console.error("Error deleting data:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+//for teachers details in super admin end

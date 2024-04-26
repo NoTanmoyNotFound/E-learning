@@ -19,7 +19,7 @@ function Teachers() {
     useEffect(() => {
         async function fetchUserInfo() {
             try {
-                const response = await fetch('http://localhost:8000/api/super/AcceptedTeachersData');
+                const response = await fetch('http://localhost:8000/api/super/showAllAcceptedTeachers');
                 const responsedata = await response.json();
                 console.log(Array.isArray(response));
                 console.log(responsedata);
@@ -45,7 +45,7 @@ function Teachers() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/super/AcceptedTeacherDelete/${id}`, {
+            const response = await fetch(`http://localhost:8000/api/super/deleteAcceptedTecher/${id}`, {
                 method: 'DELETE',
             });
             const data = await response.json();
@@ -55,7 +55,7 @@ function Teachers() {
             }
 
             if (data.success === true) {
-
+                window.location.reload();
                 setSuccess(data.data);
             }
 

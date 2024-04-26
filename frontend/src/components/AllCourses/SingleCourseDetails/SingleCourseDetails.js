@@ -1,10 +1,11 @@
 import React from 'react';
 import './SingleCourseDetails.css';
 import Header from '../../Home/Header/Header';
+import Footer from '../../Home/Footer/Footer';
 
 const SingleCourseDetails = () => {
     return (
-        <div>
+        <div className='s-body-d'>
             <Header />
             <div className="banner-course">
                 <div className="banner-inner-course">
@@ -17,6 +18,7 @@ const SingleCourseDetails = () => {
                             <div className="no_of_students">
                                 <p>12,222 - students</p>
                             </div>
+                            <br />
                             <div className="ratings_course">
                                 <span>&#9733;</span>
                                 <span>&#9733;</span>
@@ -33,7 +35,7 @@ const SingleCourseDetails = () => {
 
                                 <br />
                                 <br />
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem, <br /> rem nobis, molestias temporibus consequatur tempora repellat illum cum voluptate <br /> suscipit tenetur animi doloribus aliquid perferendis iusto iste pariatur. <br /> Aliquid exercitationem placeat repudiandae recusandae minima possimus <br /> deleniti obcaecati nihil nisi dolorum veritatis, <br /> nesciunt sequi ex nostrum necessitatibus saepe consectetur architecto.</p>
+                                <p className='c-desc'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quidem, <br /> rem nobis, molestias temporibus consequatur tempora repellat illum cum voluptate <br /> suscipit tenetur animi doloribus aliquid perferendis iusto iste pariatur. <br /> Aliquid exercitationem placeat repudiandae recusandae minima possimus <br /> deleniti obcaecati nihil nisi dolorum veritatis, <br /> nesciunt sequi ex nostrum necessitatibus saepe consectetur architecto.</p>
                             </div>
                         </div>
                     </div>
@@ -54,7 +56,7 @@ const SingleCourseDetails = () => {
                                 <span>&#9733;</span>
                                 <span>&#9734;</span>
                             </p>
-                            <span>Discount84% off</span>
+                            <span className='discount'>Discount84% off</span>
                         </div>
                         <div className="mid_single_button">
                             <button className='button w-100'>Buy Now</button>
@@ -94,12 +96,12 @@ const SingleCourseDetails = () => {
                 </div>
             </div>
 
-            <div className="single_course_main">
-                <div className="single_inner">
+            <div className=" single_course_main2">
+                <div className=" single_inner2">
                     <h1 className='primaryText'>This course includes:</h1>
-                    <div className="ticks_single">
-                        <div className='ul'>
-                            <div className="li">
+                    <div className="ticks_single ticks_single2">
+                        <div className=' ul2'>
+                            <div className=" li2">
                                 <li>61 hours on-demand video</li>
 
                                 <li>7 coding exercises</li>
@@ -107,7 +109,7 @@ const SingleCourseDetails = () => {
                                 <li>65 articles</li>
                             </div>
 
-                            <div className="li">
+                            <div className=" li2">
                                 <li>194 downloadable resources</li>
 
                                 <li>Access on mobile and TV</li>
@@ -123,7 +125,7 @@ const SingleCourseDetails = () => {
 
             <div className="cmmmm"><h1 className="primaryText">Comments/Feedbacks</h1></div>
             <div className="comments_single">
-            
+
                 <div className="single-comment">
                     <div className="comm_inner">
                         <img src="https://play-lh.googleusercontent.com/rfWOJQVBHoAZ_B43v0ySFlLmJBLtksVGAxGaFRh2ex4nOmNQ86qzG4sYWV63IKrXlvI" alt="" />
@@ -221,7 +223,9 @@ const SingleCourseDetails = () => {
                     </div>
                 </div>
             </div>
-
+            <div className="foo">
+            <Footer />
+            </div>
         </div>
     )
 }
