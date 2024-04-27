@@ -44,7 +44,7 @@ export const updateUserInfo = async (req, res, next) =>{
     const {userid} = req.body;
     try{
         const currentUser = await UserInfo.findOne({ userid: userid });
-        // console.log(currentUser)
+     
 
         const userInfo = await UserInfo.findByIdAndUpdate(
             currentUser._id,

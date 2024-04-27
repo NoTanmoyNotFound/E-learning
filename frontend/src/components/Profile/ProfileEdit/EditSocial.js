@@ -6,6 +6,8 @@ import { userInfoStart, userInfoSuccess, userInfoFailure } from "../../../redux/
 const EditSocial = () => {
     const dispatch = useDispatch();
     const { currentUser } = useSelector((state) => state.user);
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
     console.log(currentUser);
     const [inputdata, setInputdata] = useState({
         userid: currentUser._id,
@@ -35,6 +37,7 @@ const EditSocial = () => {
             const data = await res.json();
             if (data.success === false) {
                 dispatch(userInfoFailure(data.message));
+            
                 setData("Somthing Wrong");
                 return;
             }
@@ -91,6 +94,7 @@ const EditSocial = () => {
                     > Submit
                     </button>
                 </div>
+                {setData && <p>{setData}</p>}
             </from>
         </div>
 
