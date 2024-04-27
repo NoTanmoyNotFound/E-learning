@@ -21,7 +21,7 @@ const ProfileEdit = () => {
     const [imageError, setImageError] = useState(false);
     const [formData, setFormData] = useState({
     });
-    const [updateSuccess, setUpdateSuccess] = useState(false);
+    const [updateSuccess, setUpdateSuccess] = useState(null);
 
     const { currentUser, loading, error } = useSelector((state) => state.user);
     console.log(currentUser.role);
@@ -111,12 +111,14 @@ const handleSubmit = async (e) => {
       const data = await res.json();
       if (data.success === false) {
         dispatch(updateUserFailure(data));
+        setUpdateSuccess("Somthing Wrong");
         return;
       }
       dispatch(updateUserSuccess(data));
-      setUpdateSuccess(true);
+      setUpdateSuccess('Update success fully');
     } catch (error) {
       dispatch(updateUserFailure(error));
+      setUpdateSuccess(error);
       
     }
   };
@@ -180,6 +182,7 @@ return (
                         </div>
 
                     </div>
+                    {updateSuccess && <p>{updateSuccess}</p>}
                 </form>
             </div>
 

@@ -57,7 +57,7 @@ const Header = ({ onButtonClick }) => {
                                 ): null}
                             </Link> */}
 
-                            <Link to={currentUser && currentUser ? (currentUser.role === 'super_admin' ? '/superadmin' : (currentUser.role === 'admin' ? '/teacherDashboard' : '/profile')) : '/signin'} >
+                            <Link to={currentUser && currentUser ? (currentUser.role === 'super_admin' ? '/superadmin' : (currentUser.role === 'teacher' ? '/techerDashbord' : '/profile')) : '/signin'} >
                                 {currentUser && currentUser ? (
                                     <img src={currentUser.profilePicture} alt="profilepic" className='h-9 w-9 rounded-full object-cover' />
                                 ) : (
