@@ -7,7 +7,7 @@ import "./Bestcourses.css"
 
 const Bestcourses = () => {
     return (
-        <section className="b-wrapper">
+        <section className="b-wrapper mt-5">
             <div className="paddings innerWidth b-container">
                 <div className="b-head flexColStart">
                     <span className='orangeText'>Best Choices</span>
