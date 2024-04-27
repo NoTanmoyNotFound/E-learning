@@ -6,6 +6,7 @@ import authRouter from './routers/auth.router.js'
 import userRouter from './routers/user.router.js'
 import teacherRouter from './routers/teacher.router.js'
 import superRouter from './routers/super.router.js'
+import courseRouter from './routers/course.router.js'
 import cors from 'cors'
 
 
@@ -49,6 +50,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);   
 app.use('/api/teacher', teacherRouter);
 app.use('/api/super', superRouter);
+app.use('/api/course', courseRouter);
 
 
 

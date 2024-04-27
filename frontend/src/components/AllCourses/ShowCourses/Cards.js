@@ -6,14 +6,28 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Cards = () => {
 
-    const [titles, setTitles] = useState([]);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
+    const [categories, setCategories] = useState([]);
+
+    const fetchCategoryData = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/api/course/getCategories');
+            const responseData = await response.json();
+            if (responseData.success) {
+                setCategories(responseData.data);
+                setError('');
+            } else {
+                setError(responseData.error);
+            }
+        } catch (error) {
+            console.error('Error fetching category data:', error);
+            setError('An error occurred. Please try again later.');
+        }
+    };
 
     useEffect(() => {
-
-        fetch('/titles')
-            .then(response => response.json())
-            .then(data => setTitles(data.titles))
-            .catch(error => console.error('Error fetching titles:', error));
+        fetchCategoryData();
     }, []);
 
 
@@ -21,13 +35,13 @@ const Cards = () => {
         <>
             <div className="horizontal-menu-container">
                 <div className="menu-scroll">
-                    {titles.map((title, index) => (
+                    {categories.map((category, index) => (
                         <Link
                             key={index}
                             className="menu-item"
-                            to={`/courses/${title.courseTitle}`} // Extract 'courseTitle'
+                            to={`/courses/${category}`} // Assuming each category is a route
                         >
-                            {title.courseTitle} {/* Render 'courseTitle' */}
+                            {category}
                         </Link>
                     ))}
                 </div>
@@ -48,7 +62,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                        <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -63,7 +77,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -78,7 +92,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -93,7 +107,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -108,7 +122,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -123,7 +137,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -138,7 +152,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -153,7 +167,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -168,7 +182,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
                 <div className="b-card course-card">
                     <div className="course_img">
@@ -183,7 +197,7 @@ const Cards = () => {
                         <p className='primaryText'>Python</p>
                         <p className='secondaryText'>Wow best course</p>
                     </div>
-                    <button className='button'>Enroll Now</button>
+                    <button className='button'><Link to='/course-details' className='w-100'>Enroll Now</Link></button>
                 </div>
             </div>
 

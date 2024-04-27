@@ -46,16 +46,16 @@ function TeacherRequest() {
             const response = await fetch(`http://localhost:8000/api/super/teacherDelete/${id}`, {
                 method: 'DELETE',
             });
-            const data = await response.json(); 
+            const data = await response.json();
             if (data.success === false) {
                 console.log(data);
                 return;
-            }   
+            }
 
-            if(data.success === true){
-
+            if (data.success === true) {
+                window.location.reload();
                 setSuccess(data.data);
-            }   
+            }
 
         } catch (error) {
             console.log(error);
@@ -64,6 +64,23 @@ function TeacherRequest() {
 
 
 
+
+    const handleAccept = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/super/acceptTeacherRequest/${id}`, {
+                method: 'PUT',
+            });
+            const responseData = await response.json(); 
+            if (responseData.success === false) {
+                console.log(responseData);
+            } else {
+                setData(prevData => prevData.filter(item => item._id !== id));
+                console.log("Teacher request accepted successfully");
+            }
+        } catch (error) {
+            console.error("Error accepting teacher request:", error);
+        }
+    };
 
 
 
@@ -159,7 +176,8 @@ function TeacherRequest() {
                                         {item.video && item.video !== 'none' ? <Link to={item.video} target='_blank'> <MdOutlineSmartDisplay /> </Link> : "not found"}
                                     </td>
                                     <td className="px-6 py-4 text-xl flex gap-4" >
-                                        <FaCheckCircle color='green' /> <FaWindowClose color='red' />
+                                        <FaCheckCircle color='green' onClick={() => handleAccept(item._id)} />
+                                        {/* <FaWindowClose color='red' /> */}
                                     </td>
                                     <td className="px-6 py-4">
 
