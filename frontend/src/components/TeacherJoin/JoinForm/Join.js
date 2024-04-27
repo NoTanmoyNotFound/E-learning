@@ -20,6 +20,7 @@ const Join = () => {
   const [formData, setFormData] = useState({
   });
 
+
   const [success , setSuccess] = useState(false);
 
   useEffect(() => {
@@ -284,12 +285,14 @@ const handleResumeUpload = async (resume) => {
               <span>ID Proof (PDF only)</span>
               <br />
               <label htmlFor="idProofInput" className="fileButton">Select File</label>
+              <p>{idProof && idProof.name ? idProof.name : ''}</p>
             </div>
             <div className="inputBox ">
               <input type="file" id="resumeInput" accept=".pdf,.jpg,.png" style={{ display: "none" }} name='resume'  onChange={(e) => setResume(e.target.files[0])}  />
               <span>Resume Upload (PDF, JPG, PNG)</span>
               <br />
               <label htmlFor="resumeInput" className="fileButton">Select File</label>
+              <p>{resume && resume.name ? resume.name : ''}</p>
             </div>
             <div className="inputBox ">
 
@@ -298,11 +301,14 @@ const handleResumeUpload = async (resume) => {
                 accept="video/*"
                 onChange={(e) => setVideo(e.target.files[0])}
                 ref={fileRef}
-                id='videoUplode'
+                id='videoUplode' 
+                style={{ display: "none" }}
                 
               />
+              <span>Upload Demo Video</span>
               <br />
               <label htmlFor="videoUplode" className="fileButton">Select File</label>
+              <p>{video && video.name ? video.name : ''}</p>
               {uploadProgress > 0 && <p className=' text-2xl text-green-300'>Upload Progress: {uploadProgress}%</p>}
             </div>
 

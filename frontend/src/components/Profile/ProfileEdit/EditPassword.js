@@ -10,6 +10,8 @@ const EditPassword = () => {
     const [inputdata, setInputdata] = useState({
         id : currentUser._id,
     });
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
     const [comedata, setComedata] = useState(null);
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -37,12 +39,15 @@ const EditPassword = () => {
                 const data = await res.json();
                 if (data.success === false) {
                     console.log(data);
+                    setError(data.message);
                     setComedata(data.message);
                   return;
                 }
+                setSuccess("Password updated successfully");
                 setComedata(data.message);
               } catch (error) {
-                setComedata(error);               
+                setComedata(error);  
+                console.log(error);             
               }
         }
 
@@ -77,6 +82,8 @@ const EditPassword = () => {
 
                         </div>
             </div>
+            {success && <p className=' font-bold'>{success}</p>}
+            {error && <p className=' font-bold'>{error}</p>}
             </form>
         </div>
     )

@@ -5,21 +5,33 @@ import "../TeacherAdminMain.css";
 import { IoHome } from "react-icons/io5";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoBookSharp } from "react-icons/io5";
-
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import { BsPersonCircle, BsJustify } from "react-icons/bs";
+import { signOut } from '../../../redux/user/userSlice';
+import {InfosignOut} from '../../../redux/user/localSlice'
+
 
 const TA_Header = ({ OpenSidebar }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSignOut = async () => {
+    try {
+      await fetch('http://localhost:8000/api/auth/signout');
+      dispatch(signOut());
+      dispatch(InfosignOut());
+      <Navigate to="/"/>
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <header className="TAheader bg-slate-200">
       <div className="TAmennu-icon">
         <BsJustify className="iconn" onClick={OpenSidebar} />
       </div>
-
-      {/* <div className="header-left flex" style={{justifyContent:'space-evenly', alignItems: "center", width:"30%"}}>
-                <a href="/">Home</a>
-                <a href="allCourses" style={{marginLeft:'1rem'}}>Courses</a>
-                <a href="logout" style={{marginLeft:'1rem'}}>Log Out</a>
-            </div> */}
 
       <div className="TAheader-right flex">
         <a href="/">
@@ -28,9 +40,7 @@ const TA_Header = ({ OpenSidebar }) => {
         <a href="allCourses">
           <IoBookSharp className="iconn" />
         </a>
-        <a href="logout">
-          <HiOutlineLogout className="iconn" />
-        </a>
+        <Link onClick={handleSignOut}><HiOutlineLogout className='iconn' /></Link>
       </div>
     </header>
   );

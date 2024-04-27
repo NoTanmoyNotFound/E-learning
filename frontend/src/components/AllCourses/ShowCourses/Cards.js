@@ -33,7 +33,7 @@ const Cards = () => {
 
     return (
         <>
-            <div className="horizontal-menu-container">
+            {/* <div className="horizontal-menu-container">
                 <div className="menu-scroll">
                     {categories.map((category, index) => (
                         <Link
@@ -45,7 +45,7 @@ const Cards = () => {
                         </Link>
                     ))}
                 </div>
-            </div>
+            </div> */}
 
 
             <div className='main-container'>
