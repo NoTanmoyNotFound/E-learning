@@ -27,7 +27,7 @@ const Mentorship = () => {
 
                         <span className='orangeText'>Mentors</span>
                         <span className='primaryText'>career Mentorship</span>
-                        <span className='secondaryText'>Lorem ipsum dolor sit amet consectetur<br /> aliquam molestias! Amet. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid quo omnis impedit, maiores minima sapiente excepturi Lorem</span>
+                        <span className='secondaryText'>Career mentorship is a supportive and developmental partnership where an experienced professional guides and assists a less experienced individual in their career growth. It involves sharing knowledge, offering advice, and helping to navigate professional challenges to foster the mentee’s success and confidence in their career journey.</span>
 
 
                     <Accordion

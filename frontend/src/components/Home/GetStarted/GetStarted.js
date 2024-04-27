@@ -1,5 +1,6 @@
 import React from 'react';
 import './GetStarted.css';
+import { Link } from 'react-router-dom';
 
 const GetStarted = () => {
   return (
@@ -7,12 +8,12 @@ const GetStarted = () => {
         <div className="paddings innerWidth g-container">
             <div className="flexColCenter inner-container">
                 <span className='primaryText'>Get Started With ReadX</span>
-                <span className='secondaryText'>Choose Your Best Career Oppotunity <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis praesentium repellat amet sequi nam voluptatem minima assumenda veniam. Voluptatem, unde?</span>
+                <span className='secondaryText'>"Embark on your reading journey with ReadX! Dive into a world of knowledge and adventure by signing up today. Explore curated content, discover new perspectives, and unlock endless possibilities. Get started with ReadX and let your reading experience flourish!"</span>
 
                 
                 {/* button ------------------------------------------------------------------------------------------------------------------------'Saklin'------------------------ */}
                 <button className="btn-grad">
-                    <a href="">Get Started</a>
+                    <Link to="/careersuport">Get Started</Link>
                 </button>
             </div>
         </div>

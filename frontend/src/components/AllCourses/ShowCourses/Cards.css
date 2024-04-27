@@ -17,7 +17,10 @@ body {
   margin-bottom: 3%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-left: 15px;
+}
+.main-container>*{
+  align-self: center;
+  align-items: center;
 }
 
 
@@ -52,4 +55,11 @@ body {
     grid-template-columns: 1fr 1fr;
     margin-left: 0;
   }
+}
+
+
+
+.course_card_img{
+  aspect-ratio: 1 / 1;
+  mix-blend-mode: multiply;
 }

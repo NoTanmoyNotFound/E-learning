@@ -65,7 +65,7 @@ const Footer = () => {
                 <span className='secondaryText'><i class="fa-solid fa-phone"></i> 700-9999-001</span>
                 <span className='secondaryText'><i class="fa-solid fa-envelope"></i> readx533@gmail.com</span>
                 
-                <div className="flex search-bar">
+                <div className="flex search-bar" style={{opacity:'0'}}>
                 <input type="text" name="" id="" placeholder='Contact Us'/>
                 <button className='button'>Send</button>
                 </div>
