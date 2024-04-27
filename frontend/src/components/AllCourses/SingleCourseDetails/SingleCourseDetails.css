@@ -181,6 +181,35 @@
     margin-top: 10px;
     font-size: 12px;
 }
+.feed_back{
+     background-color: blueviolet !important;
+    
+}
+
+
+@keyframes color-rotation {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.courses-buy {
+    background: linear-gradient(45deg, #8148b6, #20A4F3);
+    color: white;
+    font-weight: 600;
+    border: none; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
+
+.courses-buy:hover {
+    animation: color-rotation 10s linear ;
+    background: linear-gradient(45deg, #8148b6 , #20A4F3);
+}
+
 
 
 @media (max-width:830px) {
@@ -306,4 +335,44 @@
     .single-comment {
         margin-bottom: 2%;
     }
+}
+.floating-btn {
+    position: fixed;
+    top: 20px;
+    /* Adjust the distance from the top as needed */
+    left: 20px;
+    /* Adjust the distance from the left as needed */
+    z-index: 1000;
+    /* Ensure the button is above other elements */
+    background-color: #007bff;
+    /* Button background color */
+    color: #fff;
+    /* Button text color */
+    border: none;
+    /* Remove border */
+    border-radius: 50%;
+    /* Round button corners for a circular shape */
+    width: 40px;
+    /* Set button width */
+    height: 40px;
+    /* Set button height */
+    font-size: 24px;
+    /* Adjust font size */
+    cursor: pointer;
+    /* Show pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Add shadow for depth */
+}
+
+.floating-btn:hover {
+    background-color: #0056b3;
+    /* Change background color on hover */
+}
+
+/* Optional: Styles for the icon inside the button */
+.floating-btn i {
+    display: block;
+    margin: 0 auto;
+    line-height: 40px;
+    /* Center icon vertically */
 }

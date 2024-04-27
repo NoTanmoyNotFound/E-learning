@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "title": "Python",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png",
+    "price": 900,
+    "author": "Thapa Technical",
+    "description": "Wow best course"
+  },
+  {
+    "id": 2,
+    "title": "JavaScript",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+    "author": "Thapa Technical",
+    "price": 800,
+    "description": "Learn the fundamentals of JavaScript"
+  },
+  {
+    "id": 3,
+    "title": "React",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+    "author": "Thapa Technical",
+    "price": 1000,
+    "description": "Master React framework"
+  }
+  
+ 
+]

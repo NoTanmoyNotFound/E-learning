@@ -1,4 +1,4 @@
-import Category from "../models/categoryUpload.model";
+import Category from "../models/categoryUpload.model.js";
 
 //for course title-bar in courses page start
 
