@@ -1,10 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SingleCourseDetails.css";
 import Header from "../../Home/Header/Header";
 import Footer from "../../Home/Footer/Footer";
 import { color } from "framer-motion";
 
 const SingleCourseDetails = () => {
+  const [feedbacks, setFeedbacks] = useState([]);
+  useEffect(() => {
+    async function fetchUserInfo() {
+      try {
+        const response = await fetch("http://localhost:8000/api/f/getFeed");
+        const data = await response.json();
+        // console.log(data);
+        if (data.success === false) {
+          console.log(data.message);
+        } else {
+          setFeedbacks(data);
+        }
+      } catch (error) {}
+    }
+
+    fetchUserInfo();
+  }, []);
+  console.log(feedbacks);
+
   // Sample JSON data
   const courseDetails = {
     title: "The Complete 2024 Web Development Bootcamp",
@@ -24,11 +43,7 @@ const SingleCourseDetails = () => {
         comment:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis repellendus aut corporis ullam incidunt obcaecati cumque...",
       },
-      {
-        author: "Pabitra Mandol",
-        comment:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis repellendus aut corporis ullam incidunt obcaecati cumque...",
-      },
+
       // Add more comments here if needed
     ],
     learn: [
@@ -47,6 +62,7 @@ const SingleCourseDetails = () => {
 
   // State variable to store user feedback
   const [formData, setFormData] = useState({
+    courseID: "121021",
     userName: "",
     userFeedback: "",
   });
@@ -64,35 +80,40 @@ const SingleCourseDetails = () => {
     try {
       // Prepare the data to send
       const dataToSend = {
+        courseID: "121021",
         name: formData.userName,
-        description: formData.userFeedback
+        description: formData.userFeedback,
       };
-  
+
       // Send POST request to the API endpoint
-      const response = await fetch('http://localhost:8000/api/f/feed', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/api/f/feed", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(dataToSend)
+        body: JSON.stringify(dataToSend),
       });
-  
+
       // Check if request was successful
       if (response.ok) {
-        console.log('Feedback submitted successfully');
+        console.log("Feedback submitted successfully");
         // Clear the form data after successful submission
-        setFormData({ userName: '', userFeedback: '' });
+        setFormData({ userName: "", userFeedback: "" });
       } else {
         // Handle error cases
-        console.error('Failed to submit feedback');
+        console.error("Failed to submit feedback");
       }
     } catch (error) {
-      console.error('Error submitting feedback:', error);
+      console.error("Error submitting feedback:", error);
     }
   };
   return (
     <div className="s-body-d mt-5">
-    <button className='floating-btn'><a href="/Allcourses"><i class="fa-solid fa-angle-left"></i></a></button>
+      <button className="floating-btn">
+        <a href="/Allcourses">
+          <i class="fa-solid fa-angle-left"></i>
+        </a>
+      </button>
       {/* <Header /> */}
       <div className="banner-course">
         <div className="banner-inner-course">
@@ -166,7 +187,9 @@ const SingleCourseDetails = () => {
               <span className="discount">{courseDetails.discount}</span>
             </div>
             <div className="mid_single_button">
-              <button className="courses-buy w-100 h-12 rounded-xl">Buy Now</button>
+              <button className="courses-buy w-100 h-12 rounded-xl">
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
@@ -229,27 +252,26 @@ const SingleCourseDetails = () => {
       </form>
 
       <div className="comments_single">
-        {courseDetails.comments.map((comment, index) => (
-          <div key={index} className="single-comment">
-            <div className="comm_inner">
-              <img
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                alt=""
-              />
-              <p>{comment.author}</p>
+        {feedbacks &&
+          feedbacks.map((item, index) => (
+            <div key={index} className="single-comment">
+              <div className="comm_inner">
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  alt=""
+                />
+                <p>{item.name}</p>
+              </div>
+              <div className="quote">
+                <p>
+                  <b></b> {item.description} <b></b>
+                </p>
+              </div>
             </div>
-            <div className="quote">
-              <p>
-                <b>"</b> {comment.comment} <b>"</b>
-              </p>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
 
-      <div className="foo">
-        {/* <Footer /> */}
-      </div>
+      <div className="foo">{/* <Footer /> */}</div>
     </div>
   );
 };

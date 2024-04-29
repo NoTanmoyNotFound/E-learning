@@ -5,11 +5,11 @@ import Feedback from "../models/feedbackModel.js";
 // Controller to create a new feedback
 export const createFeedback = async (req, res) => {
   try {
-    const { name, description } = req.body;
-    const feedback = new Feedback({ name, description });
+    const { name, description, courseID } = req.body;
+    const feedback = new Feedback({ name, description, courseID });
     const savedFeedback = await feedback.save();
     res.status(201).json({
-      savedFeedback
+      savedFeedback,
     });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -18,9 +18,10 @@ export const createFeedback = async (req, res) => {
 };
 
 // Controller to get all feedback
-export const getAllFeedback = async (req, res) => {
+export const getAllFeedback = async (req, res, next) => {
   try {
     const feedbacks = await Feedback.find();
+    console.log(feedbacks);
     res.status(200).json(feedbacks);
   } catch (error) {
     res.status(500).json({ message: error.message });

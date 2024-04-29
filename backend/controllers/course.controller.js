@@ -1,5 +1,6 @@
 import Category from "../models/categoryUpload.model.js";
 
+
 //for course title-bar in courses page start
 
 export const getCategories = async (req, res, next) => {
@@ -13,3 +14,7 @@ export const getCategories = async (req, res, next) => {
 }
 
 //for course title-bar in courses page end
+
+
+
+

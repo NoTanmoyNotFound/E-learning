@@ -2,8 +2,18 @@
 import mongoose from "mongoose";
 
 const feedbackSchema = new mongoose.Schema({
-  name: String,
-  description: String,
+  courseID:{
+    type:String,
+    required:true
+  },
+  name:{
+    type:String,
+    required:true
+  },
+  description: {
+    type: String,
+    required: true,
+  }
   
 });
 
