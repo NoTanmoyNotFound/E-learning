@@ -13,3 +13,7 @@ export const getCategories = async (req, res, next) => {
 }
 
 //for course title-bar in courses page end
+
+
+
+
