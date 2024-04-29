@@ -14,7 +14,7 @@ const Contact = () => {
                 <div className="flexColStart c-left">
                     <span className='orangeText'>Our Contacts</span>
                     <span className='primaryText'>Easy to Contact Us</span>
-                    <span className='secondaryText'>Lorem ipsum dolor sit, amet consectetur <br /> adipisicing elit. Temporibus voluptatibus <br /> voluptatum aut sapiente quaerat, totam quis.</span>
+                    <span className='secondaryText'>"Questions? Feedback? Reach out to us for prompt assistance and personalized support. We're here to help!"</span>
 
 
 

@@ -1,6 +1,7 @@
 import TeacherJoin from "../models/teacherJoin.model.js"
 import Category from '../models/categoryUpload.model.js';
 import Teacher from "../models/teacher.model.js";
+import User from "../models/user.model.js";
 
 
 
@@ -39,8 +40,34 @@ export const teacherDelete = async (req, res, next) => {
 
 export const acceptTeacherRequest = async (req, res, next) => {
     try {
-        const id = req.params.id;
+        const id = req.params.id
         const teacher = await TeacherJoin.findById(id);
+        // console.log(teacher);
+        const email = teacher.email;
+
+
+
+
+
+        const currentUser = await User.findOne({email});
+        const userInfo = await User.findByIdAndUpdate(
+            currentUser._id,
+            {
+                $set: {
+                    role: "teacher"
+                }
+            },
+            { new: true }
+            );
+            console.log("true");
+
+
+
+
+
+
+
+        
         if (!teacher) {
             return res.status(404).json({ success: false, error: "Teacher not found" });
         }
@@ -160,6 +187,25 @@ export const showAllAcceptedTeachers = async (req, res, next)=>{
 export const deleteAcceptedTecher = async (req, res, next)=>{
     try {
         const id = req.params.id;
+        const teacher = await Teacher.findById(id);
+        const email = teacher.email;
+
+
+
+
+
+        const currentUser = await User.findOne({email});
+        const userInfo = await User.findByIdAndUpdate(
+            currentUser._id,
+            {
+                $set: {
+                    role: "user"
+                }
+            },
+            { new: true }
+            );
+            console.log("true");
+
         const data = await Teacher.findByIdAndDelete(id);
         res.status(200).json({ success: true, data: data });
     } catch (error) {

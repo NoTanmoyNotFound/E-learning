@@ -28,8 +28,8 @@ const Company = () => {
   return (
     <AppContainer>
       <Wrapper>
-        <Text>Our Collaboration.</Text>
-        <Note>Our Student have gotten offers from awesome companies.</Note>
+        <div className='primaryText mt-5'>Our Collaboration.</div>
+        <div className='orangeText'>Our Student have gotten offers from awesome companies.</div>
         <Marquee>
           <MarqueeGroup>
             {row1.map((el) => (

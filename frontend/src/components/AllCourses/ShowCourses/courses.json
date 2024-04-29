@@ -4,24 +4,49 @@
     "title": "Python",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png",
     "price": 900,
+<<<<<<< HEAD
     "author": "Thapa Technical",
     "description": "Wow best course"
+=======
+    "author": "Crazy XYZ",
+    "description": "Learn Basiscs to  advanced JavaScript."
+>>>>>>> 37aa1e8b09e06a09743df9bd6f3b76314d38f797
   },
   {
     "id": 2,
     "title": "JavaScript",
     "image": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+<<<<<<< HEAD
     "author": "Thapa Technical",
     "price": 800,
     "description": "Learn the fundamentals of JavaScript"
+=======
+    "author": "Crazy XYZ",
+    "price": 800,
+    "description": "Learn Basiscs to  advanced JavaScript."
+>>>>>>> 37aa1e8b09e06a09743df9bd6f3b76314d38f797
   },
   {
     "id": 3,
     "title": "React",
     "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+<<<<<<< HEAD
     "author": "Thapa Technical",
     "price": 1000,
     "description": "Master React framework"
+=======
+    "author": "Crazy XYZ",
+    "price": 1000,
+    "description": "Learn Basiscs to  advanced React."
+  },
+  {
+    "id": 4,
+    "title": "Beach",
+    "image": "https://s3.us-west-2.amazonaws.com/images.unsplash.com/small/photo-1566895291281-ea63efd4bdbc",
+    "author": "Crazy XYZ",
+    "price": 1000,
+    "description": "Learn Basiscs to  advanced React."
+>>>>>>> 37aa1e8b09e06a09743df9bd6f3b76314d38f797
   }
   
  

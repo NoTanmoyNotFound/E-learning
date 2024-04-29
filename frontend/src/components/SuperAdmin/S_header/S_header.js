@@ -32,6 +32,14 @@ const S_header = ({ OpenSidebar }) => {
           console.log(error);
         }
       };
+
+
+
+
+
+    const handleHome = () => {
+        navigate("/");
+    }
     
     return (
         <header className='header'>
@@ -48,7 +56,7 @@ const S_header = ({ OpenSidebar }) => {
                 <AiOutlineClose className='iconn' onClick={OpenSidebar} />
             </div> */}
 
-                <Link to="/"><IoHome className='iconn' /></Link>
+                <IoHome onClick={handleHome} className='iconn' />
                 {/* <Link to="allCourses"><IoBookSharp className='iconn' /></Link> */}
                 <Link onClick={handleSignOut}><HiOutlineLogout className='iconn' /></Link>
                 {/* <Link><BsPersonCircle onClick={handleSignOut} className='iconn' /></Link> */}

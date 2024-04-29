@@ -13,6 +13,7 @@ import {useSelector} from 'react-redux'
 const Home = () => {
     const [isToggle, setIsToggle] = useState(false);
     const { currentUser } = useSelector((state) => state.user)
+    console.log(currentUser);
 
 
 

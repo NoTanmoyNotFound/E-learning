@@ -7,6 +7,8 @@ import { userInfoStart, userInfoSuccess, userInfoFailure } from "../../../redux/
 function EditInfo() {
     const { currentUser } = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
     
 
     const [inputdata, setInputdata] = useState({
@@ -40,11 +42,14 @@ function EditInfo() {
             const data = await res.json();
             if (data.success === false) {
                 dispatch(userInfoFailure(data.message));
+                setError(data.message);
                 return;
             }
+            setSuccess("data updated successfully");
             dispatch(userInfoSuccess(data));
         } catch (error) {
             console.log(error);
+            setError(error);
             dispatch(userInfoFailure(error));
         }
     }
@@ -67,7 +72,7 @@ function EditInfo() {
                     </div>
                     <div className="form-group">
                             <label className="form-label">Company</label>
-                            <input type="text" name='company' className="form-control" defaultValue="" onChange={handleChange} />
+                            <input type="text" name='collage' className="form-control" defaultValue="" onChange={handleChange} />
                     </div>
 
                     <div className="form-group">
@@ -113,6 +118,8 @@ function EditInfo() {
 
 
                 </div>
+                {success && <p>{success}</p>}
+                {error && <p>{error}</p>}
 
 
 

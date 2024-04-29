@@ -37,7 +37,7 @@ const S_home = () => {
                         <a href="#"><PiStudentBold className='cardd_icon' /></a>
                     </div>
                     {/* Dynamic count */}
-                    <h1>300</h1>
+                    {/* <h1>300</h1> */}
                 </div>
                 <div className='cardd'>
                     <div className='cardd-inner'>
@@ -46,7 +46,7 @@ const S_home = () => {
                     </div>
 
                     {/* Dynamic count */}
-                    <h1>30</h1>
+                    {/* <h1>30</h1> */}
                 </div>
                 <div className='cardd'>
                     <div className='cardd-inner'>
@@ -54,7 +54,7 @@ const S_home = () => {
                         <a href="#"><BsPeopleFill className='cardd_icon' /></a>
                     </div>
                     {/* Dynamic count */}
-                    <h1>33</h1>
+                    {/* <h1>33</h1> */}
                 </div>
                 <div className='cardd'>
                     <div className='cardd-inner'>
@@ -62,7 +62,7 @@ const S_home = () => {
                         <a href="#"><BsFillBellFill className='cardd_icon' /></a>
                     </div>
                     {/* Dynamic count */}
-                    <h1>42</h1>
+                    {/* <h1>42</h1> */}
                 </div>
             </div>
 

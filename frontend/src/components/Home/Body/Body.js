@@ -3,6 +3,8 @@ import CountUp from "react-countup";
 import './Body.css';
 import {motion} from 'framer-motion';
 
+import { Link } from 'react-router-dom';
+
 const Body = () => {
     return (
         <section className="body-wrapper">
@@ -21,20 +23,20 @@ const Body = () => {
                             type:"spring"
                         }}
                         >
-                            Discover <br />
-                            More Suitable <br />
-                            Heading
+                            Unlock Your <br />
+                            Potential with <br />
+                            Read X
                         </motion.h1>
                     </div>
 
                     {/* description----------------------- */}
                     <div className="flexColStart body-description ">
                         <span>
-                            Lorem ipsum dolor sit amet consectetur.
+                        Embark on a journey of self-discovery 
                         </span>
 
                         <span>
-                            Lorem ipsum dolor sit amet consectetur.
+                        and empowerment with Read X
                         </span>
                     </div>
 
@@ -42,8 +44,8 @@ const Body = () => {
                     {/* search bar---------------------- */}
                     <div className="flexCenter search-bar">
                         {/* <input style={{ border: 'none', outline: 'none' }} type="text" placeholder="Search..." /> */}
-                        <div><button className="button">Support</button></div>
-                        <div><button className="button">Admin Login</button></div>
+                        <div><Link to='/contact' className="button">Support</Link></div>
+                        <div><Link to='/careersuport' className="button">Mentorship</Link></div>
                     </div>
 
                     {/* admin buttons ------------------ */}

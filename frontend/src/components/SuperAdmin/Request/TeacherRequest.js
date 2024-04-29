@@ -11,6 +11,7 @@ function TeacherRequest() {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
 
 
 
@@ -68,11 +69,16 @@ function TeacherRequest() {
     const handleAccept = async (id) => {
         try {
             const response = await fetch(`http://localhost:8000/api/super/acceptTeacherRequest/${id}`, {
-                method: 'PUT',
-            });
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
             const responseData = await response.json(); 
             if (responseData.success === false) {
+                setError(responseData.error);
                 console.log(responseData);
+                return;
             } else {
                 setData(prevData => prevData.filter(item => item._id !== id));
                 console.log("Teacher request accepted successfully");
