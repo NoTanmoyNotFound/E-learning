@@ -3,14 +3,16 @@ import './S_sidebar.css';
 import { PiStudentBold } from "react-icons/pi";
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { BsGrid1X2Fill, BsFillGrid3X3GapFill, BsPeopleFill, BsListCheck, BsMenuButtonWideFill, BsFillGearFill } from 'react-icons/bs';
+import { useSelector } from "react-redux";
 
 const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
+    const { currentUser } = useSelector((state) => state.user);
     return (
         <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
             <div className='sidebar-title'>
                 <div className="profile">
-                    <img src={profilePic} className="image" id="pfp" alt="Profile" />
-                    <h3 className="name">Saklin Mustak</h3>
+                    <img src={currentUser && currentUser.profilePicture} className="image" id="pfp" alt="Profile" />
+                    <h3 className="name">{currentUser && currentUser.name}</h3>
                     <p className="role">Super Admin</p>
                 </div>
                 <span id='closeIcon' className='iconn close_iconn' onClick={OpenSidebar} style={{ marginTop: "-6rem", color: "black" }}><i className="fa-solid fa-angle-left"></i></span>

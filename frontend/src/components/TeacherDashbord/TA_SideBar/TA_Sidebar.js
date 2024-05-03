@@ -33,7 +33,7 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
             className="image"
             id="pfp"
           />
-          <h3 className="name">{currentUser.name}</h3>
+          <h3 className="name">{currentUser && currentUser.name}</h3>
           <p className="role"> Admin Panel </p>
         </div>
         <span className="iconn close_icon" onClick={OpenSidebar}>
