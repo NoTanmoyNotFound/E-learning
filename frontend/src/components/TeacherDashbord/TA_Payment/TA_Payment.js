@@ -66,11 +66,11 @@ const TA_Payment = () => {
   };
 
   return (
-    <div className="m-12">
+    <div className=" m-12">
       <table
         id="example"
-        className="table table-striped shadow-lg bg-white rounded-lg overflow-hidden"
-        style={{ width: "100%" }}
+        className="table table-striped shadow-lg bg-white rounded-lg overflow-hidden "
+        style={{ width: "50%" }}
       >
         <thead className="bg-gray-50">
           <tr>
