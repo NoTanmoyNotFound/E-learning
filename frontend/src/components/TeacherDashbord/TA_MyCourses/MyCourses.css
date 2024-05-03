@@ -12,14 +12,22 @@
 
 
 }
+.spinner-icon {
+    animation: spin 1s infinite linear; /* Apply rotation animation */
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg); /* Start rotation from 0 degrees */
+    }
+    to {
+      transform: rotate(360deg); /* Rotate to 360 degrees */
+    }
+  }
+  
 
-.formSec {
-    margin-top: 30px;
-    background: rgb(34, 193, 195);
-    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
-    padding: 30px;
-    border-radius: 5px;
-}
+  
+
 
 label{
     margin-right: 10px;
@@ -39,3 +47,43 @@ textarea{
     font-size: 25px;
     font-weight: 700;
 }
+.button {
+    color: #2f27c2; /* Default text color */
+    border: 1px solid #2f27c2; /* Default border color */
+    background-color: transparent; /* Default background color */
+    font-weight: medium;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    padding: 0.625rem 1.25rem;
+    text-align: center;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+  }
+  
+  .button:hover {
+    color: white;
+    background-color: #2f27c2;
+    border-color: #2f27c2;
+  }
+  
+  .button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(83, 13, 236, 0.913);
+  }
+  
+  .dark .button {
+    color: #9F7AEA; /* Dark mode text color */
+    border-color: #9F7AEA; /* Dark mode border color */
+  }
+  
+  .dark .button:hover {
+    color: white;
+    background-color: #3477e9;
+    border-color: #e4233a;
+  }
+  
+  .dark .button:focus {
+    box-shadow: 0 0 0 3px rgb(206, 99, 27);
+  }
+  
