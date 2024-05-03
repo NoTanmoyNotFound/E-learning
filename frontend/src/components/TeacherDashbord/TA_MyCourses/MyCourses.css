@@ -1,0 +1,41 @@
+
+
+.bodypart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    width: 50vw;
+
+
+
+}
+
+.formSec {
+    margin-top: 30px;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+label{
+    margin-right: 10px;
+}
+
+input{
+    border-radius: 5px;
+}
+
+textarea{
+    border-radius: 5px;
+}
+
+.headName{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 700;
+}
