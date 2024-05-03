@@ -53,8 +53,8 @@ const TA_Feedback = () => {
         </td>
         <td className="border px-4 py-2">
           <button
-          style={{background:'#eb3434'}}
-            className=" hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            style={{ background: "#eb3434" }}
+            className="hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => handleDelete(item.id)}
           >
             Delete
@@ -65,8 +65,8 @@ const TA_Feedback = () => {
   };
 
   return (
-    <div className="flex justify-center m-12">
-      <table className="table-auto  border-solid border-black">
+    <div className="flex justify-center m-12 w-[1200px] h-12"> {/* Added w-full for full width */}
+      <table className="table-auto border-solid border-black w-full">
         <thead className="bg-gray-400">
           <tr>
             <th className="px-4 py-2">ID</th>
