@@ -93,6 +93,7 @@ const MyCourses = () => {
   };
 
   return (
+   <div className="bodypart">
     <div className="main">
       <h1 className='headName'>Course Upload Form</h1>
       <form className="formSec" onSubmit={(e) => { e.preventDefault(); }}>
@@ -168,7 +169,8 @@ const MyCourses = () => {
         <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
-  );
+   </div>
+   );
 };
 
 export default MyCourses;
