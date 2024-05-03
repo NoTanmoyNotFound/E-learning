@@ -8,11 +8,29 @@ import teacherRouter from "./routers/teacher.router.js";
 import superRouter from "./routers/super.router.js";
 import courseRouter from "./routers/course.router.js";
 import feedbackRoute from "./routers/feedbackRoute.js";
+import courseUploadRouter from "./routers/CourseUploadRouter.js"
 
 import cors from "cors";
 import bodyParser from "body-parser";
+const app = express();
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(
+  cors({ credentials: true, origin: true, exposedHeaders: ["set-cookie"] })
+);
+app.use(express.json());
+app.use(cookieParser());
+
+
+
 
 dotenv.config();
+
+
 
 // Dtabase connection
 mongoose
@@ -25,21 +43,18 @@ mongoose
   });
 
 // rest object
-const app = express();
+
 const corsOptions = {
   origin: "http://localhost:3000", // Replace with the origin you want to allow, or use a function for dynamic origin determination
   credentials: true, // Allow cookies and other credentials to be sent
 };
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(express.json());
-app.use(
-  cors({ credentials: true, origin: true, exposedHeaders: ["set-cookie"] })
-);
 
 console.log();
+
+
+
+
 
 // listen
 app.listen(8000, () => {
@@ -53,6 +68,7 @@ app.use("/api/teacher", teacherRouter);
 app.use("/api/super", superRouter);
 app.use("/api/course", courseRouter);
 app.use("/api/f", feedbackRoute);
+app.use("/api/upload",courseUploadRouter)
 
 // error handler
 app.use((err, req, res, next) => {
