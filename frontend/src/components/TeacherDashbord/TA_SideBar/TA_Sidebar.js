@@ -17,8 +17,10 @@ import {
   BsFillGearFill,
 } from "react-icons/bs";
 import MyCourses from "../TA_MyCourses/MyCourses";
+import { useDispatch, useSelector } from "react-redux";
 
 const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <aside
       id="TAsidebar"
@@ -26,8 +28,12 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
     >
       <div className="TAsidebar-title">
         <div className="TAprofile">
-          <img src="s.png" className="image" id="pfp" />
-          <h3 className="name">Saklin Mustak</h3>
+          <img
+            src={currentUser && currentUser.profilePicture}
+            className="image"
+            id="pfp"
+          />
+          <h3 className="name">{currentUser.name}</h3>
           <p className="role"> Admin Panel </p>
         </div>
         <span className="iconn close_icon" onClick={OpenSidebar}>
@@ -37,24 +43,24 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
 
       <ul className="TAsidebar-list">
         <li className="TAsidebar-list-item">
-          <Link to="/TeacherAdminMain">
+          <Link to="/techerDashbord">
             <BsGraphUp className="iconn" /> Analytics
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link to="/TeacherCourse">
+          <Link to="/techerDashbord/TeacherCourse">
             <BsBookHalf className="iconn" />
             All Courses
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link to="/TeacherPayment">
+          <Link to="/techerDashbord/TeacherPayment">
             <BsBookHalf className="iconn" />
             Payments
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link to="/TeacherFeedback">
+          <Link to="/techerDashbord/TeacherFeedback">
             <BsBookHalf className="iconn" />
             Feedback
           </Link>
