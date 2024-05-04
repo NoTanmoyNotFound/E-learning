@@ -55,7 +55,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
-        <Route path="/course-details" element={<SingleCourseDetails />} />
+        <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
 
 
 
@@ -82,7 +82,7 @@ function App() {
 
 
         
-        <Route path="/techerDashbord" element={<TeacherAdminMain />}>
+        <Route path="/techerDashbord"  element={<TeacherAdminMain />}>
           <Route index element={<TA_Analytics />} />
           <Route path="TeacherPayment" element={<TA_Payment />} />
           <Route path="TeacherFeedback" element={<TA_Feedback />} />

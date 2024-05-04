@@ -29,7 +29,7 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
       <div className="TAsidebar-title">
         <div className="TAprofile">
           <img
-            src={currentUser && currentUser.profilePicture}
+            src="https://firebasestorage.googleapis.com/v0/b/readx-ee41a.appspot.com/o/videos%2F1714765424774_self%20image.jpg?alt=media&token=7ff08ce1-3c60-47f3-bdf0-35a6efe56fbe"
             className="image"
             id="pfp"
           />
