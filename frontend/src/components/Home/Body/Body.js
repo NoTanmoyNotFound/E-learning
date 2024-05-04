@@ -30,22 +30,14 @@ const Body = () => {
                     </div>
 
                     {/* description----------------------- */}
-                    <div className="flexColStart body-description ">
-                        <span>
-                        Embark on a journey of self-discovery 
-                        </span>
-
-                        <span>
-                        and empowerment with Read X
-                        </span>
-                    </div>
+                    
 
 
                     {/* search bar---------------------- */}
                     <div className="flexCenter search-bar">
                         {/* <input style={{ border: 'none', outline: 'none' }} type="text" placeholder="Search..." /> */}
-                        <div><Link to='/contact' className="button">Support</Link></div>
-                        <div><Link to='/careersuport' className="button">Mentorship</Link></div>
+                        <div><Link to='/contact' className="button3">Support</Link></div>
+                        <div><Link to='/careersuport' className="button3">Mentorship</Link></div>
                     </div>
 
                     {/* admin buttons ------------------ */}

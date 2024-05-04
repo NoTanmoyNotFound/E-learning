@@ -39,7 +39,7 @@ const Contact = () => {
                                 </div>
 
 
-                                <div className="flexCenter button">
+                                <div className="flexCenter button3">
                                     Call Now
                                 </div>
                             </div>
@@ -58,7 +58,7 @@ const Contact = () => {
                                 </div>
 
 
-                                <div className="flexCenter button">
+                                <div className="flexCenter button3">
                                     Chat Now
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ const Contact = () => {
                                 </div>
 
 
-                                <div className="flexCenter button">
+                                <div className="flexCenter button3">
                                     Call Now
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ const Contact = () => {
                                 </div>
 
 
-                                <div className="flexCenter button">
+                                <div className="flexCenter button3">
                                     Message Now
                                 </div>
                             </div>

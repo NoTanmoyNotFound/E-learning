@@ -118,8 +118,8 @@ return (
                 <span>Email</span>
               </div>
               <div className="inputBox">
-                <textarea required="required" defaultValue={""} onChange={handleChange} name="message" />
-                <span>Type your message....</span>
+                <textarea className="pt-3" required="required" defaultValue={""} onChange={handleChange} name="message" />
+                <span className="mb-3" >Type your message....</span>
               </div>
               {error && <div className="error text-[#f50000]">{error}</div>}
               {success && <div className="success text-[#44ff41]">{success}</div>}

@@ -17,18 +17,18 @@
 }
 
 .secondaryTextt {
-    font-size: 1.4rem;
+    font-size: 1rem;
     color: rgb(109, 105, 105);
 }
 
 .testimonials_rating {
     .no_of_students p {
-        font-size: 20px;
+        font-size: 13px;
         color: #ff6a00c4;
     }
 
     .ratings_course {
-        font-size: 20px;
+        font-size: 15px;
         color: #ff6a00;
     }
 }
@@ -62,7 +62,7 @@
     padding-bottom: 20px;
 }
 
-.img_course {
+.img-course {
     width: 100%;
     height: 300px;
     border-radius: 10px;
@@ -137,6 +137,7 @@
 .cmmmm {
     padding: 2% 5%;
     margin-top: 5%;
+    color: black !important;
 }
 
 .comments_single {
@@ -145,6 +146,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     height: 300px;
     overflow-x: auto;
+    color: black;
 }
 
 .comments_single::-webkit-scrollbar {
@@ -185,43 +187,45 @@
     margin-top: 10px;
     font-size: 12px;
 }
-.feed_back{
-      margin: 10px;
-      padding: 15px 30px;
-      text-align: center;
-      text-transform: uppercase;
-      transition: 0.5s;
-      background-size: 200% auto;
-      color: white;
-      border-radius: 10px;
-      display: block;
-      border: 0px;
-      font-weight: 700;
-      box-shadow: 0px 0px 14px -7px #f09819;
-      background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
-      cursor: pointer;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
-    
-    .button-87:hover {
-      background-position: right center;
-      /* change the direction of the change here */
-      color: #fff;
-      text-decoration: none;
-    }
-    
-    .button-87:active {
-      transform: scale(0.95);
-    }
-    
+
+.feed_back {
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 0px 14px -7px #f09819;
+    background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-87:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.button-87:active {
+    transform: scale(0.95);
+}
+
 
 
 @keyframes color-rotation {
     from {
         filter: hue-rotate(0deg);
     }
+
     to {
         filter: hue-rotate(360deg);
     }
@@ -231,14 +235,45 @@
     background: linear-gradient(45deg, #8148b6, #20A4F3);
     color: white;
     font-weight: 600;
-    border: none; 
-    padding: 10px 20px; 
-    cursor: pointer; 
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
 .courses-buy:hover {
-    animation: color-rotation 10s linear ;
-    background: linear-gradient(45deg, #8148b6 , #20A4F3);
+    animation: color-rotation 10s linear;
+    background: linear-gradient(45deg, #8148b6, #20A4F3);
+}
+
+
+.preview_main {
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+    .preview_inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        background: #e2e2e2;
+        border-radius: 10px;
+        transition: all 400ms ease-in !important;
+        cursor: pointer;
+
+        &:hover {
+            background: linear-gradient(#62cff4, #2c67f2);
+            .fa-video{
+                transform: scale(1.1);
+                color: #fff;
+            }
+        }
+
+        .fa-video {
+            font-size: 3rem;
+            transition: all 300ms ease-in;
+        }
+    }
 }
 
 
@@ -305,6 +340,36 @@
         font-weight: 600;
     }
 
+    .preview_main {
+        padding-top: 3%;
+        padding-bottom: 3%;
+    
+        .preview_inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10%;
+            padding-bottom: 10%;
+            background: #e2e2e2;
+            border-radius: 10px;
+            transition: all 400ms ease-in !important;
+            cursor: pointer;
+    
+            &:hover {
+                background: linear-gradient(#62cff4, #2c67f2);
+                .fa-video{
+                    transform: scale(1.1);
+                    color: #fff;
+                }
+            }
+    
+            .fa-video {
+                font-size: 8rem;
+                transition: all 300ms ease-in;
+            }
+        }
+    }
+
 
 }
 
@@ -319,6 +384,7 @@
         font-size: 10px;
         opacity: 0.8;
     }
+
     .img_course {
         width: 100%;
         height: 200px;
@@ -378,10 +444,42 @@
     .quote p {
         text-align: center;
     }
+
     .single-comment {
         margin-bottom: 2%;
     }
+
+    .preview_main {
+        padding-top: 3%;
+        padding-bottom: 3%;
+    
+        .preview_inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 10%;
+            padding-bottom: 10%;
+            background: #e2e2e2;
+            border-radius: 10px;
+            transition: all 400ms ease-in !important;
+            cursor: pointer;
+    
+            &:hover {
+                background: linear-gradient(#62cff4, #2c67f2);
+                .fa-video{
+                    transform: scale(1.1);
+                    color: #fff;
+                }
+            }
+    
+            .fa-video {
+                font-size: 8rem;
+                transition: all 300ms ease-in;
+            }
+        }
+    }
 }
+
 .floating-btn {
     position: fixed;
     top: 20px;
@@ -422,3 +520,77 @@
     line-height: 40px;
     /* Center icon vertically */
 }
+
+
+
+
+
+
+
+
+
+
+.button {
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    color: white !important;
+    background: linear-gradient(#62cff4, #2c67f2) !important;
+    border: none;
+    border-radius: 4px;
+    transition: all 300ms ease-in;
+}
+
+.button2 {
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    color: rgb(0, 0, 0);
+    background: linear-gradient(#62cff4, #2c67f2) !important;
+    border: none;
+    border-radius: 4px;
+    transition: all 300ms ease-in;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.button2:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.orangeText {
+    color: orange;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.primaryText {
+    color: #1f3e72;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.primaryText2 {
+    color: #1f3e72;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.secondaryText {
+    color: rgb(140 139 139);
+    font-size: 0.9rem;
+}
+
+/* All resposive */
+@media (max-width:395px) {
+    .primaryText2 {
+        color: #1f3e72;
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+}
+
+
+
