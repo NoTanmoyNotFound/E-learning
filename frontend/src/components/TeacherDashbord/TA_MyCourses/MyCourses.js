@@ -96,6 +96,7 @@ const MyCourses = () => {
       // Reset form after successful submission
       setInputs({
         name: "",
+        author: "",
         description: "",
         price: "",
         duration: "",
@@ -190,13 +191,30 @@ const MyCourses = () => {
               htmlFor="name"
               className="form-label block mb-2 text-sm font-semibold"
             >
-              Name
+              Course Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
               value={inputs.name}
+              onChange={handleInputChange}
+              className="form-input w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label
+              htmlFor="name"
+              className="form-label block mb-2 text-sm font-semibold"
+            >
+              Author Name
+            </label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              value={inputs.author}
               onChange={handleInputChange}
               className="form-input w-full border rounded px-4 py-2"
             />
