@@ -32,6 +32,7 @@ import Signinprotact from "./page/Signinprotact";
 import Careersuport from "./page/Careersuport";
 import Formcareer from "./page/Formcareer";
 import Contact from "./components/ContactUs/Contact";
+import Error from "./components/Error/Error";
 
 //super-admin-routes start
 import S_home from "./components/SuperAdmin/S_home/S_home";
@@ -55,6 +56,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
         <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
+
+
+
+        <Route path="/error-not-found" element={<Error />} />
+
+
 
         <Route path="/Homeblogs" element={<Homeblogs />} />
         <Route path="/blogs/:id" element={<SingleBlog />} />
