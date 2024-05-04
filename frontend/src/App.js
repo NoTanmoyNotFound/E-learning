@@ -54,7 +54,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
-        <Route path="/course-details" element={<SingleCourseDetails />} />
+        <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
 
         <Route path="/Homeblogs" element={<Homeblogs />} />
         <Route path="/blogs/:id" element={<SingleBlog />} />
