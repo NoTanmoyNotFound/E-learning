@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import "./SingleCourseDetails.css";
 import { useParams, Link } from 'react-router-dom';
-import './SingleCourseDetails.css';
+import { color } from "framer-motion";
 
 const SingleCourseDetails = () => {
   const { courseId } = useParams(); // Get course ID from route parameters
@@ -108,7 +109,7 @@ const SingleCourseDetails = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="primaryText">Loading...</div>;
   }
 
   if (error) {
@@ -117,38 +118,70 @@ const SingleCourseDetails = () => {
 
   const isValidRating = (rating) => typeof rating === 'number' && rating >= 0 && rating <= 5;
 
-  return (
-    <div className="single-course-details">
-      <button className="floating-btn">
-        <Link to="/Allcourses">
-          <i className="fa-solid fa-angle-left"></i>
-        </Link>
-      </button>
 
+
+
+
+  return (
+    <div className="s-body-d mt-5">
+      <button className="floating-btn">
+        <a href="/Allcourses">
+          <i class="fa-solid fa-angle-left"></i>
+        </a>
+      </button>
+      {/* <Header /> */}
       <div className="banner-course">
         <div className="banner-inner-course">
-          <div className="left-single">
-            <h1 className="primaryText">{course.name}</h1>
+          <div className="left_single">
+            <h1 className="primaryText primaryTextt">{course.name}</h1>
             <div className="desc-c">
-              <p className="secondaryText">{course.description}</p>
+              <p className="secondaryTextt">{course.description}</p>
+            </div>
+            <div className="testimonials_rating">
+              <div className="no_of_students">
+                <p>{course.noOfStudents} - students</p>
+              </div>
+              <br />
+              <div className="ratings_course">
+                {isValidRating(course.rating)
+                  ? [...Array(course.rating)].map((_, index) => (
+                    <span key={index}>&#9733;</span>
+                  ))
+                  : 'Invalid rating'}
+                {isValidRating(course.rating) &&
+                  [...Array(5 - course.rating)].map((_, index) => (
+                    <span key={index}>&#9734;</span>
+                  ))}
+              </div>
+              <div className="bottom_single">
+                <p className="secondaryText">
+                  Created by <u>{course.author}</u>
+                </p>
+                <p className="secondaryText">
+                  Teacher's Email <u>{course.authorEmail}</u>
+                </p>
+                <p className="secondaryText">
+                  Duration {course.duration} h
+                </p>
+                <br />
+                <br />
+              </div>
             </div>
           </div>
 
-          <div className="right-single">
-            <div className="right-single-inner">
+          <div className="right_single" style={{ height: 'fit-content' }}>
+            <div className="right_single_inner">
               {course.imageUrl && (
                 <img className="img-course" src={course.imageUrl} alt={course.name} />
               )}
             </div>
-
-            <div className="mid-single">
+            <div className="mid_single">
               <p className="mid-p">
-                <span className="price-mid">{course.price}</span>
+                <span className="price-mid primaryText">₹ {course.price}</span>
                 <span>
-                  <s>{course.discountedPrice}</s>
+                  <s className="orangeText">₹ 4000</s>
                 </span>
               </p>
-
               <p className="mid-star">
                 {isValidRating(course.rating)
                   ? [...Array(course.rating)].map((_, index) => (
@@ -160,92 +193,103 @@ const SingleCourseDetails = () => {
                     <span key={index}>&#9734;</span>
                   ))}
               </p>
-
-              {course.discount && <span className="discount">{course.discount}</span>}
+              <span className="discount">{course.discount}</span>
             </div>
 
-            <div className="mid-single-button">
-              <button className="courses-buy w-100 h-12 rounded-xl">Buy Now</button>
+            <div className="preview_main">
+              <div className="preview_inner">
+                <i className="fa-solid fa-video modal-btn-11"></i>
+              </div>
+            </div>
+            <div className="mid_single_button">
+              <button className="w-100 button3">
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="single-course-main">
-        <div className="single-inner">
+      <div className="single_course_main">
+        <div className="single_inner">
           <h1 className="primaryText">What you'll learn</h1>
-          <div className="ticks-single">
-            {Array.isArray(course.learn) && course.learn.map((item, index) => (
-              <div key={index} className="ul">
-                <div className="li">
-                  <li>{item}</li>
-                </div>
+          <div className="ticks_single">
+
+            <div className="ul">
+              <div className="li">
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe eos culpa impedit dolore quasi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe eos culpa impedit dolore quasi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe eos culpa impedit dolore quasi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe eos culpa impedit dolore quasi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe eos culpa impedit dolore quasi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati saepe eos culpa impedit dolore quasi.</li>
               </div>
-            ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className=" single_course_main2">
+        <div className=" single_inner2">
+          <h1 className="primaryText">Why Choose Us?</h1>
+          <div className="ticks_single ticks_single2">
+            <div className="ul2">
+              <div className="li2">
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel dolorem necessitatibus recusandae et sequi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel dolorem necessitatibus recusandae et sequi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel dolorem necessitatibus recusandae et sequi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel dolorem necessitatibus recusandae et sequi.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vel dolorem necessitatibus recusandae et sequi.</li>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="single-course-main2">
-        <div className="single-inner2">
-          <h1 className="primaryText">This course includes:</h1>
-          <div className="ticks-single2">
-            {Array.isArray(course.includes) && course.includes.map((item, index) => (
-              <div key={index} className="ul2">
-                <div className="li2">
-                  <li>{item}</li>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="cmmmm">
+      {/* <div className="cmmmm">
         <h1 className="primaryText">Comments/Feedbacks</h1>
       </div>
-
-      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center">
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center ">
         <input
           type="text"
           name="userName"
           placeholder="Your Name"
           value={formData.userName}
           onChange={handleChange}
-          className="user-name-textarea ml-12 h-10 rounded"
+          className="user-name-textarea ml-12 h-10 rounded sm:mb-0 sm:mr-3 "
         />
         <textarea
           name="userFeedback"
           placeholder="Share your feedback..."
           value={formData.userFeedback}
           onChange={handleChange}
-          className="user-feedback-textarea"
-          style={{ width: '30%' }}
-        />
+          className="user-feedback-textarea ml-3 h-10 rounded sm:mb-0 sm:mr-3"
+          style={{ width: "30%" }}
+        ></textarea>
         <button
           type="submit"
-          className="feed_back hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="feed_back hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-1"
         >
           Submit Feedback
         </button>
       </form>
 
-      <div className="comments-single">
+      <div className="comments_single">
         {Array.isArray(feedbacks) && feedbacks.map((item, index) => (
           <div key={index} className="single-comment">
-            <div className="comm-inner">
+            <div className="comm_inner">
               <img
                 src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                alt="profile"
+                alt=""
               />
               <p>{item.name}</p>
             </div>
             <div className="quote">
-              <p>{item.description}</p>
+              <p>
+                <b></b> {item.description} <b></b>
+              </p>
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

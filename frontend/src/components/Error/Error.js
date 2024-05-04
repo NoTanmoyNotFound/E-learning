@@ -13,7 +13,7 @@ const Error = () => {
 
                     <div className="desc">
                         <p>Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores optio obcaecati tenetur? Ea, consequatur odit. sit amet consectetur adipisicing elit. Odit fugiat autem sint, modi fuga ratione!</p>
-                        <Link to="/" className="home_btnn button mt-4">
+                        <Link to="/" className="home_btnn button3 mt-4">
                             <Link to="/">Back To Home</Link>
                         </Link>
                     </div>
