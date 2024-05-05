@@ -44,6 +44,7 @@ import Users from "./components/SuperAdmin/Users/Users";
 //super-admin-routes end
 
 import ForgotPassword from "./page/ForgotPassword";
+import Payment from "./page/Payment";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -111,6 +112,23 @@ function App() {
             <Route path="users-details" element={<Users />} />
           </Route>
         </Route>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Route path="payment" element={<Payment/>} />
       </Routes>
     </BrowserRouter>
   );

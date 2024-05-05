@@ -2,16 +2,24 @@ import React, { useState, useEffect } from "react";
 import "./SingleCourseDetails.css";
 import { useParams, Link } from "react-router-dom";
 import { color } from "framer-motion";
+import Payment from "../../../page/Payment";
+import { useSelector } from "react-redux";
 
 const SingleCourseDetails = () => {
   const { courseId } = useParams(); // Get course ID from route parameters
   const [showModal, setShowModal] = React.useState(false);
+  const [isCoursePurchased, setIsCoursePurchased] = useState(null);
+  const { currentUserInfo } = useSelector((state) => state.local);
+  console.log(currentUserInfo);
+  // const isCoursePurchased = currentUserInfo.courses.includes(courseId);
   // Initialize course state with default values
   const [course, setCourse] = useState({
     name: "",
     description: "",
     imageUrl: "",
     price: "",
+    author: "",
+    authorEmail: "",
     discountedPrice: "",
     discount: "",
     rating: 0,
@@ -29,6 +37,36 @@ const SingleCourseDetails = () => {
     userName: "",
     userFeedback: "",
   });
+
+  useEffect(() => {
+    const checkCoursePurchased = () => {
+      setIsCoursePurchased(currentUserInfo.courses.includes(courseId));
+    };
+
+    checkCoursePurchased();
+  }, [currentUserInfo, courseId]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
@@ -66,7 +104,7 @@ const SingleCourseDetails = () => {
     };
 
     fetchCourseDetails();
-    fetchFeedbacks();
+    // fetchFeedbacks();
   }, [courseId]);
 
   const handleChange = (event) => {
@@ -245,7 +283,7 @@ const SingleCourseDetails = () => {
               </div>
             </div> */}
             <div className="mid_single_button">
-              <button className="w-100 button3">Buy Now</button>
+             {isCoursePurchased ? <button className="w-100 button3"  > go to course </button> : <Payment courseId={courseId} price={course.price} teacherEmail={course.authorEmail} teacherName={course.author} /> } 
             </div>
           </div>
         </div>

@@ -4,38 +4,71 @@ import CourseStructure from '../models/courseUploadModel.js';
 
 export const createCourseController = async (req, res) => {
   try {
-    const { imageUrl, videoUrl, name,author, description, price, duration } = req.body;
+    const {
+      imageUrl,
+      videoUrl,
+      previewVideoUrl,
+      name,
+      
+      author,
+      authorEmail,
+      description,
+      category,
+      price,
+      discount,
+      discountPercentage,
+      examUrl,
+      duration,
+    } = req.body;
 
-
-    if (!imageUrl || !videoUrl || !name || !description || !price || !duration) {
+    if (
+      !imageUrl ||
+      !videoUrl ||
+      !previewVideoUrl ||
+      !name ||
+    
+      !author ||
+      !authorEmail ||
+      !description ||
+      !category ||
+      !price ||
+      !discount ||
+      !examUrl ||
+      !duration
+    ) {
       res.status(400);
-      throw new Error("All fields (Image URL, Video URL, Name, Description, Price, Duration) are required !!");
+      throw new Error("All required fields must be filled.");
     }
 
     const course = new CourseStructure({
       imageUrl,
       videoUrl,
+      previewVideoUrl,
       name,
+   
       author,
+      authorEmail,
       description,
+      category,
       price,
-      duration
+      discount,
+      discountPercentage,
+      examUrl,
+      duration,
     });
 
     const savedCourse = await course.save();
 
     res.status(200).json({
       success: true,
-      savedCourse
+      savedCourse,
     });
-
   } catch (error) {
     console.log(error);
     res.status(400).json({
       success: false,
-      error: error.message
+      error: error.message,
     });
-
   }
 };
 
