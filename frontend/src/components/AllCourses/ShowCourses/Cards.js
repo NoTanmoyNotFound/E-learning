@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './Cards.css';
 import { Link } from 'react-router-dom';
 import coursesData from './courses.json';
+import { useSelector } from "react-redux";
 
 const Cards = () => {
     const [error, setError] = useState('');
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { currentUserInfo } = useSelector((state) => state.local);
+    
 
 
     const truncateText = (text, wordLimit) => {
@@ -49,6 +52,7 @@ const Cards = () => {
         <div className="main-container">
             {courses.map((course) => (
                 <div key={course._id} className="b-card course-card">
+                
                     <div className="course_img">
                         <img className="course_card_img" src={course.imageUrl} alt={course.name} />
                     </div>
@@ -62,11 +66,22 @@ const Cards = () => {
                         <p className="secondaryText">{truncateText(course.description, 10)} </p>
 
                     </div>
-                    <button className="button3">
+                    {currentUserInfo.courses.includes(course._id) ?(
                         <a href={`/course-details/${course._id}`} className="w-100">
-                            Enroll Now
+                        <button className="button3 disabled">Enrolled</button>
                         </a>
-                    </button>
+                    ):(
+
+                        <a href={`/course-details/${course._id}`} className="w-100">
+                
+                        <button className="button3">
+                            
+                                Enroll Now
+                           
+                        </button>
+                        </a>
+                    )}
+             
                 </div>
             ))}
             {error && <p className="error-message">{error}</p>}
