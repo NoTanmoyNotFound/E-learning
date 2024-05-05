@@ -3,6 +3,7 @@ import "./SingleCourseDetails.css";
 import Header from "../../Home/Header/Header";
 import Footer from "../../Home/Footer/Footer";
 import { color } from "framer-motion";
+import Payment from "../../../page/Payment";
 
 const SingleCourseDetails = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -187,9 +188,11 @@ const SingleCourseDetails = () => {
               <span className="discount">{courseDetails.discount}</span>
             </div>
             <div className="mid_single_button">
-              <button className="courses-buy w-100 h-12 rounded-xl">
+              {/* <button className="courses-buy w-100 h-12 rounded-xl">
                 Buy Now
-              </button>
+              </button> */}
+
+              <Payment />
             </div>
           </div>
         </div>
