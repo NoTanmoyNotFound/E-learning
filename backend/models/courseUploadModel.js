@@ -9,7 +9,15 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    previewVideoUrl: {
+        type: String,
+        required: true
+    },
     name: {
+        type: String,
+        required: true
+    },
+    email: {
         type: String,
         required: true
     },
@@ -18,13 +26,38 @@ const courseSchema = new mongoose.Schema({
         required: true
 
     },
+    authorEmail:{
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: true
     },
+    category:{
+        type:String,
+        required:true
+
+    },
     price: {
         type: Number,
         required: true
+    },
+    discount: {
+        type: Number,
+        required: true
+    },
+    discountPercentage:{
+        type: Number,
+        required: true
+    },
+    rating: {
+        type: Number,
+        default:4,
+    },
+    examUrl: {
+        type: String,
+       
     },
     duration: {
         type: String,
