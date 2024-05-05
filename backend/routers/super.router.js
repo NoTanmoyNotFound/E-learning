@@ -1,5 +1,5 @@
 import express from "express";
-import { teacherRequest, teacherDelete, categoryUploads, getCategoryData, categoryDelete, acceptTeacherRequest, showAllAcceptedTeachers, deleteAcceptedTecher } from "../controllers/super.controller.js";
+import { teacherRequest, teacherDelete, categoryUploads, getCategoryData, categoryDelete, acceptTeacherRequest, showAllAcceptedTeachers, deleteAcceptedTecher, getUsersDetails, bannedUser, UnBannedUser } from "../controllers/super.controller.js";
 const router = express.Router();
 
 // teacherRequest
@@ -20,5 +20,11 @@ router.delete("/categoryDelete/:id", categoryDelete);
 //teachers
 router.get("/showAllAcceptedTeachers",showAllAcceptedTeachers);
 router.delete("/deleteAcceptedTecher/:id",deleteAcceptedTecher);
+
+
+//users
+router.get("/getUsersDetails",getUsersDetails);
+router.post('/bannedUser/:userId', bannedUser);
+router.post('/UnBannedUser/:userId', UnBannedUser);
 
 export default router;

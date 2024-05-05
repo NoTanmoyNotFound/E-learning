@@ -176,7 +176,7 @@ const Category = () => {
                                             {category.phone}
                                         </td> */}
                                         <td className="px-6 py-4">
-                                            <ImCross color="red" onClick={() => handleDeleteCategory(category._id)} />
+                                            <ImCross className='deletebtnn' color="red" onClick={() => handleDeleteCategory(category._id)} />
                                         </td>
                                     </tr>
                                 ))}
