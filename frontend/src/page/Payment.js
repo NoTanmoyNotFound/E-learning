@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { userInfoStart, userInfoSuccess, userInfoFailure } from "../redux/user/localSlice";
 
-function Payment({courseId,price}) {
+function Payment({courseId,price, teacherEmail,teacherName}) {
   const dispatch = useDispatch();
 
   const { currentUser } = useSelector((state) => state.user);
@@ -44,7 +44,7 @@ function Payment({courseId,price}) {
         order_id:order.id,
         handler: async function(response) {
           
-          const body = {...response,userId,uaerName,userEmail,price,courseId}
+          const body = {...response,userId,uaerName,userEmail,price,courseId, teacherName, teacherEmail};
 
           const validateResponse = await fetch('http://localhost:8000/api/pay/validate', {
           method: 'POST',

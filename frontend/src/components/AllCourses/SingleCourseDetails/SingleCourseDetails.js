@@ -18,6 +18,8 @@ const SingleCourseDetails = () => {
     description: "",
     imageUrl: "",
     price: "",
+    author: "",
+    authorEmail: "",
     discountedPrice: "",
     discount: "",
     rating: 0,
@@ -281,7 +283,7 @@ const SingleCourseDetails = () => {
               </div>
             </div> */}
             <div className="mid_single_button">
-             {isCoursePurchased ? <button className="w-100 button3" > go to course </button> : <Payment courseId={courseId} price={course.price} /> } 
+             {isCoursePurchased ? <button className="w-100 button3"  > go to course </button> : <Payment courseId={courseId} price={course.price} teacherEmail={course.authorEmail} teacherName={course.author} /> } 
             </div>
           </div>
         </div>

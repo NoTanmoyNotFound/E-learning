@@ -173,7 +173,7 @@ console.log(key_id,key_secret);
 
 export const validate = async (req, res, next) => {
 
-    const {razorpay_order_id, razorpay_payment_id, razorpay_signature,uaerName,userEmail,price,courseId,userId} = req.body
+    const {razorpay_order_id, razorpay_payment_id, razorpay_signature,uaerName,userEmail,price,courseId,userId,teacherName, teacherEmail} = req.body
     console.log(userEmail, uaerName, courseId, price);
     const sha = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET);
     // order_id + " | " + razorpay_payment_id
@@ -200,7 +200,7 @@ export const validate = async (req, res, next) => {
             console.log(course);
         }
 
-        const payment = new Payment({ studentname: uaerName, email: userEmail, amount: price, coursename: course.name, teacherName: "jodu", teacherEmail: "userEmail", });
+        const payment = new Payment({ studentname: uaerName, email: userEmail, amount: price, coursename: course.name, teacherName: teacherName, teacherEmail: teacherEmail, });
 
         await payment.save();
         
