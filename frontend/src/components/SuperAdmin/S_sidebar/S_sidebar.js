@@ -27,6 +27,12 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
                 </li>
 
                 <li className='sidebar-list-item'>
+                    <Link to="/superadmin/users-details">
+                        <BsFillGrid3X3GapFill className='iconn' /> All Users
+                    </Link>
+                </li>
+
+                <li className='sidebar-list-item'>
                     <Link to="/superadmin/category-details">
                         <BsFillGrid3X3GapFill className='iconn' /> Categories
                     </Link>

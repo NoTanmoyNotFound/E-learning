@@ -40,6 +40,7 @@ import TeacherRequest from "./components/SuperAdmin/Request/TeacherRequest";
 import Student from "./components/SuperAdmin/Student/Student";
 import Category from "./components/SuperAdmin/Category/Category";
 import Teachers from "./components/SuperAdmin/Teachers/Teachers";
+import Users from "./components/SuperAdmin/Users/Users";
 //super-admin-routes end
 
 import ForgotPassword from "./page/ForgotPassword";
@@ -107,6 +108,7 @@ function App() {
             <Route path="students-details" element={<Student />} />
             <Route path="category-details" element={<Category />} />
             <Route path="teachers-details" element={<Teachers />} />
+            <Route path="users-details" element={<Users />} />
           </Route>
         </Route>
       </Routes>
