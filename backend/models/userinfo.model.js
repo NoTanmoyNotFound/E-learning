@@ -65,7 +65,7 @@ const userInfoSchema = new mongoose.Schema({
         default: 'none'
 
     },
-    courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+    courses: [],
 }, { timestamps: true });
 
 const UserInfo = mongoose.model('UserInfo', userInfoSchema);
