@@ -1,20 +1,20 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { userInfoStart, userInfoSuccess, userInfoFailure } from "../redux/user/localSlice";
 
-function Payment() {
+function Payment({courseId,price}) {
+  const dispatch = useDispatch();
 
-    let data ={
-        name: "sun",
-        amount : 1,
-        number : "1234567890",
-        MID: 'MID' + Date.now(),
-        transactionId: 'T' + Date.now(),
-    }
-
+  const { currentUser } = useSelector((state) => state.user);
     
     const handelClick = async(event) =>{
 
      try {
-      const amount = 500;
+      const userId = currentUser._id;
+      const uaerName = currentUser.name;
+      const userEmail = currentUser.email;
+ 
+    const amount = price*100;
     const currency = "INR"
     const reciptId = "R" + Date.now()
 
@@ -44,7 +44,7 @@ function Payment() {
         order_id:order.id,
         handler: async function(response) {
           
-          const body = {...response,}
+          const body = {...response,userId,uaerName,userEmail,price,courseId}
 
           const validateResponse = await fetch('http://localhost:8000/api/pay/validate', {
           method: 'POST',
@@ -56,7 +56,12 @@ function Payment() {
           })
 
           const jsonResponse = await validateResponse.json();
-
+          
+          if (jsonResponse.success === false) {
+            dispatch(userInfoFailure(data.message));
+            return;
+        }
+          dispatch(userInfoSuccess(jsonResponse));
           console.log('jsonResponse', jsonResponse);
         },
         // customer dit 
@@ -103,7 +108,7 @@ function Payment() {
 
 
 
-  return <button className=' p-4 w-72 text-2xl rounded-lg font-bold m-5 bg-[#0051ff]' onClick={handelClick}> Payment </button>
+  return <button className="w-100 button3" onClick={handelClick}> Payment </button>
  
   
 }

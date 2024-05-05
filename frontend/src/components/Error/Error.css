@@ -1,0 +1,45 @@
+.error_main_inner{
+    padding: 4%;
+    .err_img img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .inn_err{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .home_btnn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 490px) {
+    .error_main_inner{
+        padding: 7%;
+        .err_img img{
+            width: 100%;
+            height: 100%;
+            padding-bottom: 25px;
+        }
+    
+        .inn_err{
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            gap: 20px;
+        }
+    
+        .home_btnn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    
+}

@@ -21,7 +21,10 @@ const paymentSchema = new mongoose.Schema({
     },
     teacherName : {
         type : String,
-        required : true
+       
+    },
+    teacherEmail : {
+        type : String,
     },
     paid : {
         type : Boolean,

@@ -6,6 +6,8 @@ import fetch from 'node-fetch';
 import Razorpay from 'razorpay';
 import Payment from "../models/payment.model.js";
 dotenv.config();
+import UserInfo from "../models/userinfo.model.js";
+import CourseStructure from '../models/courseUploadModel.js';
 
 const salt_key = '099eb0cd-02cf-4e2a-8aca-3e6c6aff0399';
 const merchant_id = process.env.MARCHENT_ID;
@@ -171,8 +173,8 @@ console.log(key_id,key_secret);
 
 export const validate = async (req, res, next) => {
 
-    const {razorpay_order_id, razorpay_payment_id, razorpay_signature} = req.body
-
+    const {razorpay_order_id, razorpay_payment_id, razorpay_signature,uaerName,userEmail,price,courseId,userId} = req.body
+    console.log(userEmail, uaerName, courseId, price);
     const sha = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET);
     // order_id + " | " + razorpay_payment_id
 
@@ -184,10 +186,32 @@ export const validate = async (req, res, next) => {
         return res.status(400).json({msg: " Transaction is not legit!"});
     }
 
+    const currentUser = await UserInfo.findOne({ userid: userId });
 
-    
+    if (currentUser) {
+        currentUser.courses.push(courseId);
 
-    res.json({msg: " Transaction is legit!", orderId: razorpay_order_id,paymentId: razorpay_payment_id});
+        await currentUser.save();
+
+        
+
+        const course = await CourseStructure.findOne({ _id: courseId });
+        if (course) {
+            console.log(course);
+        }
+
+        const payment = new Payment({ studentname: uaerName, email: userEmail, amount: price, coursename: course.name, teacherName: "jodu", teacherEmail: "userEmail", });
+
+        await payment.save();
+        
+
+        
+    }else{
+        res.status(400).json({msg: " add course error"});
+    }
+    const newInfo = await UserInfo.findOne({ _id: currentUser._id});
+
+    res.status(200).json(newInfo);
 
 }
 
