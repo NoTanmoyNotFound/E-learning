@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { HiMiniIdentification } from "react-icons/hi2";
-import { IoDocumentAttachSharp } from "react-icons/io5";
-import { MdOutlineSmartDisplay } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 import { FaCheckCircle } from "react-icons/fa";
-import { FaWindowClose } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { TbReload } from "react-icons/tb";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserStart, updateUserSuccess, updateUserFailure, } from '../../../redux/user/userSlice'
 import './Users.css'
@@ -93,6 +89,8 @@ const Users = () => {
         }
     }
 
+
+
     const handleRefresh = () => {
         fetchData();
     }
@@ -124,7 +122,7 @@ const Users = () => {
                             className="btn btn-primary float-refresh-btn"
                             onClick={handleRefresh}
                         >
-                            Refresh
+                            <TbReload />
                         </button>
                     </div>
 
@@ -167,10 +165,7 @@ const Users = () => {
                                             {item.banned ? 'Banned' : 'Not Banned'}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {item.banned ? <FaCheckCircle color='green' onClick={() => handleFalsePost(item._id)} /> : <ImCross color='red' onClick={() => handleTruePost(item._id)} />}
-
-
-
+                                            {item.banned ? <FaCheckCircle color='green' onClick={() => handleFalsePost(item._id)} className='deletebtnn'/> : <ImCross color='red' onClick={() => handleTruePost(item._id)} className='deletebtnn'/>}
                                         </td>
 
                                     </tr>
