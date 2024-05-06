@@ -49,6 +49,7 @@ import Teachers from "./components/SuperAdmin/Teachers/Teachers";
 
 
 import ForgotPassword from "./page/ForgotPassword";
+import FriendProfile from "./components/Profile/ProfileView/FriendProfile";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -97,7 +98,8 @@ function App() {
         <Route path="/careersuport" element={<Careersuport />} />
         <Route path="/careerform" element={<Formcareer />} />
         <Route path="/Contact" element={<Contact />} />
-
+        <Route path="/FriendProfile" element={<FriendProfile />}/>
+        
 
 
 
