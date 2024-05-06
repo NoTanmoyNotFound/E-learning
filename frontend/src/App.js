@@ -45,6 +45,7 @@ import Teachers from "./components/SuperAdmin/Teachers/Teachers";
 import ForgotPassword from "./page/ForgotPassword";
 import Payment from "./page/Payment";
 
+
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
 
@@ -54,13 +55,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+      <Route path="/error-not-found" element={<Error />} />
+
+
+
+   
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
         <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
 
 
 
-        <Route path="/error-not-found" element={<Error />} />
 
 
 
@@ -92,14 +98,15 @@ function App() {
 
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
 
-        <Route element={<Signinprotact />}>
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-        </Route>
+       
 
         <Route path="/careersuport" element={<Careersuport />} />
         <Route path="/careerform" element={<Formcareer />} />
         <Route path="/Contact" element={<Contact />} />
+       
+
+
+
 
         <Route element={<SuperPrivateRoute />}>
           <Route path="/superadmin" element={<SuperMain />}>
@@ -114,7 +121,10 @@ function App() {
 
 
 
-
+        <Route element={<Signinprotact />}>
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
 
 
 
@@ -127,6 +137,7 @@ function App() {
 
 
         <Route path="payment" element={<Payment/>} />
+      
       </Routes>
     </BrowserRouter>
   );
