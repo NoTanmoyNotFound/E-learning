@@ -50,7 +50,7 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
         <li className="TAsidebar-list-item">
           <Link to="/techerDashbord/TeacherCourse">
             <BsBookHalf className="iconn" />
-            All Courses
+            Upload Course
           </Link>
         </li>
         <li className="TAsidebar-list-item">
@@ -62,7 +62,7 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
         <li className="TAsidebar-list-item">
           <Link to="/techerDashbord/TeacherFeedback">
             <BsBookHalf className="iconn" />
-            Feedback
+            Feedbacks
           </Link>
         </li>
       </ul>

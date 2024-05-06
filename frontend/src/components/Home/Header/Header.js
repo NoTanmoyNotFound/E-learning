@@ -47,15 +47,11 @@ const Header = ({ onButtonClick }) => {
                             style={getMenuStyles(menuOpened)}
                         >
                             <Link to="/">Home</Link>
-                            <a href="allCourses">Courses</a>
+                            <Link to="/allCourses">Courses</Link>
                             <Link to="/careersuport">Career Support</Link>
-                            <a href="Homeblogs">Blogs</a>
+                            <Link to="/Homeblogs">Blogs</Link>
                             <Link to="/Contact">Contact Us</Link>
-                            {/* <Link to="/superadmin">
-                                {currentUser && currentUser.role === 'super_admin' ? (
-                                    <a href="">Super Admin</a>
-                                ): null}
-                            </Link> */}
+                            
 
                             <Link to={currentUser && currentUser ? (currentUser.role === 'super_admin' ? '/superadmin' : (currentUser.role === 'teacher' ? '/techerDashbord' : '/profile')) : '/signin'} >
                                 {currentUser && currentUser ? (
