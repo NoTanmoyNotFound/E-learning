@@ -1,6 +1,10 @@
 .float-refresh-btn {
     position: fixed;
-    bottom: 20px; /* Adjust this value to change the distance from the bottom */
-    right: 20px; /* Adjust this value to change the distance from the right */
-    z-index: 999; /* Ensure it's above other elements */
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 999; 
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

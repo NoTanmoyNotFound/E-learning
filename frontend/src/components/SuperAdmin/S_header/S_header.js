@@ -57,9 +57,7 @@ const S_header = ({ OpenSidebar }) => {
             </div> */}
 
                 <IoHome onClick={handleHome} className='iconn' />
-                {/* <Link to="allCourses"><IoBookSharp className='iconn' /></Link> */}
-                <Link onClick={handleSignOut}><HiOutlineLogout className='iconn' /></Link>
-                {/* <Link><BsPersonCircle onClick={handleSignOut} className='iconn' /></Link> */}
+                <a onClick={handleSignOut}><HiOutlineLogout className='iconn' /></a>
                 
             </div>
         </header>

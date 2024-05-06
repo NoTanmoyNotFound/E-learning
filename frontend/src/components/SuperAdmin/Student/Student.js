@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { HiMiniIdentification } from "react-icons/hi2";
-import { IoDocumentAttachSharp } from "react-icons/io5";
-import { MdOutlineSmartDisplay } from "react-icons/md";
-import { ImCross } from "react-icons/im";
-import { FaCheckCircle } from "react-icons/fa";
-import { FaWindowClose } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { TbReload } from "react-icons/tb";
+import '../Users/Users.css';
 
 const Student = () => {
 
@@ -13,65 +9,60 @@ const Student = () => {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
     const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+
+
+    const fetchUserInfo = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch('http://localhost:8000/api/super/getEnrolledStudentsDetails');
+            const responseData = await response.json();
+            if (responseData.success) {
+                setData(responseData.data);
+            } else {
+                console.error(responseData.error);
+            }
+        } catch (error) {
+            console.error('Error fetching enrolled students data:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
 
 
 
     useEffect(() => {
-        async function fetchUserInfo() {
-            try {
-                const response = await fetch('http://localhost:8000/api/super/EnrolledStudentsData');
-                const responsedata = await response.json();
-                console.log(Array.isArray(response));
-                console.log(responsedata);
-                if (responsedata.success === false) {
-                    console.log(responsedata);
-                } else {
-                    setData(responsedata.data);
-
-                    console.log(responsedata);
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
         fetchUserInfo();
     }, []);
 
-    console.log(Array.isArray(data));
 
 
 
-
-    const handleDelete = async (id) => {
+    const handlePaymentStatusChange = async (id, status) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/super/EnrolledStudentDelete/${id}`, {
-                method: 'DELETE',
+            const response = await fetch(`http://localhost:8000/api/super/${status ? 'clearPayment' : 'notClearPayment'}/${id}`, {
+                method: 'POST',
             });
-            const data = await response.json();
-            if (data.success === false) {
-                console.log(data);
-                return;
+            const responseData = await response.json();
+            if (responseData.success) {
+                fetchUserInfo();
+                window.location.reload(); // Reload the page
+            } else {
+                console.error(responseData.error);
             }
-
-            if (data.success === true) {
-
-                setSuccess(data.data);
-            }
-
         } catch (error) {
-            console.log(error);
+            console.error('Error updating payment status:', error);
         }
+    };
+
+
+
+
+    const handleRefresh = () => {
+        fetchUserInfo();
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -81,7 +72,7 @@ const Student = () => {
         <div>
             <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7'>
                 <div className='text-5xl font-bold text-center'>
-                    <h1>Students Details</h1>
+                    <h1>Enrolled Students Details</h1>
                 </div>
                 <div>
                     <div className='flex justify-end mt-5 mb-3'>
@@ -95,6 +86,15 @@ const Student = () => {
                             </div>
 
                         </form>
+
+
+                        <button
+                            type="button"
+                            className="btn btn-primary float-refresh-btn"
+                            onClick={handleRefresh}
+                        >
+                            <TbReload />
+                        </button>
                     </div>
 
 
@@ -107,13 +107,13 @@ const Student = () => {
                                         Student Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Email
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Course ID
+                                        Student Email
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Course Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Course Fees
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Teacher's name
@@ -122,7 +122,10 @@ const Student = () => {
                                         Teacher's Email
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Delete
+                                        Teacher's Payment
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Payment Operation
                                     </th>
                                 </tr>
                             </thead>
@@ -134,21 +137,32 @@ const Student = () => {
                                 }).map((item, index) => (
                                     <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {item.fullname}
+                                            {item.studentname}
                                         </th>
                                         <td className="px-6 py-4">
                                             {item.email}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {item.phone}
-                                        </td>
-                                        <td classname="px-6 py-4 text-xl">
-                                            {item.idProof ? <Link to={item.idProof} target='_blank'> <HiMiniIdentification /> </Link> : "not found"}
+                                            {item.coursename}
                                         </td>
                                         <td className="px-6 py-4">
-
-
-                                            <ImCross color='red' onClick={() => handleDelete(item._id)} />
+                                            Rs - {item.amount}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {item.teacherName}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {item.teacherEmail}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {item.paid ? 'Paid' : 'Due'}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {item.paid ? (
+                                                <FaCheckCircle className='deletebtnn' color="green" onClick={() => handlePaymentStatusChange(item._id, false)} />
+                                            ) : (
+                                                <FaTimesCircle className='deletebtnn' color="red" onClick={() => handlePaymentStatusChange(item._id, true)} />
+                                            )}
                                         </td>
                                     </tr>
 
