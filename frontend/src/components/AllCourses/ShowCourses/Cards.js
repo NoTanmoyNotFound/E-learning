@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Cards.css';
 import { Link } from 'react-router-dom';
-import coursesData from './courses.json';
 import { useSelector } from "react-redux";
 
 const Cards = () => {
@@ -50,7 +49,7 @@ const Cards = () => {
 
     return (
         <div className="main-container">
-            {courses.map((course) => (
+            {courses && courses.map((course) => (
                 <div key={course._id} className="b-card course-card">
                 
                     <div className="course_img">

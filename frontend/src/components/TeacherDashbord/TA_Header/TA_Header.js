@@ -34,12 +34,12 @@ const TA_Header = ({ OpenSidebar }) => {
       </div>
 
       <div className="TAheader-right flex">
-        <a href="/">
+        <Link to="/">
           <IoHome className="iconn" />
-        </a>
-        <a href="allCourses">
+        </Link>
+        <Link to="/allCourses">
           <IoBookSharp className="iconn" />
-        </a>
+        </Link>
         <Link onClick={handleSignOut}><HiOutlineLogout className='iconn' /></Link>
       </div>
     </header>

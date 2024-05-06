@@ -58,7 +58,7 @@ function Payment({courseId,price, teacherEmail,teacherName}) {
           const jsonResponse = await validateResponse.json();
           
           if (jsonResponse.success === false) {
-            dispatch(userInfoFailure(data.message));
+            dispatch(userInfoFailure(jsonResponse.message));
             return;
         }
           dispatch(userInfoSuccess(jsonResponse));
@@ -78,7 +78,7 @@ function Payment({courseId,price, teacherEmail,teacherName}) {
         },
       }
 
-      var rzp1 = new Razorpay(option);
+      var rzp1 = new window.Razorpay(option);
       rzp1.on("payment.failed", function(response) {
         alert(response.error.code);
         alert(response.error.description);

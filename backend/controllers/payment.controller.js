@@ -1,8 +1,7 @@
 import { errorHandler } from "../ulte/error.js";
 import dotenv from 'dotenv';
 import crypto from "crypto";
-import axios from "axios";
-import fetch from 'node-fetch';
+
 import Razorpay from 'razorpay';
 import Payment from "../models/payment.model.js";
 dotenv.config();

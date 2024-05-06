@@ -132,7 +132,7 @@ const handleResumeUpload = async (resume) => {
   console.log(formData);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    // e.preventDefault(); 
 
     try {
      
