@@ -40,7 +40,7 @@ const SingleCourseDetails = () => {
 
   useEffect(() => {
     const checkCoursePurchased = () => {
-      setIsCoursePurchased(currentUserInfo.courses.includes(courseId));
+      setIsCoursePurchased(currentUserInfo && currentUserInfo.courses.includes(courseId));
     };
 
     checkCoursePurchased();
