@@ -66,7 +66,7 @@ const Cards = () => {
                         <p className="secondaryText">{truncateText(course.description, 10)} </p>
 
                     </div>
-                    {currentUserInfo.courses.includes(course._id) ?(
+                    {currentUserInfo && currentUserInfo.courses.includes(course._id) ?(
                         <a href={`/course-details/${course._id}`} className="w-100">
                         <button className="button3 disabled">Enrolled</button>
                         </a>
