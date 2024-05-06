@@ -9,7 +9,7 @@ export const createCourseController = async (req, res) => {
       videoUrl,
       previewVideoUrl,
       name,
-      
+
       author,
       authorEmail,
       description,
@@ -26,7 +26,7 @@ export const createCourseController = async (req, res) => {
       !videoUrl ||
       !previewVideoUrl ||
       !name ||
-    
+
       !author ||
       !authorEmail ||
       !description ||
@@ -45,7 +45,7 @@ export const createCourseController = async (req, res) => {
       videoUrl,
       previewVideoUrl,
       name,
-   
+
       author,
       authorEmail,
       description,
