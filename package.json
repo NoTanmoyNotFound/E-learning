@@ -14,10 +14,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.2",
+    "axios": "^1.6.8",
+    "body-parser": "^1.20.2",
     "colors": "^1.4.0",
     "concurrently": "^8.2.2",
+    "dev1": "^1.0.1",
     "email-validator": "^2.0.4",
-    "mongoose": "^8.2.1"
+    "mongoose": "^8.2.1",
+    "razorpay": "^2.9.3",
+    "react-router-dom": "^6.23.0"
   },
   "repository": {
     "type": "git",

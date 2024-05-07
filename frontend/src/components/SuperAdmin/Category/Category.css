@@ -25,3 +25,10 @@
 .main-cat-top{
     gap: 10px;
 }
+.deletebtnn{
+    cursor: pointer !important;
+    transition: all 100ms ease-in;
+    &:hover{
+        scale: 1.3;
+    }
+}

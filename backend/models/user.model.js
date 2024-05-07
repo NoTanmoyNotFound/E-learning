@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     profilePicture : {
         type : String,
         default : 'https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg'
+    },
+    banned:{
+        type: Boolean, 
+        default: false,
     }
 
 

@@ -1,71 +1,112 @@
 import React, { useState, useEffect } from "react";
 import "./SingleCourseDetails.css";
-import Header from "../../Home/Header/Header";
-import Footer from "../../Home/Footer/Footer";
+import { useParams, Link } from "react-router-dom";
 import { color } from "framer-motion";
+import Payment from "../../../page/Payment";
+import { useSelector } from "react-redux";
 
 const SingleCourseDetails = () => {
-  const [feedbacks, setFeedbacks] = useState([]);
-  useEffect(() => {
-    async function fetchUserInfo() {
-      try {
-        const response = await fetch("http://localhost:8000/api/f/getFeed");
-        const data = await response.json();
-        // console.log(data);
-        if (data.success === false) {
-          console.log(data.message);
-        } else {
-          setFeedbacks(data);
-        }
-      } catch (error) {}
-    }
+  const { courseId } = useParams(); // Get course ID from route parameters
+  const [showModal, setShowModal] = React.useState(false);
+  const [isCoursePurchased, setIsCoursePurchased] = useState(null);
+  const { currentUserInfo } = useSelector((state) => state.local);
+  console.log(currentUserInfo);
+  // const isCoursePurchased = currentUserInfo.courses.includes(courseId);
+  // Initialize course state with default values
+  const [course, setCourse] = useState({
+    name: "",
+    description: "",
+    imageUrl: "",
+    price: "",
+    author: "",
+    authorEmail: "",
+    discountedPrice: "",
+    discount: "",
+    rating: 0,
+    learn: [], // Ensure initialized as empty array
+    includes: [], // Ensure initialized as empty array
+  });
 
-    fetchUserInfo();
-  }, []);
-  console.log(feedbacks);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [feedbacks, setFeedbacks] = useState([]); // Ensure initialized as empty array
 
-  // Sample JSON data
-  const courseDetails = {
-    title: "The Complete 2024 Web Development Bootcamp",
-    description:
-      "Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps",
-    instructor: "Saklin Mustak",
-    instructorEmail: "saklin@123.gmail.com",
-    lastUpdated: "3/2024",
-    price: "₹499",
-    discountedPrice: "₹3,099",
-    discount: "84% off",
-    noOfStudents: "12,222",
-    rating: 4,
-    comments: [
-      {
-        author: "Saklin Mustak",
-        comment:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis repellendus aut corporis ullam incidunt obcaecati cumque...",
-      },
-
-      // Add more comments here if needed
-    ],
-    learn: [
-      "Build 16 web development projects for your portfolio, ready to apply for junior developer jobs.",
-      "After the course you will be able to build ANY website you want.",
-      "Work as a freelance web developer.",
-      // Add more learn points here if needed
-    ],
-    includes: [
-      "61 hours on-demand video",
-      "7 coding exercises",
-      "65 articles",
-      // Add more items here if needed
-    ],
-  };
-
-  // State variable to store user feedback
+  // Initialize the form data state variable with default values
   const [formData, setFormData] = useState({
-    courseID: "121021",
+    courseID: courseId,
     userName: "",
     userFeedback: "",
   });
+
+  useEffect(() => {
+    const checkCoursePurchased = () => {
+      setIsCoursePurchased(currentUserInfo && currentUserInfo.courses.includes(courseId));
+    };
+
+    checkCoursePurchased();
+  }, [currentUserInfo, courseId]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  useEffect(() => {
+    const fetchCourseDetails = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/api/upload/singleCourse/${courseId}`
+        );
+        const data = await response.json();
+
+        if (response.ok) {
+          setCourse(data.course);
+        } else {
+          setError(data.message);
+        }
+      } catch (err) {
+        setError("An error occurred while fetching course details.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const fetchFeedbacks = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/f/getFeed");
+        const data = await response.json();
+
+        if (response.ok) {
+          setFeedbacks(data.feedbacks || []); // Use fallback to empty array
+        } else {
+          console.error(data.message);
+        }
+      } catch (err) {
+        console.error("Error fetching feedbacks:", err);
+      }
+    };
+
+    fetchCourseDetails();
+    // fetchFeedbacks();
+  }, [courseId]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -74,18 +115,16 @@ const SingleCourseDetails = () => {
     }));
   };
 
-  // Handler function to submit form data
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      // Prepare the data to send
-      const dataToSend = {
-        courseID: "121021",
-        name: formData.userName,
-        description: formData.userFeedback,
-      };
 
-      // Send POST request to the API endpoint
+    const dataToSend = {
+      courseID: courseId,
+      name: formData.userName,
+      description: formData.userFeedback,
+    };
+
+    try {
       const response = await fetch("http://localhost:8000/api/f/feed", {
         method: "POST",
         headers: {
@@ -94,19 +133,32 @@ const SingleCourseDetails = () => {
         body: JSON.stringify(dataToSend),
       });
 
-      // Check if request was successful
       if (response.ok) {
         console.log("Feedback submitted successfully");
-        // Clear the form data after successful submission
-        setFormData({ userName: "", userFeedback: "" });
+        setFormData({
+          courseID: courseId,
+          userName: "",
+          userFeedback: "",
+        });
       } else {
-        // Handle error cases
         console.error("Failed to submit feedback");
       }
     } catch (error) {
       console.error("Error submitting feedback:", error);
     }
   };
+
+  if (loading) {
+    return <div className="primaryText">Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const isValidRating = (rating) =>
+    typeof rating === "number" && rating >= 0 && rating <= 5;
+
   return (
     <div className="s-body-d mt-5">
       <button className="floating-btn">
@@ -118,78 +170,120 @@ const SingleCourseDetails = () => {
       <div className="banner-course">
         <div className="banner-inner-course">
           <div className="left_single">
-            <h1 className="primaryText">{courseDetails.title}</h1>
+            <h1 className="primaryText primaryTextt">{course.name}</h1>
             <div className="desc-c">
-              <p className="secondaryTextt">{courseDetails.description}</p>
+              <p className="secondaryTextt">{course.description}</p>
             </div>
             <div className="testimonials_rating">
               <div className="no_of_students">
-                <p>{courseDetails.noOfStudents} - students</p>
+                <p>{course.noOfStudents} - students</p>
               </div>
               <br />
               <div className="ratings_course">
-                {[...Array(courseDetails.rating)].map((_, index) => (
-                  <span key={index}>&#9733;</span>
-                ))}
-                {[...Array(5 - courseDetails.rating)].map((_, index) => (
-                  <span key={index}>&#9734;</span>
-                ))}
+                {isValidRating(course.rating)
+                  ? [...Array(course.rating)].map((_, index) => (
+                      <span key={index}>&#9733;</span>
+                    ))
+                  : "Invalid rating"}
+                {isValidRating(course.rating) &&
+                  [...Array(5 - course.rating)].map((_, index) => (
+                    <span key={index}>&#9734;</span>
+                  ))}
               </div>
               <div className="bottom_single">
                 <p className="secondaryText">
-                  Created by <u>{courseDetails.instructor}</u>
+                  Created by <u>{course.author}</u>
                 </p>
                 <p className="secondaryText">
-                  Teacher's Email <u>{courseDetails.instructorEmail}</u>
+                  Teacher's Email <u>{course.authorEmail}</u>
                 </p>
-                <p className="secondaryText">
-                  Last updated {courseDetails.lastUpdated}
-                </p>
+                <p className="secondaryText">Duration {course.duration} h</p>
                 <br />
                 <br />
-                <p className="c-desc">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore quidem, <br /> rem nobis, molestias temporibus
-                  consequatur tempora repellat illum cum voluptate <br />{" "}
-                  suscipit tenetur animi doloribus aliquid perferendis iusto
-                  iste pariatur. <br /> Aliquid exercitationem placeat
-                  repudiandae recusandae minima possimus <br /> deleniti
-                  obcaecati nihil nisi dolorum veritatis, <br /> nesciunt sequi
-                  ex nostrum necessitatibus saepe consectetur architecto.
-                </p>
               </div>
             </div>
           </div>
 
-          <div className="right_single">
+          <div className="right_single" style={{ height: "fit-content" }}>
             <div className="right_single_inner">
-              <img
-                className="img_course"
-                src="https://play-lh.googleusercontent.com/rfWOJQVBHoAZ_B43v0ySFlLmJBLtksVGAxGaFRh2ex4nOmNQ86qzG4sYWV63IKrXlvI"
-                alt=""
-              />
+              {course.imageUrl && (
+                <img
+                  className="img-course"
+                  src={course.imageUrl}
+                  alt={course.name}
+                />
+              )}
             </div>
             <div className="mid_single">
               <p className="mid-p">
-                <span className="price-mid">{courseDetails.price}</span>
+                <span className="price-mid primaryText">₹ {course.price}</span>
                 <span>
-                  <s>{courseDetails.discountedPrice}</s>
+                  <s className="orangeText">₹ 4000</s>
                 </span>
               </p>
               <p className="mid-star">
-                {[...Array(courseDetails.rating)].map((_, index) => (
-                  <span key={index}>&#9733;</span>
-                ))}
-                {[...Array(5 - courseDetails.rating)].map((_, index) => (
-                  <span key={index}>&#9734;</span>
-                ))}
+                {isValidRating(course.rating)
+                  ? [...Array(course.rating)].map((_, index) => (
+                      <span key={index}>&#9733;</span>
+                    ))
+                  : "Invalid rating"}
+                {isValidRating(course.rating) &&
+                  [...Array(5 - course.rating)].map((_, index) => (
+                    <span key={index}>&#9734;</span>
+                  ))}
               </p>
-              <span className="discount">{courseDetails.discount}</span>
+              <span className="discount">{course.discount}</span>
             </div>
+            <div>
+              <div className="preview_main">
+                <div
+                  className="preview_inner "
+                  onClick={() => setShowModal(true)}
+                  type="button"
+                >
+                  <i className="fa-solid fa-video modal-btn-11"></i>
+                </div>
+              </div>
+              {/* <button
+                className="bg-[#FF4B2B] text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button"
+                onClick={() => setShowModal(true)}
+              >
+                Open regular modal
+              </button> */}
+              {showModal ? (
+                <>
+                  <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className="relative  w-auto my-6 mx-auto max-w-3xl">
+                      <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                        <div className="flex bg-[#33fadcc6] items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                          <div>
+                            <video src={course.videoUrl} controls autoPlay />
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                          <button
+                            className=" bg-[#ff2929] rounded-lg font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button"
+                            onClick={() => setShowModal(false)}
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                </>
+              ) : null}
+            </div>
+            {/* <div className="preview_main">
+              <div className="preview_inner">
+                <i className="fa-solid fa-video modal-btn-11"></i>
+              </div>
+            </div> */}
             <div className="mid_single_button">
-              <button className="courses-buy w-100 h-12 rounded-xl">
-                Buy Now
-              </button>
+             {isCoursePurchased ? <button className="w-100 button3"  > go to course </button> : <Payment courseId={courseId} price={course.price} teacherEmail={course.authorEmail} teacherName={course.author} /> } 
             </div>
           </div>
         </div>
@@ -198,32 +292,70 @@ const SingleCourseDetails = () => {
         <div className="single_inner">
           <h1 className="primaryText">What you'll learn</h1>
           <div className="ticks_single">
-            {courseDetails.learn.map((item, index) => (
-              <div key={index} className="ul">
-                <div className="li">
-                  <li>{item}</li>
-                </div>
+            <div className="ul">
+              <div className="li">
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati saepe eos culpa impedit dolore quasi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati saepe eos culpa impedit dolore quasi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati saepe eos culpa impedit dolore quasi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati saepe eos culpa impedit dolore quasi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati saepe eos culpa impedit dolore quasi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Obcaecati saepe eos culpa impedit dolore quasi.
+                </li>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
       <div className=" single_course_main2">
         <div className=" single_inner2">
-          <h1 className="primaryText">This course includes:</h1>
+          <h1 className="primaryText">Why Choose Us?</h1>
           <div className="ticks_single ticks_single2">
-            {courseDetails.includes.map((item, index) => (
-              <div key={index} className="ul2">
-                <div className="li2">
-                  <li>{item}</li>
-                </div>
+            <div className="ul2">
+              <div className="li2">
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam vel dolorem necessitatibus recusandae et sequi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam vel dolorem necessitatibus recusandae et sequi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam vel dolorem necessitatibus recusandae et sequi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam vel dolorem necessitatibus recusandae et sequi.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aperiam vel dolorem necessitatibus recusandae et sequi.
+                </li>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="cmmmm">
+      {/* <div className="cmmmm">
         <h1 className="primaryText">Comments/Feedbacks</h1>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-wrap justify-center ">
@@ -252,26 +384,23 @@ const SingleCourseDetails = () => {
       </form>
 
       <div className="comments_single">
-        {feedbacks &&
-          feedbacks.map((item, index) => (
-            <div key={index} className="single-comment">
-              <div className="comm_inner">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                  alt=""
-                />
-                <p>{item.name}</p>
-              </div>
-              <div className="quote">
-                <p>
-                  <b></b> {item.description} <b></b>
-                </p>
-              </div>
+        {Array.isArray(feedbacks) && feedbacks.map((item, index) => (
+          <div key={index} className="single-comment">
+            <div className="comm_inner">
+              <img
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                alt=""
+              />
+              <p>{item.name}</p>
             </div>
-          ))}
-      </div>
-
-      <div className="foo">{/* <Footer /> */}</div>
+            <div className="quote">
+              <p>
+                <b></b> {item.description} <b></b>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div> */}
     </div>
   );
 };

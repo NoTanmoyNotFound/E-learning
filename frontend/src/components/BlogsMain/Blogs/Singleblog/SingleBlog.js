@@ -50,8 +50,8 @@ const SingleBlog = () => {
   } = blogData;
 
   return (
-    <div>
-      <div className="mt-5 text-center text-white px-4">
+    <div className="px-10">
+      <div className="mt-3 text-center text-white">
         <h2 className="text-5xl lg:text-7xl text-dark leading-snug font-bold mb-5">
         {title}
         </h2>

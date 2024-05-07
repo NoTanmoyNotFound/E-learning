@@ -1,19 +1,15 @@
 import { useState } from "react";
 import Home from "./components/Home/Home";
-import SuperMain from './components/SuperAdmin/SuperMain';
-import Homeblogs from './components/BlogsMain/Blogs/Homeblogs';
-import SingleBlog from './components/BlogsMain/Blogs/Singleblog/SingleBlog';
-import CategorySelection from './components/BlogsMain/Blogs/CategorySelection/CategorySelection';
-import ProfileView from './components/Profile/ProfileView/ProfileView';
-
-
+import SuperMain from "./components/SuperAdmin/SuperMain";
+import Homeblogs from "./components/BlogsMain/Blogs/Homeblogs";
+import SingleBlog from "./components/BlogsMain/Blogs/Singleblog/SingleBlog";
+import CategorySelection from "./components/BlogsMain/Blogs/CategorySelection/CategorySelection";
+import ProfileView from "./components/Profile/ProfileView/ProfileView";
 
 //course routes start
 import AllCourses from "./components/AllCourses/AllCourses";
 import SingleCourseDetails from "./components/AllCourses/SingleCourseDetails/SingleCourseDetails";
 //course routes end
-
-
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import ProfileEdit from './components/Profile/ProfileEdit/ProfileEdit';
@@ -36,7 +32,7 @@ import Signinprotact from "./page/Signinprotact";
 import Careersuport from "./page/Careersuport";
 import Formcareer from "./page/Formcareer";
 import Contact from "./components/ContactUs/Contact";
-
+import Error from "./components/Error/Error";
 
 //super-admin-routes start
 import S_home from "./components/SuperAdmin/S_home/S_home";
@@ -44,12 +40,10 @@ import TeacherRequest from "./components/SuperAdmin/Request/TeacherRequest";
 import Student from "./components/SuperAdmin/Student/Student";
 import Category from "./components/SuperAdmin/Category/Category";
 import Teachers from "./components/SuperAdmin/Teachers/Teachers";
+import Users from "./components/SuperAdmin/Users/Users";
 //super-admin-routes end
 
-
-
 import ForgotPassword from "./page/ForgotPassword";
-import FriendProfile from "./components/Profile/ProfileView/FriendProfile";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -60,9 +54,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+      <Route path="/error-not-found" element={<Error />} />
+
+
+
+   
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
-        <Route path="/course-details" element={<SingleCourseDetails />} />
+        <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
+
+
+
+
 
 
         <Route path="/Homeblogs" element={<Homeblogs />} />
@@ -70,7 +74,7 @@ function App() {
         <Route path="/CategorySelection" element={<CategorySelection />} />
 
         <Route element={<PrivateRouer />}>
-          <Route path='/Profile' element={<ProfileView />} />
+          <Route path="/Profile" element={<ProfileView />} />
         </Route>
 
         <Route path="/EditProfile" element={<EditSidebar />}>
@@ -80,42 +84,60 @@ function App() {
           <Route path="EditPassword" element={<EditPassword />} />
         </Route>
 
-        <Route path='/Join' element={<Join />} />
-        <Route path='/techerDashbord' element={<TeacherAdminMain />} />
-        <Route path='/TeacherAnalytics' element={<TA_Analytics />} />
-        <Route path='/TeacherPayment' element={<TA_Payment />} />
-        <Route path='/TeacherFeedback' element={<TA_Feedback />} />
-        <Route path='/TeacherCourse' element={<MyCourses />} />
-        <Route path='/TeacherCourse' element={<MyCourses />} /> 
+        <Route path="/Join" element={<Join />} />
 
-        <Route path='/ForgotPassword' element={<ForgotPassword />} />
 
-        <Route element={<Signinprotact />}>
-          <Route path='/signin' element={<Signin />} />
-          <Route path='/signup' element={<Signup />} />
+        
+        <Route path="/techerDashbord"  element={<TeacherAdminMain />}>
+          <Route index element={<TA_Analytics />} />
+          <Route path="TeacherPayment" element={<TA_Payment />} />
+          <Route path="TeacherFeedback" element={<TA_Feedback />} />
+          <Route path="TeacherCourse" element={<MyCourses />} />
         </Route>
+
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
+
+       
 
         <Route path="/careersuport" element={<Careersuport />} />
         <Route path="/careerform" element={<Formcareer />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/FriendProfile" element={<FriendProfile />}/>
-        
-
-
 
 
 
 
 
         <Route element={<SuperPrivateRoute />}>
-          <Route path="/superadmin" element={<SuperMain />} >
+          <Route path="/superadmin" element={<SuperMain />}>
             <Route index element={<S_home />} />
             <Route path="request" element={<TeacherRequest />} />
             <Route path="students-details" element={<Student />} />
             <Route path="category-details" element={<Category />} />
             <Route path="teachers-details" element={<Teachers />} />
+            <Route path="users-details" element={<Users />} />
           </Route>
         </Route>
+
+
+
+
+        <Route element={<Signinprotact />}>
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+
+
+
+
+
+
+
+
+
+
+
+        <Route path="payment" element={<Payment/>} />
+      
       </Routes>
     </BrowserRouter>
   );

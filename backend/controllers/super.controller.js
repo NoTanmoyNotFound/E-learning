@@ -2,6 +2,7 @@ import TeacherJoin from "../models/teacherJoin.model.js"
 import Category from '../models/categoryUpload.model.js';
 import Teacher from "../models/teacher.model.js";
 import User from "../models/user.model.js";
+import Payment from "../models/payment.model.js";
 
 
 
@@ -215,3 +216,139 @@ export const deleteAcceptedTecher = async (req, res, next)=>{
 }
 
 //for teachers details in super admin end
+
+
+
+
+// for all users details start
+export const getUsersDetails = async (req, res, next) => {
+    try {
+        const users = await User.find({ role: "user" });
+        res.status(200).json({ success: true, data: users });
+    } catch (error) {
+        console.error("Error fetching users data:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+
+
+
+
+export const bannedUser = async (req, res, next) => {
+    try {
+        
+        const { userId } = req.params;
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        
+        user.banned = true;
+        await user.save();
+        const currentUser = await User.findById(userId);
+
+        res.status(200).json(currentUser);
+    } catch (error) {
+        console.error("Error banning user:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+
+
+
+
+
+export const UnBannedUser = async (req, res, next) => {
+    try {
+        
+        const { userId } = req.params;
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        
+        user.banned = false;
+        await user.save();
+        const currentUser = await User.findById(userId);
+
+        res.status(200).json(currentUser);
+    } catch (error) {
+        console.error("Error banning user:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+// for all users details end
+
+
+
+
+
+//for enrolled students start
+export const getEnrolledStudentsDetails = async (req, res, next) => {
+    try {
+        const users = await Payment.find();
+        res.status(200).json({ success: true, data: users });
+    } catch (error) {
+        console.error("Error fetching enrolled students data:", error);
+        res.status(500).json({ success: false, error: "Error fetching enrolled students data" });
+    }
+}
+
+
+
+
+
+
+export const clearPayment = async (req, res, next) => {
+    try {
+        
+        const { userId } = req.params;
+        const user = await Payment.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        
+        user.paid = true;
+        await user.save();
+        const currentUser = await Payment.findById(userId);
+
+        res.status(200).json(currentUser);
+    } catch (error) {
+        console.error("Error banning user:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+
+
+
+
+
+export const notClearPayment = async (req, res, next) => {
+    try {
+        
+        const { userId } = req.params;
+        const user = await Payment.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        
+        user.paid = false;
+        await user.save();
+        const currentUser = await Payment.findById(userId);
+
+        res.status(200).json(currentUser);
+    } catch (error) {
+        console.error("Error banning user:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+//for enrolled students end

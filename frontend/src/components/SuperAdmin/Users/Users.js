@@ -1,69 +1,99 @@
 import React, { useState, useEffect } from 'react'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { ImCross } from "react-icons/im";
+import { FaCheckCircle } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
-import '../Users/Users.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUserStart, updateUserSuccess, updateUserFailure, } from '../../../redux/user/userSlice'
+import './Users.css'
 
-const Student = () => {
 
+const Users = () => {
 
+    const { currentUser, loading, error } = useSelector((state) => state.user);
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
     const [success, setSuccess] = useState(false);
-    const [loading, setLoading] = useState(false);
-
-
-
-    const fetchUserInfo = async () => {
-        setLoading(true);
-        try {
-            const response = await fetch('http://localhost:8000/api/super/getEnrolledStudentsDetails');
-            const responseData = await response.json();
-            if (responseData.success) {
-                setData(responseData.data);
-            } else {
-                console.error(responseData.error);
-            }
-        } catch (error) {
-            console.error('Error fetching enrolled students data:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
 
 
 
 
     useEffect(() => {
-        fetchUserInfo();
-    }, []);
+        fetchData();
+    }, [success]);
 
 
 
 
-    const handlePaymentStatusChange = async (id, status) => {
+    const fetchData = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/super/${status ? 'clearPayment' : 'notClearPayment'}/${id}`, {
-                method: 'POST',
-            });
+            const response = await fetch('http://localhost:8000/api/super/getUsersDetails');
             const responseData = await response.json();
             if (responseData.success) {
-                fetchUserInfo();
-                window.location.reload(); // Reload the page
+                setData(responseData.data);
             } else {
-                console.error(responseData.error);
+                console.log(responseData.message);
             }
         } catch (error) {
-            console.error('Error updating payment status:', error);
+            console.log(error);
         }
-    };
+    }
 
+
+
+
+
+
+
+
+
+
+
+
+
+    const handleTruePost = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/super/bannedUser/${id}`, {
+                method: 'POST',
+            });
+            const data = await response.json();
+            if (data.success) {
+                setSuccess(true);
+            } else {
+                console.log(data.message);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+
+
+
+
+
+    const handleFalsePost = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/super/UnBannedUser/${id}`, {
+                method: 'POST',
+            });
+            const data = await response.json();
+            if (data.success) {
+                setSuccess(true);
+            } else {
+                console.log(data.message);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
 
     const handleRefresh = () => {
-        fetchUserInfo();
+        fetchData();
     }
-
 
 
 
@@ -72,13 +102,13 @@ const Student = () => {
         <div>
             <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7'>
                 <div className='text-5xl font-bold text-center'>
-                    <h1>Enrolled Students Details</h1>
+                    <h1>Users Details</h1>
                 </div>
                 <div>
                     <div className='flex justify-end mt-5 mb-3'>
                         <form>
 
-                            <div className="relative">
+                            <div className="relative mr-4">
                                 <div className="absolute top-1 left-1 bg-white-mediam rounded-full p-2  flex items-center justify-center text-blue-300">
                                     <i class="fa-solid fa-magnifying-glass" />
                                 </div>
@@ -86,7 +116,6 @@ const Student = () => {
                             </div>
 
                         </form>
-
 
                         <button
                             type="button"
@@ -104,29 +133,19 @@ const Student = () => {
                             <thead class="text-xs text-gray-700 uppercase bg-[#ead0d0] dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
-                                        Student Name
+                                        Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Student Email
+                                        Email
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Course Name
+                                        Status
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Course Fees
+                                        Banned/Unbanned
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Teacher's name
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Teacher's Email
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Teacher's Payment
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Payment Operation
-                                    </th>
+
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -137,33 +156,18 @@ const Student = () => {
                                 }).map((item, index) => (
                                     <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {item.studentname}
+                                            {item.name}
                                         </th>
                                         <td className="px-6 py-4">
                                             {item.email}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {item.coursename}
+                                            {item.banned ? 'Banned' : 'Not Banned'}
                                         </td>
                                         <td className="px-6 py-4">
-                                            Rs - {item.amount}
+                                            {item.banned ? <FaCheckCircle color='green' onClick={() => handleFalsePost(item._id)} className='deletebtnn'/> : <ImCross color='red' onClick={() => handleTruePost(item._id)} className='deletebtnn'/>}
                                         </td>
-                                        <td className="px-6 py-4">
-                                            {item.teacherName}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {item.teacherEmail}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {item.paid ? 'Paid' : 'Due'}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {item.paid ? (
-                                                <FaCheckCircle className='deletebtnn' color="green" onClick={() => handlePaymentStatusChange(item._id, false)} />
-                                            ) : (
-                                                <FaTimesCircle className='deletebtnn' color="red" onClick={() => handlePaymentStatusChange(item._id, true)} />
-                                            )}
-                                        </td>
+
                                     </tr>
 
 
@@ -178,4 +182,4 @@ const Student = () => {
     )
 }
 
-export default Student
+export default Users
