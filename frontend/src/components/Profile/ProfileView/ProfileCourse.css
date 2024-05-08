@@ -1,0 +1,55 @@
+
+.StudentCourse{
+    width: 61.25rem;
+    margin-left: 20px;
+    padding: 2rem;
+}
+.StudentCards{
+    border: solid 1px black;
+    padding: 1rem;
+    border-radius:20px ;
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+}
+/* .courseimg{
+    grid-template-columns: ;
+} */
+.courseimg img{
+    border-radius:20px ;
+    aspect-ratio: 16 / 9;
+}
+.CourseDesc{
+    padding-left: 50px;
+}
+
+.Description{
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+}
+.Description::-webkit-scrollbar {
+    display: none;
+  }
+  .CourseName {
+    text-overflow: ellipsis; /* Optional: add ellipsis for long text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    word-wrap: break-word; /* Allow text to wrap onto the next line */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .StudentCards{
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        width:300px;
+    }
+    .CourseDesc{
+        padding: 2rem;
+        text-align: center;
+    }
+   
+  }

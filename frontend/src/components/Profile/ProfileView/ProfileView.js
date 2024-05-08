@@ -49,7 +49,7 @@ const ProfileView = () => {
     const [profilePic, setProfilePic] = useState(profile);
 
     const { currentUserInfo } = useSelector((state) => state.local);
-    const { currentUser } = useSelector((state) => state.user);
+    const { currentUser } = useSelector((state) => state.user); 
     console.log(currentUser);
     console.log(currentUserInfo);
     const OpenSidebar = () => {

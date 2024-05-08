@@ -31,7 +31,7 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/superStudents">
+                    <a href="/ProfileCourse">
                         <FaBookBookmark  className='iconn' /> Courses
                     </a>
                 </li>
