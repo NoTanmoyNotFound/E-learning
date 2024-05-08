@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./SingleCourseDetails.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { color } from "framer-motion";
 import Payment from "../../../page/Payment";
 import { useSelector } from "react-redux";
 
 const SingleCourseDetails = () => {
+  const navigate = useNavigate();
   const { courseId } = useParams(); // Get course ID from route parameters
   const [showModal, setShowModal] = React.useState(false);
   const [isCoursePurchased, setIsCoursePurchased] = useState(null);
@@ -40,33 +41,13 @@ const SingleCourseDetails = () => {
 
   useEffect(() => {
     const checkCoursePurchased = () => {
-      setIsCoursePurchased(currentUserInfo && currentUserInfo.courses.includes(courseId));
+      setIsCoursePurchased(
+        currentUserInfo && currentUserInfo.courses.includes(courseId)
+      );
     };
 
     checkCoursePurchased();
   }, [currentUserInfo, courseId]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
@@ -113,6 +94,9 @@ const SingleCourseDetails = () => {
       ...prevData,
       [name]: value,
     }));
+  };
+  const GotoMain = () => {
+    navigate("/MainCourse");
   };
 
   const handleSubmit = async (event) => {
@@ -283,7 +267,19 @@ const SingleCourseDetails = () => {
               </div>
             </div> */}
             <div className="mid_single_button">
-             {isCoursePurchased ? <button className="w-100 button3"  > go to course </button> : <Payment courseId={courseId} price={course.price} teacherEmail={course.authorEmail} teacherName={course.author} /> } 
+              {isCoursePurchased ? (
+                <button className="w-100 button3" onClick={GotoMain}>
+                  {" "}
+                  go to course{" "}
+                </button>
+              ) : (
+                <Payment
+                  courseId={courseId}
+                  price={course.price}
+                  teacherEmail={course.authorEmail}
+                  teacherName={course.author}
+                />
+              )}
             </div>
           </div>
         </div>
