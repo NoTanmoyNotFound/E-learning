@@ -2,6 +2,8 @@ import User from "../models/user.model.js";
 import UserInfo from "../models/userinfo.model.js"; 
 import Contact from "../models/contact.modal.js";
 import CareerSuport from "../models/careerSuport.model.js";
+import Payment from "../models/payment.model.js";
+import CourseStructure from '../models/courseUploadModel.js';
 import bcryptjs from "bcryptjs";    
 import { errorHandler } from "../ulte/error.js";
 
@@ -209,3 +211,19 @@ export const contact = async (req, res, next) => {
         next(error)
     }
 } 
+
+export const sendcourses = async (req, res, next) => {
+    const id = req.params.id;  
+    try {
+        const user = await UserInfo.findOne({ userid: id }); // No need for req.params.id here
+
+        const courseIds = user.courses; // Assuming user.courses contains course IDs
+
+        // Find all courses whose IDs are in the courseIds array
+        const courses = await CourseStructure.find({ _id: { $in: courseIds } });
+
+        res.status(200).json(courses);
+    } catch (error) {
+        next(error);
+    }
+}
