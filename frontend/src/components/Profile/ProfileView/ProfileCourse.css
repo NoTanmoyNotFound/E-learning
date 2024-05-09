@@ -3,9 +3,11 @@
     width: 61.25rem;
     margin-left: 20px;
     padding: 2rem;
+    background-color: #ffffff;
+background-image: linear-gradient(-90deg, #ffffff 0%, #b1c9e6b4 50%);
 }
 .StudentCards{
-    border: solid 1px black;
+    /* border: solid 1px black; */
     padding: 1rem;
     border-radius:20px ;
     /* display: flex;
@@ -13,13 +15,26 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     align-items: center;
+    background: #ffffff;
+    transition: all 250ms ;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* background: linear-gradient(45deg, #dbcfef, #e8dae8) !important; */
+}
+.StudentCards:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transform: scale(1.01);
+    cursor: pointer;
+    
 }
 /* .courseimg{
     grid-template-columns: ;
 } */
 .courseimg img{
-    border-radius:20px ;
-    aspect-ratio: 16 / 9;
+    border-radius:15px ;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.courseimg{
+    aspect-ratio: 16/9;
 }
 .CourseDesc{
     padding-left: 50px;
@@ -43,13 +58,38 @@
   @media screen and (max-width: 768px) {
     .StudentCards{
         justify-content: center;
+        
         display: flex;
         flex-direction: column;
-        width:300px;
+        width:40rem;
     }
     .CourseDesc{
         padding: 2rem;
         text-align: center;
     }
+    .StudentCourse{
+        width: 100%;
+        margin-left: 0px;
+        padding: 2rem;
+        background-color: #ffffff;
+    background-image: linear-gradient(-90deg, #ffffff 0%, #b1c9e6b4 50%);
+    }
    
   }
+  /* @media screen and (max-width: 810px) {
+    .StudentCards{
+        justify-content: center;
+        margin-left: 30px;
+        display: flex;
+        flex-direction: column;
+        width:80rem;
+    }
+    .StudentCourse{
+        
+        width: 100%;
+        margin-left: 0px;
+        padding: 2rem;
+        background-color: #ffffff;
+    background-image: linear-gradient(-90deg, #ffffff 0%, #b1c9e6b4 50%);
+    }
+  } */

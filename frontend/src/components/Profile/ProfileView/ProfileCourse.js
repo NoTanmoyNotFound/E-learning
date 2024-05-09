@@ -69,8 +69,8 @@ function ProfileCourse() {
             {data &&data.map((item) => (
               
           
-              <div className="StudentCards mb-3" key={item._id} onClick={() => navigate(`/course-details/${item._id}`)}>
-                <div className="courseimg">
+              <div className="StudentCards mb-3 " key={item._id} onClick={() => navigate(`/course-details/${item._id}`)}>
+                <div className="courseimg pl-3 pr-3">
                 <img src={item.imageUrl} alt="" />
                 </div>
                 <div className="CourseDesc overflow-hidden">
