@@ -7,13 +7,12 @@ import { useSelector } from "react-redux";
 
 const SingleCourseDetails = () => {
   const navigate = useNavigate();
-  const { courseId } = useParams(); // Get course ID from route parameters
+  const { courseId } = useParams(); 
   const [showModal, setShowModal] = React.useState(false);
   const [isCoursePurchased, setIsCoursePurchased] = useState(null);
   const { currentUserInfo } = useSelector((state) => state.local);
   console.log(currentUserInfo);
-  // const isCoursePurchased = currentUserInfo.courses.includes(courseId);
-  // Initialize course state with default values
+
   const [course, setCourse] = useState({
     name: "",
     description: "",
@@ -24,15 +23,15 @@ const SingleCourseDetails = () => {
     discountedPrice: "",
     discount: "",
     rating: 0,
-    learn: [], // Ensure initialized as empty array
-    includes: [], // Ensure initialized as empty array
+    learn: [], 
+    includes: [], 
   });
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [feedbacks, setFeedbacks] = useState([]); // Ensure initialized as empty array
+  const [feedbacks, setFeedbacks] = useState([]); 
 
-  // Initialize the form data state variable with default values
+
   const [formData, setFormData] = useState({
     courseID: courseId,
     userName: "",
@@ -266,7 +265,7 @@ const SingleCourseDetails = () => {
                 <i className="fa-solid fa-video modal-btn-11"></i>
               </div>
             </div> */}
-            <div className="mid_single_button">
+             <div className="mid_single_button">
               {isCoursePurchased ? (
                 <button className="w-100 button3" onClick={GotoMain}>
                   {" "}
@@ -281,6 +280,11 @@ const SingleCourseDetails = () => {
                 />
               )}
             </div>
+
+            {/* EDIIT HERE  */}
+            {/* <a href={`/MainCourse/${courseId}`} className="w-100">
+              <button className="button3">go to course</button>
+            </a> */}
           </div>
         </div>
       </div>

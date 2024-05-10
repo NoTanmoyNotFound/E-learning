@@ -65,7 +65,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
         <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
-        <Route path="/MainCourse" element={<MainCourse />} />
+        <Route path="/MainCourse/:courseId" element={<MainCourse />} />
 
 
 
