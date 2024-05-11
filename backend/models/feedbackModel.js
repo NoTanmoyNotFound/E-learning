@@ -6,6 +6,10 @@ const feedbackSchema = new mongoose.Schema({
     type:String,
     required:true
   },
+  profilePicture:{
+    type:String,
+   
+  },
   name:{
     type:String,
     required:true

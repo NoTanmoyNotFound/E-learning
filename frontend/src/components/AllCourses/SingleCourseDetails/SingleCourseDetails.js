@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const SingleCourseDetails = () => {
   const navigate = useNavigate();
-  const { courseId } = useParams(); 
+  const { courseId } = useParams();
   const [showModal, setShowModal] = React.useState(false);
   const [isCoursePurchased, setIsCoursePurchased] = useState(null);
   const { currentUserInfo } = useSelector((state) => state.local);
@@ -23,13 +23,13 @@ const SingleCourseDetails = () => {
     discountedPrice: "",
     discount: "",
     rating: 0,
-    learn: [], 
-    includes: [], 
+    learn: [],
+    includes: [],
   });
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [feedbacks, setFeedbacks] = useState([]); 
+  const [feedbacks, setFeedbacks] = useState([]);
 
 
   const [formData, setFormData] = useState({
@@ -52,7 +52,7 @@ const SingleCourseDetails = () => {
     const fetchCourseDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/upload/singleCourse/${courseId}`
+          `/api/upload/singleCourse/${courseId}`
         );
         const data = await response.json();
 
@@ -93,9 +93,6 @@ const SingleCourseDetails = () => {
       ...prevData,
       [name]: value,
     }));
-  };
-  const GotoMain = () => {
-    navigate("/MainCourse");
   };
 
   const handleSubmit = async (event) => {
@@ -165,8 +162,8 @@ const SingleCourseDetails = () => {
               <div className="ratings_course">
                 {isValidRating(course.rating)
                   ? [...Array(course.rating)].map((_, index) => (
-                      <span key={index}>&#9733;</span>
-                    ))
+                    <span key={index}>&#9733;</span>
+                  ))
                   : "Invalid rating"}
                 {isValidRating(course.rating) &&
                   [...Array(5 - course.rating)].map((_, index) => (
@@ -207,8 +204,8 @@ const SingleCourseDetails = () => {
               <p className="mid-star">
                 {isValidRating(course.rating)
                   ? [...Array(course.rating)].map((_, index) => (
-                      <span key={index}>&#9733;</span>
-                    ))
+                    <span key={index}>&#9733;</span>
+                  ))
                   : "Invalid rating"}
                 {isValidRating(course.rating) &&
                   [...Array(5 - course.rating)].map((_, index) => (
@@ -265,24 +262,25 @@ const SingleCourseDetails = () => {
                 <i className="fa-solid fa-video modal-btn-11"></i>
               </div>
             </div> */}
-             <div className="mid_single_button">
-              {isCoursePurchased ? (
-                <button className="w-100 button3" onClick={GotoMain}>
-                  {" "}
-                  go to course{" "}
-                </button>
-              ) : (
-                <Payment
-                  courseId={courseId}
-                  price={course.price}
-                  teacherEmail={course.authorEmail}
-                  teacherName={course.author}
-                />
-              )}
+            <div className="mid_single_button">
+              {currentUserInfo ? (
+                isCoursePurchased ? (
+                  <Link to={`/MainCourse/${courseId}`}>
+                    <button className="w-100 button3">Go to Course</button>
+                  </Link>
+                ) : (
+                  <Payment
+                    courseId={courseId}
+                    price={course.price}
+                    teacherEmail={course.authorEmail}
+                    teacherName={course.author}
+                  />
+                )
+              ) : <button className="w-100 button3" onClick={() => navigate("/signin")}> Payment </button>}
             </div>
 
             {/* EDIIT HERE  */}
-            {/* <a href={`/MainCourse/${courseId}`} className="w-100">
+            {/* <a href= className="w-100">
               <button className="button3">go to course</button>
             </a> */}
           </div>

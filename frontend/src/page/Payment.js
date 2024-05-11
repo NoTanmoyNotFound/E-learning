@@ -6,6 +6,7 @@ function Payment({courseId,price, teacherEmail,teacherName}) {
   const dispatch = useDispatch();
 
   const { currentUser } = useSelector((state) => state.user);
+
     
     const handelClick = async(event) =>{
 
@@ -13,6 +14,7 @@ function Payment({courseId,price, teacherEmail,teacherName}) {
       const userId = currentUser._id;
       const uaerName = currentUser.name;
       const userEmail = currentUser.email;
+    
  
     const amount = price*100;
     const currency = "INR"
@@ -66,8 +68,8 @@ function Payment({courseId,price, teacherEmail,teacherName}) {
         },
         // customer dit 
         prefill: {
-          name: "Web Coder", 
-          email: "webcoder@example.com",
+          name: uaerName, 
+          email: userEmail,
           contact: "9000000000", 
         },
         notes: {
