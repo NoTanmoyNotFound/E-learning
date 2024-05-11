@@ -87,11 +87,19 @@ export const updateUserInfo = async (req, res, next) =>{
 
 
 export const deleteUser = async (req, res, next) =>{
-    if(req.user.id !== req.params.id){
-        return next(errorHandler(403, "You can delete only your account!"));
-    }
+  const {email, password} = req.body;
+
+  const validUser = await User.findOne({ email: email });
+  const userinfo = await UserInfo.findOne({ userid: validUser._id });
+
+  const validPassword = await bcryptjs.compare(password, validUser.password);
+
+  if (!validPassword) {
+    return next(errorHandler(400, "Wrong password"));
+  }
     try{
-        await User.findByIdAndDelete(req.params.id);
+        await User.findByIdAndDelete(validUser._id);
+        await UserInfo.findByIdAndDelete(userinfo._id);
         
         res.status(200).json("User has been deleted");  
 
