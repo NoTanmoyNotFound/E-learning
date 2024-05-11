@@ -47,6 +47,7 @@ import Users from "./components/SuperAdmin/Users/Users";
 
 import ForgotPassword from "./page/ForgotPassword";
 import ProfileCourse from "./components/Profile/ProfileView/ProfileCourse";
+import DeleteProfile from "./components/Profile/ProfileView/DeleteProfile";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -81,6 +82,7 @@ function App() {
         <Route element={<PrivateRouer />}>
           <Route path="/Profile" element={<ProfileView />} />
           <Route path="/ProfileCourse" element={<ProfileCourse />} />
+          <Route path="/DeleteProfile" element={<DeleteProfile />} />
         </Route>
 
         <Route path="/EditProfile" element={<EditSidebar />}>

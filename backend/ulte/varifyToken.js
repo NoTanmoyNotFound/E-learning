@@ -4,7 +4,7 @@ import { errorHandler } from "./error.js";
 
 export const varifyToken = (req, res, next) => {
     const token = req.cookies.access_token;
-    console.log(req.cookies);
+    // console.log(req.cookies);
 
 
     if (!token) {
