@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Banned.css';
+import Bannedd from "./banned.gif"
 
 const Banned = () => {
     return (
         <div className='restric_main'>
             <div className="restric_inner">
                 <div className="rest_img">
-                    <img src="./banned.gif" alt="Banned GIF" />
+                    <img src={Bannedd} alt="Banned GIF" />
                 </div>
                 <div className="desc_rest">
                     <h1 className='primaryText'>Access Restricted</h1>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Maincourse.css";
 import { useSelector } from "react-redux";
+import Banned from "../../Error/Banned";
 
 const MainCourse = () => {
   const { courseId } = useParams();
@@ -115,13 +116,13 @@ const MainCourse = () => {
   return (
     <div className="maincourse">
       <button className="floating-btn">
-        <Link to="/Allcourses">
+        <a href="/Allcourses">
           <i className="fa-solid fa-angle-left"></i>
-        </Link>
+        </a>
       </button>
 
       <div className="relative overflow-hidden video-section bg-black bg-opacity-25">
-        {currentUserInfo && courseData?.videoUrl ? (
+        {currentUserInfo && currentUserInfo.courses.includes(courseId) && courseData?.videoUrl ? (
           <>
             <video
               className="w-30% m-12 rounded-lg ml-44 drop-shadow-xl"
@@ -137,7 +138,7 @@ const MainCourse = () => {
             <button className="ml-44 MaincB"><Link to="https://docs.google.com/forms/d/14LDtIOPTMJBPKhPKT13dZJ0yBJmG1lW4NewI7hZw1eI/edit">Free Test </Link></button>
           </>
         ) : (
-          <p>Video not available</p>
+          <Banned/>
         )}
       </div>
 

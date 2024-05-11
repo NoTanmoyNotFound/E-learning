@@ -74,7 +74,7 @@ function ProfileCourse() {
                 <img src={item.imageUrl} alt="" />
                 </div>
                 <div className="CourseDesc overflow-hidden">
-                  <div className="CourseName text-3xl font-bold   ">{item.name}</div>
+                  <div className="CourseName text-3xl font-bold">{item.name}</div>
                   <div className="TeacherName pl-10 mt-2"> ~{item.author}</div>
                   <div className="Description overflow-scroll h-32 pt-3">{item.description}</div>
                 </div>
