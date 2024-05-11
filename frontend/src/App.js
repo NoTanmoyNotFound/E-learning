@@ -9,6 +9,7 @@ import ProfileView from "./components/Profile/ProfileView/ProfileView";
 //course routes start
 import AllCourses from "./components/AllCourses/AllCourses";
 import SingleCourseDetails from "./components/AllCourses/SingleCourseDetails/SingleCourseDetails";
+import MainCourse from "./components/AllCourses/MainCourse/MainCourse";
 //course routes end
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -33,7 +34,7 @@ import Careersuport from "./page/Careersuport";
 import Formcareer from "./page/Formcareer";
 import Contact from "./components/ContactUs/Contact";
 import Error from "./components/Error/Error";
-import MainCourse from './components/AllCourses/MainCourse/MainCourse'
+import Banned from "./components/Error/Banned";
 
 //super-admin-routes start
 import S_home from "./components/SuperAdmin/S_home/S_home";
@@ -59,6 +60,7 @@ function App() {
       <Routes>
 
       <Route path="/error-not-found" element={<Error />} />
+      <Route path="/not-found" element={<Banned />} />
 
 
 
