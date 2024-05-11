@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Footer.css";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -47,12 +48,12 @@ const Footer = () => {
             {/* middle-1 ----------- */}
             <div className="flexColStart f-middle">
                 <span className='primaryText'><a href="">Links</a></span>
-                <span className='secondaryText'><a href="">Contact Us</a></span>
-                <span className='secondaryText'><a href="">Gallary</a></span>
-                <span className='secondaryText'><a href="">News</a></span>
-                <span className='secondaryText'><a href="">Articles</a></span>
-                <span className='secondaryText'><a href="">Sign In/Log In</a></span>
-                <span className='secondaryText'><a href="">Coming Soon</a></span>
+                <span className='secondaryText'><Link to="/">Home</Link></span>
+                <span className='secondaryText'><Link to="/allCourses">Courses</Link></span>
+                <span className='secondaryText'><Link to="/careersuport">Support</Link></span>
+                <span className='secondaryText'><Link to="/Homeblogs">Blogs</Link></span>
+                <span className='secondaryText'><Link to="/signin">Log In</Link></span>
+                <span className='secondaryText'><Link to="/Contact">Contact Us</Link></span>
             </div>
 
 
@@ -73,10 +74,10 @@ const Footer = () => {
 
                 {/* menu footer-------------------------------------------------------------------------------'Saklin'--- */}
                 <div className="flexCenter f-menu">
-                        <span><a href="">Products</a></span>
-                        <span><a href="">Services</a></span>
-                        <span><a href="">About Us</a></span>
-                        <span><a href="">Help ?</a></span>
+                        <span><Link to="/">Home</Link></span>
+                        <span><Link to="/allCourses">Courses</Link></span>
+                        <span><Link to="/careersuport">Career Support</Link></span>
+                        <span><Link to="/Homeblogs">Blogs</Link></span>
                 </div>
             </div>
         </div>

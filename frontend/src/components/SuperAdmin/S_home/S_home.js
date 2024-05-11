@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './S_home.css';
 import '../SuperAdmin.css';
-import { BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs'
-import { PiStudentBold } from "react-icons/pi";
+import { Link } from 'react-router-dom';
 
 const S_home = () => {
 
@@ -25,42 +24,59 @@ const S_home = () => {
 
 
     return (
-        <main className='mainn-container'>
+        <main className='mainn-container smc'>
             <div className='mainn-title'>
                 <h3>DASHBOARD</h3>
             </div>
 
             <div className='mainn-cardds'>
                 <div className='cardd'>
-                    <div className='cardd-inner'>
-                        <h3>STUDENTS</h3>
-                        <a href="#"><PiStudentBold className='cardd_icon' /></a>
-                    </div>
+                    <Link to="/superadmin/users-details">
+                        <div className='cardd-inner'>
+                            <h3>All Users</h3>
+                            <a href="#"><i class="fa-solid fa-users"></i></a>
+                        </div>
+                    </Link>
                     {/* Dynamic count */}
                     {/* <h1>300</h1> */}
                 </div>
                 <div className='cardd'>
-                    <div className='cardd-inner'>
-                        <h3>Categories</h3>
-                        <a href="/superadmin/category-details"><BsFillGrid3X3GapFill className='cardd_icon' /></a>
-                    </div>
-
+                    <Link to="/superadmin/category-details">
+                        <div className='cardd-inner'>
+                            <h3>Categories</h3>
+                            <a href="#"><i class="fa-solid fa-list"></i></a>
+                        </div>
+                    </Link>
                     {/* Dynamic count */}
-                    {/* <h1>30</h1> */}
+                    {/* <h1>300</h1> */}
                 </div>
                 <div className='cardd'>
-                    <div className='cardd-inner'>
-                        <h3>TEACHERS</h3>
-                        <a href="#"><BsPeopleFill className='cardd_icon' /></a>
-                    </div>
+                    <Link to="/superadmin/students-details">
+                        <div className='cardd-inner'>
+                            <h3>STUDENTS</h3>
+                            <a href="#"><i class="fa-solid fa-graduation-cap"></i></a>
+                        </div>
+                    </Link>
                     {/* Dynamic count */}
-                    {/* <h1>33</h1> */}
+                    {/* <h1>300</h1> */}
                 </div>
                 <div className='cardd'>
-                    <div className='cardd-inner'>
-                        <h3>REQUESTS</h3>
-                        <a href="#"><BsFillBellFill className='cardd_icon' /></a>
-                    </div>
+                    <Link to="/superadmin/teachers-details">
+                        <div className='cardd-inner'>
+                            <h3>TEACHERS</h3>
+                            <a href="#"><i class="fa-solid fa-person-chalkboard"></i></a>
+                        </div>
+                    </Link>
+                    {/* Dynamic count */}
+                    {/* <h1>300</h1> */}
+                </div>
+                <div className='cardd'>
+                    <Link to="/superadmin/request">
+                        <div className='cardd-inner'>
+                            <h3>REQUESTS</h3>
+                            <a href="#"><i class="fa-solid fa-bell"></i></a>
+                        </div>
+                    </Link>
                     {/* Dynamic count */}
                     {/* <h1>42</h1> */}
                 </div>

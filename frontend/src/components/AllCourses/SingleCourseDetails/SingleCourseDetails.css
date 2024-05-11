@@ -1,3 +1,16 @@
+.modal_body_sc {
+    background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+    border-radius: 20px;
+
+    .vc {
+        border-radius: 15px;
+    }
+    .button3.btn412{
+        background-image: linear-gradient(to bottom, #a230e8, #b52ae5, #c623e2, #d71bde, #e612da) !important;
+    }
+}
+
+
 .banner-inner-course {
     /* background: #7ca7fd; */
     margin-top: 10px;
@@ -263,7 +276,8 @@
 
         &:hover {
             background: linear-gradient(#62cff4, #2c67f2);
-            .fa-video{
+
+            .fa-video {
                 transform: scale(1.1);
                 color: #fff;
             }
@@ -343,7 +357,7 @@
     .preview_main {
         padding-top: 3%;
         padding-bottom: 3%;
-    
+
         .preview_inner {
             display: flex;
             justify-content: center;
@@ -354,15 +368,16 @@
             border-radius: 10px;
             transition: all 400ms ease-in !important;
             cursor: pointer;
-    
+
             &:hover {
                 background: linear-gradient(#62cff4, #2c67f2);
-                .fa-video{
+
+                .fa-video {
                     transform: scale(1.1);
                     color: #fff;
                 }
             }
-    
+
             .fa-video {
                 font-size: 8rem;
                 transition: all 300ms ease-in;
@@ -452,7 +467,7 @@
     .preview_main {
         padding-top: 3%;
         padding-bottom: 3%;
-    
+
         .preview_inner {
             display: flex;
             justify-content: center;
@@ -463,15 +478,16 @@
             border-radius: 10px;
             transition: all 400ms ease-in !important;
             cursor: pointer;
-    
+
             &:hover {
                 background: linear-gradient(#62cff4, #2c67f2);
-                .fa-video{
+
+                .fa-video {
                     transform: scale(1.1);
                     color: #fff;
                 }
             }
-    
+
             .fa-video {
                 font-size: 8rem;
                 transition: all 300ms ease-in;
@@ -591,6 +607,3 @@
         font-size: 1.4rem;
     }
 }
-
-
-

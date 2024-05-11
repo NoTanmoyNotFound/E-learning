@@ -156,7 +156,7 @@ const SingleCourseDetails = () => {
             </div>
             <div className="testimonials_rating">
               <div className="no_of_students">
-                <p>{course.noOfStudents} - students</p>
+                <p>256 - students</p>
               </div>
               <br />
               <div className="ratings_course">
@@ -171,6 +171,9 @@ const SingleCourseDetails = () => {
                   ))}
               </div>
               <div className="bottom_single">
+                <p className="secondaryText">
+                  Category : {course.category}
+                </p>
                 <p className="secondaryText">
                   Created by <u>{course.author}</u>
                 </p>
@@ -198,7 +201,7 @@ const SingleCourseDetails = () => {
               <p className="mid-p">
                 <span className="price-mid primaryText">₹ {course.price}</span>
                 <span>
-                  <s className="orangeText">₹ 4000</s>
+                  <s className="orangeText">₹ {course.discount}</s>
                 </span>
               </p>
               <p className="mid-star">
@@ -212,7 +215,7 @@ const SingleCourseDetails = () => {
                     <span key={index}>&#9734;</span>
                   ))}
               </p>
-              <span className="discount">{course.discount}</span>
+              <span className="discount secondaryText">Discount {course.discountPercentage}%</span>
             </div>
             <div>
               <div className="preview_main">
@@ -235,15 +238,15 @@ const SingleCourseDetails = () => {
                 <>
                   <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                     <div className="relative  w-auto my-6 mx-auto max-w-3xl">
-                      <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                        <div className="flex bg-[#33fadcc6] items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                      <div className="modal_body_sc shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                        <div className="flex items-start justify-between p-4 mb_inner">
                           <div>
-                            <video src={course.videoUrl} controls autoPlay />
+                            <video className="vc" src={course.videoUrl} controls autoPlay />
                           </div>
                         </div>
-                        <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                        <div className="flex items-center justify-end p-4 pt-0 border-solid border-blueGray-200 rounded-b">
                           <button
-                            className=" bg-[#ff2929] rounded-lg font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            className="w-32 button3 btn412 font-bold uppercase text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button"
                             onClick={() => setShowModal(false)}
                           >

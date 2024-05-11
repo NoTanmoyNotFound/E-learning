@@ -99,7 +99,7 @@ const Category = () => {
 
     return (
         <div>
-            <div className="pr-7 lg:pr-72 w-screen py-5 pl-7">
+            <div className="pr-7 lg:pr-72 w-screen py-5 pl-7 allUserSuperMain">
                 <div className="text-5xl font-bold text-center">
                     <h1>Course Categories</h1>
                 </div>
