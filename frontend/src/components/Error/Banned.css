@@ -1,0 +1,45 @@
+.restric_main .restric_inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+    padding-top: 1%;
+
+    .rest_img img {
+        width: 330px;
+        transition: all 200ms ease-in;
+    }
+
+    .desc_rest h1 {
+        font-size: 2.5rem;
+        text-shadow: 1px 0px 1px black;
+    }
+
+    .desc_rest p {
+        margin-top: 0.5rem;
+        font-size: 1.3rem;
+        padding-bottom: 20px;
+    }
+
+    .button_rest {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        &:hover{
+            transform: scale(1) !important;
+            color: white;
+        }
+        .rest_btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 7700;
+            
+        }
+    }
+}

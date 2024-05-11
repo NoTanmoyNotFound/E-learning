@@ -33,6 +33,7 @@ import Careersuport from "./page/Careersuport";
 import Formcareer from "./page/Formcareer";
 import Contact from "./components/ContactUs/Contact";
 import Error from "./components/Error/Error";
+import Banned from "./components/Error/Banned";
 
 //super-admin-routes start
 import S_home from "./components/SuperAdmin/S_home/S_home";
@@ -58,6 +59,7 @@ function App() {
       <Routes>
 
       <Route path="/error-not-found" element={<Error />} />
+      <Route path="/not-found" element={<Banned />} />
 
 
 
