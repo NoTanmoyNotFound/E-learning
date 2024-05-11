@@ -6,6 +6,9 @@
     /* color: rgba(255, 255, 255, 0.95); */
     margin-top: 2%;
   }
+  .smc{
+    background: white !important;
+  }
   
   .mainn-title {
     display: flex;
@@ -70,7 +73,17 @@
   }
   
   .cardd:nth-child(4) {
-    background-color: #ff7e7e;
+    background-color: #a36cd2;
+    font-weight: 500;
+    font-size: 1.5rem;
+    box-shadow: 0px 0px 14px rgb(210, 204, 204);
+    border: 6px solid rgb(255, 255, 255);
+    /* border-radius: 0 0 1.8rem 5rem; */
+    transition: all 300ms ease-in;
+
+  }
+  .cardd:nth-child(5) {
+    background-color: #ff2323;
     font-weight: 500;
     font-size: 1.5rem;
     box-shadow: 0px 0px 14px rgb(210, 204, 204);
@@ -80,7 +93,7 @@
 
   }
 
-  .cardd:first-child:hover, .cardd:nth-child(2):hover , .cardd:nth-child(3):hover, .cardd:nth-child(4):hover{
+  .cardd:first-child:hover, .cardd:nth-child(2):hover , .cardd:nth-child(3):hover, .cardd:nth-child(4):hover, .cardd:nth-child(5):hover{
     scale: 1.1;
     cursor: pointer;
   }
@@ -89,6 +102,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    a i{
+      color: white;
+      font-size: 1.7rem;
+      font-weight: 700;
+      text-shadow: 0 1px 3px black;
+    }
   }
   
   .cardd-inner > .cardd_icon {

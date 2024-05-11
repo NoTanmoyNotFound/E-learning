@@ -70,7 +70,7 @@ const Student = () => {
 
     return (
         <div>
-            <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7'>
+            <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7 allUserSuperMain'>
                 <div className='text-5xl font-bold text-center'>
                     <h1>Enrolled Students Details</h1>
                 </div>

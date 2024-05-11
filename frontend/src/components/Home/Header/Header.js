@@ -36,7 +36,7 @@ const Header = ({ onButtonClick }) => {
             <section className='h-wrapper'>
                 <div className="flexCenter paddings innerWidth h-container">
                    
-                    <img src="./logo.png" alt="logo" width={100} />
+                    <Link to="/"><img src="./logo.png" alt="logo" width={140} /></Link>
                     
 
 
@@ -46,7 +46,7 @@ const Header = ({ onButtonClick }) => {
                         <div className="flexCenter h-menu"
                             style={getMenuStyles(menuOpened)}
                         >
-                            <Link to="/">Home</Link>
+                            {/* <Link to="/">Home</Link> */}
                             <Link to="/allCourses">Courses</Link>
                             <Link to="/careersuport">Career Support</Link>
                             <Link to="/Homeblogs">Blogs</Link>

@@ -12,6 +12,12 @@
     margin-left: auto;
     display: flex;
     gap: 15px;
+    a .iconn{
+      text-decoration: none;
+      font-size: 1.7rem !important;
+      cursor: pointer;
+
+    }
   }
   .header-right a svg{
     font-size: 25px !important;
