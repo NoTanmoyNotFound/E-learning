@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import User from "./user.model.js";
-
+import CourseStructure from '../models/courseUploadModel.js';
+const Schema = mongoose.Schema;
 const userInfoSchema = new mongoose.Schema({
     userid: {
         type: String,
@@ -65,7 +66,7 @@ const userInfoSchema = new mongoose.Schema({
         default: 'none'
 
     },
-    courses: [],
+    courses: [{type: Schema.Types.ObjectId, ref: 'CourseStructure'}],
 }, { timestamps: true });
 
 const UserInfo = mongoose.model('UserInfo', userInfoSchema);

@@ -128,7 +128,11 @@ function Signin() {
                                 <span className="text-neon-blue pl-2 font-semibold cursor-pointer">Sign up</span>
                             </Link></p>
                         <p>Forgot password?
-                            <span className="text-neon-blue font-semibold pl-2 cursor-pointer">Reset password</span></p>
+                        <Link to={"/ForgotPassword"}>
+                     
+                            <span className="text-neon-blue font-semibold pl-2 cursor-pointer">Reset password</span>
+                          </Link></p>
+                
                     </div>
                 </div>
             </div>

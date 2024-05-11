@@ -49,7 +49,7 @@ const ProfileView = () => {
     const [profilePic, setProfilePic] = useState(profile);
 
     const { currentUserInfo } = useSelector((state) => state.local);
-    const { currentUser } = useSelector((state) => state.user);
+    const { currentUser } = useSelector((state) => state.user); 
     console.log(currentUser);
     console.log(currentUserInfo);
     const OpenSidebar = () => {
@@ -86,7 +86,7 @@ const ProfileView = () => {
             <P_sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} profilePic={profilePic} />
             {/* <S_home /> */}
 
-            <main className="mainn-container mt-0 px-8 max-w-11/12" style={{ backgroundImage: "linear-gradient(to right, #a5f3eb, #a5c8f3) opacity(0.6)" }}>
+            <main className="mainn-container mt-0 px-8 max-w-11/12" style={{  }}>
                 <div className="info bg-white p-[20px] rounded-[40px]">
                     <div className="userBox  mb-[25px] rounded-[25px] flex bg-gradient-to-r from-cyan-100 to-blue-100 pt-1 pr-1 pb-1 pl-2" >
                         <div className="user w-52 pr-3 pl-3">

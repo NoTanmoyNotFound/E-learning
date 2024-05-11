@@ -9,6 +9,7 @@ import ProfileView from "./components/Profile/ProfileView/ProfileView";
 //course routes start
 import AllCourses from "./components/AllCourses/AllCourses";
 import SingleCourseDetails from "./components/AllCourses/SingleCourseDetails/SingleCourseDetails";
+import MainCourse from "./components/AllCourses/MainCourse/MainCourse";
 //course routes end
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -45,8 +46,7 @@ import Users from "./components/SuperAdmin/Users/Users";
 //super-admin-routes end
 
 import ForgotPassword from "./page/ForgotPassword";
-import Payment from "./page/Payment";
-
+import ProfileCourse from "./components/Profile/ProfileView/ProfileCourse";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -67,6 +67,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/allCourses" element={<AllCourses />} />
         <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
+        <Route path="/MainCourse/:courseId" element={<MainCourse />} />
 
 
 
@@ -79,6 +80,7 @@ function App() {
 
         <Route element={<PrivateRouer />}>
           <Route path="/Profile" element={<ProfileView />} />
+          <Route path="/ProfileCourse" element={<ProfileCourse />} />
         </Route>
 
         <Route path="/EditProfile" element={<EditSidebar />}>
@@ -106,7 +108,7 @@ function App() {
         <Route path="/careersuport" element={<Careersuport />} />
         <Route path="/careerform" element={<Formcareer />} />
         <Route path="/Contact" element={<Contact />} />
-       
+
 
 
 
@@ -134,13 +136,6 @@ function App() {
 
 
 
-
-
-
-
-
-
-        <Route path="payment" element={<Payment/>} />
       
       </Routes>
     </BrowserRouter>

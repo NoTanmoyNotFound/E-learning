@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./SingleCourseDetails.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { color } from "framer-motion";
 import Payment from "../../../page/Payment";
 import { useSelector } from "react-redux";
 
 const SingleCourseDetails = () => {
-  const { courseId } = useParams(); // Get course ID from route parameters
+  const navigate = useNavigate();
+  const { courseId } = useParams();
   const [showModal, setShowModal] = React.useState(false);
   const [isCoursePurchased, setIsCoursePurchased] = useState(null);
   const { currentUserInfo } = useSelector((state) => state.local);
   console.log(currentUserInfo);
-  // const isCoursePurchased = currentUserInfo.courses.includes(courseId);
-  // Initialize course state with default values
+
   const [course, setCourse] = useState({
     name: "",
     description: "",
@@ -23,15 +23,15 @@ const SingleCourseDetails = () => {
     discountedPrice: "",
     discount: "",
     rating: 0,
-    learn: [], // Ensure initialized as empty array
-    includes: [], // Ensure initialized as empty array
+    learn: [],
+    includes: [],
   });
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [feedbacks, setFeedbacks] = useState([]); // Ensure initialized as empty array
+  const [feedbacks, setFeedbacks] = useState([]);
 
-  // Initialize the form data state variable with default values
+
   const [formData, setFormData] = useState({
     courseID: courseId,
     userName: "",
@@ -40,39 +40,19 @@ const SingleCourseDetails = () => {
 
   useEffect(() => {
     const checkCoursePurchased = () => {
-      setIsCoursePurchased(currentUserInfo && currentUserInfo.courses.includes(courseId));
+      setIsCoursePurchased(
+        currentUserInfo && currentUserInfo.courses.includes(courseId)
+      );
     };
 
     checkCoursePurchased();
   }, [currentUserInfo, courseId]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/upload/singleCourse/${courseId}`
+          `/api/upload/singleCourse/${courseId}`
         );
         const data = await response.json();
 
@@ -182,8 +162,8 @@ const SingleCourseDetails = () => {
               <div className="ratings_course">
                 {isValidRating(course.rating)
                   ? [...Array(course.rating)].map((_, index) => (
-                      <span key={index}>&#9733;</span>
-                    ))
+                    <span key={index}>&#9733;</span>
+                  ))
                   : "Invalid rating"}
                 {isValidRating(course.rating) &&
                   [...Array(5 - course.rating)].map((_, index) => (
@@ -224,8 +204,8 @@ const SingleCourseDetails = () => {
               <p className="mid-star">
                 {isValidRating(course.rating)
                   ? [...Array(course.rating)].map((_, index) => (
-                      <span key={index}>&#9733;</span>
-                    ))
+                    <span key={index}>&#9733;</span>
+                  ))
                   : "Invalid rating"}
                 {isValidRating(course.rating) &&
                   [...Array(5 - course.rating)].map((_, index) => (
@@ -283,8 +263,26 @@ const SingleCourseDetails = () => {
               </div>
             </div> */}
             <div className="mid_single_button">
-             {isCoursePurchased ? <button className="w-100 button3"  > go to course </button> : <Payment courseId={courseId} price={course.price} teacherEmail={course.authorEmail} teacherName={course.author} /> } 
+              {currentUserInfo ? (
+                isCoursePurchased ? (
+                  <Link to={`/MainCourse/${courseId}`}>
+                    <button className="w-100 button3">Go to Course</button>
+                  </Link>
+                ) : (
+                  <Payment
+                    courseId={courseId}
+                    price={course.price}
+                    teacherEmail={course.authorEmail}
+                    teacherName={course.author}
+                  />
+                )
+              ) : <button className="w-100 button3" onClick={() => navigate("/signin")}> Payment </button>}
             </div>
+
+            {/* EDIIT HERE  */}
+            {/* <a href= className="w-100">
+              <button className="button3">go to course</button>
+            </a> */}
           </div>
         </div>
       </div>
