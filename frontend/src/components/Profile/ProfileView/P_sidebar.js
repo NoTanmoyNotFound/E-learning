@@ -56,7 +56,7 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
                     </Link>
                 </li>
                 <li className='sidebar-list-item '>
-                    <a href="">
+                    <a href="/DeleteProfile">
                         <MdDelete  className='iconn text-[#f00]' /> <p className='text-[#f00]'>Delete Account</p>
                     </a>
                 </li>

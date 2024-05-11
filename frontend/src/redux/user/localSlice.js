@@ -27,9 +27,14 @@ const localSlice = createSlice({
             state.currentUserInfo = null;
             state.loading = false;
             state.error = false;
+        },
+        DeleteUserInfo : (state) => {
+            state.currentUserInfo = null;
+            state.loading = false;
+            state.error = false;
         }
     }
 })      
 
-export const {userInfoStart, userInfoSuccess, userInfoFailure, InfosignOut} = localSlice.actions;
+export const {userInfoStart, userInfoSuccess, userInfoFailure, InfosignOut, DeleteUserInfo} = localSlice.actions;
 export default localSlice.reducer

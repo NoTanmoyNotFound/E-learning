@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
         user: 'readx1260@gmail.com',
-        pass: 'lorebguxfhukuvdk'
+        pass: 'cewrvogqsztfanyo'
     },
 
 
@@ -125,14 +125,15 @@ export const google = async (req, res, next) => {
 
         if (validuser) {
 
-            if (!validuser.role === "super_admin") {
+            if (validuser.role === "user" || validuser.role === "teacher") {
                 const userInfo = await UserInfo.findOne({ userid: validuser._id });
-                console.log(userInfo);
 
+                console.log("presdent", userInfo)
+    
                 if (!userInfo) {
                     const newUser = new UserInfo({ userid: validuser._id });
                     await newUser.save();
-                    console.log(newUser);
+                    console.log("new", newUser);
                 }
             }
 
@@ -158,14 +159,15 @@ export const google = async (req, res, next) => {
             const sta = await newUser.save();
             console.log(sta);
 
-            if (!validuser.role === "super_admin") {
+            if (sta) {
                 const userInfo = await UserInfo.findOne({ userid: newUser._id });
-                console.log(userInfo);
 
+                console.log("presdent", userInfo)
+    
                 if (!userInfo) {
                     const newUser = new UserInfo({ userid: newUser._id });
                     await newUser.save();
-                    console.log(newUser);
+                    console.log("new", newUser);
                 }
             }
 
@@ -231,7 +233,7 @@ export const forgotPassword = async (req, res, next) => {
                 await updateData.save();
 
                 const mailOption = {
-                    from: process.env.EMAIL,
+                    from: 'readx1260@gmail.com',
                     to: email,
                     subject: "Sending Email for Otp validation",
                     text: `OTP:-${OTP}`
@@ -257,7 +259,7 @@ export const forgotPassword = async (req, res, next) => {
                 await saveOtpData.save();
 
                 const mailOption = {
-                    from: process.env.EMAIL,
+                    from: 'readx1260@gmail.com',
                     to: email,
                     subject: "Sending Email for Otp validation",
                     text: `OTP:-${OTP}`
