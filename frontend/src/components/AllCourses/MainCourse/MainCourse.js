@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Maincourse.css";
+import { useSelector } from "react-redux";
 
 const MainCourse = () => {
   const { courseId } = useParams();
@@ -8,7 +9,11 @@ const MainCourse = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [comments, setComments] = useState([]);
-  const [formData, setFormData] = useState({ name: "", comment: "" });
+  const [formData, setFormData] = useState({ comment: "" });
+
+  const { currentUserInfo } = useSelector((state) => state.local);
+  const { currentUser} = useSelector((state) => state.user);
+
 
   const fetchComments = async () => {
     try {
@@ -19,7 +24,7 @@ const MainCourse = () => {
       console.log("Fetched comments data:", data); // Debugging log
 
       if (response.ok) {
-        setComments(data.feedbacks || []); // Store comments
+        setComments(data); // Store comments
       } else {
         setError(data.message); // Handle server-side errors
       }
@@ -33,7 +38,7 @@ const MainCourse = () => {
     const fetchCourse = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/upload/singleCourse/${courseId}`
+          `/api/upload/singleCourse/${courseId}`
         );
         const data = await response.json();
 
@@ -65,13 +70,14 @@ const MainCourse = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name.trim() || !formData.comment.trim()) {
+    if (!formData.comment.trim()) {
       console.warn("Name and comment must not be empty.");
       return;
     }
 
     const payload = {
-      name: formData.name,
+      name: currentUser.name,
+      profilePicture: currentUser.profilePicture,
       description: formData.comment,
       courseID: courseId,
     };
@@ -115,7 +121,7 @@ const MainCourse = () => {
       </button>
 
       <div className="relative overflow-hidden video-section bg-black bg-opacity-25">
-        {courseData?.videoUrl ? (
+        {currentUserInfo && courseData?.videoUrl ? (
           <>
             <video
               className="w-30% m-12 rounded-lg ml-44 drop-shadow-xl"
@@ -141,23 +147,12 @@ const MainCourse = () => {
           className="flex flex-col gap-2 items-start"
           onSubmit={handleSubmit}
         >
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="border border-gray-800"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
           <div className="w-[60%]">
             <label htmlFor="comment">Comment:</label>
             <textarea
               id="comment"
               name="comment"
-              className="border border-gray-800"
+              className="border border-gray-800 p-2"
               value={formData.comment}
               onChange={handleChange}
             ></textarea>
@@ -178,8 +173,13 @@ const MainCourse = () => {
         ) : (
           comments.map((comment, index) => (
             <div key={index} className="comment">
+            <div className=" flex gap-2">
+            <div className="comment-img rounded-full">
+            <img src={comment.profilePicture} alt="this" className="rounded-full" width={30} height={30} />
+            </div>
               <strong>{comment.name}</strong>
-              <p>{comment.description}</p>
+              </div>
+              <p className=" pl-10 mb-3">{comment.description}</p>
             </div>
           ))
         )}
