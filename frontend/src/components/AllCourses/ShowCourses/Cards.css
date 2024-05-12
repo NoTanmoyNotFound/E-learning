@@ -96,6 +96,9 @@
   .b-price{
     width: 100%;
   }
+  .bottom_card{
+    width: 100%;
+  }
 
   .course_card_img {
     /* width: 150px !important; */
