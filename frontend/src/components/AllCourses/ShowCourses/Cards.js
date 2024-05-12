@@ -8,6 +8,7 @@ const Cards = () => {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const { currentUserInfo } = useSelector((state) => state.local);
+    const [search, setSearch] = useState('');
 
 
 
@@ -55,13 +56,17 @@ const Cards = () => {
 
             <div className="searchBarForCourse">
                 <div className="barSearch">
-                    <input className='search_course' type="text" name="" id="" placeholder='search best courses'/>
+                    <input className='search_course' type="text" name="" id="" placeholder='search best courses' onChange={(e) => setSearch(e.target.value)} />
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
 
             <div className="main-container">
-                {courses && courses.map((course) => (
+                {courses && courses.filter((course) => {
+                    return search.toLowerCase() === ''
+                        ? course
+                        : course.name.toLowerCase().includes(search);
+                }).map((course) => (
                     <div key={course._id} className="b-card course-card">
 
                         <div className="course_img">

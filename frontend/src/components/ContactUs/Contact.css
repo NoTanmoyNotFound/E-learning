@@ -100,11 +100,12 @@
 .contactForm{
     width: 40%;
     padding: 40px;
-    background: #fff;
+    background: #ffffff1f;
+    border-radius: 20px;
 }
 .contactForm h2{
     font-size: 30px;
-    color: #333;
+    color:rgb(230, 152, 34);;
     /* font-weight: 500; */
 }
 .inputBox{
@@ -119,9 +120,23 @@
     margin: 10px 0;
     border: none;
     outline: none;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #000000;
     resize: none;
+    padding-left: 10px;
+    background: transparent;
+    color: white;
+   
+    
 }
+
+.inputBox textarea{
+    height: 50px;
+    padding-left: 10px;
+    color: white;
+
+}
+
+
 .contactForm .inputBox span{
     position: absolute;
     left: 0;
@@ -131,6 +146,8 @@
     pointer-events: none;
     transition: 0.5s;
     color: #666;
+    padding-left: 10px;
+    color: orange;
 }
 .contactForm .inputBox input:focus ~ span,
 .contactForm .inputBox input:valid ~ span,
@@ -139,6 +156,15 @@
     color: orange;
     font-size: 12px;
     transform: translateY(-20px);
+    
+}
+
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span{
+    color: orange;
+    font-size: 12px;
+    transform: translateY(-31px);
+    
 }
 .contactForm .inputBox input[type="submit"]{
     width: 100px;
@@ -148,6 +174,7 @@
     cursor: pointer;
     padding: 10px;
     font-size: 18px;
+    
 }
 .inputBox button{
     width: 100px;
@@ -157,6 +184,7 @@
     cursor: pointer;
     padding: 10px;
     font-size: 18px;
+    border-radius: 10px;
 }
 .inputBox textarea{
     outline: none;
