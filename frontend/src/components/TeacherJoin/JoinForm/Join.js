@@ -134,8 +134,6 @@ const handleResumeUpload = async (resume) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
-<<<<<<< HEAD
-=======
     const { fullname, email, phone, organization, idProof, resume, video } = formData;
 
     if (!fullname ) {
@@ -161,7 +159,6 @@ const handleResumeUpload = async (resume) => {
       return;
     }
     else{
->>>>>>> d4931a54859176403c49b94f7fd85bc7ca8fb468
 
     try {
      

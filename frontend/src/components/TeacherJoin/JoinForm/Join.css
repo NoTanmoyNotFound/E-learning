@@ -7,6 +7,9 @@
     
 }
 
+.inputBox input{
+    color: black !important;
+}
 
 .Jhero{
     display: flex;

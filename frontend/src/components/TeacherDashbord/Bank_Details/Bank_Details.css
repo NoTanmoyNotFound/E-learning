@@ -35,9 +35,10 @@
         }
 
         .bank_input{
-            border: 2px solid rgb(163, 212, 255);
+            box-shadow: 0 2px 4px black;
             width: 100%;
             padding: 2%;
+            border-radius: 6px;
             
         }
         .bank_label{
