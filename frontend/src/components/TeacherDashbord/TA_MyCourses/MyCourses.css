@@ -94,3 +94,18 @@ textarea{
     box-shadow: 0 0 0 3px rgb(206, 99, 27);
   }
   
+
+  /* .scroll_main_inner{
+    height: 400px !important ;
+    overflow-y: auto !important;
+  } */
+
+  .scroll_main_inner::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scroll_main_inner {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
