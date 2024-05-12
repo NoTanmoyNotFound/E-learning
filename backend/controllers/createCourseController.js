@@ -128,3 +128,49 @@ export const getCourseByIdController = async (req, res) => {
     });
   }
 };
+
+
+
+export const updateCourse = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const course = await CourseStructure.findById(id);
+    console.log("this");
+
+  
+
+     
+
+        const courseUpdate = await CourseStructure.findByIdAndUpdate(
+           course._id,
+            {
+                $set: {
+                  imageUrl: req.body.imageUrl,
+                  videoUrl: req.body.videoUrl,
+                  previewVideoUrl: req.body.previewVideoUrl,
+                  name: req.body.name,
+                  author: req.body.author,
+                  authorEmail: req.body.authorEmail,
+                  description: req.body.description, 
+                  category: req.body.category ,
+                  price: req.body.price, 
+                  discount: req.body.discount ,
+                  discountPercentage: req.body.discountPercentage , 
+                  examUrl: req.body.examUrl,  
+                  duration:  req.body.duration ,  
+                
+                }
+            },
+            { new: true }
+            );
+            console.log("this");
+            res.status(200).json({ success: true, massage: "Request is Send" });
+
+          
+
+        
+
+  }catch (error) {
+    console.error(error);
+  }
+}
