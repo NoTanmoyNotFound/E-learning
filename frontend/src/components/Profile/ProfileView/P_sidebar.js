@@ -26,7 +26,7 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
 
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
-                    <a href="/superadmin">
+                    <a href="/Profile">
                         <BsGrid1X2Fill className='iconn' /> Dashboard
                     </a>
                 </li>

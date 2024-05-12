@@ -5,10 +5,11 @@ import 'swiper/css';
 import { sliderSettings } from './common';
 import "./Bestcourses.css"
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 
 const Bestcourses = () => {
-
+    const navigate = useNavigate();
     const [error, setError] = useState('');
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -63,7 +64,7 @@ const Bestcourses = () => {
             <Swiper {...sliderSettings}>
                 {courses.map((course, i) => (
                     <SwiperSlide key={i}>
-                        <div className="flexColStart b-card ">
+                        <div className="flexColStart b-card " onClick={() => navigate(`/course-details/${course._id}`)} >
                             <img src={course.imageUrl} alt="#"/>
                             <span className="secondaryText b-price">
                                 <span style={{ color: 'orange' }}>Rs: </span>

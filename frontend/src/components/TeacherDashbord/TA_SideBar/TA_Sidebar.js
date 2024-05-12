@@ -4,6 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { BsGraphUp } from "react-icons/bs";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 import { BsBookHalf } from "react-icons/bs";
 import {
@@ -63,6 +64,11 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
           <Link to="/techerDashbord/TeacherFeedback">
             <BsBookHalf className="iconn" />
             Feedbacks
+          </Link>
+        </li>
+        <li className='TAsidebar-list-item'>
+          <Link to="/ForgotPassword">
+            <RiLockPasswordFill className='iconn' /> Change Password
           </Link>
         </li>
       </ul>
