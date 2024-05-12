@@ -4,10 +4,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  
+    
+}
+
+.fss{
+  background-color: #9F7AEA;
 }
 
 .main {
     width: 50vw;
+    
 
 
 
