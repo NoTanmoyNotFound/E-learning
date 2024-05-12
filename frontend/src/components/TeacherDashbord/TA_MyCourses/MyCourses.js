@@ -193,7 +193,7 @@ const MyCourses = () => {
 
   return (
     <div className="bodypart   flex items-center justify-center ml-64 w-3/4 mt-4 mb-2 " >
-      <div className="main bg-white p-8 rounded-lg shadow-lg" >
+      <div className="main scroll_main_inner bg-white p-8 rounded-lg shadow-lg" style={{height:'400px', overflowY:'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none'}}>
         <h1 className="headName text-3xl font-semibold mb-4">
           Course Upload
         </h1>
@@ -348,7 +348,7 @@ const MyCourses = () => {
             >
               Category
             </label>
-            <select name="category" id="category" style={{ color: 'black' , width:'100%' }} onChange={handleCategoryChange} value={inputs.category}>
+            <select name="category" id="category" style={{ color: 'black', width: '100%' }} onChange={handleCategoryChange} value={inputs.category}>
               <option value="">Select Category</option>
               {categories.map(category => (
                 <option value={category.id} key={category.id}>
