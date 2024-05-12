@@ -157,16 +157,48 @@ const MyCourses = () => {
     }));
   };
 
+  // Add a new function to handle category selection
+  const handleCategoryChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     handleSubmit();
   };
 
+  const [categories, setCategories] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+  const fetchCategoryData = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/api/super/getCategoryData');
+      const responseData = await response.json();
+      if (responseData.success) {
+        setCategories(responseData.data);
+        setError('');
+      } else {
+        setError(responseData.error);
+      }
+    } catch (error) {
+      console.error('Error fetching category data:', error);
+      setError('An error occurred. Please try again later.');
+    }
+  };
+
+  useEffect(() => {
+    fetchCategoryData();
+  }, []);
+
   return (
     <div className="bodypart   flex items-center justify-center ml-64 w-3/4 mt-4 mb-2 " >
-      <div className="main bg-white p-8 rounded-lg shadow-lg" >
+      <div className="main scroll_main_inner bg-white p-8 rounded-lg shadow-lg" style={{height:'400px', overflowY:'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none'}}>
         <h1 className="headName text-3xl font-semibold mb-4">
-          Course Upload 
+          Course Upload
         </h1>
         <form className="formSec" onSubmit={handleFormSubmit}>
           <div className="mb-6">
@@ -319,14 +351,14 @@ const MyCourses = () => {
             >
               Category
             </label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              value={inputs.category}
-              onChange={handleInputChange}
-              className="form-input w-full border rounded px-4 py-2"
-            />
+            <select name="category" id="category" style={{ color: 'black', width: '100%' }} onChange={handleCategoryChange} value={inputs.category}>
+              <option value="">Select Category</option>
+              {categories.map(category => (
+                <option value={category.id} key={category.id}>
+                  {category.title}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="mb-6">
@@ -414,9 +446,10 @@ const MyCourses = () => {
             />
           </div>
 
-          <button type="submit" className="button">
-            Submit
-          </button>
+
+          <button type="submit" class="button3" style={{ width: '100%' }}>SUBMIT</button>
+
+
         </form>
       </div>
     </div>

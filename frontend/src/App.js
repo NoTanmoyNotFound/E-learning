@@ -25,6 +25,7 @@ import TA_Analytics from "./components/TeacherDashbord/TA_Analytics/TA_Analytics
 import TA_Feedback from "./components/TeacherDashbord/TA_Feedback/TA_Feedback";
 import MyCourses from "./components/TeacherDashbord/TA_MyCourses/MyCourses";
 import TA_Payment from "./components/TeacherDashbord/TA_Payment/TA_Payment";
+import Bank_Details from "./components/TeacherDashbord/Bank_Details/Bank_Details";
 import Signin from "./page/Signin";
 import Signup from "./page/Signup";
 import PrivateRouer from "./page/PrivateRouer";
@@ -103,8 +104,6 @@ function App() {
           <Route path="TeacherPayment" element={<TA_Payment />} />
           <Route path="TeacherFeedback" element={<TA_Feedback />} />
           <Route path="TeacherCourse" element={<MyCourses />} />
-          <Route path="UpdateCourse" element={<UpdateCourse />} />
-          <Route path="CourseChange/:courseId" element={<ChangeCourse />} />
         </Route>
 
         <Route path="/ForgotPassword" element={<ForgotPassword />} />

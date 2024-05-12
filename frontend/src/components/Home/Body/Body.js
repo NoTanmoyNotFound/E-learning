@@ -36,8 +36,8 @@ const Body = () => {
                     {/* search bar---------------------- */}
                     <div className="flexCenter search-bar">
                         {/* <input style={{ border: 'none', outline: 'none' }} type="text" placeholder="Search..." /> */}
-                        <div><Link to='/contact' className="button3">Support</Link></div>
-                        <div><Link to='/careersuport' className="button3">Mentorship</Link></div>
+                        <div><Link to='/allCourses' className="button3">Our Courses</Link></div>
+                        <div><Link to='/Homeblogs' className="button3">Blogs</Link></div>
                     </div>
 
                     {/* admin buttons ------------------ */}

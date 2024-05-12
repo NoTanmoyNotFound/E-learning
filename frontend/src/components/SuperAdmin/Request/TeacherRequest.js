@@ -73,20 +73,27 @@ function TeacherRequest() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-            })
-            const responseData = await response.json(); 
-            if (responseData.success === false) {
-                setError(responseData.error);
-                console.log(responseData);
-                return;
+            });
+            const responseData = await response.json();
+            
+            if (response.ok) {
+                if (responseData && responseData.success === false) {
+                    setError(responseData.error);
+                    console.log(responseData);
+                    return;
+                } else {
+                    setData(prevData => prevData.filter(item => item._id !== id));
+                    console.log("Teacher request accepted successfully");
+                }
             } else {
-                setData(prevData => prevData.filter(item => item._id !== id));
-                console.log("Teacher request accepted successfully");
+                // Handle non-successful response (HTTP status code indicating an error)
+                throw new Error('Failed to accept teacher request');
             }
         } catch (error) {
             console.error("Error accepting teacher request:", error);
         }
     };
+    
 
 
 
@@ -181,14 +188,14 @@ function TeacherRequest() {
                                     <td className="px-6 py-4 text-xl">
                                         {item.video && item.video !== 'none' ? <Link to={item.video} target='_blank'> <MdOutlineSmartDisplay /> </Link> : "not found"}
                                     </td>
-                                    <td className="px-6 py-4 text-xl flex gap-4" >
+                                    <td className="px-6 py-4 text-xl flex gap-4 cursor-pointer" >
                                         <FaCheckCircle color='green' onClick={() => handleAccept(item._id)} />
                                         {/* <FaWindowClose color='red' /> */}
                                     </td>
                                     <td className="px-6 py-4">
 
 
-                                        <ImCross color='red' onClick={() => handleDelete(item._id)} />
+                                        <ImCross className='cursor-pointer' color='red' onClick={() => handleDelete(item._id)} />
                                     </td>
                                 </tr>
 

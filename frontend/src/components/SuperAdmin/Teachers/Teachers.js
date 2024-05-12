@@ -148,13 +148,13 @@ function Teachers() {
                                     <td classname="px-6 py-4 text-xl">
                                         {item.idProof ? <Link to={item.idProof} target='_blank'> <HiMiniIdentification /> </Link> : "not found"}
                                     </td>
-                                    <td className="px-6 py-4 text-xl">
+                                    <td className="px-6 py-4 text-xl cursor-pointer">
                                         {item.resume ? <Link to={item.resume} target='_blank'> <IoDocumentAttachSharp /> </Link> : "not found"}
                                     </td>
                                     <td className="px-6 py-4">
 
 
-                                        <ImCross color='red' onClick={() => handleDelete(item._id)} />
+                                        <ImCross color='red' className='cursor-pointer' onClick={() => handleDelete(item._id)} />
                                     </td>
                                 </tr>
 
