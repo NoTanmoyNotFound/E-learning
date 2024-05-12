@@ -5,6 +5,10 @@ import { PiStudentBold } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { BsGraphUp } from "react-icons/bs";
 import { RiLockPasswordFill } from "react-icons/ri";
+import { FaCloudUploadAlt } from "react-icons/fa";
+import { FaBook } from "react-icons/fa";
+import { FaSellsy } from "react-icons/fa6";
+import { MdFeedback } from "react-icons/md";
 
 import { BsBookHalf } from "react-icons/bs";
 import {
@@ -50,25 +54,24 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
         </li>
         <li className="TAsidebar-list-item">
           <Link to="/techerDashbord/TeacherCourse">
-            <BsBookHalf className="iconn" />
+            <FaCloudUploadAlt className="iconn" />
             Upload Course
+          </Link>
+        </li>
+        <li className='TAsidebar-list-item'>
+          <Link to="/techerDashbord/UpdateCourse">
+            <FaBook className='iconn' /> All Course
           </Link>
         </li>
         <li className="TAsidebar-list-item">
           <Link to="/techerDashbord/TeacherPayment">
             <BsBookHalf className="iconn" />
-            Sold Courses
-          </Link>
-        </li>
-        <li className="TAsidebar-list-item">
-          <Link to="/techerDashbord/bank-details">
-            <BsBookHalf className="iconn" />
-            Bank Details
+            Payments
           </Link>
         </li>
         <li className="TAsidebar-list-item">
           <Link to="/techerDashbord/TeacherFeedback">
-            <BsBookHalf className="iconn" />
+            <MdFeedback className="iconn" />
             Feedbacks
           </Link>
         </li>
@@ -77,6 +80,7 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
             <RiLockPasswordFill className='iconn' /> Change Password
           </Link>
         </li>
+
       </ul>
     </aside>
   );

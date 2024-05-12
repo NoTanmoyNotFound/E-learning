@@ -49,6 +49,8 @@ import Users from "./components/SuperAdmin/Users/Users";
 import ForgotPassword from "./page/ForgotPassword";
 import ProfileCourse from "./components/Profile/ProfileView/ProfileCourse";
 import DeleteProfile from "./components/Profile/ProfileView/DeleteProfile";
+import UpdateCourse from "./components/TeacherDashbord/TA_Update/UpdateCourse";
+import ChangeCourse from "./components/TeacherDashbord/TA_Update/ChangeCourse";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -60,7 +62,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-      <Route path="/error-not-found" element={<Error />} />
+      <Route path="*" element={<Error />} />
       <Route path="/not-found" element={<Banned />} />
 
 
@@ -102,7 +104,6 @@ function App() {
           <Route path="TeacherPayment" element={<TA_Payment />} />
           <Route path="TeacherFeedback" element={<TA_Feedback />} />
           <Route path="TeacherCourse" element={<MyCourses />} />
-          <Route path="bank-details" element={<Bank_Details />} />
         </Route>
 
         <Route path="/ForgotPassword" element={<ForgotPassword />} />

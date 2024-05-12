@@ -3,15 +3,18 @@ import axios from "axios";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from "../../../firebase";
 import { FaSpinner } from "react-icons/fa";
+import { useSelector } from "react-redux";  
+
 
 const MyCourses = () => {
+  const { currentUser } = useSelector((state) => state.user);
   const [videoFile, setVideoFile] = useState(null);
   const [previewVideoFile, setPreviewVideoFile] = useState(null);
   const [thumbnailFile, setThumbnailFile] = useState(null);
   const [inputs, setInputs] = useState({
     name: "",
     author: "",
-    authorEmail: "",
+    authorEmail: currentUser.email,
     description: "",
     price: "",
     duration: "",
@@ -117,7 +120,7 @@ const MyCourses = () => {
       setInputs({
         name: "",
         author: "",
-        authorEmail: "",
+        authorEmail: currentUser.email,
         description: "",
         price: "",
         duration: "",
@@ -319,8 +322,8 @@ const MyCourses = () => {
               type="text"
               id="authorEmail"
               name="authorEmail"
-              value={inputs.authorEmail}
-              onChange={handleInputChange}
+              value={currentUser.email}
+              
               className="form-input w-full border rounded px-4 py-2"
             />
           </div>
