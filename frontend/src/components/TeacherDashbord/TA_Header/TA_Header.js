@@ -9,7 +9,7 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { BsPersonCircle, BsJustify } from "react-icons/bs";
 import { signOut } from '../../../redux/user/userSlice';
-import {InfosignOut} from '../../../redux/user/localSlice'
+import { InfosignOut } from '../../../redux/user/localSlice'
 
 
 const TA_Header = ({ OpenSidebar }) => {
@@ -21,7 +21,7 @@ const TA_Header = ({ OpenSidebar }) => {
       await fetch('http://localhost:8000/api/auth/signout');
       dispatch(signOut());
       dispatch(InfosignOut());
-      <Navigate to="/"/>
+      <Navigate to="/" />
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -34,13 +34,13 @@ const TA_Header = ({ OpenSidebar }) => {
       </div>
 
       <div className="TAheader-right flex">
-        <Link to="/">
-          <IoHome className="iconn" />
-        </Link>
-        <Link to="/allCourses">
-          <IoBookSharp className="iconn" />
-        </Link>
-        <Link onClick={handleSignOut}><HiOutlineLogout className='iconn' /></Link>
+        <a href="/">
+          <IoHome className="iconn text-2xl" />
+        </a>
+        <a href="/allCourses">
+          <IoBookSharp className="iconn text-2xl" />
+        </a>
+        <Link onClick={handleSignOut}><HiOutlineLogout className='iconn text-2xl' /></Link>
       </div>
     </header>
   );

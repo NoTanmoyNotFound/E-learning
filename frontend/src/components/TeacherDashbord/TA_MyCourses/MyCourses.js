@@ -270,7 +270,7 @@ const MyCourses = () => {
             />
           </div>
 
-          <button  type="submit" class="button ">Submit</button>
+          <button  type="submit" class="button3" style={{width:'100%'}}>SUBMIT</button>
 
 
         </form>
