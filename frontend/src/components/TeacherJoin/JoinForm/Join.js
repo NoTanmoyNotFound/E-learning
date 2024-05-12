@@ -13,6 +13,7 @@ import { app } from '../../../firebase'
 const Join = () => {
 
   const fileRef = useRef(null);
+  const [error, setError] = useState('');
   const [video, setVideo] = useState(undefined);
   const [idProof, setIdProof] = useState(undefined);
   const [resume, setResume] = useState(undefined);
@@ -133,6 +134,34 @@ const handleResumeUpload = async (resume) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
+<<<<<<< HEAD
+=======
+    const { fullname, email, phone, organization, idProof, resume, video } = formData;
+
+    if (!fullname ) {
+      setError("Please Enter name");
+      return;
+    }else if (!email) {
+      setError("Please Enter email");
+      return;
+    }else if (!phone) {
+      setError("Please Enter phone");
+      return;
+    }else if (!organization) {
+      setError("Please Enter organization");
+      return;
+    }else if (!idProof) {
+      setError("Please Upload id proof");
+      return;
+    }else if (!resume) {
+      setError("Please Upload resume");
+      return;
+    }else if (!video) {
+      setError("Please Upload video");
+      return;
+    }
+    else{
+>>>>>>> d4931a54859176403c49b94f7fd85bc7ca8fb468
 
     try {
      
@@ -164,6 +193,8 @@ const handleResumeUpload = async (resume) => {
       console.log(error);
       
     }
+
+  }
   }
 
 
@@ -315,7 +346,7 @@ const handleResumeUpload = async (resume) => {
             <div className="inputBox flex justify-end">
               <button type="submit" className="fileButton" disabled={uploadProgress !== 100}>Send</button>
             </div>
-
+            {error && (<div className=" text-[#ff4141]" style={{ color: 'red' }}>{error}</div>)}
             {success && (<div className="success-message" style={{ color: 'green' }}>Form submitted successfully!</div>)}
 
 

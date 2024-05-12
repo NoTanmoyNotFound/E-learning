@@ -162,12 +162,12 @@ export const google = async (req, res, next) => {
             if (sta) {
                 const userInfo = await UserInfo.findOne({ userid: newUser._id });
 
-                console.log("presdent", userInfo)
+                // console.log("presdent", userInfo)
     
                 if (!userInfo) {
                     const newUser = new UserInfo({ userid: newUser._id });
                     await newUser.save();
-                    console.log("new", newUser);
+                    // console.log("new", newUser);
                 }
             }
 
@@ -180,6 +180,7 @@ export const google = async (req, res, next) => {
             var expirationDate = new Date();
             expirationDate.setTime(expirationDate.getTime() + (fiveDaysInSeconds * 1000));
             var expires = "expires=" + expirationDate.toUTCString();
+            console.log("this is run");
             res.cookie('access_token', token, { httpOnly: true, expires: expirationDate }).status(200).json(rest);
         }
 

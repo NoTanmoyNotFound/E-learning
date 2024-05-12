@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from "react";
-import "./MyCourses.css";
 import axios from "axios";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from "../../../firebase";
-import { FaSpinner } from "react-icons/fa"; // Assuming you're using FontAwesome icons
+import { FaSpinner } from "react-icons/fa";
 
 const MyCourses = () => {
   const [videoFile, setVideoFile] = useState(null);
+  const [previewVideoFile, setPreviewVideoFile] = useState(null);
   const [thumbnailFile, setThumbnailFile] = useState(null);
   const [inputs, setInputs] = useState({
     name: "",
+    author: "",
+    authorEmail: "",
     description: "",
     price: "",
     duration: "",
+    category: "",
+    discount: "",
+    discountPercentage: "",
+    examUrl: "",
   });
   const [videoUploaded, setVideoUploaded] = useState(false);
+  const [previewVideoUploaded, setPreviewVideoUploaded] = useState(false);
   const [imageUploaded, setImageUploaded] = useState(false);
   const [videoPerc, setVideoPerc] = useState(0);
+  const [previewVideoPerc, setPreviewVideoPerc] = useState(0);
   const [imgPerc, setImgPerc] = useState(0);
   const [videoPreview, setVideoPreview] = useState(null);
-  const [videoInputKey, setVideoInputKey] = useState(Date.now()); // Add key for video input
-  const [thumbnailInputKey, setThumbnailInputKey] = useState(Date.now()); // Add key for thumbnail input
+  const [previewVideoPreview, setPreviewVideoPreview] = useState(null);
+  const [videoInputKey, setVideoInputKey] = useState(Date.now());
+  const [previewVideoInputKey, setPreviewVideoInputKey] = useState(Date.now());
+  const [thumbnailInputKey, setThumbnailInputKey] = useState(Date.now());
 
   useEffect(() => {
     if (videoFile) {
@@ -33,6 +38,13 @@ const MyCourses = () => {
       setVideoPreview(URL.createObjectURL(videoFile));
     }
   }, [videoFile]);
+
+  useEffect(() => {
+    if (previewVideoFile) {
+      uploadFile(previewVideoFile, "previewVideoUrl");
+      setPreviewVideoPreview(URL.createObjectURL(previewVideoFile));
+    }
+  }, [previewVideoFile]);
 
   useEffect(() => {
     if (thumbnailFile) {
@@ -54,6 +66,8 @@ const MyCourses = () => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         if (fileType === "image") {
           setImgPerc(Math.round(progress));
+        } else if (fileType === "previewVideoUrl") {
+          setPreviewVideoPerc(Math.round(progress));
         } else {
           setVideoPerc(Math.round(progress));
         }
@@ -71,6 +85,12 @@ const MyCourses = () => {
               [fileType]: downloadURL,
             }));
             setImageUploaded(true);
+          } else if (fileType === "previewVideoUrl") {
+            setInputs((prev) => ({
+              ...prev,
+              [fileType]: downloadURL,
+            }));
+            setPreviewVideoUploaded(true);
           } else {
             setInputs((prev) => ({
               ...prev,
@@ -78,8 +98,8 @@ const MyCourses = () => {
             }));
             setVideoUploaded(true);
           }
-          if (videoUploaded && imageUploaded) {
-            await handleSubmit(); // Call handleSubmit when both files are uploaded
+          if (videoUploaded && previewVideoUploaded && imageUploaded) {
+            await handleSubmit(); // Call handleSubmit when all files are uploaded
           }
         } catch (error) {
           console.error("Error getting download URL:", error);
@@ -97,19 +117,29 @@ const MyCourses = () => {
       setInputs({
         name: "",
         author: "",
+        authorEmail: "",
         description: "",
         price: "",
         duration: "",
+        category: "",
+        discount: "",
+        discountPercentage: "",
+        examUrl: "",
       });
       setVideoFile(null);
+      setPreviewVideoFile(null);
       setThumbnailFile(null);
       setVideoUploaded(false);
+      setPreviewVideoUploaded(false);
       setImageUploaded(false);
       setVideoPerc(0);
+      setPreviewVideoPerc(0);
       setImgPerc(0);
       setVideoPreview(null);
-      setVideoInputKey(Date.now()); // Update key to force re-render of video input
-      setThumbnailInputKey(Date.now()); // Update key to force re-render of thumbnail input
+      setPreviewVideoPreview(null);
+      setVideoInputKey(Date.now());
+      setPreviewVideoInputKey(Date.now());
+      setThumbnailInputKey(Date.now());
       console.log("Form submitted successfully!");
     } catch (error) {
       console.error("Error during submission:", error);
@@ -130,10 +160,10 @@ const MyCourses = () => {
   };
 
   return (
-    <div className="bodypart bg-gray-100  flex items-center justify-center ml-64 w-3/4 mt-4 mb-2 ">
-      <div className="main bg-white p-8 rounded-lg shadow-lg">
+    <div className="bodypart   flex items-center justify-center ml-64 w-3/4 mt-4 mb-2 " >
+      <div className="main bg-white p-8 rounded-lg shadow-lg" >
         <h1 className="headName text-3xl font-semibold mb-4">
-          Course Upload Form
+          Course Upload 
         </h1>
         <form className="formSec" onSubmit={handleFormSubmit}>
           <div className="mb-6">
@@ -141,7 +171,7 @@ const MyCourses = () => {
               htmlFor="video"
               className="form-label block mb-2 text-sm font-semibold"
             >
-              Video
+              Main Video
             </label>
             <input
               key={videoInputKey} // Add key prop for video input
@@ -160,6 +190,32 @@ const MyCourses = () => {
               </div>
             )}
             {videoPreview && <video src={videoPreview} controls />}
+          </div>
+
+          <div className="mb-6">
+            <label
+              htmlFor="previewVideo"
+              className="form-label block mb-2 text-sm font-semibold"
+            >
+              Preview Video
+            </label>
+            <input
+              key={previewVideoInputKey}
+              type="file"
+              accept="video/*"
+              id="previewVideo"
+              onChange={(e) => setPreviewVideoFile(e.target.files[0])}
+            />
+            {previewVideoUploaded && (
+              <div className="progress-bar">Preview video uploaded successfully</div>
+            )}
+            {previewVideoFile && !previewVideoUploaded && (
+              <div className="uploading-icon">
+                <FaSpinner className="spinner-icon" />
+                <span>Uploading preview video... {previewVideoPerc}%</span>
+              </div>
+            )}
+            {previewVideoPreview && <video src={previewVideoPreview} controls />}
           </div>
 
           <div className="mb-6">
@@ -205,7 +261,7 @@ const MyCourses = () => {
 
           <div className="mb-6">
             <label
-              htmlFor="name"
+              htmlFor="author"
               className="form-label block mb-2 text-sm font-semibold"
             >
               Author Name
@@ -215,6 +271,23 @@ const MyCourses = () => {
               id="author"
               name="author"
               value={inputs.author}
+              onChange={handleInputChange}
+              className="form-input w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label
+              htmlFor="authorEmail"
+              className="form-label block mb-2 text-sm font-semibold"
+            >
+              Author Email
+            </label>
+            <input
+              type="text"
+              id="authorEmail"
+              name="authorEmail"
+              value={inputs.authorEmail}
               onChange={handleInputChange}
               className="form-input w-full border rounded px-4 py-2"
             />
@@ -238,6 +311,23 @@ const MyCourses = () => {
 
           <div className="mb-6">
             <label
+              htmlFor="category"
+              className="form-label block mb-2 text-sm font-semibold"
+            >
+              Category
+            </label>
+            <input
+              type="text"
+              id="category"
+              name="category"
+              value={inputs.category}
+              onChange={handleInputChange}
+              className="form-input w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label
               htmlFor="price"
               className="form-label block mb-2 text-sm font-semibold"
             >
@@ -248,6 +338,40 @@ const MyCourses = () => {
               id="price"
               name="price"
               value={inputs.price}
+              onChange={handleInputChange}
+              className="form-input w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label
+              htmlFor="discount"
+              className="form-label block mb-2 text-sm font-semibold"
+            >
+              Discount
+            </label>
+            <input
+              type="text"
+              id="discount"
+              name="discount"
+              value={inputs.discount}
+              onChange={handleInputChange}
+              className="form-input w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <div className="mb-6">
+            <label
+              htmlFor="discountPercentage"
+              className="form-label block mb-2 text-sm font-semibold"
+            >
+              Discount Percentage
+            </label>
+            <input
+              type="text"
+              id="discountPercentage"
+              name="discountPercentage"
+              value={inputs.discountPercentage}
               onChange={handleInputChange}
               className="form-input w-full border rounded px-4 py-2"
             />
@@ -270,6 +394,26 @@ const MyCourses = () => {
             />
           </div>
 
+          <div className="mb-6">
+            <label
+              htmlFor="examUrl"
+              className="form-label block mb-2 text-sm font-semibold"
+            >
+              Exam Url
+            </label>
+            <input
+              type="text"
+              id="examUrl"
+              name="examUrl"
+              value={inputs.examUrl}
+              onChange={handleInputChange}
+              className="form-input w-full border rounded px-4 py-2"
+            />
+          </div>
+
+          <button type="submit" className="button">
+            Submit
+          </button>
           <button  type="submit" class="button3" style={{width:'100%'}}>SUBMIT</button>
 
 
