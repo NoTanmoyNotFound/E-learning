@@ -38,7 +38,23 @@ function UpdateCourse() {
 
 
 
-
+const handleDeleteCourse = async (courseId) => {
+    try {
+        const res = await fetch(`http://localhost:8000/api/teacher/deleteUploadedCourse/${courseId}`, {
+            method: 'DELETE'
+        });
+        const result = await res.json();
+        if (result.success) {
+            alert("You want it to remove !");
+            setData(data.filter(course => course._id !== courseId));
+        } else {
+            setError(result.error);
+        }
+    } catch (error) {
+        console.error("Error deleting course:", error);
+        setError("Error deleting course");
+    }
+};
 
 
 
@@ -64,7 +80,7 @@ function UpdateCourse() {
 return (
     <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7 allUserSuperMain'>
         <div className='text-5xl font-bold text-center'>
-            <h1>Teacher's Request</h1>
+            <h1>Your Uploaded Cources</h1>
         </div>
         <div>
             <div className='flex justify-end mt-5 mb-3'>
@@ -114,7 +130,7 @@ return (
                                 <td className="px-6 py-4">
 
 
-                                    <ImCross color='red'  />
+                                    <ImCross color='red' onClick={() => handleDeleteCourse(item._id)}  className='cursor-pointer scale-110' />
                                 </td>
                             </tr>
 
