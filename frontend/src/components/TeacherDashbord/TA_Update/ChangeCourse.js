@@ -6,8 +6,11 @@ import { FaSpinner } from "react-icons/fa";
 import { useSelector } from "react-redux"; 
 import { useParams } from "react-router-dom";
 
+
 function ChangeCourse() {
     const { courseId } = useParams();
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
     const { currentUser } = useSelector((state) => state.user);
     const [comeData , setComedata] = useState({});
     const [videoFile, setVideoFile] = useState(null);
@@ -35,10 +38,15 @@ function ChangeCourse() {
           const response = await fetch(`/api/teacher/singleCourse/${courseId}`);
           const data = await response.json();
           setComedata(data.data);
+          setSuccess("Data updated successfully");
+          setError(null);
         //   setInputs(data.data);
           console.log(data.data);
         } catch (error) {
           console.log(error);
+          setError("Error fetching course details");
+          setSuccess(null);
+
         }
       };
   
@@ -464,6 +472,8 @@ function ChangeCourse() {
             <button type="submit" className="button">
               Submit
             </button>
+            {error && <p className="text-[#ff3c3c]">{error}</p>}
+            {success && <p className="text-[#51c73c]">{success}</p>}
           </form>
         </div>
       </div>

@@ -136,6 +136,39 @@ export const updateCourse = async (req, res) => {
     const { id } = req.params;
     const course = await CourseStructure.findById(id);
     console.log("this");
+    const {
+      imageUrl,
+      videoUrl,
+      previewVideoUrl,
+      name,
+
+      author,
+      authorEmail,
+      description,
+      category,
+      price,
+      discount,
+      discountPercentage,
+      examUrl,
+      duration,
+    } = req.body;
+    if (
+      !imageUrl &&
+      !videoUrl &&
+      !previewVideoUrl &&
+      !name &&
+
+      !author &&
+      !authorEmail &&
+      !description &&
+      !category &&
+      !price &&
+      !discount &&
+      !examUrl &&
+      !duration
+    ) {
+      res.status(200).json({ success: true, massage: "Request is Send" });
+    }
 
   
 
