@@ -13,8 +13,7 @@ const MainCourse = () => {
   const [formData, setFormData] = useState({ comment: "" });
 
   const { currentUserInfo } = useSelector((state) => state.local);
-  const { currentUser} = useSelector((state) => state.user);
-
+  const { currentUser } = useSelector((state) => state.user);
 
   const fetchComments = async () => {
     try {
@@ -38,9 +37,7 @@ const MainCourse = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await fetch(
-          `/api/upload/singleCourse/${courseId}`
-        );
+        const response = await fetch(`/api/upload/singleCourse/${courseId}`);
         const data = await response.json();
 
         if (response.ok) {
@@ -122,7 +119,9 @@ const MainCourse = () => {
       </button>
 
       <div className="relative overflow-hidden video-section bg-black bg-opacity-25">
-        {currentUserInfo && currentUserInfo.courses.includes(courseId) && courseData?.videoUrl ? (
+        {currentUserInfo &&
+        currentUserInfo.courses.includes(courseId) &&
+        courseData?.videoUrl ? (
           <>
             <video
               className="w-30% m-12 rounded-lg ml-44 drop-shadow-xl"
@@ -134,21 +133,27 @@ const MainCourse = () => {
             <p className="ml-44">Course Uploaded by {courseData.author}</p>
             <h3 className="text-lg font-semibold ml-44">{courseData.name}</h3>
             <p className="text-sm ml-44 mb-6">{courseData.description}</p>
-            <h3 className="text-lg font-semibold ml-44">Test Yourself in Free !! After Completion of Course</h3>
-            <button className="ml-44 MaincB"><Link to="https://docs.google.com/forms/d/14LDtIOPTMJBPKhPKT13dZJ0yBJmG1lW4NewI7hZw1eI/edit">Free Test </Link></button>
+            <h3 className="text-lg font-semibold ml-44">
+              Test Yourself in Free !! After Completion of Course
+            </h3>
+            <button className="ml-44 mb-12  btn-for-test ">
+              <Link to="https://docs.google.com/forms/d/14LDtIOPTMJBPKhPKT13dZJ0yBJmG1lW4NewI7hZw1eI/edit">
+                Free Test{" "}
+              </Link>
+            </button>
           </>
         ) : (
-          <Banned/>
+          <Banned />
         )}
       </div>
 
       {/* Comment Submission Form */}
-      <div className="mt-4 ml-44">
+      <div className="mt-4 ml-44  rounded">
         <form
           className="flex flex-col gap-2 items-start"
           onSubmit={handleSubmit}
         >
-          <div className="w-[60%]">
+          <div className="w-[40%] ">
             <label htmlFor="comment">Comment:</label>
             <textarea
               id="comment"
@@ -160,25 +165,33 @@ const MainCourse = () => {
           </div>
           <button
             type="submit"
-            className="mb-20 border border-black p-1 shadow-xl rounded-lg"
+            className="mb-20 add-comment-btn border p-1 cmmnt-btn shadow-xl rounded-xl"
           >
-            Add Comment
+            <span className="p-2">Add</span>
+            <span class="text">cmmnt-btn</span>
+            <span className="mt-2"> comment </span>
           </button>
         </form>
       </div>
 
       {/* Display Comments */}
-      <div className="comments-section ml-44">
+      <div className="comments-section ml-44 ">
         {comments.length === 0 ? (
           <p>No comments yet.</p>
         ) : (
           comments.map((comment, index) => (
             <div key={index} className="comment">
-            <div className=" flex gap-2">
-            <div className="comment-img rounded-full">
-            <img src={comment.profilePicture} alt="this" className="rounded-full" width={30} height={30} />
-            </div>
-              <strong>{comment.name}</strong>
+              <div className=" flex gap-2">
+                <div className="comment-img rounded-full">
+                  <img
+                    src={comment.profilePicture}
+                    alt="this"
+                    className="rounded-full"
+                    width={30}
+                    height={30}
+                  />
+                </div>
+                <strong>{comment.name}</strong>
               </div>
               <p className=" pl-10 mb-3">{comment.description}</p>
             </div>

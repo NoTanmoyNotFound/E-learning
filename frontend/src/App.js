@@ -99,7 +99,7 @@ function App() {
 
 
         
-        <Route path="/techerDashbord"  element={<TeacherAdminMain />}>
+        <Route path="/teacherDashbord"  element={<TeacherAdminMain />}>
           <Route index element={<TA_Analytics />} />
           <Route path="TeacherPayment" element={<TA_Payment />} />
           <Route path="TeacherFeedback" element={<TA_Feedback />} />
