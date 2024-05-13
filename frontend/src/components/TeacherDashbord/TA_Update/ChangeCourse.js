@@ -6,8 +6,11 @@ import { FaSpinner } from "react-icons/fa";
 import { useSelector } from "react-redux"; 
 import { useParams } from "react-router-dom";
 
+
 function ChangeCourse() {
     const { courseId } = useParams();
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
     const { currentUser } = useSelector((state) => state.user);
     const [comeData , setComedata] = useState({});
     const [videoFile, setVideoFile] = useState(null);
@@ -35,10 +38,13 @@ function ChangeCourse() {
           const response = await fetch(`/api/teacher/singleCourse/${courseId}`);
           const data = await response.json();
           setComedata(data.data);
+        
         //   setInputs(data.data);
           console.log(data.data);
         } catch (error) {
           console.log(error);
+          
+
         }
       };
   
@@ -160,6 +166,8 @@ function ChangeCourse() {
           body: JSON.stringify(inputs),
         });
         const data = await response.json();
+        setSuccess("Data updated successfully");
+        setError(null);
         console.log(data);
         // Reset form after successful submission
         setInputs({
@@ -191,6 +199,8 @@ function ChangeCourse() {
         console.log("Form submitted successfully!");
       } catch (error) {
         console.error("Error during submission:", error);
+        setError("Error fetching course details");
+          setSuccess(null);
       }
     };
   
@@ -464,6 +474,8 @@ function ChangeCourse() {
             <button type="submit" className="button">
               Submit
             </button>
+            {error && <p className="text-[#ff3c3c]">{error}</p>}
+            {success && <p className="text-[#51c73c]">{success}</p>}
           </form>
         </div>
       </div>
