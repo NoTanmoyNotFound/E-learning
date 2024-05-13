@@ -3,6 +3,7 @@ import User from "../models/user.model.js";
 import CourseStructure from '../models/courseUploadModel.js';
 import validator from 'email-validator';
 import { errorHandler } from "../ulte/error.js";
+import mongoose from 'mongoose';
 
 
 // Teacher Join Controller
@@ -57,14 +58,20 @@ export const getcourse = async (req, res, next) => {
 
 
 export const singleCourse = async (req, res, next) => {
-    const id = req.params.id
+    const id = req.params.id;
+    console.log(id);
+ 
     try {
-        const courser = await CourseStructure.findById(id);
+        const courser = await CourseStructure.findById(req.params.id);
+        if (!courser) {
+            return res.status(404).json({ success: false, error: "Course not found" });
+        }
         res.status(200).json({ success: true, data: courser });
     } catch (error) {
-        console.error("Error fetching  data:", error);
+        console.error("Error fetching data:", error);
         res.status(500).json({ success: false, error: "Internal server error" });
     }
 }
+
 
 

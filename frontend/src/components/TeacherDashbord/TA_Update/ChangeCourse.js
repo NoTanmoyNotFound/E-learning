@@ -44,6 +44,7 @@ function ChangeCourse() {
   
       fetchCourseDetails();
     }, [courseId]);
+    console.log(comeData);
 
 
 
@@ -71,6 +72,14 @@ function ChangeCourse() {
         setVideoPreview(URL.createObjectURL(videoFile));
       }
     }, [videoFile]);
+
+
+
+
+
+
+
+
   
     useEffect(() => {
       if (previewVideoFile) {
