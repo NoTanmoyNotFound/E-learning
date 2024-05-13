@@ -11,10 +11,104 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.TA_container:hover h2 {
-  color: #111010; /* Change the color as needed */
-}
+
 
 .TA_container:hover p {
   color: #ffffff; /* Change the color as needed */
+}
+
+
+
+.bttn-sells {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #6aece8;
+  background-image: linear-gradient(45deg, #142b5b 0%, #4e74f2  51%, #435d98  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.bttn-sells:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.bttn-sells:active {
+  transform: scale(0.95);
+}
+
+/* course  */
+.bttn-courses {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #6aece8;
+  background-image: linear-gradient(45deg, #ab113c 0%, #b468b0  51%, #930b3f  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.bttn-courses:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.bttn-courses:active {
+  transform: scale(0.95);
+}
+/* number of enrollments  */
+.bttn-enrollment {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #6aece8;
+  background-image: linear-gradient(45deg, #e3492a 0%, #F09819  51%, #FF512F  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.bttn-enrollment:hover {
+  background-position: right center;
+  
+  color: #fff;
+  text-decoration: none;
+}
+
+.bttn-enrollment:active {
+  transform: scale(0.95);
 }
