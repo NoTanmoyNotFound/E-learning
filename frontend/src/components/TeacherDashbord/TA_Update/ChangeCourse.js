@@ -38,14 +38,12 @@ function ChangeCourse() {
           const response = await fetch(`/api/teacher/singleCourse/${courseId}`);
           const data = await response.json();
           setComedata(data.data);
-          setSuccess("Data updated successfully");
-          setError(null);
+        
         //   setInputs(data.data);
           console.log(data.data);
         } catch (error) {
           console.log(error);
-          setError("Error fetching course details");
-          setSuccess(null);
+          
 
         }
       };
@@ -168,6 +166,8 @@ function ChangeCourse() {
           body: JSON.stringify(inputs),
         });
         const data = await response.json();
+        setSuccess("Data updated successfully");
+        setError(null);
         console.log(data);
         // Reset form after successful submission
         setInputs({
@@ -199,6 +199,8 @@ function ChangeCourse() {
         console.log("Form submitted successfully!");
       } catch (error) {
         console.error("Error during submission:", error);
+        setError("Error fetching course details");
+          setSuccess(null);
       }
     };
   
