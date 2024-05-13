@@ -53,7 +53,7 @@ const Header = ({ onButtonClick }) => {
                             <Link to="/Contact">Contact Us</Link>
                             
 
-                            <Link to={currentUser && currentUser ? (currentUser.role === 'super_admin' ? '/superadmin' : (currentUser.role === 'teacher' ? '/techerDashbord' : '/profile')) : '/signin'} >
+                            <Link to={currentUser && currentUser ? (currentUser.role === 'super_admin' ? '/superadmin' : (currentUser.role === 'teacher' ? '/teacherDashbord' : '/profile')) : '/signin'} >
                                 {currentUser && currentUser ? (
                                     <img src={currentUser.profilePicture} alt="profilepic" className='h-9 w-9 rounded-full object-cover' />
                                 ) : (

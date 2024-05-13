@@ -104,7 +104,8 @@ function App() {
           <Route path="TeacherPayment" element={<TA_Payment />} />
           <Route path="TeacherFeedback" element={<TA_Feedback />} />
           <Route path="TeacherCourse" element={<MyCourses />} />
-          
+          <Route path="updateCourse" element={<UpdateCourse />} />
+          <Route path="changeCourse/:courseId" element={<ChangeCourse />} />
         </Route>
 
         <Route path="/ForgotPassword" element={<ForgotPassword />} />

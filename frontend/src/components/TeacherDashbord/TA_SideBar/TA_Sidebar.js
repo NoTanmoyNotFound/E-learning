@@ -48,29 +48,29 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
 
       <ul className="TAsidebar-list">
         <li className="TAsidebar-list-item">
-          <Link to="/techerDashbord">
+          <Link to="/teacherDashbord">
             <BsGraphUp className="iconn" /> Analytics
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link to="/techerDashbord/TeacherCourse">
+          <Link to="/teacherDashbord/TeacherCourse">
             <FaCloudUploadAlt className="iconn" />
             Upload Course
           </Link>
         </li>
         <li className='TAsidebar-list-item'>
-          <Link to="/techerDashbord/UpdateCourse">
+          <Link to="/teacherDashbord/UpdateCourse">
             <FaBook className='iconn' /> All Course
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link to="/techerDashbord/TeacherPayment">
+          <Link to="/teacherDashbord/TeacherPayment">
             <BsBookHalf className="iconn" />
             Payments
           </Link>
         </li>
         <li className="TAsidebar-list-item">
-          <Link to="/techerDashbord/TeacherFeedback">
+          <Link to="/teacherDashbord/TeacherFeedback">
             <MdFeedback className="iconn" />
             Feedbacks
           </Link>
