@@ -36,6 +36,8 @@ function UpdateCourse() {
     fatchCourse();
 }, []);
 
+console.log(data);
+
 
 
 
@@ -64,7 +66,7 @@ function UpdateCourse() {
 return (
     <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7 allUserSuperMain'>
         <div className='text-5xl font-bold text-center'>
-            <h1>Teacher's Request</h1>
+            <h1>All Courses</h1>
         </div>
         <div>
             <div className='flex justify-end mt-5 mb-3'>
@@ -109,7 +111,7 @@ return (
                                 </th>
                                 <td className="px-6 py-4 text-xl flex gap-4" >
 
-                                <FaEdit color='green' onClick={() => navigation(`/techerDashbord/CourseChange/${item._id}`)}/>
+                                <FaEdit color='green' onClick={() => navigation(`/teacherDashbord/changeCourse/${item._id}`)}/>
                                 </td>
                                 <td className="px-6 py-4">
 
