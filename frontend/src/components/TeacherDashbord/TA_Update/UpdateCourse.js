@@ -82,7 +82,7 @@ const handleDeleteCourse = async (courseId) => {
 return (
     <div className=' pr-7 lg:pr-72 w-screen py-5 pl-7 allUserSuperMain'>
         <div className='text-5xl font-bold text-center'>
-            <h1>All Courses</h1>
+            <h1>Your Uploaded Courses</h1>
         </div>
         <div>
             <div className='flex justify-end mt-5 mb-3'>
@@ -92,7 +92,7 @@ return (
                         <div className="absolute top-1 left-1 bg-white-mediam rounded-full p-2  flex items-center justify-center text-blue-300">
                             <i class="fa-solid fa-magnifying-glass" />
                         </div>
-                        <input type="text" placeholder='Enter Candidate Name' onChange={(e) => setSearch(e.target.value)} className='w-80 bg-white-light py-2 px-12 rounded-full border border-[#000] focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-[#bdbcbc] focus:drop-shadow-lg' />
+                        <input type="text" placeholder='Enter Course Name' onChange={(e) => setSearch(e.target.name)} className='w-80 bg-white-light py-2 px-12 rounded-full border border-[#000] focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-[#bdbcbc] focus:drop-shadow-lg' />
                     </div>
 
                 </form>
@@ -119,7 +119,7 @@ return (
                         {data && data.filter((item) => {
                             return search.toLowerCase() === ''
                                 ? item
-                                : item.fullname.toLowerCase().includes(search);
+                                : item.name.toLowerCase().includes(search);
                         }).map((item, index) => (
                             <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -127,7 +127,7 @@ return (
                                 </th>
                                 <td className="px-6 py-4 text-xl flex gap-4" >
 
-                                <FaEdit color='green' onClick={() => navigation(`/teacherDashbord/changeCourse/${item._id}`)}/>
+                                <FaEdit color='green' onClick={() => navigation(`/teacherDashbord/changeCourse/${item._id}`)}  className='cursor-pointer scale-110'/>
                                 </td>
                                 <td className="px-6 py-4">
 
