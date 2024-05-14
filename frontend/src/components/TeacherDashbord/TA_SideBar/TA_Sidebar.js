@@ -70,6 +70,12 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
           </Link>
         </li>
         <li className="TAsidebar-list-item">
+          <Link to="/teacherDashbord/BankDetails">
+            <BsBookHalf className="iconn" />
+            Bank Details
+          </Link>
+        </li>
+        <li className="TAsidebar-list-item">
           <Link to="/teacherDashbord/TeacherFeedback">
             <MdFeedback className="iconn" />
             Feedbacks

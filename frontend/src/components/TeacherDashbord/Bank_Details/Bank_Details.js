@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import './Bank_Details.css'
+import { useSelector } from 'react-redux';
 
 const Bank_Details = () => {
-    const [formData, setFormData] = useState({ bank_holder_name: '', email:'', acc_number:'', ifce:'', branch_name:'', upi:'', ph_number:''});
+    const { currentUser } = useSelector((state) => state.user);
+    const [formData, setFormData] = useState({ teacher_id: currentUser._id, bank_holder_name: '', email:'', acc_number:'', ifce:'', branch_name:'', upi:'', ph_number:''});
+    const [errors, setErrors] = useState(null);
+    const [success, setSuccess] = useState(null);
 
     const handleSubmit = async (e) => {
 
         try {
-            const res = await fetch("", {
+            const res = await fetch("http://localhost:8000/api/teacher/paymentDetails", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,10 +24,12 @@ const Bank_Details = () => {
             if (data.success) {
                 setFormData({ bank_holder_name: '', email:'', acc_number:'', ifce:'', branch_name:'', upi:'', ph_number:''});
             }
-            alert('Form submitted successfully!');
+            setSuccess("Form submitted successfully!");
+            setErrors(null);
         } catch (error) {
             console.error("Error occurred during fetch:", error);
-            alert('An error occurred. Please try again later.');
+            setErrors(error);
+            setSuccess(null);
         }
     };
 
@@ -34,6 +40,7 @@ const Bank_Details = () => {
             [name]: value
         }));
     };
+    console.log(formData);
 
     return (
         <div className='bank_main_details'>
@@ -81,6 +88,9 @@ const Bank_Details = () => {
                     <input className='bank_input' type="text" name='ph_number' id='ph_number' value={formData.ph_number} onChange={handleChange} required/>
 
                     <button className='button3'>SUBMIT</button>
+
+                    {success && <p className="success">{success}</p>}
+                    {errors && <p className="error">{errors}</p>}
                 </form>
             </div>
         </div>
