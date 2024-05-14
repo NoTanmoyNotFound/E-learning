@@ -10,6 +10,7 @@ import ProfileView from "./components/Profile/ProfileView/ProfileView";
 import AllCourses from "./components/AllCourses/AllCourses";
 import SingleCourseDetails from "./components/AllCourses/SingleCourseDetails/SingleCourseDetails";
 import MainCourse from "./components/AllCourses/MainCourse/MainCourse";
+import Main_Course2 from "./components/AllCourses/MainCourse/Main_Course2";
 //course routes end
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -72,6 +73,7 @@ function App() {
         <Route path="/allCourses" element={<AllCourses />} />
         <Route path="/course-details/:courseId" element={<SingleCourseDetails />} />
         <Route path="/MainCourse/:courseId" element={<MainCourse />} />
+        <Route path="/Main_Course2" element={<Main_Course2 />} />
 
 
 
