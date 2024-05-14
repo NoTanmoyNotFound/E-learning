@@ -6,6 +6,11 @@ const feedbackSchema = new mongoose.Schema({
     type:String,
     required:true
   },
+  profileid:{
+    type:String,
+   
+  },
+
   profilePicture:{
     type:String,
    

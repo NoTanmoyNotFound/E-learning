@@ -235,3 +235,28 @@ export const sendcourses = async (req, res, next) => {
         next(error);
     }
 }
+
+export const friendProfile = async (req, res, next) => {
+    const id = req.params.id; 
+    console.log("this is id", id);
+    try {
+        const friend = await User.findById(req.params.id);
+        const { password: hashedPassword, ...rest } = friend._doc;
+       
+        res.status(200).json({success: true, data: rest});
+
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const friendProfileinfo = async (req, res, next) => {
+    const id = req.params.id;  
+    try {
+        const friendinfo = await UserInfo.findOne({ userid: id });
+        res.status(200).json({success: true, data: friendinfo});
+    } catch (error) {
+        next(error);
+    }
+}
