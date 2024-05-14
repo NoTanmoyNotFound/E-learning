@@ -221,7 +221,7 @@ function ChangeCourse() {
   
     return (
       <div className="bodypart   flex items-center justify-center ml-64 w-3/4 mt-4 mb-2 " >
-        <div className="main bg-white p-8 rounded-lg shadow-lg" >
+        <div className="main bg-white p-8 rounded-lg shadow-lg" style={{height:'400px', overflowY:'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none'}}>
           <h1 className="headName text-3xl font-semibold mb-4">
             Course Upload 
           </h1>
@@ -471,7 +471,7 @@ function ChangeCourse() {
               />
             </div>
   
-            <button type="submit" className="button">
+            <button type="submit" className="button" style={{ width: '100%' }}>
               Submit
             </button>
             {error && <p className="text-[#ff3c3c]">{error}</p>}
