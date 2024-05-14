@@ -2,10 +2,7 @@
     padding: 3%;
     background-image: linear-gradient(to top, #b89af6, #abacfe, #a4bdff, #a6cbff, #b1d7fb);
     display: grid;
-    /* gap: 20px; */
     grid-template-columns: 2fr 1fr;
-
-    .video_section_main {}
 
     .video_section_main video {
         width: 100%;
@@ -30,11 +27,11 @@
         hr {
             margin-top: 1rem;
             margin-bottom: 1rem;
-            padding: 5px;
+            padding: 2px;
             color: rgb(255, 255, 255);
             background: white;
             border-radius: 2px;
-            height: 10px;
+            height: 8px;
             opacity: 1;
         }
     }
@@ -197,7 +194,7 @@
     scrollbar-width: none;
 }
 
-.overFlow-set{
+.overFlow-set {
     height: 197px;
     overflow-y: auto;
     padding-left: 20px;
@@ -208,6 +205,7 @@
 
 .main_comm_inner {
     padding-left: 20px;
+
     .bg-2 {
         background: #aaacf0;
         padding: 20px;
@@ -241,18 +239,21 @@
     }
 }
 
-.comment_send_main{
+.comment_send_main {
     margin-top: 20px;
-    .button333{
+
+    .button333 {
         margin-top: 6px;
         width: 100%;
         box-shadow: 0 0 7px rgba(0, 0, 0, 0.651);
-        &:hover{
+
+        &:hover {
             transform: scale(1) !important;
         }
     }
 }
-.comment_send_main textarea{
+
+.comment_send_main textarea {
     background: white;
     border: 4px solid #aaacf0;
     border-radius: 10px;
@@ -276,4 +277,128 @@
     font-size: 20px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* responsive */
+@media (max-width: 860px) {
+    .main_teacher_name_and_profile {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+
+        .likes2 {
+            width: fit-content;
+            margin-top: 10px;
+        }
+
+        .likes2_inner {
+            width: fit-content;
+        }
+
+        .test_main2 {
+            margin-top: 10px;
+            width: 50%;
+        }
+
+        .test_main2 a {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .each_comm2 img {
+        width: 30px !important;
+    }
+
+    .each_comm2 p {
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+    }
+
+    .desc_review p {
+        font-size: 9px !important;
+    }
+
+    .overFlow-set {
+        height: 210px !important;
+    }
+
+    .comment_send_main textarea {
+        height: 110px;
+        margin-top: -10px;
+    }
+}
+
+
+@media (max-width: 678px) {
+
+    .main_inner2 {
+        display: block;
+    }
+    .main_teacher_name_and_profile {
+        margin-top: 10px;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+
+        .likes2 {
+            width: fit-content;
+            margin-top: 10px;
+        }
+
+        .likes2_inner {
+            width: fit-content;
+        }
+
+        .test_main2 {
+            width: fit-content;
+        }
+    }
+
+    .main_heading_courseName .head_course{
+        font-size: 2.3rem !important;
+    }
+    .main_heading_courseName .desc_course{
+        font-size: 15px !important;
+        font-weight: 400 !important;
+    }
+    .comment_inner2{
+        margin-top: 25px;
+        .cmm_head2 p{
+            font-size: 2.3rem !important;
+        }
+    }
+
+    .each_comm2 img {
+        width: 30px !important;
+    }
+
+    .each_comm2 p {
+        font-size: 1.5rem !important;
+        font-weight: 600 !important;
+    }
+
+    .desc_review p {
+        font-size: 9px !important;
+    }
+
+    .main_comm_inner{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    .overFlow-set {
+        height: 170px !important;
+    }
+
+    .comment_send_main textarea {
+        height: 110px;
+        margin-top: -10px;
+    }
+
+    .pppp img{
+        width: 50px;
+    }
 }
