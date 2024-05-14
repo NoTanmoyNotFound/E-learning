@@ -241,7 +241,7 @@ const SingleCourseDetails = () => {
                       <div className="modal_body_sc shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                         <div className="flex items-start justify-between p-4 mb_inner">
                           <div>
-                            <video className="vc" src={course.videoUrl} controls autoPlay />
+                            <video className="vc" src={course.previewVideoUrl} controls autoPlay />
                           </div>
                         </div>
                         <div className="flex items-center justify-end p-4 pt-0 border-solid border-blueGray-200 rounded-b">
