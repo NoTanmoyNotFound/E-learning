@@ -106,6 +106,7 @@ function App() {
           <Route path="TeacherCourse" element={<MyCourses />} />
           <Route path="updateCourse" element={<UpdateCourse />} />
           <Route path="changeCourse/:courseId" element={<ChangeCourse />} />
+          <Route path="BankDetails" element={<Bank_Details />} />
         </Route>
 
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
