@@ -5,8 +5,8 @@ import Feedback from "../models/feedbackModel.js";
 // Controller to create a new feedback
 export const createFeedback = async (req, res) => {
   try {
-    const { name, description, courseID, profilePicture } = req.body;
-    const feedback = new Feedback({ name, description, courseID, profilePicture });
+    const { profileid,name, description, courseID, profilePicture } = req.body;
+    const feedback = new Feedback({ name,profileid, description, courseID, profilePicture });
     const savedFeedback = await feedback.save();
     res.status(201).json({
       savedFeedback,

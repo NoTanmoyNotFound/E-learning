@@ -51,6 +51,7 @@ import ProfileCourse from "./components/Profile/ProfileView/ProfileCourse";
 import DeleteProfile from "./components/Profile/ProfileView/DeleteProfile";
 import UpdateCourse from "./components/TeacherDashbord/TA_Update/UpdateCourse";
 import ChangeCourse from "./components/TeacherDashbord/TA_Update/ChangeCourse";
+import FriendProfile from "./components/Profile/ProfileView/FriendProfile";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -131,6 +132,7 @@ function App() {
             <Route path="users-details" element={<Users />} />
           </Route>
         </Route>
+        <Route path="/friendProfile/:id" element={<FriendProfile/>} />
 
 
 

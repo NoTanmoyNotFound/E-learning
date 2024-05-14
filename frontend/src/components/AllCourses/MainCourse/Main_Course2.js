@@ -4,9 +4,10 @@ import './Main_Course2.css'
 import { useSelector } from "react-redux";
 import Banned from "../../Error/Banned";
 import teacher from "./teacher.jpg"
-
+import { useNavigate } from "react-router-dom";
 const Main_Course2 = () => {
     const { courseId } = useParams();
+    const navigate = useNavigate();
     const [courseData, setCourseData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -76,6 +77,7 @@ const Main_Course2 = () => {
 
         const payload = {
             name: currentUser.name,
+            profileid: currentUser._id,
             profilePicture: currentUser.profilePicture,
             description: formData.comment,
             courseID: courseId,
@@ -186,7 +188,7 @@ const Main_Course2 = () => {
                                     ) : (
                                         comments.map((comment, index) => (
                                             <div key={index} className="bg-2">
-                                                <div className="each_comm2">
+                                                <div className="each_comm2" onClick={() => navigate(`/friendProfile/${comment.profileid}`)}>
                                                     <img src={comment.profilePicture} alt="" />
                                                     <p className='each_name'>{comment.name}</p>
                                                 </div>
