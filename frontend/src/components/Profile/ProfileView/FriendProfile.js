@@ -24,6 +24,38 @@ const FriendProfile = () => {
     const { id } = useParams();
     const [user, setUser] = useState([]);
     const [userInfo, setUserTnfo] = useState([]);
+    const [course, setCourse] = useState(0);
+    const [comment, setComment] = useState(0);
+
+
+
+
+
+    const fatchsutdentcourse = async () => {
+        try {
+            const response = await fetch(`/api/user/sendcourses/${id}`);
+            const data = await response.json();
+            setCourse(data.length);
+        } catch (error) {
+            console.error('Error fetching enrolled students data:', error);
+        } finally {
+           
+        }
+    };
+
+    const fatchCommend = async () => {
+        try {
+            const response = await fetch(`/api/user/getcomments/${id}`);
+            const data = await response.json();
+            console.log(data);
+            setComment(data.data.length);
+        } catch (error) {
+            console.error('Error fetching enrolled students data:', error);
+        } finally {
+           
+        }
+    };
+
 
     
     
@@ -40,7 +72,9 @@ const FriendProfile = () => {
 
 
         
-        friendprofile()
+        friendprofile();
+        fatchsutdentcourse();
+        fatchCommend();
     },[]);
 
     useEffect(() => {
@@ -141,7 +175,7 @@ const FriendProfile = () => {
                             <div className="flex">
                                 <i className="fas fa-bookmark  bg-white p-3 text-xl rounded-lg" />
                                 <div>
-                                    <span>4</span>
+                                    <span>{course}</span>
                                     <p>saved playlist</p>
                                 </div>
                             </div>
@@ -161,7 +195,7 @@ const FriendProfile = () => {
                             <div className="flex">
                                 <i className="fas fa-comment bg-white p-3 text-xl rounded-lg" />
                                 <div>
-                                    <span>12</span>
+                                    <span>{comment}</span>
                                     <p>videos comments</p>
                                 </div>
                             </div>

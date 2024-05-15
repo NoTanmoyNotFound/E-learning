@@ -3,6 +3,7 @@ import UserInfo from "../models/userinfo.model.js";
 import Contact from "../models/contact.modal.js";
 import CareerSuport from "../models/careerSuport.model.js";
 import Payment from "../models/payment.model.js";
+import Feedback from "../models/feedbackModel.js";
 import CourseStructure from '../models/courseUploadModel.js';
 import bcryptjs from "bcryptjs";    
 import { errorHandler } from "../ulte/error.js";
@@ -256,6 +257,18 @@ export const friendProfileinfo = async (req, res, next) => {
     try {
         const friendinfo = await UserInfo.findOne({ userid: id });
         res.status(200).json({success: true, data: friendinfo});
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const sendCommend = async (req, res, next) => {
+    const id = req.params.id;
+
+    try {
+        const commend = await Feedback.find({ profileid: id });
+        res.status(200).json({success: true, data:commend });
+
     } catch (error) {
         next(error);
     }
