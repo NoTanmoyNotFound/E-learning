@@ -19,9 +19,10 @@ export const createFeedback = async (req, res) => {
 
 // Controller to get all feedback
 export const getAllFeedback = async (req, res, next) => {
+  const ID = req.params.id
   try {
-    const feedbacks = await Feedback.find();
-    console.log(feedbacks);
+    const feedbacks = await Feedback.find({courseID : ID});
+    // console.log(feedbacks);
     res.status(200).json(feedbacks);
   } catch (error) {
     res.status(500).json({ message: error.message });

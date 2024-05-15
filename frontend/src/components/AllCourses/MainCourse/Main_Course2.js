@@ -13,20 +13,24 @@ const Main_Course2 = () => {
     const [error, setError] = useState(null);
     const [comments, setComments] = useState([]);
     const [formData, setFormData] = useState({ comment: "" });
-
+    const [commentCount , setCommentCount] = useState(0)
+    const [teacherProf, setTeacher] = useState(null);
+ 
     const { currentUserInfo } = useSelector((state) => state.local);
     const { currentUser } = useSelector((state) => state.user);
 
     const fetchComments = async () => {
         try {
             const response = await fetch(
-                `http://localhost:8000/api/f/getFeed?courseID=${courseId}`
+                `http://localhost:8000/api/f/getFeed/${courseId}`
             );
             const data = await response.json();
             console.log("Fetched comments data:", data); // Debugging log
 
             if (response.ok) {
                 setComments(data); // Store comments
+                setCommentCount(data.length)
+                
             } else {
                 setError(data.message); // Handle server-side errors
             }
@@ -36,6 +40,46 @@ const Main_Course2 = () => {
         }
     };
 
+
+    const fetchTeacher = async () => {
+        try {
+            const response = await fetch(
+                `http://localhost:8000/api/teacher/teacherProfile/${courseId}`
+            );
+            const data = await response.json();
+            console.log("Fetched comments data:", data); // Debugging log
+
+            if (response.ok) {
+                setTeacher(data.data);
+                console.log(teacherProf); // Store comments
+                
+            } else {
+                // setError(data.message); // Handle server-side errors
+            }
+        } catch (err) {
+            console.error("Error fetching pitcher:", err);
+        }
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     useEffect(() => {
         const fetchCourse = async () => {
             try {
@@ -44,6 +88,7 @@ const Main_Course2 = () => {
 
                 if (response.ok) {
                     setCourseData(data.course);
+                   
                 } else {
                     setError(data.message);
                 }
@@ -57,6 +102,8 @@ const Main_Course2 = () => {
 
         fetchCourse();
         fetchComments();
+        fetchTeacher();
+        
     }, [courseId]);
 
     const handleChange = (e) => {
@@ -135,11 +182,12 @@ const Main_Course2 = () => {
 
                         <div className="main_teacher_name_and_profile">
                             <div className="pppp">
-                                <img src={teacher} alt="" width={70} />
+                            
+                                <img src={teacherProf ? teacherProf.profilePicture : teacher} alt="" width={70} />
                                 <div className="teacher_name2_email">
                                     <div className="t_inner">
                                         <p className='t_name2'>{courseData.author}</p>
-                                        <p className='t_email2'>{courseData.email}</p>
+                                        <p className='t_email2'>{courseData.authorEmail}</p>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +222,7 @@ const Main_Course2 = () => {
                     <div className="comment_inner2">
                         <div className="cmm_head2" style={{ marginBottom: '5px' }}>
                             <p className='primaryText' style={{ fontSize: '1.6rem' }}><i className="fa-regular fa-comments"></i>&nbsp; Comments:</p>
-                            <p className='whiteText' style={{ color: 'white', fontWeight: '700', fontSize: '1.4rem', textShadow: '0 2px 5px rgba(0, 0, 0, 0.653)' }}>&nbsp;8.3K+</p>
+                            <p className='whiteText' style={{ color: 'white', fontWeight: '700', fontSize: '1.4rem', textShadow: '0 2px 5px rgba(0, 0, 0, 0.653)' }}>&nbsp;{commentCount}</p>
                         </div>
 
 

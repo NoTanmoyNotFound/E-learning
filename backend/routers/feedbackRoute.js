@@ -13,7 +13,7 @@ const router = express.Router();
 router.post("/feed", createFeedback);
 
 // Route to get all feedback
-router.get("/getFeed", getAllFeedback);
+router.get("/getFeed/:id", getAllFeedback);
 
 // Route to delete feedback by ID
 router.delete("/feed-delete/:id", deleteFeedback);
