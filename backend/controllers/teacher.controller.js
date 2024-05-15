@@ -1,5 +1,6 @@
 import TeacherJoin from "../models/teacherJoin.model.js"
 import User from "../models/user.model.js";
+import UserInfo from "../models/userinfo.model.js";
 import CourseStructure from '../models/courseUploadModel.js';
 import validator from 'email-validator';
 import { errorHandler } from "../ulte/error.js";
@@ -144,6 +145,28 @@ export const getcoursePayment = async (req, res, next) => {
         console.error("Error fetching  data:", error);
         res.status(500).json({ success: false, error: "Internal server error" });
     }    
+}
+
+
+export const teacherProfile = async (req, res, next) => {
+
+    const id = req.params.id; 
+    console.log("this is id", id);
+    try {
+        const course = await CourseStructure.findById(id);
+
+        const teacher = await User.findOne({ email: course.authorEmail });
+        const { password: hashedPassword, ...rest } = teacher._doc;
+       
+        res.status(200).json({success: true, data: rest});
+
+
+    } catch (error) {
+        next(error);
+    }
+
+
+
 }
 
 
