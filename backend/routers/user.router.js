@@ -1,5 +1,5 @@
 import express from "express";
-import {career, contact, updatePassword, updateUser, updateUserInfo, userInfo, sendcourses, deleteUser,friendProfile, friendProfileinfo} from "../controllers/user.controller.js";
+import {career, contact, updatePassword, updateUser, updateUserInfo, userInfo, sendcourses, deleteUser,friendProfile, friendProfileinfo, sendCommend} from "../controllers/user.controller.js";
 import { varifyToken } from "../ulte/varifyToken.js";
 const router = express.Router();
 
@@ -13,6 +13,7 @@ router.get("/sendcourses/:id", sendcourses)
 router.delete("/deleteProfile", deleteUser)
 router.get("/friendProfile/:id", friendProfile)
 router.get("/friendProfileinfo/:id", friendProfileinfo)
+router.get("/getcomments/:id", sendCommend)
 
 
 

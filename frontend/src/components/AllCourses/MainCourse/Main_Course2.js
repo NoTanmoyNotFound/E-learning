@@ -236,7 +236,7 @@ const Main_Course2 = () => {
                                     ) : (
                                         comments.map((comment, index) => (
                                             <div key={index} className="bg-2">
-                                                <div className="each_comm2" onClick={() => navigate(`/friendProfile/${comment.profileid}`)}>
+                                                <div className="each_comm2" onClick={comment.profileid === currentUser._id ? () => navigate('/profile') : () => navigate(`/friendProfile/${comment.profileid}`)}>
                                                     <img src={comment.profilePicture} alt="" />
                                                     <p className='each_name'>{comment.name}</p>
                                                 </div>

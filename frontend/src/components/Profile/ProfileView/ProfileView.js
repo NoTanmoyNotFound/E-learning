@@ -20,6 +20,59 @@ import { userInfoStart, userInfoSuccess, userInfoFailure } from "../../../redux/
 
 
 const ProfileView = () => {
+    const { currentUser } = useSelector((state) => state.user); 
+    const [course, setCourse] = useState(0);
+    const [comment, setComment] = useState(0);
+
+
+
+
+
+    const fatchsutdentcourse = async () => {
+        try {
+            const response = await fetch(`/api/user/sendcourses/${currentUser._id}`);
+            const data = await response.json();
+            setCourse(data.length);
+        } catch (error) {
+            console.error('Error fetching enrolled students data:', error);
+        } finally {
+           
+        }
+    };
+
+    const fatchCommend = async () => {
+        try {
+            const response = await fetch(`/api/user/getcomments/${currentUser._id}`);
+            const data = await response.json();
+            console.log(data);
+            setComment(data.data.length);
+        } catch (error) {
+            console.error('Error fetching enrolled students data:', error);
+        } finally {
+           
+        }
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     useEffect(() => {
         async function fetchUserInfo() {
             dispatch(userInfoStart());
@@ -38,6 +91,8 @@ const ProfileView = () => {
         }
 
         fetchUserInfo();
+        fatchsutdentcourse();
+        fatchCommend();
     }, []);
 
 
@@ -49,7 +104,7 @@ const ProfileView = () => {
     const [profilePic, setProfilePic] = useState(profile);
 
     const { currentUserInfo } = useSelector((state) => state.local);
-    const { currentUser } = useSelector((state) => state.user); 
+   
     console.log(currentUser);
     console.log(currentUserInfo);
     const OpenSidebar = () => {
@@ -153,11 +208,11 @@ const ProfileView = () => {
                             <div className="flex">
                                 <i className="fas fa-bookmark  bg-white p-3 text-xl rounded-lg" />
                                 <div>
-                                    <span>4</span>
-                                    <p>saved playlist</p>
+                                    <span>{course}</span>
+                                    <p>courses Enrolled</p>
                                 </div>
                             </div>
-                            <button href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</button>
+                            <button onClick={()=> navigate("/ProfileCourse")} className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</button>
                         </div>
                         <div className="boxyy rounded-2xl ">
                             <div className="flex text-left mb-3">
@@ -173,7 +228,7 @@ const ProfileView = () => {
                             <div className="flex">
                                 <i className="fas fa-comment bg-white p-3 text-xl rounded-lg" />
                                 <div>
-                                    <span>12</span>
+                                    <span>{comment}</span>
                                     <p>videos comments</p>
                                 </div>
                             </div>
