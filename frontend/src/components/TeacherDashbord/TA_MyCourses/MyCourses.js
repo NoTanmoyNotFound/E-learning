@@ -3,7 +3,7 @@ import axios from "axios";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from "../../../firebase";
 import { FaSpinner } from "react-icons/fa";
-import { useSelector } from "react-redux";  
+import { useSelector } from "react-redux";
 
 
 const MyCourses = () => {
@@ -195,9 +195,9 @@ const MyCourses = () => {
   }, []);
 
   return (
-    <div className="bodypart   flex items-center justify-center ml-64 w-3/4 mt-4 mb-2 " >
-      <div className="main scroll_main_inner bg-white p-8 rounded-lg shadow-lg" style={{height:'400px', overflowY:'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none'}}>
-        <h1 className="headName text-3xl font-semibold mb-4">
+    <div className="bodypart   flex items-center justify-center w-full " >
+      <div className="main scroll_main_inner bg-white p-8 rounded-lg shadow-lg" style={{ width: '95%', height: '500px', overflowY: 'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
+        <h1 className="headName text-3xl font-semibold mb-4 text-center">
           Course Upload
         </h1>
         <form className="formSec" onSubmit={handleFormSubmit}>
@@ -323,7 +323,7 @@ const MyCourses = () => {
               id="authorEmail"
               name="authorEmail"
               value={currentUser.email}
-              
+
               className="form-input w-full border rounded px-4 py-2"
             />
           </div>

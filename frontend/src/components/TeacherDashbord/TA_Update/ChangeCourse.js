@@ -220,10 +220,10 @@ function ChangeCourse() {
     console.log(inputs);
   
     return (
-      <div className="bodypart   flex items-center justify-center ml-64 w-3/4 mt-4 mb-2 " >
-        <div className="main bg-white p-8 rounded-lg shadow-lg" style={{height:'400px', overflowY:'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none'}}>
-          <h1 className="headName text-3xl font-semibold mb-4">
-            Course Upload 
+      <div className="bodypart   flex items-center justify-center w-full " >
+        <div className="main bg-white p-8 rounded-lg shadow-lg" style={{width:'95%',height:'500px', overflowY:'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none'}}>
+          <h1 className="headName text-3xl font-semibold mb-4 text-center">
+            Edit Course
           </h1>
           <form className="formSec" onSubmit={handleFormSubmit}>
             <div className="mb-6">

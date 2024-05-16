@@ -32,10 +32,10 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
       className={openSidebarToggle ? "sidebar-responsive" : ""}
     >
       <div className="TAsidebar-title">
-        <div className="TAprofile">
+        <div className="TAprofile flex justify-center flex-col items-center">
           <img
             src={currentUser && currentUser.profilePicture}
-            className="image"
+            className="image items-center"
             id="pfp"
           />
           <h3 className="name">{currentUser && currentUser.name}</h3>
@@ -75,15 +75,9 @@ const TA_Sidebar = ({ openSidebarToggle, OpenSidebar }) => {
             Bank Details
           </Link>
         </li>
-        <li className="TAsidebar-list-item">
-          <Link to="/teacherDashbord/TeacherFeedback">
-            <MdFeedback className="iconn" />
-            Feedbacks
-          </Link>
-        </li>
         <li className='TAsidebar-list-item'>
           <Link to="/ForgotPassword">
-            <RiLockPasswordFill className='iconn' /> Change Password
+            <RiLockPasswordFill className='iconn' /> Change Pass***
           </Link>
         </li>
 
