@@ -43,10 +43,10 @@ const TA_Analytics = () => {
   return (
     <>
       <div className="flex flex-row ">
-        <div className="flex flex-col gap-2 mx-4 h-full w-full">
+        <div className="flex flex-col gap-2 mx-4 h-full w-full ">
           <div
             style={{ backgroundColor: "#34D399" }}
-            className="TA_container  h-50 md:h-auto w-96 md:w-auto flex flex-2 flex-row mt-3 bg-green-300 rounded-md  p-4 cursor-pointer  shadow-lg bttn-enrollment justify-center items-center "
+            className="TA_container  h-50 md:h-auto w-1/3 md:w-auto flex flex-2 flex-row mt-3 bg-green-300 rounded-md  p-4 cursor-pointer  shadow-lg bttn-enrollment justify-center items-center "
           >
             <div className="TA_Shoping">
               <IoPeopleCircleSharp size={50} className="text-black-500" />
@@ -86,12 +86,9 @@ const TA_Analytics = () => {
             </div>
           </div>
 
-          
-        </div>
-        
-      </div>
-  
-      <div className="TA_container h-70    md:h-auto w-96 md:w-auto flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-sells justify-center items-center  ">
+
+
+          <div className="TA_container h-70    md:h-auto w-96 md:w-auto flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-sells justify-center items-center  ">
             <div className="TA_Shoping ">
               <FaShoppingCart size={50} className="text-stone-950" />
             </div>
@@ -108,6 +105,73 @@ const TA_Analytics = () => {
               </p>
             </div>
           </div>
+
+
+
+
+          {/* test  */}
+
+
+          
+          <div className="TA_container h-70    md:h-auto w-96 md:w-auto flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-sells justify-center items-center  ">
+            <div className="TA_Shoping ">
+              <FaShoppingCart size={50} className="text-stone-950" />
+            </div>
+            <div className="sales ml-7">
+              <h2 className="text-zinc-600 text-xl">Total Sales</h2>
+              <p
+                style={{
+                  marginTop: "0.5rem",
+                  fontSize: "1.5rem",
+                  color: "#333",
+                }}
+              >
+                700
+              </p>
+            </div>
+          </div>
+
+
+                
+          <div className="TA_container h-70    md:h-auto w-96 md:w-auto flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-sells justify-center items-center  ">
+            <div className="TA_Shoping ">
+              <FaShoppingCart size={50} className="text-stone-950" />
+            </div>
+            <div className="sales ml-7">
+              <h2 className="text-zinc-600 text-xl">Total Sales</h2>
+              <p
+                style={{
+                  marginTop: "0.5rem",
+                  fontSize: "1.5rem",
+                  color: "#333",
+                }}
+              >
+                700
+              </p>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </div>
+        
+      </div>
+  
+      
       
     </>
   );
