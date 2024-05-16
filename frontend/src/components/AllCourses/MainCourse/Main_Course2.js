@@ -264,18 +264,18 @@ const Main_Course2 = () => {
                                 <div className="likes2_inner">
                                     {currentUser && likes ? (
                                         <button className="btnLinkes2" onClick={handleLikes}>
-                                        <i className="fa-regular fa-thumbs-up"></i>
+                                            <i className="fa-regular fa-thumbs-up"></i>
                                         </button>
                                     ) : (
                                         <button className="btnLinkes2" onClick={handleLikes}>
-                                        <i className="fa-solid fa-thumbs-up"></i>
+                                            <i className="fa-solid fa-thumbs-up"></i>
                                         </button>
                                     )}
                                     <span className="likeCount2">{likes !== null ? likes : 0}</span>
 
                                     {currentUser && dislikes ? (
                                         <button className="btnLinkes23" onClick={handleDisLikes}>
-                                        <i className="fa-regular fa-thumbs-down"></i>
+                                            <i className="fa-regular fa-thumbs-down"></i>
                                         </button>
                                     ) : (
                                         <button className="btnLinkes23" onClick={handleDisLikes}>
