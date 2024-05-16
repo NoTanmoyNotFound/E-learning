@@ -117,7 +117,7 @@
 
                 &:hover {
                     transform: scale(1.07);
-                    transform: rotate(-70deg);
+                    /* transform: rotate(-70deg); */
                 }
             }
 
@@ -130,7 +130,7 @@
 
                 &:hover {
                     transform: scale(1.07);
-                    transform: rotate(88deg);
+                    /* transform: rotate(88deg); */
                 }
             }
         }
