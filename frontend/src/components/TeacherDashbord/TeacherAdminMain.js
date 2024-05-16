@@ -42,14 +42,28 @@ const TeacherAdminMain = () => {
 
   return (
     <>
-      <div className="grid-container TAmain">
-        <TA_Header OpenSidebar={OpenSidebar} />
+    {/* grid-container  */}
+      <div className=" newcontain TAmain">
+        <div>
         <TA_Sidebar
           openSidebarToggle={openSidebarToggle}
           OpenSidebar={OpenSidebar}
+          className = " w-full "
         />
-        {/* <TA_Analytics /> */}
+        </div>
+
+
+
+        <div className=" flex flex-col gap-2 ">
+        <TA_Header OpenSidebar={OpenSidebar}  />
+        <div className=" h-[600px] overflow-y-auto">
         <Outlet />
+        </div>
+        </div>
+  
+        
+        
+        
       </div>
     </>
   );
