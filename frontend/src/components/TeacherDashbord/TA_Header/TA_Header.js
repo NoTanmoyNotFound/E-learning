@@ -21,7 +21,6 @@ const TA_Header = ({ OpenSidebar }) => {
       await fetch('http://localhost:8000/api/auth/signout');
       dispatch(signOut());
       dispatch(InfosignOut());
-      <Navigate to="/" />
       navigate("/");
     } catch (error) {
       console.log(error);
