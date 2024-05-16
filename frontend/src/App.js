@@ -52,6 +52,7 @@ import DeleteProfile from "./components/Profile/ProfileView/DeleteProfile";
 import UpdateCourse from "./components/TeacherDashbord/TA_Update/UpdateCourse";
 import ChangeCourse from "./components/TeacherDashbord/TA_Update/ChangeCourse";
 import FriendProfile from "./components/Profile/ProfileView/FriendProfile";
+import ProfileUpdate from "./components/TeacherDashbord/TeacherProfile/ProfileUpdate";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -108,6 +109,7 @@ function App() {
           <Route path="updateCourse" element={<UpdateCourse />} />
           <Route path="changeCourse/:courseId" element={<ChangeCourse />} />
           <Route path="BankDetails" element={<Bank_Details />} />
+          <Route path="TeacherProfile" element={<ProfileUpdate />} />
         </Route>
 
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
