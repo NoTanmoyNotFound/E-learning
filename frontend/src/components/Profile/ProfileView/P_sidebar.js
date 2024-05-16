@@ -16,7 +16,7 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
     return (
         <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
             <div className='sidebar-title'>
-                <div className="profile">
+                <div className="profile m-0 mb-2 flex justify-center items-center flex-col">
                     <img src={currentUser.profilePicture} className="image" id="pfp" alt="Profile" />
                     <h3 className="name">{currentUser.name}</h3>
                     <p className="role">Student</p>
@@ -27,7 +27,7 @@ const S_sidebar = ({ openSidebarToggle, OpenSidebar, profilePic }) => {
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
                     <a href="/Profile">
-                        <BsGrid1X2Fill className='iconn' /> Dashboard
+                        <BsGrid1X2Fill className='iconn' /> Profile
                     </a>
                 </li>
                 <li className='sidebar-list-item'>
