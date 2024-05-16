@@ -8,8 +8,9 @@ import teacherRouter from "./routers/teacher.router.js";
 import superRouter from "./routers/super.router.js";
 import courseRouter from "./routers/course.router.js";
 import feedbackRoute from "./routers/feedbackRoute.js";
-import courseUploadRouter from "./routers/CourseUploadRouter.js"
-import PaymentRouter from "./routers/payment.router.js"
+import courseUploadRouter from "./routers/CourseUploadRouter.js";
+import PaymentRouter from "./routers/payment.router.js";
+import LikesAndDislikes from "./routers/likesDislikes.router.js";
 
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -71,6 +72,7 @@ app.use("/api/course", courseRouter);
 app.use("/api/f", feedbackRoute);
 app.use("/api/upload",courseUploadRouter)
 app.use("/api/pay", PaymentRouter );
+app.use("/api/likesdislikes", LikesAndDislikes );
 
 
 

@@ -7,18 +7,24 @@ import teacher from "./teacher.jpg"
 import { useNavigate } from "react-router-dom";
 const Main_Course2 = () => {
     const { courseId } = useParams();
+    console.log("Course ID:", courseId);
     const navigate = useNavigate();
     const [courseData, setCourseData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [comments, setComments] = useState([]);
     const [formData, setFormData] = useState({ comment: "" });
-    const [commentCount , setCommentCount] = useState(0)
+    const [commentCount, setCommentCount] = useState(0)
     const [teacherProf, setTeacher] = useState(null);
- 
+
+    const [likes, setLikes] = useState(0);
+    const [dislikes, setDislikes] = useState(0);
+
     const { currentUserInfo } = useSelector((state) => state.local);
     const { currentUser } = useSelector((state) => state.user);
 
+
+    // comments
     const fetchComments = async () => {
         try {
             const response = await fetch(
@@ -30,7 +36,7 @@ const Main_Course2 = () => {
             if (response.ok) {
                 setComments(data); // Store comments
                 setCommentCount(data.length)
-                
+
             } else {
                 setError(data.message); // Handle server-side errors
             }
@@ -41,6 +47,8 @@ const Main_Course2 = () => {
     };
 
 
+
+    // teacher
     const fetchTeacher = async () => {
         try {
             const response = await fetch(
@@ -52,7 +60,7 @@ const Main_Course2 = () => {
             if (response.ok) {
                 setTeacher(data.data);
                 console.log(teacherProf); // Store comments
-                
+
             } else {
                 // setError(data.message); // Handle server-side errors
             }
@@ -63,48 +71,101 @@ const Main_Course2 = () => {
 
 
 
+    // Fetch likes and dislikes
+    const fetchLikesDislikes = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/likesdislikes/getLikesDisLikes?courseID=${courseId}`);
+            const data = await response.json();
+            setLikes(data.likes.length);
+            setDislikes(data.dislikes.length);
+            if (!response.ok) {
+                console.log("error");
+            }
+        } catch (err) {
+            console.error("Error fetching likes and dislikes:", err);
+        }
+    };
 
 
 
+    // fetch course
+    const fetchCourse = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/upload/singleCourse/${courseId}`);
+            const data = await response.json();
+            console.log("Fetched course data:", data); // Debugging log
 
-
-
-
-
-
-
-
-
-
-
+            if (response.ok) {
+                setCourseData(data.course);
+            } else {
+                setError(data.message);
+            }
+        } catch (err) {
+            console.error("Error fetching course data:", err);
+            setError("An error occurred while fetching the course data.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
 
 
     useEffect(() => {
-        const fetchCourse = async () => {
-            try {
-                const response = await fetch(`/api/upload/singleCourse/${courseId}`);
-                const data = await response.json();
-
-                if (response.ok) {
-                    setCourseData(data.course);
-                   
-                } else {
-                    setError(data.message);
-                }
-            } catch (err) {
-                console.error("Error fetching course data:", err);
-                setError("An error occurred while fetching the course data.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchCourse();
         fetchComments();
         fetchTeacher();
-        
+        fetchLikesDislikes();
     }, [courseId]);
+
+
+
+
+    // post likes
+    const handleLikes = async () => {
+        try {
+            const response = await fetch("http://localhost:8000/api/likesdislikes/postLikes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ courseID: courseId, userID: currentUser._id }),
+            });
+            if (response.ok) {
+                fetchLikesDislikes();
+            } else {
+                setError("Failed to like the course.");
+            }
+        } catch (err) {
+            console.error("Error liking the course:", err);
+            setError("An error occurred while liking the course.");
+        }
+    };
+
+
+    // post Dislikes
+    const handleDisLikes = async () => {
+        try {
+            const response = await fetch("http://localhost:8000/api/likesdislikes/postDisLikes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ courseID: courseId, userID: currentUser._id }),
+            });
+            if (response.ok) {
+                fetchLikesDislikes();
+            } else {
+                setError("Failed to dislike the course.");
+            }
+        } catch (err) {
+            console.error("Error disliking the course:", err);
+            setError("An error occurred while disliking the course.");
+        }
+    };
+
+
+
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -113,6 +174,8 @@ const Main_Course2 = () => {
             [name]: value,
         }));
     };
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -182,7 +245,7 @@ const Main_Course2 = () => {
 
                         <div className="main_teacher_name_and_profile">
                             <div className="pppp">
-                            
+
                                 <img src={teacherProf ? teacherProf.profilePicture : teacher} alt="" width={70} />
                                 <div className="teacher_name2_email">
                                     <div className="t_inner">
@@ -199,10 +262,28 @@ const Main_Course2 = () => {
 
                             <div className="likes2">
                                 <div className="likes2_inner">
-                                    <button className="btnLinkes2"><i className="fa-regular fa-thumbs-up"></i></button>
-                                    <span className="likeCount2">2.3K</span>
-                                    <button className="btnLinkes23"><i className="fa-regular fa-thumbs-down"></i></button>
-                                    <span className="likeCount2">566</span>
+                                    {currentUser && likes ? (
+                                        <button className="btnLinkes2" onClick={handleLikes}>
+                                        <i className="fa-regular fa-thumbs-up"></i>
+                                        </button>
+                                    ) : (
+                                        <button className="btnLinkes2" onClick={handleLikes}>
+                                        <i className="fa-solid fa-thumbs-up"></i>
+                                        </button>
+                                    )}
+                                    <span className="likeCount2">{likes !== null ? likes : 0}</span>
+
+                                    {currentUser && dislikes ? (
+                                        <button className="btnLinkes23" onClick={handleDisLikes}>
+                                        <i className="fa-regular fa-thumbs-down"></i>
+                                        </button>
+                                    ) : (
+                                        <button className="btnLinkes23" onClick={handleDisLikes}>
+                                            <i className="fa-regular fa-thumbs-down"></i>
+                                        </button>
+                                    )}
+                                    <span className="likeCount2">{dislikes !== null ? dislikes : 0}</span>
+
                                 </div>
                             </div>
 
