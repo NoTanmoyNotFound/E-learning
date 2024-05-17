@@ -22,7 +22,6 @@ import EditPassword from "./components/Profile/ProfileEdit/EditPassword";
 import Join from "./components/TeacherJoin/JoinForm/Join";
 import TeacherAdminMain from "./components/TeacherDashbord/TeacherAdminMain";
 import TA_Analytics from "./components/TeacherDashbord/TA_Analytics/TA_Analytics";
-import TA_Feedback from "./components/TeacherDashbord/TA_Feedback/TA_Feedback";
 import MyCourses from "./components/TeacherDashbord/TA_MyCourses/MyCourses";
 import TA_Payment from "./components/TeacherDashbord/TA_Payment/TA_Payment";
 import Bank_Details from "./components/TeacherDashbord/Bank_Details/Bank_Details";
@@ -104,7 +103,6 @@ function App() {
         <Route path="/teacherDashbord"  element={<TeacherAdminMain />}>
           <Route index element={<TA_Analytics />} />
           <Route path="TeacherPayment" element={<TA_Payment />} />
-          <Route path="TeacherFeedback" element={<TA_Feedback />} />
           <Route path="TeacherCourse" element={<MyCourses />} />
           <Route path="updateCourse" element={<UpdateCourse />} />
           <Route path="changeCourse/:courseId" element={<ChangeCourse />} />
