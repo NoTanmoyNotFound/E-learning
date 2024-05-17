@@ -79,15 +79,16 @@ function Payment({courseId,price, teacherEmail,teacherName}) {
           color: "#3399cc",
         },
       }
+      console.log(option);
 
       var rzp1 = new window.Razorpay(option);
       rzp1.on("payment.failed", function(response) {
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
+        alert("this is code" + response.error.code);
+        alert("this is dis" +response.error.description);
+        alert("this is source" + response.error.source);
+        alert("this is step" + response.error.step);
+        alert("this is reson" + response.error.reason);
+        alert("this is mark" + response.error.metadata.order_id);
         alert(response.error.metadata.payment_id);
       })
 
