@@ -4,6 +4,7 @@ import "./TA_Analytics.css";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 import { ImBooks } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
+import { BsBank2 } from "react-icons/bs";
 
 import { useNavigate } from "react-router-dom";
 
@@ -18,14 +19,13 @@ const TA_Analytics = () => {
 
         <div className="flex flex-row">
           <div
-            style={{ backgroundColor: "#34D399" }}
-            className="TA_container h-50 md:h-auto w-2/5 md:w-2/5 flex flex-2 flex-row mt-3 bg-green-300 rounded-md  p-4 cursor-pointer  shadow-lg bttn-enrollment justify-center items-center "
-          >
-            <div className="TA_Shoping">
-              <IoPeopleCircleSharp size={50} className="text-black-500" />
+
+           onClick={() => navigate("/teacherDashbord/TeacherProfile")} className="TA_container h-70    md:h-auto w-2/5 md:w-2/5 flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-profile justify-center items-center  ">
+            <div className="TA_Shoping ">
+              <CgProfile size={50} className="text-stone-950" />
             </div>
             <div className="sales ml-7">
-              <h2 className="text-zinc-600 text-xl">Number of Enrollments</h2>
+              <h2 className="text-zinc-600 text-xl">Profile Update</h2>
               <p
                 style={{
                   marginTop: "0.5rem",
@@ -33,38 +33,50 @@ const TA_Analytics = () => {
                   color: "#333",
                 }}
               >
-                400
+              
               </p>
             </div>
           </div>
 
+
+
           <div
-            style={{ backgroundColor: "#FFA500" }}
-            className="TA_container h-50 md:h-auto w-2/5 md:w-2/5 flex flex-2 flex-row mt-3  rounded-md shadow-xl p-4 bttn-courses justify-center items-center"
+            style={{ backgroundColor: "#34D399" }}
+            onClick={() => navigate("/teacherDashbord/BankDetails")}
+            
+            className="TA_container h-50 md:h-auto w-2/5 md:w-2/5 flex flex-2 flex-row mt-3 bg-green-300 rounded-md  p-4 cursor-pointer  shadow-lg bttn-enrollment justify-center items-center "
           >
             <div className="TA_Shoping">
-              <ImBooks size={50} className="text-blue-900" />
+              <BsBank2 size={50} className="text-black-500" />
             </div>
-            <div className="sales ml-7 cursor-pointer">
-              <h2 className="text-zinc-600 text-xl">Number Of Courses</h2>
-              <p
-                style={{
-                  marginTop: "0.5rem",
-                  fontSize: "1.5rem",
-                  color: "#333",
-                }}
-              >
-                20
-              </p>
+            <div className="sales ml-7" >
+              <h2 className="text-zinc-600 text-xl">Add Bank Details</h2>
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
 
 
           <div className="flex flex-row">
-          <div className="TA_container h-70    md:h-auto w-2/5 md:w-2/5 flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-sells justify-center items-center  ">
+          <div onClick={() => navigate("/teacherDashbord/TeacherPayment")} className="TA_container h-70    md:h-auto w-2/5 md:w-2/5 flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-sells justify-center items-center  ">
             <div className="TA_Shoping ">
               <FaShoppingCart size={50} className="text-stone-950" />
             </div>
@@ -86,15 +98,17 @@ const TA_Analytics = () => {
 
 
           {/* test  */}
-
-
-          
-          <div onClick={() => navigate("/teacherDashbord/TeacherProfile")} className="TA_container h-70    md:h-auto w-2/5 md:w-2/5 flex  flex-row mt-3 rounded-md shadow-xl p-auto cursor-pointer  mb-2  bttn-sells justify-center items-center  ">
-            <div className="TA_Shoping ">
-              <CgProfile size={50} className="text-stone-950" />
+                
+          <div
+            style={{ backgroundColor: "#FFA500" }}
+            onClick={() => navigate("/teacherDashbord/updateCourse")}
+            className="TA_container h-50 md:h-auto w-2/5 md:w-2/5 flex flex-2 flex-row mt-3  rounded-md shadow-xl p-4 bttn-courses justify-center items-center"
+          >
+            <div className="TA_Shoping">
+              <ImBooks size={50} className="text-blue-900" />
             </div>
-            <div className="sales ml-7">
-              <h2 className="text-zinc-600 text-xl">Profile Update</h2>
+            <div className="sales ml-7 cursor-pointer">
+              <h2 className="text-zinc-600 text-xl">Number Of Courses</h2>
               <p
                 style={{
                   marginTop: "0.5rem",
@@ -102,10 +116,13 @@ const TA_Analytics = () => {
                   color: "#333",
                 }}
               >
-              
+                20
               </p>
             </div>
-          </div> 
+          </div>
+
+          
+          
         </div>
         
       </div>

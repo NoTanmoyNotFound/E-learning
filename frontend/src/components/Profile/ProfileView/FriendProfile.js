@@ -180,7 +180,7 @@ const FriendProfile = () => {
                                     <p>saved playlist</p>
                                 </div>
                             </div>
-                            <button href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</button>
+                            <button href="#" className="gokgok-btn opacity-0  bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</button>
                         </div>
                         <div className="boxyy rounded-2xl ">
                             <div className="flex text-left mb-3">
@@ -190,7 +190,7 @@ const FriendProfile = () => {
                                     <p>videos liked</p>
                                 </div>
                             </div>
-                            <button href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2 font-medium">view liked</button>
+                            <button href="#" className="gokgok-btn  opacity-0  bg-white rounded-3xl p-2 h-12 mt-3 mr-2 font-medium">view liked</button>
                         </div>
                         <div className="boxyy rounded-2xl">
                             <div className="flex">
@@ -200,7 +200,7 @@ const FriendProfile = () => {
                                     <p>videos comments</p>
                                 </div>
                             </div>
-                            <button href="#" className="gokgok-btn  bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium">view comments</button>
+                            <button href="#" className="gokgok-btn opacity-0 bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium">view comments</button>
                         </div>
                     </div>
                 </div>
