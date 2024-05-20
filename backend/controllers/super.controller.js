@@ -5,7 +5,18 @@ import User from "../models/user.model.js";
 import Payment from "../models/payment.model.js";
 import Contact from "../models/contact.modal.js";
 import CareerSuport from "../models/careerSuport.model.js";
+import nodemailer from 'nodemailer';
 
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: 'readx1260@gmail.com',
+        pass: 'cewrvogqsztfanyo'
+    },
+
+
+});
 
 
 
@@ -47,9 +58,7 @@ export const acceptTeacherRequest = async (req, res, next) => {
         const teacher = await TeacherJoin.findById(id);
         // console.log(teacher);
         const email = teacher.email;
-
-
-
+        console.log(email);
 
 
         const currentUser = await User.findOne({ email });
@@ -90,6 +99,42 @@ export const acceptTeacherRequest = async (req, res, next) => {
 
 
         await TeacherJoin.findByIdAndDelete(id);
+
+
+        //email 
+
+        const mailOption = {
+            from: 'readx1260@gmail.com',
+            to: email,
+            subject: "Request Accepted",
+            text: `Your request has been accepted.`
+        };
+        console.log(transporter)
+
+
+        transporter.sendMail(mailOption, (error, info) => {
+            if (error) {
+                console.log("error", error);
+                res.status(400).json({ error: 'Email not send' });
+            } else {
+                console.log("Email send", info.response);
+                res.status(200).json({ message: "Email Successfully sent" });
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         res.status(200).json({ success: true, data: newTeacher });
     } catch (error) {

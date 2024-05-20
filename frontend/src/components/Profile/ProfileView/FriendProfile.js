@@ -108,8 +108,9 @@ const FriendProfile = () => {
 
 
     return (
-        <div className='grid-container'>
-            <main className="mainn-container mt-0 px-8 max-w-11/12" style={{ backgroundImage: "linear-gradient(to right, #a5f3eb, #a5c8f3) opacity(0.6)" }}>
+        
+  
+            <main className="mainn-container mt-0 px-8 max-w-full max-h-full" style={{ backgroundImage: "linear-gradient(to right, #a5f3eb, #a5c8f3) opacity(0.6)" }}>
                 <div className="info bg-white p-[20px] rounded-[40px]">
                     <div className="userBox  mb-[25px] rounded-[25px] flex bg-gradient-to-r from-cyan-100 to-blue-100 pt-1 pr-1 pb-1 pl-2" >
                         <div className="user w-52 pr-3 pl-3">
@@ -179,7 +180,7 @@ const FriendProfile = () => {
                                     <p>saved playlist</p>
                                 </div>
                             </div>
-                            <button href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</button>
+                            <button href="#" className="gokgok-btn opacity-0  bg-white rounded-3xl p-2 h-12 mt-3 mr-2  font-medium">view playlists</button>
                         </div>
                         <div className="boxyy rounded-2xl ">
                             <div className="flex text-left mb-3">
@@ -189,7 +190,7 @@ const FriendProfile = () => {
                                     <p>videos liked</p>
                                 </div>
                             </div>
-                            <button href="#" className="gokgok-btn   bg-white rounded-3xl p-2 h-12 mt-3 mr-2 font-medium">view liked</button>
+                            <button href="#" className="gokgok-btn  opacity-0  bg-white rounded-3xl p-2 h-12 mt-3 mr-2 font-medium">view liked</button>
                         </div>
                         <div className="boxyy rounded-2xl">
                             <div className="flex">
@@ -199,7 +200,7 @@ const FriendProfile = () => {
                                     <p>videos comments</p>
                                 </div>
                             </div>
-                            <button href="#" className="gokgok-btn  bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium">view comments</button>
+                            <button href="#" className="gokgok-btn opacity-0 bg-white rounded-3xl p-2 h-12 mt-2 mr-2 font-medium">view comments</button>
                         </div>
                     </div>
                 </div>
@@ -207,7 +208,6 @@ const FriendProfile = () => {
             </main>
 
 
-        </div>
     )
 }
 
