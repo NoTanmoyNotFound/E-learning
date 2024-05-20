@@ -195,8 +195,8 @@ const MyCourses = () => {
   }, []);
 
   return (
-    <div className="bodypart   flex items-center justify-center w-full " >
-      <div className="main scroll_main_inner bg-white p-8 rounded-lg shadow-lg" style={{ width: '95%', height: '500px', overflowY: 'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
+    <div className="bodypart   flex items-center justify-center w-full  " >
+      <div className="main scroll_main_inner bg-white p-8 rounded-lg shadow-lg" style={{ width: '95%', height: 'auto', overflowY: 'auto', WebkitScrollbar: 'display: none', msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
         <h1 className="headName text-3xl font-semibold mb-4 text-center">
           Course Upload
         </h1>
