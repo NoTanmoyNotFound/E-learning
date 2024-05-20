@@ -6,6 +6,17 @@
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     background: #ebebeb;
+
+  }
+
+  #sidebar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  #sidebar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   
   .sidebar-title {

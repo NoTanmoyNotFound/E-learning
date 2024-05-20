@@ -3,6 +3,8 @@ import Category from '../models/categoryUpload.model.js';
 import Teacher from "../models/teacher.model.js";
 import User from "../models/user.model.js";
 import Payment from "../models/payment.model.js";
+import Contact from "../models/contact.modal.js";
+import CareerSuport from "../models/careerSuport.model.js";
 
 
 
@@ -50,7 +52,7 @@ export const acceptTeacherRequest = async (req, res, next) => {
 
 
 
-        const currentUser = await User.findOne({email});
+        const currentUser = await User.findOne({ email });
         const userInfo = await User.findByIdAndUpdate(
             currentUser._id,
             {
@@ -59,8 +61,8 @@ export const acceptTeacherRequest = async (req, res, next) => {
                 }
             },
             { new: true }
-            );
-            console.log("true");
+        );
+        console.log("true");
 
 
 
@@ -68,12 +70,12 @@ export const acceptTeacherRequest = async (req, res, next) => {
 
 
 
-        
+
         if (!teacher) {
             return res.status(404).json({ success: false, error: "Teacher not found" });
         }
 
-        
+
         const newTeacher = new Teacher({
             fullname: teacher.fullname,
             email: teacher.email,
@@ -86,7 +88,7 @@ export const acceptTeacherRequest = async (req, res, next) => {
 
         await newTeacher.save();
 
-        
+
         await TeacherJoin.findByIdAndDelete(id);
 
         res.status(200).json({ success: true, data: newTeacher });
@@ -169,7 +171,7 @@ export const categoryDelete = async (req, res, next) => {
 
 //for teachers details in super admin start
 
-export const showAllAcceptedTeachers = async (req, res, next)=>{
+export const showAllAcceptedTeachers = async (req, res, next) => {
     try {
 
         const data = await Teacher.find();
@@ -185,7 +187,7 @@ export const showAllAcceptedTeachers = async (req, res, next)=>{
 
 
 
-export const deleteAcceptedTecher = async (req, res, next)=>{
+export const deleteAcceptedTecher = async (req, res, next) => {
     try {
         const id = req.params.id;
         const teacher = await Teacher.findById(id);
@@ -195,7 +197,7 @@ export const deleteAcceptedTecher = async (req, res, next)=>{
 
 
 
-        const currentUser = await User.findOne({email});
+        const currentUser = await User.findOne({ email });
         const userInfo = await User.findByIdAndUpdate(
             currentUser._id,
             {
@@ -204,8 +206,8 @@ export const deleteAcceptedTecher = async (req, res, next)=>{
                 }
             },
             { new: true }
-            );
-            console.log("true");
+        );
+        console.log("true");
 
         const data = await Teacher.findByIdAndDelete(id);
         res.status(200).json({ success: true, data: data });
@@ -237,14 +239,14 @@ export const getUsersDetails = async (req, res, next) => {
 
 export const bannedUser = async (req, res, next) => {
     try {
-        
+
         const { userId } = req.params;
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ success: false, error: 'User not found' });
         }
 
-        
+
         user.banned = true;
         await user.save();
         const currentUser = await User.findById(userId);
@@ -263,14 +265,14 @@ export const bannedUser = async (req, res, next) => {
 
 export const UnBannedUser = async (req, res, next) => {
     try {
-        
+
         const { userId } = req.params;
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({ success: false, error: 'User not found' });
         }
 
-        
+
         user.banned = false;
         await user.save();
         const currentUser = await User.findById(userId);
@@ -306,14 +308,14 @@ export const getEnrolledStudentsDetails = async (req, res, next) => {
 
 export const clearPayment = async (req, res, next) => {
     try {
-        
+
         const { userId } = req.params;
         const user = await Payment.findById(userId);
         if (!user) {
             return res.status(404).json({ success: false, error: 'User not found' });
         }
 
-        
+
         user.paid = true;
         await user.save();
         const currentUser = await Payment.findById(userId);
@@ -332,14 +334,14 @@ export const clearPayment = async (req, res, next) => {
 
 export const notClearPayment = async (req, res, next) => {
     try {
-        
+
         const { userId } = req.params;
         const user = await Payment.findById(userId);
         if (!user) {
             return res.status(404).json({ success: false, error: 'User not found' });
         }
 
-        
+
         user.paid = false;
         await user.save();
         const currentUser = await Payment.findById(userId);
@@ -352,3 +354,68 @@ export const notClearPayment = async (req, res, next) => {
 }
 
 //for enrolled students end
+
+
+// get & delete contact details start
+export const getContactUsDetails = async (req, res, next) => {
+    try {
+        const users = await Contact.find();
+        res.status(200).json({ success: true, data: users });
+    } catch (error) {
+        console.error("Error fetching Contact Us data:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+
+
+export const deleteContactUsData = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const deletedContactData = await Contact.findByIdAndDelete(id);
+
+        if (!deletedContactData) {
+            return res.status(404).json({ success: false, error: 'ContactUs Data is not found' });
+        }
+
+        res.status(200).json({ success: true, message: 'ContactUs Data deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting ContactUs Data:', error);
+        res.status(500).json({ success: false, error: 'Internal server error' });
+    }
+};
+// get & delete contact details end
+
+
+
+// get & delete mentorship details start
+export const getMentorshipDetails = async (req, res, next) => {
+    try {
+        const users = await CareerSuport.find();
+        res.status(200).json({ success: true, data: users });
+    } catch (error) {
+        console.error("Error fetching mentorship details data:", error);
+        res.status(500).json({ success: false, error: "Internal server error" });
+    }
+}
+
+
+
+export const deleteMentorshipData = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const deletedContactData = await CareerSuport.findByIdAndDelete(id);
+
+        if (!deletedContactData) {
+            return res.status(404).json({ success: false, error: 'mentorship details is not found' });
+        }
+
+        res.status(200).json({ success: true, message: 'mentorship details deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting mentorship details:', error);
+        res.status(500).json({ success: false, error: 'Internal server error' });
+    }
+};
+// get & delete mentorship details end

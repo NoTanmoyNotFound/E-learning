@@ -1,5 +1,24 @@
 import express from "express";
-import { teacherRequest, teacherDelete, categoryUploads, getCategoryData, categoryDelete, acceptTeacherRequest, showAllAcceptedTeachers, deleteAcceptedTecher, getUsersDetails, bannedUser, UnBannedUser, getEnrolledStudentsDetails, clearPayment, notClearPayment } from "../controllers/super.controller.js";
+import {
+    teacherRequest,
+    teacherDelete,
+    categoryUploads,
+    getCategoryData,
+    categoryDelete,
+    acceptTeacherRequest,
+    showAllAcceptedTeachers,
+    deleteAcceptedTecher,
+    getUsersDetails,
+    bannedUser,
+    UnBannedUser,
+    getEnrolledStudentsDetails,
+    clearPayment,
+    notClearPayment,
+    getContactUsDetails,
+    deleteContactUsData,
+    getMentorshipDetails,
+    deleteMentorshipData
+} from "../controllers/super.controller.js";
 const router = express.Router();
 
 // teacherRequest
@@ -32,5 +51,15 @@ router.post('/UnBannedUser/:userId', UnBannedUser);
 router.get("/getEnrolledStudentsDetails", getEnrolledStudentsDetails);
 router.post('/clearPayment/:userId', clearPayment);
 router.post('/notClearPayment/:userId', notClearPayment);
+
+
+// support/contac us
+router.get("/getContactUsDetails", getContactUsDetails);
+router.delete("/deleteContactUsData/:id", deleteContactUsData);
+
+
+// mentorship data
+router.get("/getMentorshipDetails", getMentorshipDetails);
+router.delete("/deleteMentorshipData/:id", deleteMentorshipData);
 
 export default router;
