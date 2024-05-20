@@ -43,6 +43,8 @@ import Student from "./components/SuperAdmin/Student/Student";
 import Category from "./components/SuperAdmin/Category/Category";
 import Teachers from "./components/SuperAdmin/Teachers/Teachers";
 import Users from "./components/SuperAdmin/Users/Users";
+import Support from "./components/SuperAdmin/Support/Support";
+import Mentorship_S from "./components/SuperAdmin/Mentorship/Mentorship_S";
 //super-admin-routes end
 
 import ForgotPassword from "./page/ForgotPassword";
@@ -130,6 +132,8 @@ function App() {
             <Route path="category-details" element={<Category />} />
             <Route path="teachers-details" element={<Teachers />} />
             <Route path="users-details" element={<Users />} />
+            <Route path="users-supports" element={<Support />} />
+            <Route path="mentorship-req" element={<Mentorship_S />} />
           </Route>
         </Route>
         <Route path="/friendProfile/:id" element={<FriendProfile/>} />

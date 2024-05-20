@@ -80,6 +80,16 @@ const S_home = () => {
                     {/* Dynamic count */}
                     {/* <h1>42</h1> */}
                 </div>
+                <div className='cardd'>
+                    <Link to="/superadmin/users-supports">
+                        <div className='cardd-inner'>
+                            <h3>SUPPORT</h3>
+                            <a href="#"><i class="fa-solid fa-headset"></i></a>
+                        </div>
+                    </Link>
+                    {/* Dynamic count */}
+                    {/* <h1>42</h1> */}
+                </div>
             </div>
 
         </main>
