@@ -24,7 +24,7 @@ const EditSidebar = () => {
                 <div className="carde overflow-hidden rounded-[20px]">
                     <div className="rowed no-gutters row-bordered row-border-light sm:flex sm:flex-row">
                         <div className={`border-e-slate-950 col-md-3 pt-0 ${open ? ' w-64' : ' w-16'} `}>
-                        <BsArrowLeftShort className={` bg-white text-dark-purple text-3xl rounded-full ml-52 mt-3 border border-dark-purple cursor-pointer ${!open && " rotate-180 ml-11"} duration-300`} onClick={() => setOpen(!open)} />
+                        {/* <BsArrowLeftShort className={` bg-white text-dark-purple text-3xl rounded-full ml-52 mt-3 border border-dark-purple cursor-pointer ${!open && " rotate-180 ml-11"} duration-300`} onClick={() => setOpen(!open)} /> */}
                             <div className="list-group list-group-flush account-settings-links">
                             <Link to="/EditProfile" className={`list-group-item list-group-item-action active ${!open && " hidden"}`}>General</Link>
                                 <Link to="/EditProfile/editinfo" className={`list-group-item list-group-item-action ${!open && " hidden"}`}>Info</Link>

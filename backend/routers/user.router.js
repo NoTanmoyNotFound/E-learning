@@ -3,7 +3,7 @@ import {career, contact, updatePassword, updateUser, updateUserInfo, userInfo, s
 import { varifyToken } from "../ulte/varifyToken.js";
 const router = express.Router();
 
-router.post("/update/:id", varifyToken , updateUser )
+router.post("/update/:id" , updateUser )
 router.post("/updateInfo", varifyToken , updateUserInfo )
 router.post("/updatePass", varifyToken , updatePassword)
 router.get("/updateInfo/:id", varifyToken , userInfo)
