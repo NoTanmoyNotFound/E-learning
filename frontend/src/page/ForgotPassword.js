@@ -79,7 +79,7 @@ function ForgotPassword() {
         <div className="bg-gradient-to-r from-[#f28383] from-10% via-[#906cd2] via-30% to-[#481edc] to-90%  flex items-center justify-center h-screen">
             <div className="max-w-[960px] bg-black-dark flex items-center gap-20 p-5 rounded-2xl ">
                 <div id="nok" className="max-w-80 grid  ">
-                    <h1 className="text-5xl font-bold text-white mb-9">Login</h1>
+                    <h1 className="text-5xl font-bold text-white mb-9">Forget Password</h1>
                     <p className="text-dull-white mb-9">Enter your email address. To get Otp for reset your password</p>
                     <form action="#" className="space-y-6 text-white">
 
@@ -123,7 +123,7 @@ function ForgotPassword() {
 
 
                         </div>
-                        <button onClick={handelSubmit} className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2"> Sign In</button>
+                        <button onClick={handelSubmit} className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2"> Update </button>
                     </form>
                 </div>
             </div>
