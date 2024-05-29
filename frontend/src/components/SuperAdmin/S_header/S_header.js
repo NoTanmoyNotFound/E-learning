@@ -27,7 +27,7 @@ const S_header = ({ OpenSidebar }) => {
             dispatch(signOut());
             dispatch(InfosignOut());
             <Navigate to="/" />
-            navigate("/");
+            // navigate("/");
         } catch (error) {
             console.log(error);
         }
